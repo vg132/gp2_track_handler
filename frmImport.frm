@@ -2,110 +2,277 @@ VERSION 5.00
 Begin VB.Form frmImport 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Import From GP2"
-   ClientHeight    =   2025
+   ClientHeight    =   4245
    ClientLeft      =   45
    ClientTop       =   330
-   ClientWidth     =   2805
+   ClientWidth     =   2880
    Icon            =   "frmImport.frx":0000
    LinkTopic       =   "Form5"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   2025
-   ScaleWidth      =   2805
+   ScaleHeight     =   4245
+   ScaleWidth      =   2880
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  'CenterOwner
-   Begin VB.CheckBox chkWare 
-      Caption         =   "Tyre Ware"
-      Height          =   225
-      Left            =   1560
-      TabIndex        =   6
-      Top             =   480
-      Value           =   1  'Checked
-      Width           =   1095
-   End
-   Begin VB.CheckBox chkLap 
-      Caption         =   "Lap Data"
-      Height          =   225
-      Left            =   1560
-      TabIndex        =   5
-      Top             =   240
-      Value           =   1  'Checked
-      Width           =   975
-   End
-   Begin VB.CheckBox chkTrackLength 
-      Caption         =   "Track Length"
-      Height          =   225
-      Left            =   120
-      TabIndex        =   4
-      Top             =   480
-      Value           =   1  'Checked
-      Width           =   1455
-   End
-   Begin VB.CheckBox chkPoint 
-      Caption         =   "Point Data"
-      Height          =   225
-      Left            =   120
-      TabIndex        =   3
-      Top             =   720
-      Value           =   1  'Checked
-      Width           =   1095
-   End
-   Begin VB.CheckBox chkTrackName 
-      Caption         =   "Track Name"
-      Height          =   195
-      Left            =   120
-      TabIndex        =   2
-      Top             =   240
-      Value           =   1  'Checked
-      Width           =   1335
-   End
-   Begin VB.CommandButton cmdCancel 
-      Cancel          =   -1  'True
-      Caption         =   "Cancel"
-      Height          =   325
-      Left            =   120
-      TabIndex        =   1
-      Top             =   1560
-      Width           =   1000
-   End
-   Begin VB.CommandButton cmdImport 
-      Caption         =   "Import"
-      Default         =   -1  'True
-      Height          =   325
-      Left            =   1680
-      TabIndex        =   0
-      Top             =   1560
-      Width           =   1000
-   End
    Begin VB.Frame Frame1 
       Caption         =   "Select Data to Import"
-      Height          =   1980
-      Left            =   0
-      TabIndex        =   7
+      Height          =   4185
+      Left            =   60
+      TabIndex        =   0
       Top             =   0
       Width           =   2775
+      Begin VB.Frame Frame2 
+         Height          =   30
+         Left            =   100
+         TabIndex        =   27
+         Top             =   2270
+         Width           =   2570
+      End
+      Begin VB.CheckBox chkTrack 
+         Caption         =   "Track 2"
+         Height          =   255
+         Index           =   1
+         Left            =   120
+         TabIndex        =   26
+         Top             =   480
+         Value           =   1  'Checked
+         Width           =   1215
+      End
+      Begin VB.CheckBox chkTrack 
+         Caption         =   "Track 10"
+         Height          =   255
+         Index           =   9
+         Left            =   1560
+         TabIndex        =   25
+         Top             =   480
+         Value           =   1  'Checked
+         Width           =   975
+      End
+      Begin VB.CheckBox chkTrack 
+         Caption         =   "Track 3"
+         Height          =   255
+         Index           =   2
+         Left            =   120
+         TabIndex        =   24
+         Top             =   720
+         Value           =   1  'Checked
+         Width           =   1215
+      End
+      Begin VB.CheckBox chkTrack 
+         Caption         =   "Track 11"
+         Height          =   255
+         Index           =   10
+         Left            =   1560
+         TabIndex        =   23
+         Top             =   720
+         Value           =   1  'Checked
+         Width           =   975
+      End
+      Begin VB.CheckBox chkTrack 
+         Caption         =   "Track 12"
+         Height          =   255
+         Index           =   11
+         Left            =   1560
+         TabIndex        =   22
+         Top             =   960
+         Value           =   1  'Checked
+         Width           =   975
+      End
+      Begin VB.CheckBox chkTrack 
+         Caption         =   "Track 4"
+         Height          =   255
+         Index           =   3
+         Left            =   120
+         TabIndex        =   21
+         Top             =   960
+         Value           =   1  'Checked
+         Width           =   1215
+      End
+      Begin VB.CheckBox chkTrack 
+         Caption         =   "Track 5"
+         Height          =   255
+         Index           =   4
+         Left            =   120
+         TabIndex        =   20
+         Top             =   1200
+         Value           =   1  'Checked
+         Width           =   1215
+      End
+      Begin VB.CheckBox chkTrack 
+         Caption         =   "Track 13"
+         Height          =   255
+         Index           =   12
+         Left            =   1560
+         TabIndex        =   19
+         Top             =   1200
+         Value           =   1  'Checked
+         Width           =   975
+      End
+      Begin VB.CheckBox chkTrack 
+         Caption         =   "Track 6"
+         Height          =   255
+         Index           =   5
+         Left            =   120
+         TabIndex        =   18
+         Top             =   1440
+         Value           =   1  'Checked
+         Width           =   1215
+      End
+      Begin VB.CheckBox chkTrack 
+         Caption         =   "Track 14"
+         Height          =   255
+         Index           =   13
+         Left            =   1560
+         TabIndex        =   17
+         Top             =   1440
+         Value           =   1  'Checked
+         Width           =   975
+      End
+      Begin VB.CheckBox chkTrack 
+         Caption         =   "Track 7"
+         Height          =   255
+         Index           =   6
+         Left            =   120
+         TabIndex        =   16
+         Top             =   1680
+         Value           =   1  'Checked
+         Width           =   1215
+      End
+      Begin VB.CheckBox chkTrack 
+         Caption         =   "Track 15"
+         Height          =   255
+         Index           =   14
+         Left            =   1560
+         TabIndex        =   15
+         Top             =   1680
+         Value           =   1  'Checked
+         Width           =   975
+      End
+      Begin VB.CheckBox chkTrack 
+         Caption         =   "Track 1"
+         Height          =   255
+         Index           =   0
+         Left            =   120
+         TabIndex        =   14
+         Top             =   240
+         Value           =   1  'Checked
+         Width           =   1215
+      End
+      Begin VB.CheckBox chkTrack 
+         Caption         =   "Track 9"
+         Height          =   255
+         Index           =   8
+         Left            =   1560
+         TabIndex        =   13
+         Top             =   240
+         Value           =   1  'Checked
+         Width           =   975
+      End
+      Begin VB.CheckBox chkTrack 
+         Caption         =   "Track 8"
+         Height          =   255
+         Index           =   7
+         Left            =   120
+         TabIndex        =   12
+         Top             =   1920
+         Value           =   1  'Checked
+         Width           =   1215
+      End
+      Begin VB.CheckBox chkTrack 
+         Caption         =   "Track 16"
+         Height          =   255
+         Index           =   15
+         Left            =   1560
+         TabIndex        =   11
+         Top             =   1920
+         Value           =   1  'Checked
+         Width           =   975
+      End
+      Begin VB.CommandButton cmdImport 
+         Caption         =   "Import"
+         Default         =   -1  'True
+         Height          =   325
+         Left            =   1635
+         TabIndex        =   10
+         Top             =   3720
+         Width           =   1000
+      End
+      Begin VB.CommandButton cmdCancel 
+         Cancel          =   -1  'True
+         Caption         =   "Cancel"
+         Height          =   325
+         Left            =   120
+         TabIndex        =   9
+         Top             =   3720
+         Width           =   1000
+      End
+      Begin VB.CheckBox chkTrackName 
+         Caption         =   "Track Names"
+         Height          =   195
+         Left            =   120
+         TabIndex        =   8
+         Top             =   2400
+         Value           =   1  'Checked
+         Width           =   1335
+      End
+      Begin VB.CheckBox chkPoint 
+         Caption         =   "Point Data"
+         Height          =   225
+         Left            =   120
+         TabIndex        =   7
+         Top             =   2880
+         Value           =   1  'Checked
+         Width           =   1095
+      End
+      Begin VB.CheckBox chkTrackLength 
+         Caption         =   "Track Length"
+         Height          =   225
+         Left            =   120
+         TabIndex        =   6
+         Top             =   2640
+         Value           =   1  'Checked
+         Width           =   1455
+      End
+      Begin VB.CheckBox chkLap 
+         Caption         =   "Lap Data"
+         Height          =   225
+         Left            =   1560
+         TabIndex        =   5
+         Top             =   2400
+         Value           =   1  'Checked
+         Width           =   975
+      End
+      Begin VB.CheckBox chkWare 
+         Caption         =   "Tyre Ware"
+         Height          =   225
+         Left            =   1560
+         TabIndex        =   4
+         Top             =   2640
+         Value           =   1  'Checked
+         Width           =   1095
+      End
       Begin VB.CheckBox chkSettings 
          Caption         =   "GP2 Settings"
          Height          =   255
          Left            =   120
-         TabIndex        =   10
-         Top             =   960
+         TabIndex        =   3
+         Top             =   3120
          Width           =   1575
       End
       Begin VB.CheckBox chkAll 
          Caption         =   "Select/Deselect All"
          Height          =   255
          Left            =   120
-         TabIndex        =   9
-         Top             =   1200
+         TabIndex        =   2
+         Top             =   3360
          Width           =   1695
       End
       Begin VB.CheckBox chkTime 
          Caption         =   "Lap Times"
          Height          =   255
          Left            =   1560
-         TabIndex        =   8
-         Top             =   720
+         TabIndex        =   1
+         Top             =   2880
          Width           =   1125
       End
    End
@@ -169,43 +336,48 @@ End Sub
 
 Private Sub cmdImport_Click()
     frmImport.MousePointer = 11
-    'NewFile
+
     On Error GoTo ErrorTrap
-    GP2FileNum = FreeFile
-    Open GP2Dir + "\gp2.exe" For Binary As GP2FileNum
-    
-    With frmMain
-        .txtPath.Enabled = True
-        .txtPath.Enabled = False
-    End With
-    Read = ""
+    Exp.GP2FileNum = FreeFile
+    Open GP2Dir + "\gp2.exe" For Binary As Exp.GP2FileNum
+
+    If (frmImport.chkTime.Value = 1) And (chkTime.Enabled = True) Then
+        Exp.F1FileNum = FreeFile
+        Open GP2Dir + "\f1gstate.sav" For Binary As Exp.F1FileNum
+    End If
 
     GetGP2Version
-    If frmImport.chkWare.Value = 1 Then ImportWare
-    If frmImport.chkTrackName.Value = 1 Then
-        ImportText
-        FileInfo.Import = True
-    End If
+    If chkTrackName.Value = 1 Then ImportText
+    For Exp.TrackNr = 0 To 15
+        If chkTrack(Exp.TrackNr).Value = 1 Then
+            If chkLap.Value = 1 Then ImportLaps
+            If chkTrackLength.Value = 1 Then ImportLength
+            If chkWare.Value = 1 Then ImportWare
+            If chkTrackName.Value = 1 Then
+                oMisc.WriteINI "Track " & Exp.TrackNr + 1, "Name", TrackName(Exp.TrackNr), TempFile
+                oMisc.WriteINI "Track " & Exp.TrackNr + 1, "Adjective", Adj(Exp.TrackNr), TempFile
+                oMisc.WriteINI "Track " & Exp.TrackNr + 1, "Country", Country(Exp.TrackNr), TempFile
+                If Exp.TrackNr + 1 > 9 Then
+                    Read = GP2Dir & "\Circuits\f1ct" & Exp.TrackNr + 1 & ".dat"
+                Else
+                    Read = GP2Dir & "\Circuits\f1ct0" & Exp.TrackNr + 1 & ".dat"
+                End If
+                oMisc.WriteINI "Track " & Exp.TrackNr + 1, "TPath", Read, TempFile
+                Tracks(X) = True
+            End If
+            If (chkTime.Value = 1) And (chkTime.Enabled = True) Then
+                ImportQName F1gstate
+                ImportQDate F1gstate
+                ImportTime Qual, F1gstate
+                ImportQTeam F1gstate
+                ImportRName F1gstate
+                ImportRDate F1gstate
+                ImportTime Race, F1gstate
+                ImportRTeam F1gstate
+            End If
+        End If
+    Next
     If frmImport.chkPoint.Value = 1 Then ImportPoints
-    If frmImport.chkLap.Value = 1 Then ImportLaps
-    If frmImport.chkTrackLength.Value = 1 Then ImportLength
-    If (frmImport.chkTime.Value = 1) And (chkTime.Enabled = True) Then
-        FileNum = FreeFile
-        Open GP2Dir + "\f1gstate.sav" For Binary As FileNum
-        CountExport = 0
-        Do Until CountExport > 15
-            ImportQName
-            ImportQDate
-            ImportTimeFromGP2 Qual
-            ImportQTeam
-            ImportRName
-            ImportRDate
-            ImportTimeFromGP2 Race
-            ImportRTeam
-            CountExport = CountExport + 1
-        Loop
-        Close FileNum
-    End If
     If chkSettings.Value = 1 Then
         ImportNullAsOne
         ImportLevel
@@ -218,29 +390,31 @@ Private Sub cmdImport_Click()
         ImportCWeight
         ImportPWeight
         ImportUseTeam
+        'If chkTime is enabled then f1gstate is installed on the system
         If chkTime.Enabled = True Then
-            F1SaveFileNum = FreeFile
-            Open GP2Dir + "\F1gstate.sav" For Binary As F1SaveFileNum
-                ImportQuick
-            Close F1SaveFileNum
+            ImportQuick
         End If
     End If
+    Close Exp.GP2FileNum
+    Close Exp.F1FileNum
 
     FileInfo.Name = ""
     FileInfo.Path = ""
+    FileInfo.Saved = False
+    
     LoadGP2Aid
     LoadFile
-    FileInfo.Saved = False
     frmImport.MousePointer = 0
     frmImport.Hide
-    Close GP2FileNum
 Exit Sub
 ErrorTrap:
-    Print #Log, Date & " " & Time & " cmdImport_Click , Error Number: " & Err.Number & ", Error Description: " & Err.Description
+    frmImport.MousePointer = 0
+    Close Exp.GP2FileNum
+    Close Exp.F1FileNum
     MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
         "Error Desctiption: " & Err.Description & vbLf & _
         "Error Source: " & Err.Source, vbCritical, "Error"
-    frmImport.MousePointer = 0
+    frmImport.Hide
 End Sub
 
 Private Sub Form_Activate()
@@ -256,7 +430,7 @@ Dim oCtl As Control
     If CheckType = CheckAll Then
         For Each oCtl In frmImport
             If TypeOf oCtl Is CheckBox Then
-                oCtl.Value = 1
+                If oCtl.Enabled = True Then oCtl.Value = 1
             End If
         Next
         State = CheckAll
@@ -283,3 +457,6 @@ Dim oCtl As Control
     Set oCtl = Nothing
 End Sub
 
+Private Sub chkTrack_Click(Index As Integer)
+    Test Check
+End Sub

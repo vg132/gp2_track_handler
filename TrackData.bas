@@ -12,94 +12,129 @@ Dim Stopp As Integer
     Get #FileNum, 1, Read
     Close FileNum
     If InStr(1, Read, "#GP2INFO") Then
-        ReadGP2Info = True
+        With frmMain
+            ReadGP2Info = True
+    
+            X = InStr(1, Read, "|Name|")
+            If X > 0 Then
+                Start = X + 6
+                Stopp = InStr(Start, Read, "|")
+                .lblTrackName = Mid(Read, Start, Stopp - Start)
+            Else
+                .lblTrackName = ""
+            End If
+    
+            X = InStr(1, Read, "|Country|")
+            If X > 0 Then
+                Start = X + 9
+                Stopp = InStr(Start, Read, "|")
+                .lblCountry = Mid(Read, Start, Stopp - Start)
+            Else
+                .lblCountry = ""
+            End If
+    
+            X = InStr(1, Read, "|Year|")
+            If X > 0 Then
+                Start = X + 6
+                Stopp = InStr(Start, Read, "|")
+                .lblInfoYear = Mid(Read, Start, Stopp - Start)
+            Else
+                .lblInfoYear = ""
+            End If
+    
+            X = InStr(1, Read, "|Author|")
+            If X > 0 Then
+                Start = X + 8
+                Stopp = InStr(Start, Read, "|")
+                .lblAuthor = Mid(Read, Start, Stopp - Start)
+            Else
+                .lblAuthor = ""
+            End If
+    
+            X = InStr(1, Read, "|Laps|")
+            If X > 0 Then
+                Start = X + 6
+                Stopp = InStr(Start, Read, "|")
+                .lblLaps = Mid(Read, Start, Stopp - Start)
+            Else
+                .lblLaps = ""
+            End If
+    
+            X = InStr(1, Read, "|Tyre|")
+            If X > 0 Then
+                Start = X + 6
+                Stopp = InStr(Start, Read, "|")
+                .lblWare = Mid(Read, Start, Stopp - Start)
+            Else
+                .lblWare = ""
+            End If
+    
+            X = InStr(1, Read, "|LengthMeters|")
+            If X > 0 Then
+                Start = X + 14
+                Stopp = InStr(Start, Read, "|")
+                .lblLen = Mid(Read, Start, Stopp - Start)
+            Else
+                .lblLen = ""
+            End If
+    
+            X = InStr(1, Read, "|LapRecord|")
+            If X > 0 Then
+                Start = X + 11
+                Stopp = InStr(Start, Read, "|")
+                Read2 = Mid(Read, Start, Stopp - Start)
+                If Read2 <> "None Entered" Then
+                    .lblRace = Read2
+                Else
+                    .lblRace = ""
+                End If
+            Else
+                .lblRace = ""
+            End If
+    
+            X = InStr(1, Read, "|LapRecordQualify|")
+            If X > 0 Then
+                Start = X + 18
+                Stopp = InStr(Start, Read, "|")
+                Read2 = Mid(Read, Start, Stopp - Start)
+                If Read2 <> "None Entered" Then
+                    .lblQual = Read2
+                Else
+                    .lblQual = ""
+                End If
+            Else
+                .lblQual = ""
+            End If
+    
+            X = InStr(1, Read, "|Slot|")
+            If X > 0 Then
+                Start = X + 6
+                Stopp = InStr(Start, Read, "|")
+                .lblSlot = Mid(Read, Start, Stopp - Start)
+            Else
+                .lblSlot = ""
+            End If
+    
+            X = InStr(1, Read, "|Event|")
+            If X > 0 Then
+                Start = X + 7
+                Stopp = InStr(Start, Read, "|")
+                .lblEvent = Mid(Read, Start, Stopp - Start)
+            Else
+                .lblEvent = ""
+            End If
 
-        X = InStr(1, Read, "|Name|")
-        If X > 0 Then
-            Start = X + 6
-            Stopp = InStr(Start, Read, "|")
-            frmMain.lblTrackName = Mid(Read, Start, Stopp - Start)
-        End If
+            X = InStr(1, Read, "|Desc|")
+            If X > 0 Then
+                Start = X + 6
+                Stopp = InStr(Start, Read, "|")
+                .lblMisc = Mid(Read, Start, Stopp - Start)
+            Else
+                .lblMisc = ""
+            End If
 
-        X = InStr(1, Read, "|Country|")
-        If X > 0 Then
-            Start = X + 9
-            Stopp = InStr(Start, Read, "|")
-            frmMain.lblCountry = Mid(Read, Start, Stopp - Start)
-        End If
-
-        X = InStr(1, Read, "|Year|")
-        If X > 0 Then
-            Start = X + 6
-            Stopp = InStr(Start, Read, "|")
-            frmMain.lblInfoYear = Mid(Read, Start, Stopp - Start)
-        End If
-
-        X = InStr(1, Read, "|Author|")
-        If X > 0 Then
-            Start = X + 8
-            Stopp = InStr(Start, Read, "|")
-            frmMain.lblAuthor = Mid(Read, Start, Stopp - Start)
-        End If
-
-        X = InStr(1, Read, "|Laps|")
-        If X > 0 Then
-            Start = X + 6
-            Stopp = InStr(Start, Read, "|")
-            frmMain.lblLaps = Mid(Read, Start, Stopp - Start)
-        End If
-
-        X = InStr(1, Read, "|Tyre|")
-        If X > 0 Then
-            Start = X + 6
-            Stopp = InStr(Start, Read, "|")
-            frmMain.lblWare = Mid(Read, Start, Stopp - Start)
-        End If
-
-        X = InStr(1, Read, "|LengthMeters|")
-        If X > 0 Then
-            Start = X + 14
-            Stopp = InStr(Start, Read, "|")
-            frmMain.lblLen = Mid(Read, Start, Stopp - Start)
-        End If
-
-        X = InStr(1, Read, "|LapRecord|")
-        If X > 0 Then
-            Start = X + 11
-            Stopp = InStr(Start, Read, "|")
-            Read2 = Mid(Read, Start, Stopp - Start)
-            If Read2 <> "None Entered" Then frmMain.lblRace = Read2
-        End If
-
-        X = InStr(1, Read, "|LapRecordQualify|")
-        If X > 0 Then
-            Start = X + 18
-            Stopp = InStr(Start, Read, "|")
-            Read2 = Mid(Read, Start, Stopp - Start)
-            If Read2 <> "None Entered" Then frmMain.lblQual = Read2
-        End If
-
-        X = InStr(1, Read, "|Slot|")
-        If X > 0 Then
-            Start = X + 6
-            Stopp = InStr(Start, Read, "|")
-            frmMain.lblSlot = Mid(Read, Start, Stopp - Start)
-        End If
-
-        X = InStr(1, Read, "|Event|")
-        If X > 0 Then
-            Start = X + 7
-            Stopp = InStr(Start, Read, "|")
-            frmMain.lblEvent = Mid(Read, Start, Stopp - Start)
-        End If
-
-        X = InStr(1, Read, "|Desc|")
-        If X > 0 Then
-            Start = X + 6
-            Stopp = InStr(Start, Read, "|")
-            frmMain.lblMisc = Mid(Read, Start, Stopp - Start)
-        End If
-        frmMain.lstFile.OLEDragMode = ccOLEDragAutomatic
+            .lstFile.OLEDragMode = ccOLEDragAutomatic
+        End With
     Else
         OldTrackFile Path
         If Found = False Then
@@ -110,15 +145,14 @@ Dim Stopp As Integer
             Get #FileNum, X, Read
             Close FileNum
             If Read = "jam" Then
-                Responce = MsgBox(LoadResString(129) & vbLf & LoadResString(130), vbYesNo, TH)
-                If Responce = vbYes Then frmMain.cmdSaveGP2Info_Click
+                Var.iInt1 = MsgBox(LoadResString(129) & vbLf & LoadResString(130), vbYesNo, TH)
+                If Var.iInt1 = vbYes Then frmMain.cmdSaveGP2Info_Click
                 frmMain.lstFile.OLEDragMode = ccOLEDragManual
                 GoTo TrackFile
             Else
                 frmMain.mnuCCCarSetup.Enabled = False
                 frmMain.mnuTrackSettings.Enabled = False
                 frmMain.lstFile.OLEDragMode = ccOLEDragManual
-                MsgBox LoadResString(108), vbInformation, TH
                 ReadGP2Info = False
             End If
         Else
@@ -379,7 +413,6 @@ Dim TrackSize As String
 Exit Function
 
 ErrorTrap:
-    Print #Log, Date & " " & Time & " OldTrackFile , Error Number: " & Err.Number & ", Error Description: " & Err.Description
     MsgBox "Error # " + Str(Err.Number) + Err.Description
 End Function
 
@@ -432,5 +465,4 @@ Private Sub Samma()
     frmMain.lblInfoYear = "1994"
     frmMain.lblEvent = "Formula 1"
     frmMain.lblAuthor = "Microprose"
-    frmMain.lblMisc = "Original GP2 Track"
 End Sub

@@ -1,56 +1,79 @@
 Attribute VB_Name = "modCCSetup"
-Dim FilePos As Long
-Dim X As Long
+Dim PitPos As Long
+Dim CCSetup As Long
 
-Public Function GetTrackSetup(ByVal TPath As String) As String
-Dim Fuel As Integer
+Public Sub GetCCSetup(ByVal TPath As String)
     FileNum = FreeFile
     Open TPath For Binary As FileNum
-    Read = String(4000, " ")
-    X = FileLen(TPath) - 4000
-    Get #FileNum, X, Read
-    FilePos = X
-    X = InStr(1, LCase(Read), "gamejams\")
-    If X > 0 Then
-        Read = Mid(Read, 1, X)
-    Else
-        Exit Function
-    End If
-    X = InStr(1, LCase(Read), "pdh")
-    If X > 0 Then
-        Read = Mid(Read, X + 3, 25)
-        FilePos = FilePos + X + 2
-    Else
-        Read2 = String(98, Chr(0))
-        X = InStr(1, Read, Read2)
-        If X > 0 Then
-            Read = Mid(Read, X)
-            FilePos = FilePos + X
-        ElseIf X = 0 Then
-            Exit Function
-        End If
-        For X = 1 To Len(Read)
-            Read2 = Mid(Read, X, 1)
-            If Read2 <> Chr(0) Then
-                Count1 = X - 1
-                X = -1
-                Exit For
-            End If
-        Next
-        If X <> -1 Then Exit Function
-        Read = Mid(Read, Count1, 25)
-        FilePos = FilePos + Count1 - 2
-    End If
-    Get #FileNum, FilePos + 27, Fuel
+    Get #FileNum, 4117, Var.lLong1
+    CCSetup = Var.lLong1 + 4128
+    Read = String(30, " ")
+    Get #FileNum, CCSetup, Read
     Close FileNum
-    GetTrackSetup = Read & Fuel
-End Function
+    FileNum = FreeFile
+    Open ProgramDir & "\File\CCSetup.tmp" For Binary As FileNum
+    Put #FileNum, 1, Read
+    Close FileNum
+End Sub
 
-Public Sub SaveTrackSetup(ByVal TPath As String, ByVal Data As String, ByVal Fuel As Integer)
-Dim Temp As Byte
+Public Sub SaveCCCarSetup(ByVal TPath As String)
+    FileNum = FreeFile
+    Open ProgramDir & "\File\CCSetup.tmp" For Binary As FileNum
+    Read = String(30, " ")
+    Get #FileNum, 1, Read
+    Close FileNum
+
     FileNum = FreeFile
     Open TPath For Binary As FileNum
-    Put #FileNum, FilePos, Data
-    Put #FileNum, FilePos + 27, Fuel
+    Put #FileNum, CCSetup, Read
+    Close FileNum
+End Sub
+
+Public Sub GetPitStop(ByVal TPath As String)
+'*************************************
+'Function Name: GetPitStop
+'Use: Get the PitStop Stratergy
+'Remarks:
+'History:
+'Programmer: Viktor Gars
+'Date: 1999-09-05
+'*************************************
+    FileNum = FreeFile
+    Open TPath For Binary As FileNum
+    Read = String(3000, Chr(0))
+    Get #FileNum, FileLen(TPath) - 3015, Read
+    Close FileNum
+    Read2 = String(2, Chr(0))
+    For X = 3000 To 1 Step -1
+        If Mid(Read, X, 2) = Read2 Then
+            Read = Mid(Read, X - 324, 52)
+            FileNum = FreeFile
+            Open ProgramDir & "\File\PitStop.tmp" For Binary As FileNum
+            Put #FileNum, 1, Read
+            Close FileNum
+            PitPos = FileLen(TPath) - (3341 - X) + 1
+            Exit For
+        End If
+    Next
+End Sub
+
+Public Sub SaveCCPitStop(ByVal TPath As String)
+'*************************************
+'Function Name: SavePitStop
+'Use: Save PitStop Stratergy
+'Remarks:
+'History:
+'Programmer: Viktor Gars
+'Date: 1999-09-05
+'*************************************
+    FileNum = FreeFile
+    Open ProgramDir & "\File\PitStop.tmp" For Binary As FileNum
+    Read = String(52, " ")
+    Get #FileNum, 1, Read
+    Close FileNum
+
+    FileNum = FreeFile
+    Open TPath For Binary As FileNum
+    Put #FileNum, PitPos, Read
     Close FileNum
 End Sub

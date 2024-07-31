@@ -112,7 +112,7 @@ Attribute VB_Exposed = False
 Dim FilePath As String
 
 Private Sub cmdConvert_Click()
-    If File1.FileName = "database.tdb" Then
+    If LCase(File1.FileName) = "database.tdb" Then
         LapTimeCon FilePath
         frmMain.LoadTimeData
         MsgBox LoadResString(126), vbInformation, TH
@@ -150,7 +150,7 @@ Private Sub File1_Click()
         txtFolder.Text = File1.Path & "\th14" & File1.FileName
     End If
     txtFolder.Enabled = True
-    If LCase(File1.FileName) = LCase("database.tdb") Then
+    If LCase(File1.FileName) = "database.tdb" Then
         frmConvert.Caption = "File Converter - Track Handler v1.3 Lap Time Database"
         cmdConvert.Enabled = True
         txtFolder.Enabled = False
@@ -159,11 +159,7 @@ Private Sub File1_Click()
         cmdConvert.Enabled = True
     ElseIf FileLen(FilePath) = "14336" Then
         frmConvert.Caption = "File Converter - WinTrackMan 1.5 file"
-        If Len(File1.Path) = 3 Then
-            txtFolder.Text = txtFolder.Text & File1.FileName
-        Else
-            txtFolder.Text = txtFolder.Text & "\" & Mid(File1.FileName, 1, Len(File1.FileName) - 3) & "ths"
-        End If
+        txtFolder.Text = IIf(Right(Dir1.Path, 1) = "\", Dir1.Path, Dir1.Path & "\") & Mid(File1.FileName, 1, Len(File1.FileName) - 3) & "ths"
         cmdConvert.Enabled = True
     ElseIf FileLen(FilePath) = "9826" Then
         frmConvert.Caption = "File Converter - Track Handler v1.2 file"
@@ -176,6 +172,8 @@ Private Sub File1_Click()
         Close FileNum
         If UCase(Read) = "#TH14" Then
             frmConvert.Caption = "File Converter - Track Handler v1.4"
+        ElseIf UCase(Read) = "#TH15" Then
+            frmConvert.Caption = "File Converter - Track Handler v1.5"
         Else
             frmConvert.Caption = "File Converter - Unknown file"
         End If

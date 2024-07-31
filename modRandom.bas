@@ -26,8 +26,9 @@ Dim Counter As Integer
             ReDim Preserve vArray(LBound(vArray) To Count2 - 1)
         End If
         Support = ReadGP2Info(frmMain.lstFile.SelectedItem.Key)
+        DoEvents
         If Support = True Then
-            Read2 = "Track " + Trim(Str(Counter + 1))
+            Read2 = "Track " & Counter + 1
             Read = GetAdjectiv(frmMain.lblCountry)
             oMisc.WriteINI Read2, "Adjective", Read, TempFile
             oMisc.WriteINI Read2, "Country", frmMain.lblCountry, TempFile
@@ -45,6 +46,7 @@ Dim Counter As Integer
             oMisc.WriteINI Read2, "QDate", "", TempFile
             oMisc.WriteINI Read2, "RDate", "", TempFile
         End If
+        Tracks(Counter) = True
     Next
     LoadFile
 End Sub

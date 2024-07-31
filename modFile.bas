@@ -1,4 +1,7 @@
 Attribute VB_Name = "modFile"
+Private Declare Function CopyFile Lib "kernel32.dll" Alias "CopyFileA" (ByVal lpExistingFileName As String, ByVal lpNewFileName As String, ByVal bFailIfExists As Long) As Long
+Private Declare Sub Sleep Lib "kernel32.dll" (ByVal dwMilliseconds As Long)
+
 
 Public Sub NewFile()
     On Error Resume Next
@@ -12,6 +15,9 @@ Public Sub NewFile()
     FileInfo.Saved = True
     FileInfo.Changes = False
     FileInfo.Import = False
+    For X = 0 To 15
+        Tracks(X) = False
+    Next
 End Sub
 
 Public Sub SaveTrackData(ByVal TNr As Integer)
@@ -90,13 +96,14 @@ Dim SPic As String
         BPic = oMisc.ReadINI("Track " & X, "BPic", TempFile)
         SPic = oMisc.ReadINI("Track " & X, "SPic", TempFile)
         If Read <> "" Then
+            Tracks(X - 1) = True
             frmMain.TreeView1.Nodes.Add "r", tvwChild, "t" & X + 10, Trim(Str(X)) & ". " & Name, 1, 2
             frmMain.TreeView1.Nodes.Add "t" & Trim(Str(X + 10)), tvwChild, "t" & Trim(Str(X + 10)) & "-Track", Read, 3, 3
             If BPic <> "" Then
                 frmMain.TreeView1.Nodes.Add "t" & Trim(Str(X + 10)), tvwChild, "t" & Trim(Str(X + 10)) & "-BPic", "Big Pic: " & BPic, 4, 4
             End If
             If SPic <> "" Then
-                frmMain.TreeView1.Nodes.Add "t" & Trim(Str(X + 10)), tvwChild, "t" & Trim(Str(X + 10)) & "-SPic", "Smal Pic: " & SPic, 4, 4
+                frmMain.TreeView1.Nodes.Add "t" & Trim(Str(X + 10)), tvwChild, "t" & Trim(Str(X + 10)) & "-SPic", "Small Pic: " & SPic, 4, 4
             End If
         Else
             frmMain.TreeView1.Nodes.Add "r", tvwChild, "t" & X + 10, "Track " & X, 1, 2
@@ -111,45 +118,15 @@ Dim SPic As String
     GetMisc
 End Sub
 
-Public Sub OpenFile()
-Dim GetOpen As String
-    On Error GoTo ErrHandler
-    GetOpen = comOpen
-
-    'Om ingen fil är vald
-    If GetOpen = "" Then Exit Sub
-
-    Randomize
-    X = Int((500) * Rnd)
-    Kill (TempFile)
-    TempFile = ProgramDir & "\File\th14" & Trim(Str(X)) & ".lda"
-
-    FileCopy FileInfo.Path, TempFile
-
-    FileInfo.Saved = True
-    LoadFile
-    GetMisc
-
-    Read = oMisc.RecentFile(SaveNew, Trim(FileInfo.Path), Trim(FileInfo.Name))
-    frmMain.LoadRecent
-    frmMain.Caption = "GP2 Track Handler v1.4 [" & Trim(FileInfo.Name) & "]"
-Exit Sub
-
-ErrHandler:
-        Print #Log, Date & " " & Time & " OpenFile, Error Number: " & Err.Number & ", Error Description: " & Err.Description
-        MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
-            "Error Desctiption: " & Err.Description & vbLf & _
-            "Error Source: " & Err.Source, vbCritical, "Error"
-End Sub
-
 Public Sub SaveFile()
     SaveMisc
     If FileInfo.Import = True Then
         SaveImport
         Exit Sub
     End If
-    If Trim(FileInfo.Name) <> "" Then
-        FileCopy TempFile, FileInfo.Path
+    If FileInfo.Name <> "" Then
+        CopyFile TempFile, FileInfo.Path, 0
+        DoEvents
     Else
         SaveFileAs
     End If
@@ -157,27 +134,29 @@ End Sub
 
 Public Sub SaveFileAs()
 Dim GetSave As String
-
     On Error GoTo ErrHandler
     If FileInfo.Import = True Then
         SaveImport
         Exit Sub
     End If
 
-    GetSave = comSave
-    If GetSave = "" Then Exit Sub
+    Var.sString1 = oMisc.ShowSave("Track Handler Files (*.ths)|*.ths|All Files (*.*)|*.*|", "ths", frmMain.hwnd, ProgramDir)
+    If Var.sString1 = "" Then Exit Sub
+    FileInfo.Path = Var.sString1
+    For X = Len(Var.sString1) To 0 Step -1
+        If Mid(Var.sString1, X, 1) = "\" Then Exit For
+    Next
+    FileInfo.Name = Mid(Var.sString1, X + 1)
 
     FileCopy TempFile, FileInfo.Path
     FileInfo.Saved = True
-    Read = oMisc.RecentFile(SaveNew, Trim(FileInfo.Path), Trim(FileInfo.Name))
+    Read = oMisc.RecentFile(SaveNew, FileInfo.Path, FileInfo.Name)
     frmMain.LoadRecent
-    Read = Trim(FileInfo.Name)
-    frmMain.Caption = "GP2 Track Handler v1.4 [" & Read & "]"
+    frmMain.Caption = "GP2 Track Handler v1.5 [" & FileInfo.Name & "]"
 
 Exit Sub
 
 ErrHandler:
-    Print #Log, Date & " " & Time & " SaveFileAs , Error Number: " & Err.Number & ", Error Description: " & Err.Description
     MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
         "Error Desctiption: " & Err.Description & vbLf & _
         "Error Source: " & Err.Source, vbCritical, "Error"
@@ -258,27 +237,25 @@ Public Sub GetMisc()
     LoadGP2Aid
 End Sub
 
-Public Sub ImportTime(ByVal Reset As Boolean, Optional NewTime As String, Optional FilePath As String)
-    If Reset = True Then
-        For X = 1 To 16
-            oMisc.WriteINI "Track " & X, "QTime", NewTime, TempFile
-            oMisc.WriteINI "Track " & X, "RTime", NewTime, TempFile
-            oMisc.WriteINI "Track " & X, "QDriver", "Geoff Crammond", TempFile
-            oMisc.WriteINI "Track " & X, "RDriver", "Geoff Crammond", TempFile
-            oMisc.WriteINI "Track " & X, "QTeam", "Microprose", TempFile
-            oMisc.WriteINI "Track " & X, "RTeam", "Microprose", TempFile
-            oMisc.WriteINI "Track " & X, "QDate", Date, TempFile
-            oMisc.WriteINI "Track " & X, "RDate", Date, TempFile
-        Next
-    Else
-    End If
+Public Sub ResetTime(ByVal sDName As String, ByVal sTName As String, ByVal sTime As String, ByVal sDate As String)
+    For X = 1 To 16
+        oMisc.WriteINI "Track " & X, "QTime", sTime, TempFile
+        oMisc.WriteINI "Track " & X, "RTime", sTime, TempFile
+        oMisc.WriteINI "Track " & X, "QDriver", sDName, TempFile
+        oMisc.WriteINI "Track " & X, "RDriver", sDName, TempFile
+        oMisc.WriteINI "Track " & X, "QTeam", sTName, TempFile
+        oMisc.WriteINI "Track " & X, "RTeam", sTName, TempFile
+        oMisc.WriteINI "Track " & X, "QDate", sDate, TempFile
+        oMisc.WriteINI "Track " & X, "RDate", sDate, TempFile
+    Next
 End Sub
 
 Public Sub SaveImport()
-    Responce = MsgBox(LoadResString(125), vbOKCancel, TH)
-    If Responce = vbCancel Then Exit Sub
-    If Responce = vbOK Then
-        Read = frmMain.SetDir
+    Var.iInt1 = MsgBox(LoadResString(125), vbOKCancel, TH)
+    If Var.iInt1 = vbCancel Then Exit Sub
+    If Var.iInt1 = vbOK Then
+        Read = oMisc.BrowseFolders("Select Track Directory", frmMain.hwnd)
+        If Read = "" Then Exit Sub
         If Len(Read) = 3 Then
             Read = Mid(Read, 1, 2)
         End If

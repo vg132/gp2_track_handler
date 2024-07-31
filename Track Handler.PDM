@@ -1,5 +1,5 @@
 [Root]
-Most Recent Package=Standard Setup Package 2
+Most Recent Package=Standard Setup Package 4
 Most Recent Deploy=Folder Deployment 1
 
 [Package|Standard Setup Package 1|Track Handler]
@@ -390,3 +390,137 @@ File2=d:\Mina Program\Upgrade\Setup.Lst
 File3=d:\Mina Program\Upgrade\TH14.CAB
 Handler1=PDWizard.FolderDplySubWiz
 Handler2=PDWizard.WebPostDplySubWiz
+
+
+[Package|Standard Setup Package 4|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Pac
+
+[Package|Standard Setup Package 4|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Standard Setup Package 4|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package 4|Files Found]
+
+[Package|Standard Setup Package 4|Files Released]
+
+[Package|Standard Setup Package 4|Missing Dependency Information]
+C:\WIN98\SYSTEM\UpDown.ocx=
+C:\WIN98\SYSTEM\Jad2Jam.ocx=
+
+[Package|Standard Setup Package 4|Out-of-Date Dependency Information]
+
+[Package|Standard Setup Package 4|Files Added]
+c:\program files\whdstd\help.hlp=
+g:\mina program\visual basic\gp2 track handler v15\testcenter\gp2utils\2jam32.exe=
+g:\mina program\visual basic\gp2 track handler v15\testcenter\gp2utils\gp2hipic.exe=
+g:\mina program\visual basic\gp2 track handler v15\testcenter\gp2utils\pkzip.exe=
+g:\mina program\visual basic\gp2 track handler v15\testcenter\gp2utils\thcheck.exe=
+g:\mina program\visual basic\gp2 track handler v15\testcenter\mall.lda=
+g:\mina program\visual basic\gp2 track handler v15\readme.txt=
+
+[Package|Standard Setup Package 4|Files Removed]
+c:\win98\system\comctl32.ocx=
+c:\win98\system\tabctl32.ocx=
+c:\win98\system\msvbvm60.dll=
+c:\win98\system\oleaut32.dll=
+c:\win98\system\olepro32.dll=
+c:\win98\system\asycfilt.dll=
+c:\win98\system\stdole2.tlb=
+d:\microsoft visual studio\vb98\wizards\pdwizard\redist\comcat.dll=
+
+[Package|Standard Setup Package 4|Files In Project]
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\th15.exe=Yes
+C:\WIN98\SYSTEM\MSVBVM60.DLL=No
+C:\WIN98\SYSTEM\OLEAUT32.DLL=No
+C:\WIN98\SYSTEM\OLEPRO32.DLL=No
+C:\WIN98\SYSTEM\ASYCFILT.DLL=No
+C:\WIN98\SYSTEM\STDOLE2.TLB=No
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=No
+C:\WIN98\SYSTEM\COMCTL32.OCX=No
+C:\WIN98\SYSTEM\TABCTL32.OCX=No
+C:\WIN98\SYSTEM\Jad2Jam.ocx=Yes
+C:\WIN98\SYSTEM\UpDown.ocx=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WIN98\SYSTEM\VB6STKIT.DLL=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\Program Files\WHDStd\HELP.HLP=Yes
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Gp2Utils\2jam32.exe=Yes
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Gp2Utils\GP2HIPIC.EXE=Yes
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Gp2Utils\PKZIP.EXE=Yes
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Gp2Utils\thcheck.exe=Yes
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\MALL.LDA=Yes
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\README.TXT=Yes
+
+[Package|Standard Setup Package 4|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package 4|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package 4|Install Locations]
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\th15.exe=$(AppPath)
+C:\WIN98\SYSTEM\MSVBVM60.DLL=$(WinSysPathSysFile)
+C:\WIN98\SYSTEM\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\WIN98\SYSTEM\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\WIN98\SYSTEM\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\WIN98\SYSTEM\STDOLE2.TLB=$(WinSysPathSysFile)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WIN98\SYSTEM\Jad2Jam.ocx=$(WinSysPath)
+C:\WIN98\SYSTEM\UpDown.ocx=$(WinSysPath)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WIN98\SYSTEM\VB6STKIT.DLL=$(WinSysPathSysFile)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\Program Files\WHDStd\HELP.HLP=$(AppPath)
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Gp2Utils\2jam32.exe=$(AppPath)
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Gp2Utils\GP2HIPIC.EXE=$(AppPath)\GP2Utils
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Gp2Utils\PKZIP.EXE=$(AppPath)\GP2Utils
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Gp2Utils\thcheck.exe=$(AppPath)\GP2Utils
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\MALL.LDA=$(AppPath)
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\README.TXT=$(AppPath)
+
+[Package|Standard Setup Package 4|Configure Shared Files]
+Applicable=Yes
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\th15.exe=No
+C:\Program Files\WHDStd\HELP.HLP=No
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Gp2Utils\2jam32.exe=No
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Gp2Utils\GP2HIPIC.EXE=No
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Gp2Utils\PKZIP.EXE=No
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Gp2Utils\thcheck.exe=No
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\MALL.LDA=No
+G:\Mina Program\Visual Basic\GP2 Track Handler v15\README.TXT=No
+
+[Package|Standard Setup Package 4|Distribution]
+Type=single
+Size=
+Title=GP2 Track Handler v1.5
+
+[Package|Standard Setup Package 4|Package]
+PackageFolder=G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Pac
+ProjectFolder=G:\Mina Program\Visual Basic\GP2 Track Handler v15
+ServerSideCab=
+File1=G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Pac\setup.exe
+File2=G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Pac\Setup.Lst
+File3=G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter\Pac\th15.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+[Package|Standard Setup Package 4|IconGroups]
+Group0=GP2 Track Handler
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|Standard Setup Package 4|GP2 Track Handler]
+Icon1=th15.exe
+Title1=GP2 Track Handler v1.5
+StartIn1=$(AppPath)
+Key1=Icon1
+Icon2=HELP.HLP
+Title2=Track Handler Help
+StartIn2=$(AppPath)
+Key2=Icon4

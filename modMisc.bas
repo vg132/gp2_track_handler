@@ -161,6 +161,64 @@ Public Sub RegFileName()
     oReg.SaveValue HKEY_CLASSES_ROOT, REG_SZ, ".ths", "", "Track Handler"
     Read = """" & LCase(ProgramDir) & "\" & LCase(App.EXEName) & ".exe" & """" & " %1"
     oReg.SaveValue HKEY_CLASSES_ROOT, REG_SZ, "Track Handler\Shell\Open\Command", "", Read
-    Read = LCase(ProgramDir) & "\" & LCase(App.EXEName) & ".exe,2"
+    Read = LCase(ProgramDir) & "\" & LCase(App.EXEName) & ".exe,1"
     oReg.SaveValue HKEY_CLASSES_ROOT, REG_SZ, "Track Handler\DefaultIcon", "", Read
 End Sub
+
+Public Function GetFileName(FilePath As String) As String
+'*************************************
+'Function Name: GetFileName
+'Use: Strip File Name from Path
+'Remarks:
+'History:
+'Programmer: Viktor Gars
+'Date: 1999-08-26
+'*************************************
+On Error GoTo ErrHandler
+    For X = Len(FilePath) To 1 Step -1
+        If Mid(FilePath, X, 1) = "\" Then Exit For
+    Next
+    GetFileName = Mid(FilePath, X + 1)
+Exit Function
+ErrHandler:
+
+End Function
+
+Public Sub CreateDir(Path As String)
+'*************************************
+'Function Name: CreateFolders
+'Use: Create Dirs
+'Remarks:
+'History:
+'Programmer: Viktor Gars
+'Date: 1999-08-26
+'*************************************
+On Error GoTo ErrHandler
+    If Right(Path, 1) <> "\" Then Path = Path & "\"
+    For X = 4 To Len(Path)
+        X = InStr(X, Path, "\")
+        If X <> 0 Then
+            MkDir Mid(Path, 1, X)
+        Else
+            Exit For
+        End If
+    Next
+Exit Sub
+ErrHandler:
+    Select Case Err.Number
+    Case 75
+        Resume Next
+    Case Else
+        MsgBox "Error: " & Err.Number
+    End Select
+End Sub
+
+Public Sub WriteCheckSum(ByVal sFile As String)
+    sFile = oMisc.GetShortName(sFile)
+    RetVal = ShellExecute(frmMain.hwnd, "open", ProgramDir & "\gp2utils\thcheck.exe", sFile, vbNullString, 1)
+    oMisc.CloseDosPrompt "thcheck"
+End Sub
+
+Public Function GetExt(File As String) As String
+    GetExt = LCase(Mid(File, Len(File) - 3))
+End Function
