@@ -1,11 +1,12 @@
 VERSION 5.00
 Begin VB.Form frmImport 
-   BorderStyle     =   4  'Fixed ToolWindow
+   BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Import From GP2"
    ClientHeight    =   2025
    ClientLeft      =   45
-   ClientTop       =   285
+   ClientTop       =   330
    ClientWidth     =   2805
+   Icon            =   "frmImport.frx":0000
    LinkTopic       =   "Form5"
    MaxButton       =   0   'False
    MinButton       =   0   'False
@@ -115,131 +116,91 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
-Dim Kalle2 As Boolean
+Dim State As Check2
+Dim Update As Boolean
+
+Private Enum Check2
+    Check = 0
+    UnCheckAll = 1
+    CheckAll = 2
+End Enum
 
 Private Sub chkAll_Click()
-    If (chkAll.Value = 1) And (Kalle2 = True) Then
-        chkWare.Value = 1
-        chkTrackName.Value = 1
-        chkTrackLength.Value = 1
-        chkLap.Value = 1
-        chkPoint.Value = 1
-        chkTime.Value = 1
-        chkSettings.Value = 1
-        chkAll.Value = 1
-    ElseIf Kalle2 = True Then
-        chkWare.Value = 0
-        chkTrackName.Value = 0
-        chkTrackLength.Value = 0
-        chkLap.Value = 0
-        chkPoint.Value = 0
-        chkTime.Value = 0
-        chkSettings.Value = 0
-        chkAll.Value = 0
+    If Update = False Then
+        If State = UnCheckAll Then
+            Test CheckAll
+        ElseIf State = CheckAll Then
+            Test UnCheckAll
+        End If
     End If
 End Sub
 
 Private Sub chkLap_Click()
-    If chkAll.Value = 1 Then
-        Kalle2 = False
-        chkAll.Value = 0
-        Kalle2 = True
-    End If
+    Test Check
 End Sub
 
 Private Sub chkPoint_Click()
-    If chkAll.Value = 1 Then
-        Kalle2 = False
-        chkAll.Value = 0
-        Kalle2 = True
-    End If
+    Test Check
 End Sub
 
 Private Sub chkSettings_Click()
-    If chkAll.Value = 1 Then
-        Kalle2 = False
-        chkAll.Value = 0
-        Kalle2 = True
-    End If
+    Test Check
 End Sub
 
 Private Sub chkTime_Click()
-    If chkAll.Value = 1 Then
-        Kalle2 = False
-        chkAll.Value = 0
-        Kalle2 = True
-    End If
+    Test Check
 End Sub
 
 Private Sub chkTrackLength_Click()
-    If chkAll.Value = 1 Then
-        Kalle2 = False
-        chkAll.Value = 0
-        Kalle2 = True
-    End If
+    Test Check
 End Sub
 
 Private Sub chkTrackName_Click()
-    If chkAll.Value = 1 Then
-        Kalle2 = False
-        chkAll.Value = 0
-        Kalle2 = True
-    End If
+    Test Check
 End Sub
 
 Private Sub chkWare_Click()
-    If chkAll.Value = 1 Then
-        Kalle2 = False
-        chkAll.Value = 0
-        Kalle2 = True
-    End If
+    Test Check
 End Sub
 
 Private Sub cmdCancel_Click()
     frmImport.Hide
-    MDIForm1.Show
 End Sub
 
 Private Sub cmdImport_Click()
+    frmImport.MousePointer = 11
+    'NewFile
     On Error GoTo ErrorTrap
     GP2FileNum = FreeFile
-    Open Gp2Dir + "\gp2.exe" For Binary As GP2FileNum
+    Open GP2Dir + "\gp2.exe" For Binary As GP2FileNum
     
-    MDIForm1.txtAdjectiv = ""
-    MDIForm1.txtName = ""
-    MDIForm1.txtCountry = ""
-    MDIForm1.txtLaps = ""
-    MDIForm1.txtLength = ""
-    MDIForm1.txtPath.Enabled = True
-    MDIForm1.txtPath = ""
-    MDIForm1.txtPath.Enabled = False
-    MDIForm1.txtTire = ""
+    With frmMain
+        .txtPath.Enabled = True
+        .txtPath.Enabled = False
+    End With
     Read = ""
-    Read2 = ""
-    Unload frmExport
-    Unload frmDosPath
-    Unload frmPoint
-    Unload frmAbout
 
-    MousePointer = 11
     GetGP2Version
     If frmImport.chkWare.Value = 1 Then ImportWare
-    If frmImport.chkTrackName.Value = 1 Then ImportText
+    If frmImport.chkTrackName.Value = 1 Then
+        ImportText
+        FileInfo.Import = True
+    End If
     If frmImport.chkPoint.Value = 1 Then ImportPoints
     If frmImport.chkLap.Value = 1 Then ImportLaps
     If frmImport.chkTrackLength.Value = 1 Then ImportLength
     If (frmImport.chkTime.Value = 1) And (chkTime.Enabled = True) Then
         FileNum = FreeFile
-        Open Gp2Dir + "\f1gstate.sav" For Binary As FileNum
+        Open GP2Dir + "\f1gstate.sav" For Binary As FileNum
         CountExport = 0
         Do Until CountExport > 15
             ImportQName
             ImportQDate
-            ImportQTime
+            ImportTimeFromGP2 Qual
             ImportQTeam
             ImportRName
             ImportRDate
-            ImportRaceTime
+            ImportTimeFromGP2 Race
             ImportRTeam
             CountExport = CountExport + 1
         Loop
@@ -259,30 +220,66 @@ Private Sub cmdImport_Click()
         ImportUseTeam
         If chkTime.Enabled = True Then
             F1SaveFileNum = FreeFile
-            Open Gp2Dir + "\F1gstate.sav" For Binary As F1SaveFileNum
+            Open GP2Dir + "\F1gstate.sav" For Binary As F1SaveFileNum
                 ImportQuick
             Close F1SaveFileNum
         End If
     End If
-    FileInfo.FileName = ""
-    FileInfo.FilePath = ""
-    FileInfo.FileType = FileImport
+
+    FileInfo.Name = ""
+    FileInfo.Path = ""
+    LoadGP2Aid
+    LoadFile
+    FileInfo.Saved = False
     frmImport.MousePointer = 0
     frmImport.Hide
     Close GP2FileNum
-    MDIForm1.Show
 Exit Sub
 ErrorTrap:
-    MsgBox "Error # " + Str(Err.Number) + Err.Description
+    Print #Log, Date & " " & Time & " cmdImport_Click , Error Number: " & Err.Number & ", Error Description: " & Err.Description
+    MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
+        "Error Desctiption: " & Err.Description & vbLf & _
+        "Error Source: " & Err.Source, vbCritical, "Error"
     frmImport.MousePointer = 0
 End Sub
 
 Private Sub Form_Activate()
-    Read = oMisc.File_Exists(Gp2Dir + "\f1gstate.sav")
+    Read = oMisc.File_Exists(GP2Dir + "\f1gstate.sav")
     If Read = False Then chkTime.Enabled = False
     If Read = True Then chkTime.Enabled = True
+    State = UnCheckAll
+    Update = False
 End Sub
 
-Private Sub Form_Load()
-    Kalle2 = True
+Private Sub Test(ByRef CheckType As Check2)
+Dim oCtl As Control
+    If CheckType = CheckAll Then
+        For Each oCtl In frmImport
+            If TypeOf oCtl Is CheckBox Then
+                oCtl.Value = 1
+            End If
+        Next
+        State = CheckAll
+    ElseIf CheckType = UnCheckAll Then
+        For Each oCtl In frmImport
+            If TypeOf oCtl Is CheckBox Then
+                oCtl.Value = 0
+            End If
+        Next
+        State = UnCheckAll
+    Else
+        Update = True
+        chkAll.Value = 1
+        For Each oCtl In frmImport
+            If TypeOf oCtl Is CheckBox Then
+                If oCtl.Value = 0 Then
+                    chkAll.Value = 0
+                    Exit For
+                End If
+            End If
+        Next
+        Update = False
+    End If
+    Set oCtl = Nothing
 End Sub
+

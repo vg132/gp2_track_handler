@@ -1,0 +1,392 @@
+[Root]
+Most Recent Package=Standard Setup Package 2
+Most Recent Deploy=Folder Deployment 1
+
+[Package|Standard Setup Package 1|Track Handler]
+Icon1="Track Handler.exe"
+Title1=GP2 Track Handler
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Deploy|Folder Deployment 1|Root]
+Package=Standard Setup Package 2
+Handler=PDWizard.FolderDplySubWiz
+Folder=g:\Mina Program\Visual Basic\GP2 Track Handler v14\Install\Pack 1\Test
+
+
+[Package|Standard Setup Package 3|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=G:\Mina Program\Visual Basic\GP2 Track Handler v14\Package
+
+[Package|Standard Setup Package 3|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Standard Setup Package 3|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package 3|Files Found]
+
+[Package|Standard Setup Package 3|Files Released]
+
+[Package|Standard Setup Package 3|Missing Dependency Information]
+C:\Program\Track Handler\th14.dll=
+
+[Package|Standard Setup Package 3|Out-of-Date Dependency Information]
+
+[Package|Standard Setup Package 3|Files Added]
+
+[Package|Standard Setup Package 3|Files Removed]
+
+[Package|Standard Setup Package 3|Files In Project]
+D:\Mina Program\th14\Track Handler.exe=Yes
+C:\windows\system\MSVBVM60.DLL=Yes
+C:\windows\system\OLEAUT32.DLL=Yes
+C:\windows\system\OLEPRO32.DLL=Yes
+C:\windows\system\ASYCFILT.DLL=Yes
+C:\windows\system\STDOLE2.TLB=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\Program\Track Handler\th14.dll=Yes
+C:\windows\system\COMCTL32.OCX=Yes
+C:\windows\system\Tabctl32.ocx=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\windows\system\VB6STKIT.DLL=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+
+[Package|Standard Setup Package 3|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package 3|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package 3|Install Locations]
+D:\Mina Program\th14\Track Handler.exe=$(AppPath)
+C:\windows\system\MSVBVM60.DLL=$(WinSysPathSysFile)
+C:\windows\system\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\windows\system\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\windows\system\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\windows\system\STDOLE2.TLB=$(WinSysPathSysFile)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\Program\Track Handler\th14.dll=$(WinSysPath)
+C:\windows\system\COMCTL32.OCX=$(WinSysPath)
+C:\windows\system\Tabctl32.ocx=$(WinSysPath)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\windows\system\VB6STKIT.DLL=$(WinSysPathSysFile)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+
+[Package|Standard Setup Package 3|Configure Shared Files]
+Applicable=Yes
+D:\Mina Program\th14\Track Handler.exe=No
+
+[Package|Standard Setup Package 3|Distribution]
+Type=single
+Size=
+Title=Track Handler
+
+[Package|Standard Setup Package 3|IconGroups]
+Group0=Track Handler
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|Standard Setup Package 3|Track Handler]
+Icon1="Track Handler.exe"
+Title1=Track Handler
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|Standard Setup Package 3|Package]
+PackageFolder=G:\Mina Program\Visual Basic\GP2 Track Handler v14\Package
+ProjectFolder=G:\Mina Program\Visual Basic\GP2 Track Handler v14
+ServerSideCab=
+File1=G:\Mina Program\Visual Basic\GP2 Track Handler v14\Package\setup.exe
+File2=G:\Mina Program\Visual Basic\GP2 Track Handler v14\Package\Setup.Lst
+File3=G:\Mina Program\Visual Basic\GP2 Track Handler v14\Package\Track Handler.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+
+[Package|Standard Setup Package 1|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=d:\Mina Program\TH Uprgrade
+
+[Package|Standard Setup Package 1|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Standard Setup Package 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package 1|Files Found]
+
+[Package|Standard Setup Package 1|Files Released]
+
+[Package|Standard Setup Package 1|Missing Dependency Information]
+D:\Mina Program\th14\th14.dll=
+
+[Package|Standard Setup Package 1|Out-of-Date Dependency Information]
+
+[Package|Standard Setup Package 1|Files Added]
+D:\Mina Program\th14\GP2Utils\GP2HIPIC.EXE=
+D:\Mina Program\th14\GP2Utils\thcheck.exe=
+
+[Package|Standard Setup Package 1|Files Removed]
+c:\windows\system\comctl32.ocx=
+c:\windows\system\msvbvm60.dll=
+c:\windows\system\oleaut32.dll=
+c:\windows\system\olepro32.dll=
+c:\windows\system\asycfilt.dll=
+c:\windows\system\stdole2.tlb=
+d:\microsoft visual studio\vb98\wizards\pdwizard\redist\comcat.dll=
+
+[Package|Standard Setup Package 1|Files In Project]
+D:\Mina Program\th14\Track Handler.exe=Yes
+C:\windows\system\MSVBVM60.DLL=No
+C:\windows\system\OLEAUT32.DLL=No
+C:\windows\system\OLEPRO32.DLL=No
+C:\windows\system\ASYCFILT.DLL=No
+C:\windows\system\STDOLE2.TLB=No
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=No
+D:\Mina Program\th14\th14.dll=Yes
+C:\windows\system\COMCTL32.OCX=No
+C:\windows\system\Tabctl32.ocx=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\windows\system\VB6STKIT.DLL=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+D:\Mina Program\th14\GP2Utils\GP2HIPIC.EXE=Yes
+D:\Mina Program\th14\GP2Utils\thcheck.exe=Yes
+
+[Package|Standard Setup Package 1|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package 1|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package 1|Install Locations]
+D:\Mina Program\th14\Track Handler.exe=$(AppPath)
+D:\Mina Program\th14\th14.dll=$(WinSysPath)
+C:\windows\system\Tabctl32.ocx=$(WinSysPath)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\windows\system\VB6STKIT.DLL=$(WinSysPathSysFile)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+D:\Mina Program\th14\GP2Utils\GP2HIPIC.EXE=$(AppPath)\GP2Utils
+D:\Mina Program\th14\GP2Utils\thcheck.exe=$(AppPath)\GP2Utils
+
+[Package|Standard Setup Package 1|Configure Shared Files]
+Applicable=Yes
+D:\Mina Program\th14\Track Handler.exe=No
+D:\Mina Program\th14\GP2Utils\GP2HIPIC.EXE=No
+D:\Mina Program\th14\GP2Utils\thcheck.exe=No
+
+[Package|Standard Setup Package 1|Distribution]
+Type=single
+Size=
+Title=GP2 Track Handler v1.4
+
+[Package|Standard Setup Package 1|IconGroups]
+Group0=GP2 Track Handler
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|Standard Setup Package 1|GP2 Track Handler]
+Icon1="Track Handler.exe"
+Title1=GP2 Track Handler v1.4
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|Standard Setup Package 1|Package]
+PackageFolder=d:\Mina Program\TH Uprgrade
+ProjectFolder=G:\Mina Program\Visual Basic\GP2 Track Handler v14
+ServerSideCab=
+File1=d:\Mina Program\TH Uprgrade\setup.exe
+File2=d:\Mina Program\TH Uprgrade\Setup.Lst
+File3=d:\Mina Program\TH Uprgrade\Track Handler.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+
+[Package|Standard Setup Package 2|GP2 Track Handler v1.4]
+Icon1="Track Handler.exe"
+Title1=GP2 Track Handler v1.4
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|Standard Setup Package 2|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=d:\Mina Program\Upgrade
+
+[Package|Standard Setup Package 2|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Standard Setup Package 2|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package 2|Files Found]
+
+[Package|Standard Setup Package 2|Files Released]
+thcheck.exe=
+gp2hipic.exe=
+
+[Package|Standard Setup Package 2|Missing Dependency Information]
+D:\Mina Program\th14\th14.dll=
+
+[Package|Standard Setup Package 2|Out-of-Date Dependency Information]
+
+[Package|Standard Setup Package 2|Files Added]
+d:\mina program\track handler 14\gp2utils\gp2hipic.exe=
+d:\mina program\track handler 14\gp2utils\thcheck.exe=
+d:\mina program\track handler 14\help\convert.htm=
+d:\mina program\track handler 14\help\export.htm=
+d:\mina program\track handler 14\help\filemanager.htm=
+d:\mina program\track handler 14\help\gp2editexe.htm=
+d:\mina program\track handler 14\help\import.htm=
+d:\mina program\track handler 14\help\index.htm=
+d:\mina program\track handler 14\help\jamcheck.htm=
+d:\mina program\track handler 14\help\laptime.htm=
+d:\mina program\track handler 14\help\menupic.htm=
+d:\mina program\track handler 14\help\performence.htm=
+d:\mina program\track handler 14\help\point.htm=
+d:\mina program\track handler 14\help\trackdata.htm=
+d:\mina program\track handler 14\help\images\bak.gif=
+d:\mina program\track handler 14\mall.lda=
+
+[Package|Standard Setup Package 2|Files Removed]
+c:\windows\system\msvbvm60.dll=
+c:\windows\system\oleaut32.dll=
+c:\windows\system\olepro32.dll=
+c:\windows\system\asycfilt.dll=
+c:\windows\system\stdole2.tlb=
+d:\microsoft visual studio\vb98\wizards\pdwizard\redist\comcat.dll=
+c:\windows\system\comctl32.ocx=
+
+[Package|Standard Setup Package 2|Files In Project]
+C:\windows\system\MSVBVM60.DLL=No
+C:\windows\system\OLEAUT32.DLL=No
+C:\windows\system\OLEPRO32.DLL=No
+C:\windows\system\ASYCFILT.DLL=No
+C:\windows\system\STDOLE2.TLB=No
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=No
+C:\windows\system\COMCTL32.OCX=No
+C:\windows\system\Tabctl32.ocx=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\windows\system\VB6STKIT.DLL=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+D:\Mina Program\Track Handler 14\th14.exe=Yes
+D:\Mina Program\Track Handler 14\Help\convert.htm=Yes
+D:\Mina Program\Track Handler 14\Help\export.htm=Yes
+D:\Mina Program\Track Handler 14\Help\filemanager.htm=Yes
+D:\Mina Program\Track Handler 14\Help\gp2editexe.htm=Yes
+D:\Mina Program\Track Handler 14\Help\import.htm=Yes
+D:\Mina Program\Track Handler 14\Help\trackdata.htm=Yes
+D:\Mina Program\Track Handler 14\Help\point.htm=Yes
+D:\Mina Program\Track Handler 14\Help\performence.htm=Yes
+D:\Mina Program\Track Handler 14\Help\menupic.htm=Yes
+D:\Mina Program\Track Handler 14\Help\laptime.htm=Yes
+D:\Mina Program\Track Handler 14\Help\jamcheck.htm=Yes
+D:\Mina Program\Track Handler 14\Help\index.htm=Yes
+D:\Mina Program\Track Handler 14\Help\images\bak.gif=Yes
+D:\Mina Program\Track Handler 14\Gp2Utils\GP2HIPIC.EXE=Yes
+D:\Mina Program\Track Handler 14\Gp2Utils\thcheck.exe=Yes
+D:\Mina Program\Track Handler 14\MALL.LDA=Yes
+
+[Package|Standard Setup Package 2|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package 2|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package 2|Install Locations]
+D:\Mina Program\th14\Track Handler.exe=$(AppPath)
+C:\windows\system\MSVBVM60.DLL=$(WinSysPathSysFile)
+C:\windows\system\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\windows\system\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\windows\system\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\windows\system\STDOLE2.TLB=$(WinSysPathSysFile)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+D:\Mina Program\th14\th14.dll=$(AppPath)
+C:\windows\system\COMCTL32.OCX=$(WinSysPath)
+C:\windows\system\Tabctl32.ocx=$(WinSysPath)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\windows\system\VB6STKIT.DLL=$(WinSysPathSysFile)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+D:\Mina Program\th14\GP2Utils\GP2HIPIC.EXE=$(AppPath)\GP2Utils
+D:\Mina Program\th14\GP2Utils\thcheck.exe=$(AppPath)\GP2Utils
+D:\Mina Program\th14\Track Handler 2.exe=$(AppPath)
+D:\Mina Program\Track Handler 14\th14.exe=$(AppPath)
+D:\Mina Program\Track Handler 14\Gp2Utils\GP2HIPIC.EXE=$(AppPath)\GP2Utils
+D:\Mina Program\Track Handler 14\Gp2Utils\thcheck.exe=$(AppPath)\GP2Utils
+D:\Mina Program\Track Handler 14\Help\convert.htm=$(AppPath)\Help
+D:\Mina Program\Track Handler 14\Help\export.htm=$(AppPath)\Help
+D:\Mina Program\Track Handler 14\Help\filemanager.htm=$(AppPath)\Help
+D:\Mina Program\Track Handler 14\Help\gp2editexe.htm=$(AppPath)\Help
+D:\Mina Program\Track Handler 14\Help\import.htm=$(AppPath)\Help
+D:\Mina Program\Track Handler 14\Help\index.htm=$(AppPath)\Help
+D:\Mina Program\Track Handler 14\Help\jamcheck.htm=$(AppPath)\Help
+D:\Mina Program\Track Handler 14\Help\laptime.htm=$(AppPath)\Help
+D:\Mina Program\Track Handler 14\Help\menupic.htm=$(AppPath)\Help
+D:\Mina Program\Track Handler 14\Help\performence.htm=$(AppPath)\Help
+D:\Mina Program\Track Handler 14\Help\point.htm=$(AppPath)\Help
+D:\Mina Program\Track Handler 14\Help\trackdata.htm=$(AppPath)\Help
+D:\Mina Program\Track Handler 14\Help\images\bak.gif=$(AppPath)\Help\Images
+D:\Mina Program\Track Handler 14\MALL.LDA=$(AppPath)
+
+[Package|Standard Setup Package 2|Configure Shared Files]
+Applicable=Yes
+D:\Mina Program\th14\Track Handler.exe=No
+D:\Mina Program\th14\GP2Utils\GP2HIPIC.EXE=No
+D:\Mina Program\th14\GP2Utils\thcheck.exe=No
+D:\Mina Program\th14\th14.dll=No
+D:\Mina Program\th14\Track Handler 2.exe=No
+D:\Mina Program\Track Handler 14\th14.exe=No
+D:\Mina Program\Track Handler 14\Gp2Utils\GP2HIPIC.EXE=No
+D:\Mina Program\Track Handler 14\Gp2Utils\thcheck.exe=No
+D:\Mina Program\Track Handler 14\Help\convert.htm=No
+D:\Mina Program\Track Handler 14\Help\export.htm=No
+D:\Mina Program\Track Handler 14\Help\filemanager.htm=No
+D:\Mina Program\Track Handler 14\Help\gp2editexe.htm=No
+D:\Mina Program\Track Handler 14\Help\import.htm=No
+D:\Mina Program\Track Handler 14\Help\index.htm=No
+D:\Mina Program\Track Handler 14\Help\jamcheck.htm=No
+D:\Mina Program\Track Handler 14\Help\laptime.htm=No
+D:\Mina Program\Track Handler 14\Help\menupic.htm=No
+D:\Mina Program\Track Handler 14\Help\performence.htm=No
+D:\Mina Program\Track Handler 14\Help\point.htm=No
+D:\Mina Program\Track Handler 14\Help\trackdata.htm=No
+D:\Mina Program\Track Handler 14\Help\images\bak.gif=No
+D:\Mina Program\Track Handler 14\MALL.LDA=No
+
+[Package|Standard Setup Package 2|Distribution]
+Type=single
+Size=
+Title=GP2 Track Handler v1.4
+
+[Package|Standard Setup Package 2|IconGroups]
+Group0=GP2 Track Handler
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|Standard Setup Package 2|GP2 Track Handler]
+Icon1="th14.exe"
+Title1=GP2 Track Handler
+StartIn1=$(AppPath)
+Key1=Icon1
+Icon2=index.htm
+Title2=Help
+StartIn2=$(AppPath)\Help
+Key2=Icon3
+
+[Package|Standard Setup Package 2|Package]
+PackageFolder=d:\Mina Program\Upgrade
+ProjectFolder=G:\Mina Program\Visual Basic\GP2 Track Handler v14
+ServerSideCab=
+File1=d:\Mina Program\Upgrade\setup.exe
+File2=d:\Mina Program\Upgrade\Setup.Lst
+File3=d:\Mina Program\Upgrade\TH14.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz

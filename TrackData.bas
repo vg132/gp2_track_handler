@@ -1,587 +1,436 @@
 Attribute VB_Name = "TrackData"
+Private Found As Boolean
 
-Public Sub OldTrackFile()
-        If X17 <> 32000 Then
-            If (Mid(MDIForm1.Dir1.Path, 3, 1) = "\") And (Len(MDIForm1.Dir1.Path) = 3) Then
-                FileSize = FileLen(MDIForm1.Dir1.Path + MDIForm1.File1.FileName)
-            Else
-                FileSize = FileLen(MDIForm1.Dir1.Path + "\" + MDIForm1.File1.FileName)
-            End If
-        End If
-        If X17 = 32000 Then FileSize = FileLen(Read3)
-        If FileSize = 32406 Then
-            MDIForm1.lblName = "Interlagos"
-            MDIForm1.lblCountry = "Brazil"
-            Samma
-            MDIForm1.lblLaps = "71"
-            MDIForm1.lblLength = "4325"
-            MDIForm1.lblWare = "20140"
-            Exit Sub
-        End If
-        If FileSize = 37678 Then
-            MDIForm1.lblName = "Imola"
-            MDIForm1.lblCountry = "San Marino"
-            Samma
-            MDIForm1.lblLaps = "61"
-            MDIForm1.lblLength = "5040"
-            MDIForm1.lblWare = "23496"
-            Exit Sub
-        End If
-        If FileSize = 58290 Then
-            MDIForm1.lblName = "Monte-Carlo"
-            MDIForm1.lblCountry = "Monaco"
-            Samma
-            MDIForm1.lblLaps = "78"
-            MDIForm1.lblLength = "3328"
-            MDIForm1.lblWare = "32384"
-            Exit Sub
-        End If
-        If FileSize = 34061 Then
-            MDIForm1.lblName = "Barcelona"
-            MDIForm1.lblCountry = "Spain"
-            Samma
-            MDIForm1.lblLaps = "65"
-            MDIForm1.lblLength = "4747"
-            MDIForm1.lblWare = "21237"
-            Exit Sub
-        End If
-        If FileSize = 34392 Then
-            MDIForm1.lblName = "Gilles Villeneuve"
-            MDIForm1.lblCountry = "Canada"
-            Samma
-            MDIForm1.lblLaps = "69"
-            MDIForm1.lblLength = "4430"
-            MDIForm1.lblWare = "22009"
-            Exit Sub
-        End If
-        If FileSize = 31767 Then
-            MDIForm1.lblName = "Magny Cours"
-            MDIForm1.lblCountry = "France"
-            Samma
-            MDIForm1.lblLaps = "72"
-            MDIForm1.lblLength = "4271"
-            MDIForm1.lblWare = "21994"
-            Exit Sub
-        End If
-        If FileSize = 38617 Then
-            MDIForm1.lblName = "Silverstone"
-            MDIForm1.lblCountry = "Great Britain"
-            Samma
-            MDIForm1.lblLaps = "60"
-            MDIForm1.lblLength = "5153"
-            MDIForm1.lblWare = "21012"
-            Exit Sub
-        End If
-        If FileSize = 31876 Then
-            MDIForm1.lblName = "Hockenheim"
-            MDIForm1.lblCountry = "Germany"
-            Samma
-            MDIForm1.lblLaps = "45"
-            MDIForm1.lblLength = "6802"
-            MDIForm1.lblWare = "15215"
-            Exit Sub
-        End If
-        If FileSize = 34956 Then
-            MDIForm1.lblName = "Hungaroring"
-            MDIForm1.lblCountry = "Hungary"
-            Samma
-            MDIForm1.lblLaps = "77"
-            MDIForm1.lblLength = "3968"
-            MDIForm1.lblWare = "21310"
-            Exit Sub
-        End If
-        If FileSize = 45598 Then
-            MDIForm1.lblName = "Spa-Francorchamps"
-            MDIForm1.lblCountry = "Belgium"
-            Samma
-            MDIForm1.lblLaps = "44"
-            MDIForm1.lblLength = "6940"
-            MDIForm1.lblWare = "25892"
-            Exit Sub
-        End If
-        If FileSize = 41038 Then
-            MDIForm1.lblName = "Monza"
-            MDIForm1.lblCountry = "Italy"
-            Samma
-            MDIForm1.lblLaps = "53"
-            MDIForm1.lblLength = "5800"
-            MDIForm1.lblWare = "16570"
-            Exit Sub
-        End If
-        If FileSize = 37263 Then
-            MDIForm1.lblName = "Estoril"
-            MDIForm1.lblCountry = "Portugal"
-            Samma
-            MDIForm1.lblLaps = "71"
-            MDIForm1.lblLength = "4350"
-            MDIForm1.lblWare = "17000"
-            Exit Sub
-        End If
-        If FileSize = 33059 Then
-            MDIForm1.lblName = "Jerez"
-            MDIForm1.lblCountry = "Europe"
-            Samma
-            MDIForm1.lblLaps = "69"
-            MDIForm1.lblLength = "4428"
-            MDIForm1.lblWare = "24952"
-            Exit Sub
-        End If
-        If FileSize = 35730 Then
-            MDIForm1.lblName = "Suzuka"
-            MDIForm1.lblCountry = "Japan"
-            Samma
-            MDIForm1.lblLaps = "53"
-            MDIForm1.lblLength = "5859"
-            MDIForm1.lblWare = "23703"
-            Exit Sub
-        End If
-        If FileSize = 44586 Then
-            MDIForm1.lblName = "Adelaide"
-            MDIForm1.lblCountry = "Australia"
-            Samma
-            MDIForm1.lblLaps = "81"
-            MDIForm1.lblLength = "3780"
-            MDIForm1.lblWare = "20054"
-            Exit Sub
-        End If
-        If FileSize = 32506 Then
-            MDIForm1.lblName = "TI Circuit Aida"
-            MDIForm1.lblCountry = "Japan"
-            Samma
-            MDIForm1.lblLaps = "83"
-            MDIForm1.lblLength = "3723"
-            MDIForm1.lblWare = "30746"
-            Exit Sub
-        End If
-        If FileSize = 40888 Then
-            MDIForm1.lblName = "Brands Hatch"
-            MDIForm1.lblCountry = "England"
-            MDIForm1.lblYear = "Year: 1986"
-            SammaIA
-            MDIForm1.lblLaps = ""
-            MDIForm1.lblLength = "4216"
-            Exit Sub
-        End If
-        If FileSize = 40844 Then
-            MDIForm1.lblName = "Buenos Aires"
-            MDIForm1.lblCountry = "Argentina"
-            MDIForm1.lblYear = "Year: 1996"
-            SammaIA
-            MDIForm1.lblLaps = "72"
-            MDIForm1.lblLength = "4282"
-            Exit Sub
-        End If
-        If FileSize = 37406 Then
-            MDIForm1.lblName = "Imola"
-            MDIForm1.lblCountry = "San Marino"
-            MDIForm1.lblYear = "Year: 1996"
-            SammaIA
-            MDIForm1.lblLaps = "63"
-            MDIForm1.lblLength = "5150"
-            Exit Sub
-        End If
-        If FileSize = 33789 Then
-            MDIForm1.lblName = "Barcelona"
-            MDIForm1.lblCountry = "Spain"
-            MDIForm1.lblYear = "Year: 1996"
-            SammaIA
-            MDIForm1.lblLaps = "65"
-            MDIForm1.lblLength = "4701"
-            Exit Sub
-        End If
-        If FileSize = 40812 Then
-            FileNum2 = FreeFile
-            Open MDIForm1.Dir1.Path + "\" + MDIForm1.File1.FileName For Binary As FileNum2
-            Read = String(1, " ")
-            Get #FileNum2, 40810, Read
-            Close FileNum2
-            If Read = "Z" Then
-                MDIForm1.lblName = "Paul Ricard"
-                MDIForm1.lblCountry = "France"
-                MDIForm1.lblYear = "Year: 1988"
-                SammaIA
-                MDIForm1.lblLaps = ""
-                MDIForm1.lblLength = "3798"
-                Exit Sub
-            End If
-        End If
-        If FileSize = 38127 Then
-            MDIForm1.lblName = "Silverstone"
-            MDIForm1.lblCountry = "England"
-            MDIForm1.lblYear = "Year: 1996"
-            SammaIA
-            MDIForm1.lblLaps = "61"
-            MDIForm1.lblLength = "5238"
-            Exit Sub
-        End If
-
-        If FileSize = 40882 Then
-            MDIForm1.lblName = "A1-Ring"
-            MDIForm1.lblCountry = "Austria"
-            MDIForm1.lblYear = "Year: 1997"
-            SammaIA
-            MDIForm1.lblLaps = "71"
-            MDIForm1.lblLength = "4267"
-            Exit Sub
-        End If
-        If FileSize = 40812 Then
-            MDIForm1.lblName = "Zandvoort"
-            MDIForm1.lblCountry = "Nederlands"
-            MDIForm1.lblYear = "Year: 1996"
-            SammaIA
-            MDIForm1.lblLaps = ""
-            MDIForm1.lblLength = "2487"
-            Exit Sub
-        End If
-        If FileSize = 41018 Then
-            MDIForm1.lblName = "Nürburgring"
-            MDIForm1.lblCountry = "Germany"
-            MDIForm1.lblYear = "Year: 1996"
-            SammaIA
-            MDIForm1.lblLaps = "68"
-            MDIForm1.lblLength = "4214"
-            Exit Sub
-        End If
-
-        If FileSize = 32843 Then
-            MDIForm1.lblName = "Donington"
-            MDIForm1.lblCountry = "England"
-            MDIForm1.lblYear = "Year: "
-            SammaIA
-            MDIForm1.lblLaps = ""
-            MDIForm1.lblLength = "4023"
-            Exit Sub
-        End If
-        If FileSize = 40848 Then
-            MDIForm1.lblName = "Melbourne"
-            MDIForm1.lblCountry = "Australia"
-            MDIForm1.lblYear = "Year: 1996"
-            SammaIA
-            MDIForm1.lblLaps = "58"
-            MDIForm1.lblLength = "5218"
-            Exit Sub
-        End If
-    Exit Sub
-ErrorTrap:
-    MsgBox "Error # " + Str(Err.Number) + Err.Description
-End Sub
-
-Public Sub Samma()
-    MDIForm1.lblEvent = "Event: Formula 1"
-    MDIForm1.lblYear.Caption = "Year: 1994"
-    MDIForm1.lblAuthor.Caption = "Author: Microprose - Orginal Track from GP2"
-    MDIForm1.lblMisc = "Misc Info: This data is based on the size of the file, and I hope that the data is right."
-    Count2 = 1234
-End Sub
-
-Public Sub SammaIA()
-    MDIForm1.lblEvent = "Event: Formula 1"
-    MDIForm1.lblAuthor.Caption = "Author: Instant Access"
-    MDIForm1.lblMisc = "Misc Info: This data is based on the size of the file, and I hope that the data is right."
-    Count2 = 1234
-End Sub
-
-Public Sub GetDataFromLabel()
-    Read3 = "Track " + Trim(Str(Count3))
-    Read2 = ProgramDir + "\WorkCopy.lda"
-    Read = oMisc.WriteINI(Read3, "Country", MDIForm1.lblCountry, Read2)
-    Read = oMisc.WriteINI(Read3, "Ware", MDIForm1.lblWare, Read2)
-    Read = oMisc.WriteINI(Read3, "Name", MDIForm1.lblName, Read2)
-    Read = oMisc.WriteINI(Read3, "Laps", MDIForm1.lblLaps, Read2)
-    Read = oMisc.WriteINI(Read3, "RTime", MDIForm1.lblRLap, Read2)
-    Read = oMisc.WriteINI(Read3, "QTime", MDIForm1.lblQLap, Read2)
-    Read = oMisc.WriteINI(Read3, "Length", MDIForm1.lblLength, Read2)
-    If (Mid(MDIForm1.Dir1.Path, 3, 1) = "\") And (Len(MDIForm1.Dir1.Path) = 3) Then
-        Read = oMisc.WriteINI(Read3, "TPath", MDIForm1.Dir1.Path + MDIForm1.File1.FileName, Read2)
-    Else
-        Read = oMisc.WriteINI(Read3, "TPath", MDIForm1.Dir1.Path + "\" + MDIForm1.File1.FileName, Read2)
-    End If
-    Read = MDIForm1.lblCountry
-    GetAdjectiv
-    Read = oMisc.WriteINI(Read3, "Adjective", Read, Read2)
-End Sub
-
-Public Sub NewTrack()
-Dim oCtl As Control
-
-    For Each oCtl In MDIForm1
-        If TypeOf oCtl Is TextBox Then
-            oCtl.Text = ""
-        End If
-    Next
-    Set oCtl = Nothing
-
-    Read = ""
-    Read2 = ""
-    Unload frmExport
-    Unload frmImport
-    Unload frmDosPath
-    Unload frmPoint
-    Unload frmAbout
-    If Gp2Dir <> "" Then ImportPoints
-End Sub
-
-Public Sub GetAdjectiv()
-Dim TempString2 As String
-    TempString2 = ""
-    If Trim(Read) = "Australia" Then TempString2 = "Australian"
-    If Trim(Read) = "Brazil" Then TempString2 = "Brazilian"
-    If Trim(Read) = "Japan" Then TempString2 = "Japanese"
-    If Trim(Read) = "Austria" Then TempString2 = "Austrian"
-    If Trim(Read) = "Sweden" Then TempString2 = "Swedish"
-    If Trim(Read) = "China" Then TempString2 = "Chinese"
-    If Trim(Read) = "America" Then TempString2 = "American"
-    If Trim(Read) = "Europe" Then TempString2 = "European"
-    If Trim(Read) = "Portugal" Then TempString2 = "Portuguese"
-    If Trim(Read) = "Italy" Then TempString2 = "Italian"
-    If Trim(Read) = "Belgium" Then TempString2 = "Belgian"
-    If Trim(Read) = "Hungary" Then TempString2 = "Hungarian"
-    If Trim(Read) = "Germany" Then TempString2 = "German"
-    If Trim(Read) = "Great Britain" Then TempString2 = "British"
-    If Trim(Read) = "Canada" Then TempString2 = "Canadian"
-    If Trim(Read) = "France" Then TempString2 = "French"
-    If Trim(Read) = "Spain" Then TempString2 = "Spanish"
-    If Trim(Read) = "Monaco" Then TempString2 = "Monaco"
-    If Trim(Read) = "San Marino" Then TempString2 = "San Marino"
-    If Trim(Read) = "Pacific" Then TempString2 = "Pacific"
-    If Trim(Read) = "Mexico" Then TempString2 = "Mexican"
-    If Trim(Read) = "Finland" Then TempString2 = "Finnish"
-    If Trim(Read) = "Holland" Then TempString2 = "Dutch"
-    If Trim(Read) = "Netherlands" Then TempString2 = "Dutch"
-    If Trim(Read) = "South Africa" Then TempString2 = "South African"
-    If Trim(Read) = "USA" Then TempString2 = "USA"
-    If Trim(Read) = "England" Then TempString2 = "British"
-    If Trim(Read) = "Argentine" Then TempString2 = "Argentine"
-    If Trim(Read) = "Schweiz" Then TempString2 = "Swiss"
-    If Trim(Read) = "Mother Earth" Then TempString2 = "Mother Earth"
-    If Trim(Read) = "Luxembourg (Germany)" Then TempString2 = "Luxembourg"
-    If Trim(Read) = "Luxembourg" Then TempString2 = "Luxembourg"
-    If Trim(Read) = "Malysia" Then TempString2 = "Malysian"
-    Read = TempString2
-End Sub
-
-Public Sub ReadTrackFile(Path As String)
-    MDIForm1.txtAdjectiv = ""
-    MDIForm1.txtName = ""
-    MDIForm1.txtCountry = ""
-    MDIForm1.txtLaps = ""
-    MDIForm1.txtLength = ""
-    MDIForm1.txtPath.Enabled = True
-    MDIForm1.txtPath = ""
-    MDIForm1.txtPath.Enabled = False
-    MDIForm1.txtTire = ""
-    Read = ""
-    Read2 = ""
+Public Function ReadGP2Info(ByVal Path As String) As Boolean
+Dim Data As String
+Dim Start As Integer
+Dim Stopp As Integer
 
     FileNum = FreeFile
     Open Path For Binary As FileNum
-    Read = String(14, " ")
-    Read2 = UCase("#GP2INFO|Name|")
+    Read = String(4000, " ")
     Get #FileNum, 1, Read
-    If UCase(Read) = UCase(Read2) Then
-        Read4 = String(1100, " ")
-        Get #FileNum, 1, Read4
-        Close FileNum
-        
-        'Get Track Name
-        Read2 = "|Name|"
-        X = 8
-        Do Until Read = Read2 Or X > 1000
-            Read = Mid(Read4, X, 6)
-            X = X + 1
-        Loop
-        X = X + 5
-        Read2 = ""
-        Do Until Read = "|"
-            Read = Mid(Read4, X, 1)
-            If Read <> "|" Then Read2 = Read2 + Read
-            X = X + 1
-        Loop
-        MDIForm1.lblName = Read2
-        
-        'Get Country
-        If X > 1000 Then X = 1
-        PicX = X
-        Read2 = "Country|"
-        Do Until Read = Read2 Or X > 1000
-            Read = Mid(Read4, X, 8)
-            X = X + 1
-        Loop
-        X = X + 7
-        Read2 = ""
-        Do Until Read = "|"
-            Read = Mid(Read4, X, 1)
-            If Read <> "|" Then Read2 = Read2 + Read
-            X = X + 1
-        Loop
-        MDIForm1.lblCountry = Read2
-        
-        'Get Author
-        If X > 1000 Then X = PicX
-        PicX = X
-        Read2 = "Author|"
-        Do Until Read = Read2 Or X > 1000
-            Read = Mid(Read4, X, 7)
-            X = X + 1
-        Loop
-        X = X + 6
-        Read2 = ""
-        Do Until Read = "|"
-            Read = Mid(Read4, X, 1)
-            If Read <> "|" Then Read2 = Read2 + Read
-            X = X + 1
-        Loop
-        MDIForm1.lblAuthor = "Author: " + Read2
-        
-        'Get year
-        If X > 1000 Then X = PicX
-        PicX = X
-        Read2 = "Year|"
-        Do Until Read = Read2 Or X > 1000
-            Read = Mid(Read4, X, 5)
-            X = X + 1
-        Loop
-        X = X + 4
-        Read2 = ""
-        Do Until Read = "|"
-            Read = Mid(Read4, X, 1)
-            If Read <> "|" Then Read2 = Read2 + Read
-            X = X + 1
-        Loop
-        MDIForm1.lblYear = "Year: " + Read2
-        
-        'Get event
-        If X > 1000 Then X = PicX
-        PicX = X
-        Read2 = "Event|"
-        Do Until Read = Read2 Or X > 1000
-            Read = Mid(Read4, X, 6)
-            X = X + 1
-        Loop
-        X = X + 5
-        Read2 = ""
-        Do Until Read = "|"
-            Read = Mid(Read4, X, 1)
-            If Read <> "|" Then Read2 = Read2 + Read
-            X = X + 1
-        Loop
-        MDIForm1.lblEvent = "Event: " + Read2
-        
-        'Get Description
-        If X > 1000 Then X = PicX
-        PicX = X
-        Read2 = "Desc|"
-        Do Until Read = Read2 Or X > 1000
-            Read = Mid(Read4, X, 5)
-            X = X + 1
-        Loop
-        X = X + 4
-        Read2 = ""
-        Do Until Read = "|"
-            Read = Mid(Read4, X, 1)
-            If Read <> "|" Then Read2 = Read2 + Read
-            X = X + 1
-        Loop
-        MDIForm1.lblMisc = "Misc Info: " + Read2
-        
-        'Get Nr of Laps
-        If X > 1000 Then X = PicX
-        PicX = X
-        Read2 = "Laps|"
-        Do Until Read = Read2 Or X > 1000
-            Read = Mid(Read4, X, 5)
-            X = X + 1
-        Loop
-        X = X + 4
-        Read2 = ""
-        Do Until Read = "|"
-            Read = Mid(Read4, X, 1)
-            If Read <> "|" Then Read2 = Read2 + Read
-            X = X + 1
-        Loop
-        MDIForm1.lblLaps = "" + Read2
-        
-        'Get Tyre Ware
-        If X > 1000 Then X = PicX
-        PicX = X
-        Read2 = "Tyre|"
-        Do Until Read = Read2 Or X > 1000
-            Read = Mid(Read4, X, 5)
-            X = X + 1
-        Loop
-        X = X + 4
-        Read2 = ""
-        Do Until Read = "|" Or X > 1000
-            Read = Mid(Read4, X, 1)
-            If Read <> "|" Then Read2 = Read2 + Read
-            X = X + 1
-        Loop
-        MDIForm1.lblWare = "" + Read2
-        
-        'Get Track Length
-        If X > 1000 Then X = PicX
-        PicX = X
-        Read2 = "LengthMeters|"
-        Do Until Read = Read2 Or X > 1000
-            Read = Mid(Read4, X, 13)
-            X = X + 1
-        Loop
-        X = X + 12
-        Read2 = ""
-        Do Until Read = "|" Or X > 1000
-            Read = Mid(Read4, X, 1)
-            If Read <> "|" Then Read2 = Read2 + Read
-            X = X + 1
-        Loop
-        MDIForm1.lblLength = "" + Read2
+    Close FileNum
+    If InStr(1, Read, "#GP2INFO") Then
+        ReadGP2Info = True
 
-        'Get Race Lap Time
-        Read2 = "LapRecord|"
-        Do Until Read = Read2 Or X > 1000
-            Read = Mid(Read4, X, 10)
-            X = X + 1
-        Loop
-        X = X + 9
-        Read = String(1, " ")
-        Read2 = ""
-        Do Until Read = "|" Or X > 1000
-            Read = Mid(Read4, X, 1)
-            If Read <> "|" Then Read2 = Read2 + Read
-            X = X + 1
-        Loop
-        If Read2 <> "None Entered" Then MDIForm1.lblRLap = Read2
-        
-        'Get Qual Lap Time
-        Read2 = "LapRecordQualify|"
-        Do Until Read = Read2 Or X > 1000
-            Read = Mid(Read4, X, 17)
-            X = X + 1
-        Loop
-        X = X + 16
-        Read = String(1, " ")
-        Read2 = ""
-        Do Until Read = "|" Or X > 1000
-            Read = Mid(Read4, X, 1)
-            If Read <> "|" Then Read2 = Read2 + Read
-            X = X + 1
-        Loop
-        If Read2 <> "None Entered" Then MDIForm1.lblQLap = Read2
-
-        MDIForm1.txtPath = Path
-        NoSupport = False
-        Read = MDIForm1.lblCountry
-        GetAdjectiv
-        Read4 = ""
-    Else
-        OldTrackFile
-        Close FileNum
-        If Count2 <> 1234 Then
-            MsgBox "This track file is not supported by " + TH + ".", vbInformation, TH
-            NoSupport = True
-        Else
-            NoSupport = False
-            Count2 = 2589
+        X = InStr(1, Read, "|Name|")
+        If X > 0 Then
+            Start = X + 6
+            Stopp = InStr(Start, Read, "|")
+            frmMain.lblTrackName = Mid(Read, Start, Stopp - Start)
         End If
-        Exit Sub
+
+        X = InStr(1, Read, "|Country|")
+        If X > 0 Then
+            Start = X + 9
+            Stopp = InStr(Start, Read, "|")
+            frmMain.lblCountry = Mid(Read, Start, Stopp - Start)
+        End If
+
+        X = InStr(1, Read, "|Year|")
+        If X > 0 Then
+            Start = X + 6
+            Stopp = InStr(Start, Read, "|")
+            frmMain.lblInfoYear = Mid(Read, Start, Stopp - Start)
+        End If
+
+        X = InStr(1, Read, "|Author|")
+        If X > 0 Then
+            Start = X + 8
+            Stopp = InStr(Start, Read, "|")
+            frmMain.lblAuthor = Mid(Read, Start, Stopp - Start)
+        End If
+
+        X = InStr(1, Read, "|Laps|")
+        If X > 0 Then
+            Start = X + 6
+            Stopp = InStr(Start, Read, "|")
+            frmMain.lblLaps = Mid(Read, Start, Stopp - Start)
+        End If
+
+        X = InStr(1, Read, "|Tyre|")
+        If X > 0 Then
+            Start = X + 6
+            Stopp = InStr(Start, Read, "|")
+            frmMain.lblWare = Mid(Read, Start, Stopp - Start)
+        End If
+
+        X = InStr(1, Read, "|LengthMeters|")
+        If X > 0 Then
+            Start = X + 14
+            Stopp = InStr(Start, Read, "|")
+            frmMain.lblLen = Mid(Read, Start, Stopp - Start)
+        End If
+
+        X = InStr(1, Read, "|LapRecord|")
+        If X > 0 Then
+            Start = X + 11
+            Stopp = InStr(Start, Read, "|")
+            Read2 = Mid(Read, Start, Stopp - Start)
+            If Read2 <> "None Entered" Then frmMain.lblRace = Read2
+        End If
+
+        X = InStr(1, Read, "|LapRecordQualify|")
+        If X > 0 Then
+            Start = X + 18
+            Stopp = InStr(Start, Read, "|")
+            Read2 = Mid(Read, Start, Stopp - Start)
+            If Read2 <> "None Entered" Then frmMain.lblQual = Read2
+        End If
+
+        X = InStr(1, Read, "|Slot|")
+        If X > 0 Then
+            Start = X + 6
+            Stopp = InStr(Start, Read, "|")
+            frmMain.lblSlot = Mid(Read, Start, Stopp - Start)
+        End If
+
+        X = InStr(1, Read, "|Event|")
+        If X > 0 Then
+            Start = X + 7
+            Stopp = InStr(Start, Read, "|")
+            frmMain.lblEvent = Mid(Read, Start, Stopp - Start)
+        End If
+
+        X = InStr(1, Read, "|Desc|")
+        If X > 0 Then
+            Start = X + 6
+            Stopp = InStr(Start, Read, "|")
+            frmMain.lblMisc = Mid(Read, Start, Stopp - Start)
+        End If
+        frmMain.lstFile.OLEDragMode = ccOLEDragAutomatic
+    Else
+        OldTrackFile Path
+        If Found = False Then
+            FileNum = FreeFile
+            Open Path For Binary As FileNum
+            Read = String(3, " ")
+            X = FileLen(Path) - 7
+            Get #FileNum, X, Read
+            Close FileNum
+            If Read = "jam" Then
+                Responce = MsgBox(LoadResString(129) & vbLf & LoadResString(130), vbYesNo, TH)
+                If Responce = vbYes Then frmMain.cmdSaveGP2Info_Click
+                frmMain.lstFile.OLEDragMode = ccOLEDragManual
+                GoTo TrackFile
+            Else
+                frmMain.mnuCCCarSetup.Enabled = False
+                frmMain.mnuTrackSettings.Enabled = False
+                frmMain.lstFile.OLEDragMode = ccOLEDragManual
+                MsgBox LoadResString(108), vbInformation, TH
+                ReadGP2Info = False
+            End If
+        Else
+TrackFile:
+            frmMain.mnuCCCarSetup.Enabled = True
+            frmMain.mnuTrackSettings.Enabled = True
+            frmMain.lstFile.OLEDragMode = ccOLEDragAutomatic
+            ReadGP2Info = True
+            Exit Function
+        End If
     End If
+End Function
+
+
+Private Function OldTrackFile(ByVal FilePath As String)
+Dim TrackSize As String
+    TrackSize = FileLen(FilePath)
+
+    If TrackSize = 32406 Then
+        frmMain.lblTrackName = "Interlagos"
+        frmMain.lblCountry = "Brazil"
+        Found = True
+        frmMain.lblLaps = "71"
+        frmMain.lblLen = "4325"
+        frmMain.lblWare = "20140"
+        frmMain.lblQual = "1:15.962"
+        frmMain.lblRace = "1:18.455"
+        Samma
+    ElseIf TrackSize = 32506 Then
+        frmMain.lblTrackName = "TI Circuit Aida"
+        frmMain.lblCountry = "Japan"
+        Found = True
+        frmMain.lblLaps = "83"
+        frmMain.lblLen = "3723"
+        frmMain.lblWare = "30746"
+        frmMain.lblQual = "1:10.218"
+        frmMain.lblRace = "1:14.023"
+        Samma
+    ElseIf TrackSize = 37678 Then
+        frmMain.lblTrackName = "Imola"
+        frmMain.lblCountry = "San Marino"
+        Found = True
+        frmMain.lblLaps = "61"
+        frmMain.lblLen = "5040"
+        frmMain.lblWare = "23496"
+        frmMain.lblQual = "1:21.548"
+        frmMain.lblRace = "1:24.438"
+        Samma
+    ElseIf TrackSize = 58290 Then
+        frmMain.lblTrackName = "Monte-Carlo"
+        frmMain.lblCountry = "Monaco"
+        Found = True
+        frmMain.lblLaps = "78"
+        frmMain.lblLen = "3328"
+        frmMain.lblWare = "32384"
+        frmMain.lblQual = "1:18.560"
+        frmMain.lblRace = "1:21.078"
+        Samma
+    ElseIf TrackSize = 34061 Then
+        frmMain.lblTrackName = "Barcelona"
+        frmMain.lblCountry = "Spain"
+        Found = True
+        frmMain.lblLaps = "65"
+        frmMain.lblLen = "4747"
+        frmMain.lblWare = "21237"
+        frmMain.lblQual = "1:21.908"
+        frmMain.lblRace = "1:25.155"
+        Samma
+    ElseIf TrackSize = 34392 Then
+        frmMain.lblTrackName = "Gilles Villeneuve"
+        frmMain.lblCountry = "Canada"
+        Found = True
+        frmMain.lblLaps = "69"
+        frmMain.lblLen = "4430"
+        frmMain.lblWare = "22009"
+        frmMain.lblQual = "1:26.178"
+        frmMain.lblRace = "1:28.927"
+        Samma
+    ElseIf TrackSize = 31767 Then
+        frmMain.lblTrackName = "Magny Cours"
+        frmMain.lblCountry = "France"
+        Found = True
+        frmMain.lblLaps = "72"
+        frmMain.lblLen = "4271"
+        frmMain.lblWare = "21994"
+        frmMain.lblQual = "1:16.282"
+        frmMain.lblRace = "1:19.678"
+        Samma
+    ElseIf TrackSize = 38617 Then
+        frmMain.lblTrackName = "Silverstone"
+        frmMain.lblCountry = "Great Britain"
+        Found = True
+        frmMain.lblLaps = "60"
+        frmMain.lblLen = "5153"
+        frmMain.lblWare = "21012"
+        frmMain.lblQual = "1:24.960"
+        frmMain.lblRace = "1:27.100"
+        Samma
+    ElseIf TrackSize = 31876 Then
+        frmMain.lblTrackName = "Hockenheim"
+        frmMain.lblCountry = "Germany"
+        Found = True
+        frmMain.lblLaps = "45"
+        frmMain.lblLen = "6802"
+        frmMain.lblWare = "15215"
+        frmMain.lblQual = "1:43.582"
+        frmMain.lblRace = "1:46.211"
+        Samma
+    ElseIf TrackSize = 34956 Then
+        frmMain.lblTrackName = "Hungaroring"
+        frmMain.lblCountry = "Hungary"
+        Found = True
+        frmMain.lblLaps = "77"
+        frmMain.lblLen = "3968"
+        frmMain.lblWare = "21310"
+        frmMain.lblQual = "1:18.258"
+        frmMain.lblRace = "1:20.881"
+        Samma
+    ElseIf TrackSize = 45598 Then
+        frmMain.lblTrackName = "Spa-Francorchamps"
+        frmMain.lblCountry = "Belgium"
+        Found = True
+        frmMain.lblLaps = "44"
+        frmMain.lblLen = "6940"
+        frmMain.lblWare = "25892"
+        frmMain.lblQual = "2:21.163"
+        frmMain.lblRace = "1:57.117"
+        Samma
+    ElseIf TrackSize = 41038 Then
+        frmMain.lblTrackName = "Monza"
+        frmMain.lblCountry = "Italy"
+        Found = True
+        frmMain.lblLaps = "53"
+        frmMain.lblLen = "5800"
+        frmMain.lblWare = "16570"
+        frmMain.lblQual = "1:23.844"
+        frmMain.lblRace = "1:25.930"
+        Samma
+    ElseIf TrackSize = 37263 Then
+        frmMain.lblTrackName = "Estoril"
+        frmMain.lblCountry = "Portugal"
+        Found = True
+        frmMain.lblLaps = "71"
+        frmMain.lblLen = "4350"
+        frmMain.lblWare = "17000"
+        frmMain.lblQual = "1:20.608"
+        frmMain.lblRace = "1:22.446"
+        Samma
+    ElseIf TrackSize = 33059 Then
+        frmMain.lblTrackName = "Jerez"
+        frmMain.lblCountry = "Europe"
+        Found = True
+        frmMain.lblLaps = "69"
+        frmMain.lblLen = "4428"
+        frmMain.lblWare = "24952"
+        frmMain.lblQual = "1:22.762"
+        frmMain.lblRace = "1:25.040"
+        Samma
+    ElseIf TrackSize = 35730 Then
+        frmMain.lblTrackName = "Suzuka"
+        frmMain.lblCountry = "Japan"
+        Found = True
+        frmMain.lblLaps = "53"
+        frmMain.lblLen = "5859"
+        frmMain.lblWare = "23703"
+        frmMain.lblQual = "1:37.209"
+        frmMain.lblRace = "1:56.597"
+        Samma
+    ElseIf TrackSize = 44586 Then
+        frmMain.lblTrackName = "Adelaide"
+        frmMain.lblCountry = "Australia"
+        Found = True
+        frmMain.lblLaps = "81"
+        frmMain.lblLen = "3780"
+        frmMain.lblWare = "20054"
+        frmMain.lblQual = "1:16.179"
+        frmMain.lblRace = "1:17.140"
+        Samma
+    ElseIf TrackSize = 40888 Then
+        frmMain.lblTrackName = "Brands Hatch"
+        frmMain.lblCountry = "England"
+        Found = True
+        frmMain.lblLaps = ""
+        frmMain.lblLen = "4216"
+    ElseIf TrackSize = 40844 Then
+        frmMain.lblTrackName = "Buenos Aires"
+        frmMain.lblCountry = "Argentina"
+        frmMain.lblYear = "Year: 1996"
+        Found = True
+        frmMain.lblLaps = "72"
+        frmMain.lblLen = "4282"
+    ElseIf TrackSize = 37406 Then
+        frmMain.lblTrackName = "Imola"
+        frmMain.lblCountry = "San Marino"
+        frmMain.lblYear = "Year: 1996"
+        Found = True
+        frmMain.lblLaps = "63"
+        frmMain.lblLen = "5150"
+    ElseIf TrackSize = 33789 Then
+        frmMain.lblTrackName = "Barcelona"
+        frmMain.lblCountry = "Spain"
+        frmMain.lblYear = "Year: 1996"
+        Found = True
+        frmMain.lblLaps = "65"
+        frmMain.lblLen = "4701"
+    ElseIf TrackSize = 40812 Then
+        FileNum2 = FreeFile
+        Open Path For Binary As FileNum2
+        Read = String(1, " ")
+        Get #FileNum2, 40810, Read
+        Close FileNum2
+        If Read = "Z" Then
+            frmMain.lblTrackName = "Paul Ricard"
+            frmMain.lblCountry = "France"
+            Found = True
+            frmMain.lblLaps = ""
+            frmMain.lblLen = "3798"
+        End If
+    ElseIf TrackSize = 38127 Then
+        frmMain.lblTrackName = "Silverstone"
+        frmMain.lblCountry = "England"
+        Found = True
+        frmMain.lblLaps = "61"
+        frmMain.lblLen = "5238"
+    ElseIf TrackSize = 40882 Then
+        frmMain.lblTrackName = "A1-Ring"
+        frmMain.lblCountry = "Austria"
+        Found = True
+        frmMain.lblLaps = "71"
+        frmMain.lblLen = "4267"
+    ElseIf TrackSize = 40812 Then
+        frmMain.lblTrackName = "Zandvoort"
+        frmMain.lblCountry = "Nederlands"
+        Found = True
+        frmMain.lblLaps = ""
+        frmMain.lblLen = "2487"
+    ElseIf TrackSize = 41018 Then
+        frmMain.lblTrackName = "Nürburgring"
+        frmMain.lblCountry = "Germany"
+        Found = True
+        frmMain.lblLaps = "68"
+        frmMain.lblLen = "4214"
+    ElseIf TrackSize = 32843 Then
+        frmMain.lblTrackName = "Donington"
+        frmMain.lblCountry = "England"
+        Found = True
+        frmMain.lblLaps = ""
+        frmMain.lblLen = "4023"
+    ElseIf TrackSize = 40848 Then
+        frmMain.lblTrackName = "Melbourne"
+        frmMain.lblCountry = "Australia"
+        Found = True
+        frmMain.lblLaps = "58"
+        frmMain.lblLen = "5218"
+    Else
+        Found = False
+    End If
+Exit Function
+
+ErrorTrap:
+    Print #Log, Date & " " & Time & " OldTrackFile , Error Number: " & Err.Number & ", Error Description: " & Err.Description
+    MsgBox "Error # " + Str(Err.Number) + Err.Description
+End Function
+
+Public Function GetAdjectiv(ByVal TrackName As String) As String
+    TrackName = LCase(Trim(TrackName))
+    If TrackName = "australia" Then
+        GetAdjectiv = "Australian"
+    ElseIf TrackName = "brazil" Then GetAdjectiv = "Brazilian"
+    ElseIf TrackName = "japan" Then GetAdjectiv = "Japanese"
+    ElseIf TrackName = "austria" Then GetAdjectiv = "Austrian"
+    ElseIf TrackName = "sweden" Then GetAdjectiv = "Swedish"
+    ElseIf TrackName = "china" Then GetAdjectiv = "Chinese"
+    ElseIf TrackName = "america" Then GetAdjectiv = "American"
+    ElseIf TrackName = "europe" Then GetAdjectiv = "European"
+    ElseIf TrackName = "portugal" Then GetAdjectiv = "Portuguese"
+    ElseIf TrackName = "italy" Then GetAdjectiv = "Italian"
+    ElseIf TrackName = "belgium" Then GetAdjectiv = "Belgian"
+    ElseIf TrackName = "hungary" Then GetAdjectiv = "Hungarian"
+    ElseIf TrackName = "germany" Then GetAdjectiv = "German"
+    ElseIf TrackName = "great Britain" Then GetAdjectiv = "British"
+    ElseIf TrackName = "canada" Then GetAdjectiv = "Canadian"
+    ElseIf TrackName = "france" Then GetAdjectiv = "French"
+    ElseIf TrackName = "spain" Then GetAdjectiv = "Spanish"
+    ElseIf TrackName = "monaco" Then GetAdjectiv = "Monaco"
+    ElseIf TrackName = "san marino" Then GetAdjectiv = "San Marino"
+    ElseIf TrackName = "pacific" Then GetAdjectiv = "Pacific"
+    ElseIf TrackName = "mexico" Then GetAdjectiv = "Mexican"
+    ElseIf TrackName = "finland" Then GetAdjectiv = "Finnish"
+    ElseIf TrackName = "holland" Then GetAdjectiv = "Dutch"
+    ElseIf TrackName = "netherlands" Then GetAdjectiv = "Dutch"
+    ElseIf TrackName = "netherland" Then GetAdjectiv = "Dutch"
+    ElseIf TrackName = "south africa" Then GetAdjectiv = "South African"
+    ElseIf TrackName = "usa" Then GetAdjectiv = "USA"
+    ElseIf TrackName = "england" Then GetAdjectiv = "British"
+    ElseIf TrackName = "great britain" Then GetAdjectiv = "British"
+    ElseIf TrackName = "argentine" Then GetAdjectiv = "Argentine"
+    ElseIf TrackName = "argentina" Then GetAdjectiv = "Argentine"
+    ElseIf TrackName = "schweiz" Then GetAdjectiv = "Swiss"
+    ElseIf TrackName = "mother earth" Then GetAdjectiv = "Mother Earth"
+    ElseIf TrackName = "luxembourg (germany)" Then GetAdjectiv = "Luxembourg"
+    ElseIf TrackName = "luxembourg" Then GetAdjectiv = "Luxembourg"
+    ElseIf TrackName = "malysia" Then GetAdjectiv = "Malysian"
+    ElseIf TrackName = "malaysia" Then GetAdjectiv = "Malysian"
+    ElseIf TrackName = "switzerland" Then GetAdjectiv = "Swiss"
+    ElseIf TrackName = "valhalla" Then GetAdjectiv = "Valhalla"
+    End If
+End Function
+
+Private Sub Samma()
+    frmMain.lblInfoYear = "1994"
+    frmMain.lblEvent = "Formula 1"
+    frmMain.lblAuthor = "Microprose"
+    frmMain.lblMisc = "Original GP2 Track"
 End Sub
