@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmExport 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "Export To GP2"
+   Caption         =   "Export To Gp2"
    ClientHeight    =   4365
    ClientLeft      =   45
    ClientTop       =   330
@@ -427,34 +427,35 @@ End Sub
 Private Sub cmdExport_Click()
 Dim Total As Double
     frmExport.MousePointer = 11
-    SetAttr GP2Dir & "\gp2.exe", vbNormal
+    oFile.ClearDir (ProgramDir & "\Bat\")
+    SetAttr Gp2Dir & "\gp2.exe", vbNormal
 
     If chkPicture.Value = 1 Then
-        Read = oMisc.File_Exists(GP2Dir & "\gp2hipic.exe")
+        Read = oFile.FileExists(Gp2Dir & "\gp2hipic.exe")
         If Read = False Then
-            FileCopy ProgramDir & "\GP2Utils\gp2hipic.exe", GP2Dir & "\gp2hipic.exe"
+            FileCopy ProgramDir & "\Gp2Utils\gp2hipic.exe", Gp2Dir & "\gp2hipic.exe"
         End If
     End If
 
-    GetGP2Version
-    Read = oMisc.File_Exists(GP2Dir + "\f1gstate.sav")
+    GetGp2Version
+    Read = oFile.FileExists(Gp2Dir + "\f1gstate.sav")
     If Read = True Then
-        SetAttr GP2Dir & "\f1gstate.sav", vbNormal
+        SetAttr Gp2Dir & "\f1gstate.sav", vbNormal
         Exp.F1FileNum = FreeFile
-        Open GP2Dir & "\f1gstate.sav" For Binary As Exp.F1FileNum
+        Open Gp2Dir & "\f1gstate.sav" For Binary As Exp.F1FileNum
     End If
-    Exp.GP2FileNum = FreeFile
-    Open GP2Dir & "\gp2.exe" For Binary As Exp.GP2FileNum
-    GetTrackNames
+    Exp.Gp2FileNum = FreeFile
+    Open Gp2Dir & "\gp2.exe" For Binary As Exp.Gp2FileNum
+    ImportText
     SetAttribut
-    GP2NameFile = ""
+    Gp2NameFile = ""
     For Exp.TrackNr = 0 To 15
         If chkTrack(Exp.TrackNr).Value = 1 Then
             If chkLap.Value = 1 Then ExportLaps
             If chkWare.Value = 1 Then ExportWare
             If chkTrackLength.Value = 1 Then ExportLength
             If chkPicture.Value = 1 Then ExportPictures
-            If chkQSetup.Value = 1 Then ExportqualSetup
+            If chkQSetup.Value = 1 Then ExportQualSetup
             If chkRSetup.Value = 1 Then ExportRaceSetup
             If chkTimes.Value = 1 Then
                 ExportTime Race, F1gstate
@@ -470,37 +471,37 @@ Dim Total As Double
             If chkTrackName.Value = 1 Then
                 ExportName
             Else
-                GP2NameFile = GP2NameFile & TrackName(Exp.TrackNr) & Chr(0)
+                Gp2NameFile = Gp2NameFile & TrackName(Exp.TrackNr) & Chr(0)
             End If
         Else
-            GP2NameFile = GP2NameFile & TrackName(Exp.TrackNr) & Chr(0)
+            Gp2NameFile = Gp2NameFile & TrackName(Exp.TrackNr) & Chr(0)
         End If
     Next
-    GP2NameFile = GP2NameFile & String(16, Chr(0))
+    Gp2NameFile = Gp2NameFile & String(16, Chr(0))
     For Count1 = 0 To 4
         For Exp.TrackNr = 0 To 15
             If chkTrack(Exp.TrackNr).Value = 1 Then
                 ExportCountry
             Else
-                GP2NameFile = GP2NameFile & Country(Exp.TrackNr) & Chr(0)
+                Gp2NameFile = Gp2NameFile & Country(Exp.TrackNr) & Chr(0)
             End If
         Next
-        GP2NameFile = GP2NameFile & String(16, Chr(0))
+        Gp2NameFile = Gp2NameFile & String(16, Chr(0))
     Next
     For Exp.TrackNr = 0 To 15
         If chkTrack(Exp.TrackNr).Value = 1 Then
             ExportAdjectiv
         Else
-            GP2NameFile = GP2NameFile & Adj(Exp.TrackNr) & Chr(0)
+            Gp2NameFile = Gp2NameFile & Adj(Exp.TrackNr) & Chr(0)
         End If
     Next
     If chkTrackName.Value = 1 Then
-        GP2NameFile = GP2NameFile & String(16, Chr(0))
-        Count1 = Len(GP2NameFile)
+        Gp2NameFile = Gp2NameFile & String(16, Chr(0))
+        Count1 = Len(Gp2NameFile)
         Count2 = 4000 - Count1
-        Put #Exp.GP2FileNum, oData.Text(GP2V) + 1, GP2NameFile
+        Put #Exp.Gp2FileNum, oData.Text(Gp2V) + 1, Gp2NameFile
     Else
-        GP2NameFile = ""
+        Gp2NameFile = ""
     End If
     If (chkPoint.Value = 1) And (chkPoint.Enabled = True) Then ExportPoints
     If (chkSettings.Value = 1) And (chkSettings.Enabled = True) Then
@@ -519,15 +520,16 @@ Dim Total As Double
         ExportCWeight
         ExportSpeed
         ExportUseTeam
+        ExportCCFuel
     End If
     If (chkDosPath.Value = 1) And (chkDosPath.Enabled = True) Then ExportDos
     Close Exp.F1FileNum
-    Close Exp.GP2FileNum
+    Close Exp.Gp2FileNum
 
-    Read = oMisc.GetShortName(GP2Dir & "\f1gstate.sav")
-    WriteCheckSum Read
+    Read = oFile.GetShortName(Gp2Dir & "\f1gstate.sav")
+    If chkTimes.Enabled = True Then WriteCheckSum Read
     If chkPicture.Value = 1 Or chkDosPath.Value = 1 Then
-        X = ShellExecute(frmMain.hwnd, "open", ProgramDir & "\Bat\Export.bat", vbNullString, vbNullString, 1)
+        X = ShellExecute(frmMain.hWnd, "open", ProgramDir & "\Bat\Export.bat", vbNullString, vbNullString, 1)
     End If
 
     For X = 0 To 15
@@ -542,7 +544,7 @@ Exit Sub
 ErrorTrap:
     MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
         "Error Desctiption: " & Err.Description & vbLf & _
-        "Error Source: " & Err.Source, vbCritical, "Error"
+        "Error Source: cmdExport_Click()", vbCritical, TH & " - Error"
     X = 0
     Do Until X > 15
         TrackName(X) = ""
@@ -550,18 +552,17 @@ ErrorTrap:
         Adj(X) = ""
         X = X + 1
     Loop
-    GP2NameFile = ""
+    Gp2NameFile = ""
     Close FileNum
     Close FileNum2
-    Close Exp.GP2FileNum
+    Close Exp.Gp2FileNum
     Close Exp.F1FileNum
     frmExport.MousePointer = 0
 End Sub
 
 Private Sub Form_Activate()
     State = UnCheckAll
-
-    Read = oMisc.File_Exists(GP2Dir + "\f1gstate.sav")
+    Read = oFile.FileExists(Gp2Dir + "\f1gstate.sav")
     If Read = False Then
         chkTimes.Enabled = False
         chkSettings.Enabled = False
@@ -576,7 +577,7 @@ Private Sub Form_Activate()
         lblNote.Visible = False
     End If
 
-    Read = oMisc.ReadINI("Misc", "EXEPath", TempFile)
+    Read = ReadINI("Misc", "EXEPath", TempFile)
     If Read = "" Then
         chkDosPath.Enabled = False
     Else
@@ -589,39 +590,6 @@ Private Sub Form_Activate()
             chkTrack(X).Value = 1
         End If
     Next
-End Sub
-
-Public Sub GetTrackNames()
-    Read = String(3000, " ")
-    Get #Exp.GP2FileNum, oData.Text(GP2V) + 1, Read
-    
-    For Count1 = 0 To 15
-        Count2 = InStr(1, Read, Chr(0))
-        TrackName(Count1) = Mid(Read, 1, Count2 - 1)
-        Read = Mid(Read, Count2 + 1)
-    Next
-    
-    Read = Mid(Read, 17)
-    For Count1 = 0 To 15
-        Count2 = InStr(1, Read, Chr(0))
-        Country(Count1) = Mid(Read, 1, Count2 - 1)
-        Read = Mid(Read, Count2 + 1)
-    Next
-
-    Read = Mid(Read, 17)
-    For Count1 = 0 To 3
-        Read2 = String(17, Chr(0))
-        Count2 = InStr(1, Read, Read2)
-        Read = Mid(Read, Count2 + 1)
-    Next
-    
-    Read = Mid(Read, 17)
-    For Count1 = 0 To 15
-        Count2 = InStr(1, Read, Chr(0))
-        Adj(Count1) = Mid(Read, 1, Count2 - 1)
-        Read = Mid(Read, Count2 + 1)
-    Next
-    Read = ""
 End Sub
 
 Private Sub Test(ByRef CheckType As Check2)
@@ -645,7 +613,7 @@ Dim oCtl As Control
         chkAll.Value = 1
         For Each oCtl In frmExport
             If TypeOf oCtl Is CheckBox Then
-                If oCtl.Value = 0 Then
+                If (oCtl.Value = 0) And (oCtl.Enabled = True) Then
                     chkAll.Value = 0
                     Exit For
                 End If

@@ -1,5 +1,5 @@
 [Root]
-Most Recent Package=Standard Setup Package 4
+Most Recent Package=Full
 Most Recent Deploy=Folder Deployment 1
 
 [Package|Standard Setup Package 1|Track Handler]
@@ -524,3 +524,265 @@ Icon2=HELP.HLP
 Title2=Track Handler Help
 StartIn2=$(AppPath)
 Key2=Icon4
+
+
+[Package|Small|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=d:\Mina Program\Track Handler\Pack
+
+[Package|Small|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Small|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Small|Files Found]
+HELP.HLP=D:\Mina Program\Track Handler\HELP.HLP
+
+[Package|Small|Files Released]
+
+[Package|Small|Missing Dependency Information]
+D:\Mina Program\Track Handler\FileLib.dll=
+
+[Package|Small|Out-of-Date Dependency Information]
+
+[Package|Small|Files Added]
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\2JAM32.EXE=
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\GP2HIPIC.EXE=
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\PKZIP.EXE=
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Adjectiv.ini=
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\JAMS.LDA=
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\MALL.LDA=
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Org.lda=
+
+[Package|Small|Files Removed]
+c:\win98\system\msvbvm60.dll=
+c:\win98\system\oleaut32.dll=
+c:\win98\system\olepro32.dll=
+c:\win98\system\asycfilt.dll=
+c:\win98\system\stdole2.tlb=
+d:\microsoft visual studio\vb98\wizards\pdwizard\redist\comcat.dll=
+c:\win98\system\comctl32.ocx=
+
+[Package|Small|Files In Project]
+D:\Mina Program\Track Handler\Th16.exe=Yes
+C:\WIN98\SYSTEM\MSVBVM60.DLL=No
+C:\WIN98\SYSTEM\OLEAUT32.DLL=No
+C:\WIN98\SYSTEM\OLEPRO32.DLL=No
+C:\WIN98\SYSTEM\ASYCFILT.DLL=No
+C:\WIN98\SYSTEM\STDOLE2.TLB=No
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=No
+C:\WIN98\SYSTEM\ThLib.dll=Yes
+D:\Mina Program\Track Handler\FileLib.dll=Yes
+C:\WIN98\SYSTEM\COMCTL32.OCX=No
+D:\Mina Program\Track Handler\HELP.HLP=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WIN98\SYSTEM\VB6STKIT.DLL=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\2JAM32.EXE=Yes
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\GP2HIPIC.EXE=Yes
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\PKZIP.EXE=Yes
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Adjectiv.ini=Yes
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\JAMS.LDA=Yes
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\MALL.LDA=Yes
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Org.lda=Yes
+
+[Package|Small|Configure Registry Files]
+Applicable=No
+
+[Package|Small|Configure Remote Servers]
+Applicable=No
+
+[Package|Small|Install Locations]
+D:\Mina Program\Track Handler\Th16.exe=$(AppPath)
+C:\WIN98\SYSTEM\ThLib.dll=$(AppPath)
+D:\Mina Program\Track Handler\FileLib.dll=$(AppPath)
+D:\Mina Program\Track Handler\HELP.HLP=$(AppPath)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WIN98\SYSTEM\VB6STKIT.DLL=$(WinSysPathSysFile)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\2JAM32.EXE=$(AppPath)\Gp2Utils
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\GP2HIPIC.EXE=$(AppPath)\Gp2Utils
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\PKZIP.EXE=$(AppPath)\Gp2Utils
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Adjectiv.ini=$(AppPath)
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\JAMS.LDA=$(AppPath)
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\MALL.LDA=$(AppPath)
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Org.lda=$(AppPath)
+
+[Package|Small|Configure Shared Files]
+Applicable=Yes
+D:\Mina Program\Track Handler\Th16.exe=No
+C:\WIN98\SYSTEM\ThLib.dll=No
+D:\Mina Program\Track Handler\FileLib.dll=No
+D:\Mina Program\Track Handler\HELP.HLP=No
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\2JAM32.EXE=No
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\GP2HIPIC.EXE=No
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\PKZIP.EXE=No
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Adjectiv.ini=No
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\JAMS.LDA=No
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\MALL.LDA=No
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Org.lda=No
+
+[Package|Small|Distribution]
+Type=single
+Size=
+Title=Gp2 Track Handler v1.6
+
+[Package|Small|IconGroups]
+Group0=Gp2 Track Handler
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|Small|Gp2 Track Handler]
+Icon1=Th16.exe
+Title1=Gp2 Track Handler v1.6
+StartIn1=$(AppPath)
+Key1=Icon1
+Icon2=HELP.HLP
+Title2=Gp2 Track Handler Help
+StartIn2=$(AppPath)
+Key2=Icon3
+
+[Package|Small|Package]
+PackageFolder=d:\Mina Program\Track Handler\Pack
+ProjectFolder=C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16
+ServerSideCab=
+File1=d:\Mina Program\Track Handler\Pack\setup.exe
+File2=d:\Mina Program\Track Handler\Pack\Setup.Lst
+File3=d:\Mina Program\Track Handler\Pack\Th16.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+
+[Package|Full|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=d:\Mina Program\Track Handler\Full
+
+[Package|Full|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Full|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Full|Files Found]
+HELP.HLP=D:\Mina Program\Track Handler\HELP.HLP
+
+[Package|Full|Files Released]
+
+[Package|Full|Missing Dependency Information]
+D:\Mina Program\Track Handler\FileLib.dll=
+
+[Package|Full|Out-of-Date Dependency Information]
+
+[Package|Full|Files Added]
+c:\my documents\mina program\visual basic\gp2 track handler v16\testcenter\gp2utils\2jam32.exe=
+c:\my documents\mina program\visual basic\gp2 track handler v16\testcenter\gp2utils\gp2hipic.exe=
+c:\my documents\mina program\visual basic\gp2 track handler v16\testcenter\gp2utils\pkzip.exe=
+c:\my documents\mina program\visual basic\gp2 track handler v16\testcenter\adjectiv.ini=
+c:\my documents\mina program\visual basic\gp2 track handler v16\testcenter\jams.lda=
+c:\my documents\mina program\visual basic\gp2 track handler v16\testcenter\mall.lda=
+c:\my documents\mina program\visual basic\gp2 track handler v16\testcenter\org.lda=
+
+[Package|Full|Files Removed]
+c:\win98\system\msvbvm60.dll=
+c:\win98\system\oleaut32.dll=
+c:\win98\system\olepro32.dll=
+c:\win98\system\asycfilt.dll=
+c:\win98\system\stdole2.tlb=
+d:\microsoft visual studio\vb98\wizards\pdwizard\redist\comcat.dll=
+
+[Package|Full|Files In Project]
+D:\Mina Program\Track Handler\Th16.exe=Yes
+C:\WIN98\SYSTEM\MSVBVM60.DLL=No
+C:\WIN98\SYSTEM\OLEAUT32.DLL=No
+C:\WIN98\SYSTEM\OLEPRO32.DLL=No
+C:\WIN98\SYSTEM\ASYCFILT.DLL=No
+C:\WIN98\SYSTEM\STDOLE2.TLB=No
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=No
+C:\WIN98\SYSTEM\ThLib.dll=Yes
+D:\Mina Program\Track Handler\FileLib.dll=Yes
+C:\WIN98\SYSTEM\COMCTL32.OCX=Yes
+D:\Mina Program\Track Handler\HELP.HLP=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WIN98\SYSTEM\VB6STKIT.DLL=Yes
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\2JAM32.EXE=Yes
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\GP2HIPIC.EXE=Yes
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\PKZIP.EXE=Yes
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Adjectiv.ini=Yes
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\JAMS.LDA=Yes
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\MALL.LDA=Yes
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Org.lda=Yes
+
+[Package|Full|Configure Registry Files]
+Applicable=No
+
+[Package|Full|Configure Remote Servers]
+Applicable=No
+
+[Package|Full|Install Locations]
+D:\Mina Program\Track Handler\Th16.exe=$(AppPath)
+C:\WIN98\SYSTEM\ThLib.dll=$(AppPath)
+D:\Mina Program\Track Handler\FileLib.dll=$(AppPath)
+D:\Mina Program\Track Handler\HELP.HLP=$(AppPath)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WIN98\SYSTEM\VB6STKIT.DLL=$(WinSysPathSysFile)
+D:\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\2JAM32.EXE=$(AppPath)\Gp2Utils
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\GP2HIPIC.EXE=$(AppPath)\Gp2Utils
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\PKZIP.EXE=$(AppPath)\Gp2Utils
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Adjectiv.ini=$(AppPath)
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\JAMS.LDA=$(AppPath)
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\MALL.LDA=$(AppPath)
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Org.lda=$(AppPath)
+C:\WIN98\SYSTEM\COMCTL32.OCX=$(WinSysPath)
+
+[Package|Full|Configure Shared Files]
+Applicable=Yes
+D:\Mina Program\Track Handler\Th16.exe=No
+C:\WIN98\SYSTEM\ThLib.dll=No
+D:\Mina Program\Track Handler\FileLib.dll=No
+D:\Mina Program\Track Handler\HELP.HLP=No
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\2JAM32.EXE=No
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\GP2HIPIC.EXE=No
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Gp2Utils\PKZIP.EXE=No
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Adjectiv.ini=No
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\JAMS.LDA=No
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\MALL.LDA=No
+C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16\TestCenter\Org.lda=No
+
+[Package|Full|Distribution]
+Type=single
+Size=
+Title=Gp2 Track Handler v1.6
+
+[Package|Full|IconGroups]
+Group0=Gp2 Track Handler
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|Full|Gp2 Track Handler]
+Icon1=Th16.exe
+Title1=Gp2 Track Handler v1.6
+StartIn1=$(AppPath)
+Key1=Icon1
+Icon2=HELP.HLP
+Title2=Gp2 Track Handler Help
+StartIn2=$(AppPath)
+Key2=Icon3
+
+[Package|Full|Package]
+PackageFolder=d:\Mina Program\Track Handler\Full
+ProjectFolder=C:\My Documents\Mina Program\Visual Basic\GP2 Track Handler v16
+ServerSideCab=
+File1=d:\Mina Program\Track Handler\Full\setup.exe
+File2=d:\Mina Program\Track Handler\Full\Setup.Lst
+File3=d:\Mina Program\Track Handler\Full\Th16.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz

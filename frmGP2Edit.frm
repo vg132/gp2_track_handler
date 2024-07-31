@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmGP2Edit 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "GP2 Edit"
+   Caption         =   "Gp2Edit"
    ClientHeight    =   3585
    ClientLeft      =   45
    ClientTop       =   330
@@ -15,7 +15,7 @@ Begin VB.Form frmGP2Edit
    ScaleWidth      =   3795
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  'CenterOwner
-   Begin VB.CommandButton Command1 
+   Begin VB.CommandButton cmdClose 
       Cancel          =   -1  'True
       Caption         =   "&Close"
       Height          =   315
@@ -24,7 +24,7 @@ Begin VB.Form frmGP2Edit
       Top             =   3180
       Width           =   1035
    End
-   Begin VB.ListBox lstGP2Edit 
+   Begin VB.ListBox lstGp2Edit 
       Height          =   3435
       Left            =   60
       Style           =   1  'Checkbox
@@ -40,7 +40,7 @@ Begin VB.Form frmGP2Edit
       Top             =   480
       Width           =   1035
    End
-   Begin VB.CommandButton cmdClose 
+   Begin VB.CommandButton cmdSave 
       Caption         =   "&Save"
       Default         =   -1  'True
       Height          =   315
@@ -68,194 +68,181 @@ Option Explicit
 Dim InLoad As Boolean
 
 Private Sub cmdClose_Click()
-    Var.sString1 = ""
-    For Var.iInt1 = 0 To lstGP2Edit.ListCount - 1
-        If lstGP2Edit.Selected(Var.iInt1) = False Then
-            Var.sString1 = Var.sString1 & GetLetter(lstGP2Edit.ItemData(Var.iInt1))
-        End If
-    Next
-    oMisc.WriteINI "Misc", "Exe", Var.sString1, TempFile
-    FileInfo.Changes = True
+  Unload Me
 End Sub
 
 Private Sub cmdDelete_Click()
-    oMisc.WriteINI "Misc", "Exe", "", TempFile
-    oMisc.WriteINI "Misc", "ExePath", "", TempFile
+    WriteINI "Misc", "Exe", "", TempFile
+    WriteINI "Misc", "ExePath", "", TempFile
     Unload Me
 End Sub
 
-Private Sub Command1_Click()
-    Unload Me
+Private Sub cmdSave_Click()
+  Read = ""
+  For tVar.iInt = 0 To lstGp2Edit.ListCount - 1
+      If lstGp2Edit.Selected(tVar.iInt) = False Then
+          Read = Read & GetLetter(lstGp2Edit.ItemData(tVar.iInt))
+      End If
+  Next
+  WriteINI "Misc", "Exe", Read, TempFile
 End Sub
 
 Private Sub Form_Load()
-    GetEXEData
-    lstGP2Edit.Selected(1) = True
+  GetEXEData
+  lstGp2Edit.Selected(1) = True
 End Sub
 
 Private Sub GetEXEData()
 Dim FileNum As Integer
 Dim FileData As Byte
 Dim X As Long
-    Read = oMisc.ReadINI("Misc", "ExePath", TempFile)
+    Read = ReadINI("Misc", "ExePath", TempFile)
     FileNum = FreeFile
     Open Read For Binary As FileNum
     Read = ""
-    Read = oMisc.ReadINI("Misc", "EXE", TempFile)
+    Read = ReadINI("Misc", "EXE", TempFile)
     Read = Read & " "
     X = 0
     Get #FileNum, 49193, FileData
     If FileData <> 0 Then
-        lstGP2Edit.AddItem "Tram Data"
-        lstGP2Edit.ItemData(X) = "0"
-        Var.iInt1 = InStr(1, Read, GetLetter(0))
-        If Var.iInt1 <> 0 Then
-            lstGP2Edit.Selected(X) = False
+        lstGp2Edit.AddItem "Tram Data"
+        lstGp2Edit.ItemData(X) = "0"
+        If InStr(1, Read, GetLetter(0)) <> 0 Then
+            lstGp2Edit.Selected(X) = False
         Else
-            lstGP2Edit.Selected(X) = True
+            lstGp2Edit.Selected(X) = True
         End If
         X = X + 1
     End If
 
     Get #FileNum, 49194, FileData
     If FileData <> 0 Then
-        lstGP2Edit.AddItem "Cockpit Colors"
-        lstGP2Edit.ItemData(X) = "1"
-        Var.iInt1 = InStr(1, Read, GetLetter(1))
-        If Var.iInt1 <> 0 Then
-            lstGP2Edit.Selected(X) = False
+        lstGp2Edit.AddItem "Cockpit Colors"
+        lstGp2Edit.ItemData(X) = "1"
+        If InStr(1, Read, GetLetter(1)) <> 0 Then
+            lstGp2Edit.Selected(X) = False
         Else
-            lstGP2Edit.Selected(X) = True
+            lstGp2Edit.Selected(X) = True
         End If
         X = X + 1
     End If
 
     Get #FileNum, 49195, FileData
     If FileData <> 0 Then
-        lstGP2Edit.AddItem "Pit Crew Colours"
-        lstGP2Edit.ItemData(X) = "2"
-        Var.iInt1 = InStr(1, Read, GetLetter(2))
-        If Var.iInt1 <> 0 Then
-            lstGP2Edit.Selected(X) = False
+        lstGp2Edit.AddItem "Pit Crew Colours"
+        lstGp2Edit.ItemData(X) = "2"
+        If InStr(1, Read, GetLetter(2)) <> 0 Then
+            lstGp2Edit.Selected(X) = False
         Else
-            lstGP2Edit.Selected(X) = True
+            lstGp2Edit.Selected(X) = True
         End If
         X = X + 1
     End If
 
     Get #FileNum, 49196, FileData
     If FileData <> 0 Then
-        lstGP2Edit.AddItem "Car Settings"
-        lstGP2Edit.ItemData(X) = "3"
-        Var.iInt1 = InStr(1, Read, GetLetter(3))
-        If Var.iInt1 <> 0 Then
-            lstGP2Edit.Selected(X) = False
+        lstGp2Edit.AddItem "Car Settings"
+        lstGp2Edit.ItemData(X) = "3"
+        If InStr(1, Read, GetLetter(3)) <> 0 Then
+            lstGp2Edit.Selected(X) = False
         Else
-            lstGP2Edit.Selected(X) = True
+            lstGp2Edit.Selected(X) = True
         End If
         X = X + 1
     End If
 
     Get #FileNum, 49197, FileData
     If FileData <> 0 Then
-        lstGP2Edit.AddItem "Damage Data"
-        lstGP2Edit.ItemData(X) = "4"
-        Var.iInt1 = InStr(1, Read, GetLetter(4))
-        If Var.iInt1 <> 0 Then
-            lstGP2Edit.Selected(X) = False
+        lstGp2Edit.AddItem "Damage Data"
+        lstGp2Edit.ItemData(X) = "4"
+        If InStr(1, Read, GetLetter(4)) <> 0 Then
+            lstGp2Edit.Selected(X) = False
         Else
-            lstGP2Edit.Selected(X) = True
+            lstGp2Edit.Selected(X) = True
         End If
         X = X + 1
     End If
 
     Get #FileNum, 49198, FileData
     If FileData <> 0 Then
-        lstGP2Edit.AddItem "Camera Data"
-        lstGP2Edit.ItemData(X) = "5"
-        Var.iInt1 = InStr(1, Read, GetLetter(5))
-        If Var.iInt1 <> 0 Then
-            lstGP2Edit.Selected(X) = False
+        lstGp2Edit.AddItem "Camera Data"
+        lstGp2Edit.ItemData(X) = "5"
+        If InStr(1, Read, GetLetter(5)) <> 0 Then
+            lstGp2Edit.Selected(X) = False
         Else
-            lstGP2Edit.Selected(X) = True
+            lstGp2Edit.Selected(X) = True
         End If
         X = X + 1
     End If
 
     Get #FileNum, 49199, FileData
     If FileData <> 0 Then
-        lstGP2Edit.AddItem "Game Settings"
-        lstGP2Edit.ItemData(X) = "6"
-        Var.iInt1 = InStr(1, Read, GetLetter(6))
-        If Var.iInt1 <> 0 Then
-            lstGP2Edit.Selected(X) = False
+        lstGp2Edit.AddItem "Game Settings"
+        lstGp2Edit.ItemData(X) = "6"
+        If InStr(1, Read, GetLetter(6)) <> 0 Then
+            lstGp2Edit.Selected(X) = False
         Else
-            lstGP2Edit.Selected(X) = True
+            lstGp2Edit.Selected(X) = True
         End If
         X = X + 1
     End If
 
     Get #FileNum, 49200, FileData
     If FileData <> 0 Then
-        lstGP2Edit.AddItem "Points Data"
-        lstGP2Edit.ItemData(X) = "7"
-        Var.iInt1 = InStr(1, Read, GetLetter(7))
-        If Var.iInt1 <> 0 Then
-            lstGP2Edit.Selected(X) = False
+        lstGp2Edit.AddItem "Points Data"
+        lstGp2Edit.ItemData(X) = "7"
+        If InStr(1, Read, GetLetter(7)) <> 0 Then
+            lstGp2Edit.Selected(X) = False
         Else
-            lstGP2Edit.Selected(X) = True
+            lstGp2Edit.Selected(X) = True
         End If
         X = X + 1
     End If
 
     Get #FileNum, 49201, FileData
     If FileData <> 0 Then
-        lstGP2Edit.AddItem "Lap Data"
-        lstGP2Edit.ItemData(X) = "8"
-        Var.iInt1 = InStr(1, Read, GetLetter(8))
-        If Var.iInt1 <> 0 Then
-            lstGP2Edit.Selected(X) = False
+        lstGp2Edit.AddItem "Lap Data"
+        lstGp2Edit.ItemData(X) = "8"
+        If InStr(1, Read, GetLetter(8)) <> 0 Then
+            lstGp2Edit.Selected(X) = False
         Else
-            lstGP2Edit.Selected(X) = True
+            lstGp2Edit.Selected(X) = True
         End If
         X = X + 1
     End If
 
     Get #FileNum, 49153, FileData
     If FileData <> 0 Then
-        lstGP2Edit.AddItem "Car JAMs (" & FileData & ")"
-        lstGP2Edit.ItemData(X) = "9"
-        Var.iInt1 = InStr(1, Read, GetLetter(9))
-        If Var.iInt1 <> 0 Then
-            lstGP2Edit.Selected(X) = False
+        lstGp2Edit.AddItem "Car JAMs (" & FileData & ")"
+        lstGp2Edit.ItemData(X) = "9"
+        If InStr(1, Read, GetLetter(9)) <> 0 Then
+            lstGp2Edit.Selected(X) = False
         Else
-            lstGP2Edit.Selected(X) = True
+            lstGp2Edit.Selected(X) = True
         End If
         X = X + 1
     End If
 
     Get #FileNum, 49158, FileData
     If FileData <> 0 Then
-        lstGP2Edit.AddItem "Helmets JAMs"
-        lstGP2Edit.ItemData(X) = "10"
-        Var.iInt1 = InStr(1, Read, GetLetter(10))
-        If Var.iInt1 <> 0 Then
-            lstGP2Edit.Selected(X) = False
+        lstGp2Edit.AddItem "Helmets JAMs"
+        lstGp2Edit.ItemData(X) = "10"
+        If InStr(1, Read, GetLetter(10)) <> 0 Then
+            lstGp2Edit.Selected(X) = False
         Else
-            lstGP2Edit.Selected(X) = True
+            lstGp2Edit.Selected(X) = True
         End If
         X = X + 1
     End If
 
     Get #FileNum, 49183, FileData
     If FileData <> 0 Then
-        lstGP2Edit.AddItem "*Menu Helmets (" & FileData & ")"
-        lstGP2Edit.ItemData(X) = "11"
-        Var.iInt1 = InStr(1, Read, GetLetter(11))
-        If Var.iInt1 <> 0 Then
-            lstGP2Edit.Selected(X) = False
+        lstGp2Edit.AddItem "*Menu Helmets (" & FileData & ")"
+        lstGp2Edit.ItemData(X) = "11"
+        If InStr(1, Read, GetLetter(11)) <> 0 Then
+            lstGp2Edit.Selected(X) = False
         Else
-            lstGP2Edit.Selected(X) = True
+            lstGp2Edit.Selected(X) = True
         End If
         X = X + 1
         Label1.Visible = True
@@ -265,52 +252,48 @@ Dim X As Long
 
     Get #FileNum, 49173, FileData
     If FileData <> 0 Then
-        lstGP2Edit.AddItem "Cockpits (" & FileData & ")"
-        lstGP2Edit.ItemData(X) = "12"
-        Var.iInt1 = InStr(1, Read, GetLetter(12))
-        If Var.iInt1 <> 0 Then
-            lstGP2Edit.Selected(X) = False
+        lstGp2Edit.AddItem "Cockpits (" & FileData & ")"
+        lstGp2Edit.ItemData(X) = "12"
+        If InStr(1, Read, GetLetter(12)) <> 0 Then
+            lstGp2Edit.Selected(X) = False
         Else
-            lstGP2Edit.Selected(X) = True
+            lstGp2Edit.Selected(X) = True
         End If
         X = X + 1
     End If
 
     Get #FileNum, 49163, FileData
     If FileData <> 0 Then
-        lstGP2Edit.AddItem "Wheel JAMs (" & FileData & ")"
-        lstGP2Edit.ItemData(X) = "13"
-        Var.iInt1 = InStr(1, Read, GetLetter(13))
-        If Var.iInt1 <> 0 Then
-            lstGP2Edit.Selected(X) = False
+        lstGp2Edit.AddItem "Wheel JAMs (" & FileData & ")"
+        lstGp2Edit.ItemData(X) = "13"
+        If InStr(1, Read, GetLetter(13)) <> 0 Then
+            lstGp2Edit.Selected(X) = False
         Else
-            lstGP2Edit.Selected(X) = True
+            lstGp2Edit.Selected(X) = True
         End If
         X = X + 1
     End If
 
     Get #FileNum, 49178, FileData
     If FileData <> 0 Then
-        lstGP2Edit.AddItem "Sound Effects (" & FileData & ")"
-        lstGP2Edit.ItemData(X) = "14"
-        Var.iInt1 = InStr(1, Read, GetLetter(14))
-        If Var.iInt1 <> 0 Then
-            lstGP2Edit.Selected(X) = False
+        lstGp2Edit.AddItem "Sound Effects (" & FileData & ")"
+        lstGp2Edit.ItemData(X) = "14"
+        If InStr(1, Read, GetLetter(14)) <> 0 Then
+            lstGp2Edit.Selected(X) = False
         Else
-            lstGP2Edit.Selected(X) = True
+            lstGp2Edit.Selected(X) = True
         End If
         X = X + 1
     End If
 
     Get #FileNum, 49168, FileData
     If FileData <> 0 Then
-        lstGP2Edit.AddItem "JAM Files (" & FileData & ")"
-        lstGP2Edit.ItemData(X) = "15"
-        Var.iInt1 = InStr(1, Read, GetLetter(15))
-        If Var.iInt1 <> 0 Then
-            lstGP2Edit.Selected(X) = False
+        lstGp2Edit.AddItem "JAM Files (" & FileData & ")"
+        lstGp2Edit.ItemData(X) = "15"
+        If InStr(1, Read, GetLetter(15)) <> 0 Then
+            lstGp2Edit.Selected(X) = False
         Else
-            lstGP2Edit.Selected(X) = True
+            lstGp2Edit.Selected(X) = True
         End If
         X = X + 1
     End If

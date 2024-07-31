@@ -16,16 +16,11 @@ Option Explicit
 Enum SELECT_HKEY
     HKEY_CLASSES_ROOT = &H80000000
     HKEY_CURRENT_USER = &H80000001
-    HKEY_LOCAL_MACHINE = &H80000002
-    HKEY_USERS = &H80000003
-    HKEY_PERFORMANCE_DATA = &H80000004
-    HKEY_CURRENT_CONFIG = &H80000005
-    HKEY_DYN_DATA = &H80000006
 End Enum
 
 Enum REG_DATA
     REG_SZ = 1
-    REG_DWORD = 4
+    REG_DWORD = 4                      ' 32-bit number
 End Enum
 
 Const ERROR_SUCCESS = 0&
@@ -33,24 +28,12 @@ Const ERROR_SUCCESS = 0&
 Private Declare Function RegOpenKey Lib "advapi32.dll" Alias "RegOpenKeyA" (ByVal hKey As Long, ByVal lpSubKey As String, phkResult As Long) As Long
 Private Declare Function RegCloseKey Lib "advapi32.dll" (ByVal hKey As Long) As Long
 Private Declare Function RegCreateKey Lib "advapi32.dll" Alias "RegCreateKeyA" (ByVal hKey As Long, ByVal lpSubKey As String, phkResult As Long) As Long
-Private Declare Function RegDeleteKey Lib "advapi32.dll" Alias "RegDeleteKeyA" (ByVal hKey As Long, ByVal lpSubKey As String) As Long
-Private Declare Function RegDeleteValue Lib "advapi32.dll" Alias "RegDeleteValueA" (ByVal hKey As Long, ByVal lpValueName As String) As Long
+Private Declare Function RegEnumKey Lib "advapi32.dll" Alias "RegEnumKeyA" (ByVal hKey As Long, ByVal dwIndex As Long, ByVal lpName As String, ByVal cbName As Long) As Long
+Private Declare Function RegEnumValue Lib "advapi32.dll" Alias "RegEnumValueA" (ByVal hKey As Long, ByVal dwIndex As Long, ByVal lpValueName As String, lpcbValueName As Long, lpReserved As Long, lpType As Long, lpData As Byte, lpcbData As Long) As Long
 
 Private Declare Function RegQueryValueEx Lib "advapi32.dll" Alias "RegQueryValueExA" (ByVal hKey As Long, ByVal lpValueName As String, ByVal lpReserved As Long, lpType As Long, lpData As Any, lpcbData As Long) As Long
 Private Declare Function RegSetValueEx Lib "advapi32.dll" Alias "RegSetValueExA" (ByVal hKey As Long, ByVal lpValueName As String, ByVal Reserved As Long, ByVal dwType As Long, lpData As Any, ByVal cbData As Long) As Long
 
-Public Sub DeleteValue(ByVal hKey As SELECT_HKEY, ByVal strPath As String, ByVal strValue As String)
-Dim hCurKey As Long
-Dim lRegResult As Long
-    lRegResult = RegOpenKey(hKey, strPath, hCurKey)
-    lRegResult = RegDeleteValue(hCurKey, strValue)
-    lRegResult = RegCloseKey(hCurKey)
-End Sub
-
-Public Sub DeleteKey(ByVal hKey As SELECT_HKEY, ByVal strPath As String)
-Dim lRegResult As Long
-    lRegResult = RegDeleteKey(hKey, strPath)
-End Sub
 
 Public Sub CreateKey(ByVal hKey As SELECT_HKEY, strPath As String)
 Dim hCurKey As Long
@@ -59,15 +42,15 @@ Dim lRegResult As Long
     lRegResult = RegCloseKey(hCurKey)
 End Sub
 
-Public Function SaveValue(hKey As SELECT_HKEY, lType As REG_DATA, strPath As String, strValue As String, Optional strData As String, Optional lData As Long)
+Public Function SaveValue(hKey As SELECT_HKEY, lType As REG_DATA, Path As String, ByVal ValueName As String, Optional ByVal strData As String, Optional lData As Long)
 Dim hCurKey As Long
 Dim lRegResult As Long
-    lRegResult = RegCreateKey(hKey, strPath, hCurKey)
+    lRegResult = RegCreateKey(hKey, Path, hCurKey)
     Select Case lType
         Case REG_SZ
-            lRegResult = RegSetValueEx(hCurKey, strValue, 0, lType, ByVal strData, Len(strData))
+            lRegResult = RegSetValueEx(hCurKey, ValueName, 0, lType, ByVal strData, Len(strData))
         Case REG_DWORD
-            lRegResult = RegSetValueEx(hCurKey, strValue, 0&, lType, lData, 4)
+            lRegResult = RegSetValueEx(hCurKey, ValueName, 0&, lType, lData, 4)
     End Select
     lRegResult = RegCloseKey(hCurKey)
 End Function
@@ -100,4 +83,91 @@ Dim byBuffer() As Byte
         End If
     End If
     lRegResult = RegCloseKey(hCurKey)
+End Function
+
+Public Function GetAllKeys(hKey As SELECT_HKEY, strPath As String) As Variant
+' Returns: an array in a variant of strings
+Dim lRegResult As Long
+Dim lCounter As Long
+Dim hCurKey As Long
+Dim strBuffer As String
+Dim lDataBufferSize As Long
+Dim strNames() As String
+Dim intZeroPos As Integer
+    lCounter = 0
+    lRegResult = RegOpenKey(hKey, strPath, hCurKey)
+    Do
+        'initialise buffers (longest possible length=255)
+        lDataBufferSize = 255
+        strBuffer = String(lDataBufferSize, " ")
+        lRegResult = RegEnumKey(hCurKey, lCounter, strBuffer, lDataBufferSize)
+        If lRegResult = ERROR_SUCCESS Then
+            'tidy up string and save it
+            ReDim Preserve strNames(lCounter) As String
+            intZeroPos = InStr(strBuffer, Chr$(0))
+            If intZeroPos > 0 Then
+                strNames(UBound(strNames)) = Left$(strBuffer, intZeroPos - 1)
+            Else
+                strNames(UBound(strNames)) = strBuffer
+            End If
+            lCounter = lCounter + 1
+        Else
+            Exit Do
+        End If
+    Loop
+    GetAllKeys = strNames
+End Function
+
+Public Function GetAllValues(hKey As SELECT_HKEY, strPath As String) As Variant
+' Returns: a 2D array.
+' (x,0) is value name
+' (x,1) is value type (see constants)
+
+Dim lRegResult As Long
+Dim hCurKey As Long
+Dim lValueNameSize As Long
+Dim strValueName As String
+Dim lCounter As Long
+Dim byDataBuffer(4000) As Byte
+Dim lDataBufferSize As Long
+Dim lValueType As Long
+Dim strNames() As String
+Dim lTypes() As Long
+Dim intZeroPos As Integer
+
+    lRegResult = RegOpenKey(hKey, strPath, hCurKey)
+    Do
+        ' Initialise bufffers
+        lValueNameSize = 255
+        strValueName = String$(lValueNameSize, " ")
+        lDataBufferSize = 4000
+        lRegResult = RegEnumValue(hCurKey, lCounter, strValueName, lValueNameSize, 0&, lValueType, byDataBuffer(0), lDataBufferSize)
+        If lRegResult = ERROR_SUCCESS Then
+            ' Save the type
+            ReDim Preserve strNames(lCounter) As String
+            ReDim Preserve lTypes(lCounter) As Long
+            lTypes(UBound(lTypes)) = lValueType
+            'Tidy up string and save it
+            intZeroPos = InStr(strValueName, Chr$(0))
+            If intZeroPos > 0 Then
+                strNames(UBound(strNames)) = Left$(strValueName, intZeroPos - 1)
+            Else
+                strNames(UBound(strNames)) = strValueName
+            End If
+            lCounter = lCounter + 1
+        Else
+            Exit Do
+        End If
+    Loop
+    'Move data into array
+    If lCounter > 0 Then
+        ReDim Finisheddata(UBound(strNames), 0 To 1) As Variant
+        For lCounter = 0 To UBound(strNames)
+            Finisheddata(lCounter, 0) = strNames(lCounter)
+            Finisheddata(lCounter, 1) = GetValue(hKey, strPath, strNames(lCounter))
+        Next
+        GetAllValues = Finisheddata
+    Else
+        GetAllValues = vbNull
+    End If
 End Function

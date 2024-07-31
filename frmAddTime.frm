@@ -183,13 +183,13 @@ Private Sub Form_Load()
     cboType.AddItem "Race"
     cboType.ListIndex = 0
 
-    X = GetWindowLong(txtTime.hwnd, GWL_STYLE)
+    X = GetWindowLong(txtTime.hWnd, GWL_STYLE)
     X = X Or ES_NUMBER
-    Call SetWindowLong(txtTime.hwnd, GWL_STYLE, X)
+    Call SetWindowLong(txtTime.hWnd, GWL_STYLE, X)
 
-    X = GetWindowLong(txtDate.hwnd, GWL_STYLE)
+    X = GetWindowLong(txtDate.hWnd, GWL_STYLE)
     X = X Or ES_NUMBER
-    Call SetWindowLong(txtDate.hwnd, GWL_STYLE, X)
+    Call SetWindowLong(txtDate.hWnd, GWL_STYLE, X)
 End Sub
 
 Private Sub txtDate_Change()

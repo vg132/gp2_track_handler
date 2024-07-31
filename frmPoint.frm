@@ -31,17 +31,17 @@ Begin VB.Form frmPoint
       Width           =   1035
    End
    Begin VB.CommandButton cmdClose 
-      Cancel          =   -1  'True
       Caption         =   "&Close"
+      Default         =   -1  'True
       Height          =   315
       Left            =   2920
       TabIndex        =   29
       Top             =   2880
       Width           =   1035
    End
-   Begin VB.CommandButton cmdSave 
-      Caption         =   "&Save"
-      Default         =   -1  'True
+   Begin VB.CommandButton cmdCancel 
+      Cancel          =   -1  'True
+      Caption         =   "&Cancel"
       Height          =   315
       Left            =   2920
       TabIndex        =   28
@@ -333,16 +333,16 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub txtLaps_GotFocus(Index As Integer)
-    TextSelected
+Private Sub cmdCancel_Click()
+    Unload Me
 End Sub
 
 Private Sub cmdClose_Click()
+    SavePoint
     Unload Me
 End Sub
 
 Private Sub cmdF1_Click()
-    FileInfo.Changes = True
     txtPoint(0).Text = "10"
     txtPoint(1).Text = "6"
     txtPoint(2).Text = "4"
@@ -355,7 +355,6 @@ Private Sub cmdF1_Click()
 End Sub
 
 Private Sub cmdCart_Click()
-    FileInfo.Changes = True
     txtPoint(0).Text = "20"
     txtPoint(1).Text = "16"
     txtPoint(2).Text = "14"
@@ -374,16 +373,11 @@ Private Sub cmdCart_Click()
     Next
 End Sub
 
-Private Sub cmdSave_Click()
-    FileInfo.Changes = True
-    SavePoint
-End Sub
-
 Private Sub Form_Activate()
-    For Var.iInt1 = 0 To 25
-        Var.lLong1 = GetWindowLong(txtPoint(Var.iInt1).hwnd, GWL_STYLE)
-        Var.lLong1 = Var.lLong1 Or ES_NUMBER
-        Call SetWindowLong(txtPoint(Var.iInt1).hwnd, GWL_STYLE, Var.lLong1)
+    For tVar.iInt = 0 To 25
+        tVar.lLong = GetWindowLong(txtPoint(tVar.iInt).hWnd, GWL_STYLE)
+        tVar.lLong = tVar.lLong Or ES_NUMBER
+        Call SetWindowLong(txtPoint(tVar.iInt).hWnd, GWL_STYLE, tVar.lLong)
     Next
     GetPoint
 End Sub

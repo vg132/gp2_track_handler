@@ -11,8 +11,18 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-'Ej samma
-Public Function Laps(ByVal Ver As GP2Ver) As Variant
+Public Enum Gp2Ver
+    US = 1
+    UK = 2
+    NL = 3
+    IT = 4
+    Sp = 5
+    FR = 6
+    TY = 7
+End Enum
+
+'Not the same in every version
+Public Function Laps(ByVal Ver As Gp2Ver) As Long
     If Ver = FR Then
         Laps = 1951897
     ElseIf Ver = IT Then
@@ -30,7 +40,7 @@ Public Function Laps(ByVal Ver As GP2Ver) As Variant
     End If
 End Function
 
-Public Function Text(ByVal Ver As GP2Ver) As Variant
+Public Function Text(ByVal Ver As Gp2Ver) As Long
     If Ver = FR Then
         Text = 5686683
     ElseIf Ver = IT Then
@@ -48,7 +58,7 @@ Public Function Text(ByVal Ver As GP2Ver) As Variant
     End If
 End Function
 
-Public Function Point(ByVal Ver As GP2Ver) As Variant
+Public Function Point(ByVal Ver As Gp2Ver) As Long
     If Ver = FR Then
         Point = 1954110
     ElseIf Ver = IT Then
@@ -65,7 +75,8 @@ Public Function Point(ByVal Ver As GP2Ver) As Variant
         Point = 1954062
     End If
 End Function
-Public Function Length(ByVal Ver As GP2Ver) As Variant
+
+Public Function Length(ByVal Ver As Gp2Ver) As Long
     If Ver = FR Then
         Length = 1953886
     ElseIf Ver = IT Then
@@ -82,7 +93,8 @@ Public Function Length(ByVal Ver As GP2Ver) As Variant
         Length = 1953838
     End If
 End Function
-Public Function Level(ByVal Ver As GP2Ver) As Variant
+
+Public Function Level(ByVal Ver As Gp2Ver) As Long
     If Ver = FR Then
         Level = 5661835
     ElseIf Ver = IT Then
@@ -99,7 +111,8 @@ Public Function Level(ByVal Ver As GP2Ver) As Variant
         Level = 5661257
     End If
 End Function
-Public Function OneAsNull(ByVal Ver As GP2Ver) As Variant
+
+Public Function OneAsNull(ByVal Ver As Gp2Ver) As Long
     If Ver = FR Then
         OneAsNull = 1951896
     ElseIf Ver = IT Then
@@ -116,41 +129,56 @@ Public Function OneAsNull(ByVal Ver As GP2Ver) As Variant
         OneAsNull = 1951848
     End If
 End Function
-'Samma
-Public Function Help() As Variant
+'Same in every version
+Public Function Help() As Long
     Help = 1224469
 End Function
-Public Function Ware() As Variant
+
+Public Function Ware() As Long
     Ware = 1280585
 End Function
-Public Function SaveLapTime() As Variant
+
+Public Function SaveLapTime() As Long
     SaveLapTime = 1029530
 End Function
-Public Function SaveLapTime2() As Variant
+
+Public Function SaveLapTime2() As Long
     SaveLapTime2 = 1078955
 End Function
-Public Function NoPitSpeed() As Variant
+
+Public Function NoPitSpeed() As Long
     NoPitSpeed = 596852
 End Function
-Public Function UseTeam() As Variant
+
+Public Function UseTeam() As Long
     UseTeam = 678540
 End Function
-Public Function PQPower() As Variant
+
+Public Function PQPower() As Long
     PQPower = 678560
 End Function
-Public Function PRPower() As Variant
+
+Public Function PRPower() As Long
     PRPower = 678553
 End Function
-Public Function CWeight() As Variant
+
+Public Function CWeight() As Long
     CWeight = 1282253
 End Function
-Public Function PGrip() As Variant
+
+Public Function PGrip() As Long
     PGrip = 1282273
 End Function
-Public Function PWeight() As Variant
+
+Public Function PWeight() As Long
     PWeight = 1282249
 End Function
-Public Function PitSpeed() As Variant
+
+Public Function PitSpeed() As Long
     PitSpeed = 1280069
+End Function
+
+Public Function CCFuel() As Long
+    CCFuel = 937731
 End Function
 

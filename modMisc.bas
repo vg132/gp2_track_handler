@@ -1,11 +1,13 @@
 Attribute VB_Name = "modMisc"
-Private GP2Country As String
+Private Declare Function CheckSum Lib "ThLib.dll" (ByVal FileName As String) As Boolean
+
+Private Gp2Country As String
 
 Public Sub NewTree()
     frmMain.TreeView1.Nodes.Clear
     Dim nodX As Node    ' Create variable.
 
-    Set nodX = frmMain.TreeView1.Nodes.Add(, , "r", "GP2 Track's", 1, 2)
+    Set nodX = frmMain.TreeView1.Nodes.Add(, , "r", "Gp2 Track's", 1, 2)
 
     X = 11
     Do Until X > 26
@@ -16,85 +18,65 @@ Public Sub NewTree()
 End Sub
 
 Public Sub TextSelected()
-Dim i As Integer
-Dim oMyTextBox As Object
-Set oMyTextBox = Screen.ActiveControl
-    If TypeName(oMyTextBox) = "TextBox" Then
-        i = Len(oMyTextBox.Text)
-        oMyTextBox.SelStart = 0
-        oMyTextBox.SelLength = i
+Dim oText As Object
+    Set oText = Screen.ActiveControl
+    If TypeName(oText) = "TextBox" Then
+        oText.SelStart = 0
+        oText.SelLength = Len(oText.Text)
     End If
 End Sub
 
-Public Sub GetGP2Version()
-Dim V
-'-- Läs GP2.exe och titta vad det är för version (språk)
-    Read2 = "GP2 Version:"
-    V = "Version 1.0b"
-    FileNum = FreeFile
-    Open GP2Dir + "\gp2.exe" For Binary As FileNum
-    Read = String(23, " ")
-    Get #FileNum, 5671742, Read
-    If Read = "US English Version 1.0b" Then
+Public Sub GetGp2Version()
+Dim V As String
+Dim Size As Long
+    V = ""
+    Size = FileLen(Gp2Dir + "\gp2.exe")
+    If Size = 5707881 Then
+        'Spanish Version
+        Gp2V = Sp
+        V = "Spanish"
+    ElseIf Size = 5707113 Then
+        'German Version
+        Gp2V = TY
+        V = "German"
+    ElseIf Size = 5705385 Then
+        'Dutch Version
+        Gp2V = NL
+        V = "Dutch"
+    ElseIf Size = 5707369 Then
+        'French Version
+        Gp2V = FR
+        V = "French"
+    ElseIf Size = 5706553 Then
+        'Italian Version
+        Gp2V = IT
+        V = "Italian"
+    ElseIf Size = 5702937 Then
+        FileNum = FreeFile
+        Open Gp2Dir & "\gp2.exe" For Binary As FileNum
+        Read = String(23, " ")
+        Get #FileNum, 5671742, Read
         Close FileNum
-        GP2V = US
-        frmMain.stbMain.Panels(2) = Read2 & " American " + V
-        Exit Sub
+        If Read = "US English Version 1.0b" Then
+            Gp2V = US
+            V = "American"
+        Else
+            Gp2V = UK
+            V = "UK English"
+        End If
+    Else
+        MsgBox "Track Handler was not able to check your Gp2 Version." & vbLf & _
+        "You may have to reinstall Gp2 to make this program work.", vbInformation, TH
     End If
-    Get #FileNum, 5671743, Read
-    If Read = "UK English Version 1.0b" Then
-        Close FileNum
-        GP2V = UK
-        frmMain.stbMain.Panels(2) = Read2 & " UK English " + V
-        Exit Sub
+    If V <> "" Then
+        frmMain.StatusBar1.Panels(2).Text = "Gp2 Version: " & V & " Version 1.0b"
     End If
-    Get #FileNum, 5673614, Read
-    If Read = "Nederlandse versie 1.0b" Then
-        Close FileNum
-        GP2V = NL
-        frmMain.stbMain.Panels(2) = Read2 & " Dutch " + V
-        Exit Sub
-    End If
-    Read = String(5, " ")
-    Get #FileNum, 5675458, Read
-    If Read = "Versi" Then
-        Close FileNum
-        GP2V = Sp
-        frmMain.stbMain.Panels(2) = Read2 & " Spanish " + V
-        Exit Sub
-    End If
-    Read = String(7, " ")
-    Get #FileNum, 5674990, Read
-    If Read = "Version" Then
-        Close FileNum
-        GP2V = FR
-        frmMain.stbMain.Panels(2) = Read2 & " French " + V
-        Exit Sub
-    End If
-    Read = String(8, " ")
-    Get #FileNum, 5674331, Read
-    If Read = "Versione" Then
-        Close FileNum
-        GP2V = IT
-        frmMain.stbMain.Panels(2) = Read2 & " Italian " + V
-        Exit Sub
-    End If
-    Read = String(21, " ")
-    Get #FileNum, 5674544, Read
-    If Read = "Deutsche Ausgabe 1.0b" Then
-        Close FileNum
-        GP2V = TY
-        frmMain.stbMain.Panels(2) = Read2 & " German " + V
-        Exit Sub
-    End If
-    Close FileNum
-    MsgBox LoadResString(107), vbInformation, TH
-    End
 End Sub
 
-Public Sub LoadGP2Aid()
-    Read2 = oMisc.ReadINI("Misc", "Aids", TempFile)
-    Read = Mid(Read2, 1, 7)
+Public Sub LoadGp2Aid(ByVal sAids As String)
+    Read2 = ReadINI("Misc", "Aids", TempFile)
+    If Read2 = "" Then Read2 = "11111110111111011111101001110100001"
+    Read = Mid(sAids, 1, 7)
     If Read <> "" Then
         For X = 0 To 6
             Read3 = Mid(Read, X + 1, 1)
@@ -106,8 +88,7 @@ Public Sub LoadGP2Aid()
                 frmMain.R(X).Tag = "Off"
             End If
         Next
-
-        Read = Mid(Read2, 8, 7)
+        Read = Mid(sAids, 8, 7)
         For X = 0 To 6
             Read3 = Mid(Read, X + 1, 1)
             If Read3 = "1" Then
@@ -118,7 +99,7 @@ Public Sub LoadGP2Aid()
                 frmMain.A(X).Tag = "Off"
             End If
         Next
-        Read = Mid(Read2, 15, 7)
+        Read = Mid(sAids, 15, 7)
         For X = 0 To 6
             Read3 = Mid(Read, X + 1, 1)
             If Read3 = "1" Then
@@ -129,7 +110,7 @@ Public Sub LoadGP2Aid()
                 frmMain.S(X).Tag = "Off"
             End If
         Next
-        Read = Mid(Read2, 22, 7)
+        Read = Mid(sAids, 22, 7)
         For X = 0 To 6
             Read3 = Mid(Read, X + 1, 1)
             If Read3 = "1" Then
@@ -140,7 +121,7 @@ Public Sub LoadGP2Aid()
                 frmMain.P(X).Tag = "Off"
             End If
         Next
-        Read = Mid(Read2, 29, 7)
+        Read = Mid(sAids, 29, 7)
         For X = 0 To 6
             Read3 = Mid(Read, X + 1, 1)
             If Read3 = "1" Then
@@ -151,13 +132,11 @@ Public Sub LoadGP2Aid()
                 frmMain.AC(X).Tag = "Off"
             End If
         Next
-    Else
-        frmMain.DriveHelpDefault
     End If
 End Sub
 
 Public Sub RegFileName()
-    oReg.SaveValue HKEY_CLASSES_ROOT, REG_SZ, "Track Handler", "", "GP2 Track Handler File"
+    oReg.SaveValue HKEY_CLASSES_ROOT, REG_SZ, "Track Handler", "", "Gp2 Track Handler File"
     oReg.SaveValue HKEY_CLASSES_ROOT, REG_SZ, ".ths", "", "Track Handler"
     Read = """" & LCase(ProgramDir) & "\" & LCase(App.EXEName) & ".exe" & """" & " %1"
     oReg.SaveValue HKEY_CLASSES_ROOT, REG_SZ, "Track Handler\Shell\Open\Command", "", Read
@@ -165,34 +144,7 @@ Public Sub RegFileName()
     oReg.SaveValue HKEY_CLASSES_ROOT, REG_SZ, "Track Handler\DefaultIcon", "", Read
 End Sub
 
-Public Function GetFileName(FilePath As String) As String
-'*************************************
-'Function Name: GetFileName
-'Use: Strip File Name from Path
-'Remarks:
-'History:
-'Programmer: Viktor Gars
-'Date: 1999-08-26
-'*************************************
-On Error GoTo ErrHandler
-    For X = Len(FilePath) To 1 Step -1
-        If Mid(FilePath, X, 1) = "\" Then Exit For
-    Next
-    GetFileName = Mid(FilePath, X + 1)
-Exit Function
-ErrHandler:
-
-End Function
-
 Public Sub CreateDir(Path As String)
-'*************************************
-'Function Name: CreateFolders
-'Use: Create Dirs
-'Remarks:
-'History:
-'Programmer: Viktor Gars
-'Date: 1999-08-26
-'*************************************
 On Error GoTo ErrHandler
     If Right(Path, 1) <> "\" Then Path = Path & "\"
     For X = 4 To Len(Path)
@@ -209,16 +161,21 @@ ErrHandler:
     Case 75
         Resume Next
     Case Else
-        MsgBox "Error: " & Err.Number
+        MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
+            "Error Desctiption: " & Err.Description & vbLf & _
+            "Error Source: CreateDir()", vbCritical, TH & " - Error"
     End Select
 End Sub
 
 Public Sub WriteCheckSum(ByVal sFile As String)
-    sFile = oMisc.GetShortName(sFile)
-    RetVal = ShellExecute(frmMain.hwnd, "open", ProgramDir & "\gp2utils\thcheck.exe", sFile, vbNullString, 1)
-    oMisc.CloseDosPrompt "thcheck"
+Dim RetVal As Boolean
+    RetVal = CheckSum(sFile)
+    If RetVal = False Then
+        MsgBox "Error when writing checksum to file " & sFile & ".", vbCritical, TH
+    End If
 End Sub
 
-Public Function GetExt(File As String) As String
-    GetExt = LCase(Mid(File, Len(File) - 3))
-End Function
+Public Sub INetLink(URL As String, hWnd As Long)
+Dim RetVal
+    RetVal = ShellExecute(hWnd, "open", URL, vbNullString, vbNullString, 1)
+End Sub

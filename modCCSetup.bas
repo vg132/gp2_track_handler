@@ -5,8 +5,8 @@ Dim CCSetup As Long
 Public Sub GetCCSetup(ByVal TPath As String)
     FileNum = FreeFile
     Open TPath For Binary As FileNum
-    Get #FileNum, 4117, Var.lLong1
-    CCSetup = Var.lLong1 + 4128
+    Get #FileNum, 4117, tVar.lLong
+    CCSetup = tVar.lLong + 4128
     Read = String(30, " ")
     Get #FileNum, CCSetup, Read
     Close FileNum

@@ -1,48 +1,56 @@
 Attribute VB_Name = "modGP2Setup"
 
 Public Sub ExportRaceSetup()
-    Var.sString1 = oMisc.ReadINI("Track " & Exp.TrackNr + 1, "TPath", TempFile)
+    Read = ReadINI("Track " & Exp.TrackNr + 1, "TPath", TempFile)
     FileNum = FreeFile
-    Open Var.sString1 For Binary As FileNum
-    Get #FileNum, 3997, Var.iInt1
-    If Var.iInt1 = 12345 Then
-        Get #FileNum, 3999, Var.iInt1
-        If Var.iInt1 = 1 Then
-            Var.sString1 = String(48, Chr(0))
-            Get #FileNum, 4049, Var.sString1
-            Var.sString2 = Mid(Var.sString1, 1, 8)
-            Put #Exp.F1FileNum, 11251 + (Exp.TrackNr * 96), Var.sString2
-            Var.sString2 = Mid(Var.sString1, 10, 1)
-            Put #Exp.F1FileNum, 11251 + (Exp.TrackNr * 96) + 9, Var.sString2
-            Var.sString2 = Mid(Var.sString1, 17)
-            Put #Exp.F1FileNum, 11251 + (Exp.TrackNr * 96) + 16, Var.sString2
+    Open Read For Binary As FileNum
+    Get #FileNum, 3997, tVar.iInt
+    If tVar.iInt = 12345 Then
+        Get #FileNum, 3999, tVar.iInt
+        If tVar.iInt = 1 Then
+            Read = String(48, Chr(0))
+            Get #FileNum, 4049, Read
+            Read2 = Mid(Read, 1, 8)
+            Put #Exp.F1FileNum, 11251 + (Exp.TrackNr * 96), Read2
+            Read2 = Mid(Read, 10, 1)
+            Put #Exp.F1FileNum, 11251 + (Exp.TrackNr * 96) + 9, Read2
+            Read2 = Mid(Read, 17)
+            Put #Exp.F1FileNum, 11251 + (Exp.TrackNr * 96) + 16, Read2
+        Else
+            ResetSetup Race
         End If
+    Else
+        ResetSetup Race
     End If
     Close FileNum
 End Sub
 
-Public Sub ExportqualSetup()
-    Var.sString1 = oMisc.ReadINI("Track " & Exp.TrackNr + 1, "TPath", TempFile)
+Public Sub ExportQualSetup()
+    Read = ReadINI("Track " & Exp.TrackNr + 1, "TPath", TempFile)
     FileNum = FreeFile
-    Open Var.sString1 For Binary As FileNum
-    Get #FileNum, 3997, Var.iInt1
-    If Var.iInt1 = 12345 Then
-        Get #FileNum, 3999, Var.iInt1
-        If Var.iInt1 = 1 Then
-            Var.sString1 = String(48, Chr(0))
-            Get #FileNum, 4001, Var.sString1
-            Var.sString2 = Mid(Var.sString1, 1, 8)
-            Put #Exp.F1FileNum, 11299 + (Exp.TrackNr * 96), Var.sString2
-            Var.sString2 = Mid(Var.sString1, 10, 1)
-            Put #Exp.F1FileNum, 11299 + (Exp.TrackNr * 96) + 9, Var.sString2
-            Var.sString2 = Mid(Var.sString1, 17)
-            Put #Exp.F1FileNum, 11299 + (Exp.TrackNr * 96) + 16, Var.sString2
+    Open Read For Binary As FileNum
+    Get #FileNum, 3997, tVar.iInt
+    If tVar.iInt = 12345 Then
+        Get #FileNum, 3999, tVar.iInt
+        If tVar.iInt = 1 Then
+            Read = String(48, Chr(0))
+            Get #FileNum, 4001, Read
+            Read2 = Mid(Read, 1, 8)
+            Put #Exp.F1FileNum, 11299 + (Exp.TrackNr * 96), Read2
+            Read2 = Mid(Read, 10, 1)
+            Put #Exp.F1FileNum, 11299 + (Exp.TrackNr * 96) + 9, Read2
+            Read2 = Mid(Read, 17)
+            Put #Exp.F1FileNum, 11299 + (Exp.TrackNr * 96) + 16, Read2
+        Else
+            ResetSetup Qual
         End If
+    Else
+        ResetSetup Qual
     End If
     Close FileNum
 End Sub
 
-Public Sub AddSetup(ByVal TrackFile As String, ByVal SetupFile As String, QOrR As ImpExpTime)
+Public Sub AddSetup(ByVal TrackFile As String, ByVal SetupFile As String, QOrR As QR)
     FileNum = FreeFile
     Open SetupFile For Binary As FileNum
     Read = String(48, Chr(0))
@@ -55,10 +63,10 @@ Public Sub AddSetup(ByVal TrackFile As String, ByVal SetupFile As String, QOrR A
     Else
         Put #FileNum, 4049, Read
     End If
-    Var.iInt1 = 1
-    Put #FileNum, 3999, Var.iInt1
-    Var.iInt1 = 12345
-    Put #FileNum, 3997, Var.iInt1
+    tVar.iInt = 1
+    Put #FileNum, 3999, tVar.iInt
+    tVar.iInt = 12345
+    Put #FileNum, 3997, tVar.iInt
     Close FileNum
 End Sub
 
@@ -162,10 +170,10 @@ Dim bByte As Byte
         Put #FileNum, 76, bByte
 
         'Anti Roll Bar
-        Var.iInt1 = .cboRollR.ListIndex
-        Put #FileNum, 77, Var.iInt1
-        Var.iInt1 = .cboRollF.ListIndex
-        Put #FileNum, 79, Var.iInt1
+        tVar.iInt = .cboRollR.ListIndex
+        Put #FileNum, 77, tVar.iInt
+        tVar.iInt = .cboRollF.ListIndex
+        Put #FileNum, 79, tVar.iInt
     End With
     Close FileNum
 End Sub
@@ -292,4 +300,53 @@ Public Sub DeteteSetup(File As String)
     Open File For Binary As FileNum
     Read = String(100, Chr(0))
     Put #FileNum, 3997, Read
+    Close FileNum
 End Sub
+
+Public Sub ResetSetup(ByVal sQT As QR)
+Dim vData As Variant
+Dim X As Integer
+Dim sData As String
+    sData = ""
+    vData = LoadResData(101, "Setup")
+    For X = 0 To 8
+        sData = sData & Chr(vData(X))
+    Next
+    If sQT = Race Then
+        Put #Exp.F1FileNum, 11251 + (Exp.TrackNr * 96), sData
+    Else
+        Put #Exp.F1FileNum, 11299 + (Exp.TrackNr * 96), sData
+    End If
+    sData = Chr(vData(9))
+    If sQT = Race Then
+        Put #Exp.F1FileNum, 11251 + (Exp.TrackNr * 96) + 9, sData
+    Else
+        Put #Exp.F1FileNum, 11299 + (Exp.TrackNr * 96) + 9, sData
+    End If
+    sData = ""
+    For X = 16 To UBound(vData)
+        sData = sData & Chr(vData(X))
+    Next
+    If sQT = Race Then
+        Put #Exp.F1FileNum, 11251 + (Exp.TrackNr * 96) + 16, sData
+    Else
+        Put #Exp.F1FileNum, 11299 + (Exp.TrackNr * 96) + 16, sData
+    End If
+End Sub
+
+Public Function CheckSetup(ByVal FileName As String) As Boolean
+    FileNum = FreeFile
+    Open FileName For Binary As FileNum
+    Get #FileNum, 3997, tVar.iInt
+    If tVar.iInt = 12345 Then
+        Get #FileNum, 3999, tVar.iInt
+        If tVar.iInt = 1 Then
+            CheckSetup = True
+        Else
+            CheckSetup = False
+        End If
+    Else
+        CheckSetup = False
+    End If
+    Close FileNum
+End Function

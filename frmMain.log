@@ -1,1 +1,11 @@
-Line 169: Cannot load control Jam2Jad.
+Line 16: Class ComctlLib.Toolbar of control Toolbar1 was not a loaded control class.
+Line 166: Class ComctlLib.StatusBar of control StatusBar1 was not a loaded control class.
+Line 241: Class ComctlLib.TabStrip of control tabPic was not a loaded control class.
+Line 564: Class ComctlLib.Toolbar of control Toolbar2 was not a loaded control class.
+Line 621: Class ComctlLib.ListView of control lstFile was not a loaded control class.
+Line 1083: Class ComctlLib.ListView of control lstTime was not a loaded control class.
+Line 1767: Class ComctlLib.TreeView of control TreeView1 was not a loaded control class.
+Line 1786: Class ComctlLib.TabStrip of control tabMain was not a loaded control class.
+Line 1824: Class ComctlLib.ImageList of control imgBig was not a loaded control class.
+Line 1870: Class ComctlLib.ImageList of control imgSmall was not a loaded control class.
+Line 1916: Class ComctlLib.ImageList of control imgMisc was not a loaded control class.

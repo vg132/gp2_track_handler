@@ -1,953 +1,1002 @@
 VERSION 5.00
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Begin VB.Form frmSetup 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "GP2 Setup File Editor"
-   ClientHeight    =   6090
+   Caption         =   "Gp2 Setup File Editor"
+   ClientHeight    =   4260
    ClientLeft      =   4485
    ClientTop       =   1725
-   ClientWidth     =   8145
+   ClientWidth     =   6270
    Icon            =   "frmSetup.frx":0000
    LinkTopic       =   "frmSetup"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   6090
-   ScaleWidth      =   8145
+   ScaleHeight     =   4260
+   ScaleWidth      =   6270
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  'CenterOwner
+   Begin VB.Frame fraMisc 
+      BorderStyle     =   0  'None
+      Height          =   3495
+      Left            =   -10000
+      TabIndex        =   68
+      Top             =   480
+      Width           =   4215
+      Begin VB.Frame fraBrake 
+         Caption         =   "Brake Balans"
+         Height          =   1095
+         Left            =   2160
+         TabIndex        =   92
+         Top             =   1320
+         Width           =   2055
+         Begin VB.HScrollBar hscBrake 
+            Height          =   255
+            LargeChange     =   10
+            Left            =   120
+            Max             =   200
+            TabIndex        =   93
+            Top             =   720
+            Value           =   102
+            Width           =   1815
+         End
+         Begin VB.Label lblFront 
+            Alignment       =   1  'Right Justify
+            AutoSize        =   -1  'True
+            Caption         =   "37500"
+            Height          =   195
+            Left            =   1485
+            TabIndex        =   97
+            Top             =   480
+            Width           =   450
+         End
+         Begin VB.Label lblRear 
+            AutoSize        =   -1  'True
+            Caption         =   "62500"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   96
+            Top             =   480
+            Width           =   450
+         End
+         Begin VB.Label Label19 
+            AutoSize        =   -1  'True
+            Caption         =   "Front"
+            Height          =   195
+            Left            =   1590
+            TabIndex        =   95
+            Top             =   240
+            Width           =   360
+         End
+         Begin VB.Label Label18 
+            AutoSize        =   -1  'True
+            Caption         =   "Rear"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   94
+            Top             =   240
+            Width           =   345
+         End
+      End
+      Begin VB.Frame fraRollBar 
+         Caption         =   "Anti Roll Bar"
+         Height          =   1095
+         Left            =   2160
+         TabIndex        =   87
+         Top             =   0
+         Width           =   2055
+         Begin VB.ComboBox cboRollF 
+            Height          =   315
+            Left            =   720
+            Style           =   2  'Dropdown List
+            TabIndex        =   89
+            Top             =   240
+            Width           =   1110
+         End
+         Begin VB.ComboBox cboRollR 
+            Height          =   315
+            Left            =   720
+            Style           =   2  'Dropdown List
+            TabIndex        =   88
+            Top             =   660
+            Width           =   1110
+         End
+         Begin VB.Label Label17 
+            AutoSize        =   -1  'True
+            Caption         =   "Rear"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   91
+            Top             =   720
+            Width           =   345
+         End
+         Begin VB.Label Label12 
+            AutoSize        =   -1  'True
+            Caption         =   "Front"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   90
+            Top             =   300
+            Width           =   360
+         End
+      End
+      Begin VB.Frame fraGear 
+         Caption         =   "Gears"
+         ClipControls    =   0   'False
+         Height          =   2415
+         Left            =   0
+         TabIndex        =   74
+         Top             =   0
+         Width           =   2055
+         Begin VB.TextBox txtGear 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   5
+            Left            =   1440
+            MaxLength       =   2
+            TabIndex        =   80
+            Text            =   "59"
+            Top             =   2040
+            Width           =   375
+         End
+         Begin VB.TextBox txtGear 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   4
+            Left            =   1440
+            MaxLength       =   2
+            TabIndex        =   79
+            Text            =   "54"
+            Top             =   1680
+            Width           =   375
+         End
+         Begin VB.TextBox txtGear 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   3
+            Left            =   1440
+            MaxLength       =   2
+            TabIndex        =   78
+            Text            =   "48"
+            Top             =   1320
+            Width           =   375
+         End
+         Begin VB.TextBox txtGear 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   2
+            Left            =   1440
+            MaxLength       =   2
+            TabIndex        =   77
+            Text            =   "42"
+            Top             =   960
+            Width           =   375
+         End
+         Begin VB.TextBox txtGear 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   1
+            Left            =   1440
+            MaxLength       =   2
+            TabIndex        =   76
+            Text            =   "35"
+            Top             =   600
+            Width           =   375
+         End
+         Begin VB.TextBox txtGear 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   0
+            Left            =   1440
+            MaxLength       =   2
+            TabIndex        =   75
+            Text            =   "28"
+            Top             =   240
+            Width           =   375
+         End
+         Begin VB.Label Label8 
+            AutoSize        =   -1  'True
+            Caption         =   "6th Gear (21-80)"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   86
+            Top             =   2055
+            Width           =   1155
+         End
+         Begin VB.Label Label7 
+            AutoSize        =   -1  'True
+            Caption         =   "5th Gear (20-79)"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   85
+            Top             =   1695
+            Width           =   1155
+         End
+         Begin VB.Label Label6 
+            AutoSize        =   -1  'True
+            Caption         =   "4th Gear (19-78)"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   84
+            Top             =   1335
+            Width           =   1155
+         End
+         Begin VB.Label Label5 
+            AutoSize        =   -1  'True
+            Caption         =   "1st Gear (16-75)"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   83
+            Top             =   255
+            Width           =   1140
+         End
+         Begin VB.Label Label4 
+            AutoSize        =   -1  'True
+            Caption         =   "2nd Gear (17-76)"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   82
+            Top             =   615
+            Width           =   1200
+         End
+         Begin VB.Label Label3 
+            AutoSize        =   -1  'True
+            Caption         =   "3rd Gear (18-77)"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   81
+            Top             =   975
+            Width           =   1155
+         End
+      End
+      Begin VB.Frame fraWing 
+         Caption         =   "Wings"
+         Height          =   975
+         Left            =   0
+         TabIndex        =   69
+         Top             =   2520
+         Width           =   2055
+         Begin VB.TextBox txtRWing 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Left            =   1440
+            MaxLength       =   2
+            TabIndex        =   71
+            Text            =   "12"
+            Top             =   600
+            Width           =   375
+         End
+         Begin VB.TextBox txtFWing 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Left            =   1440
+            MaxLength       =   2
+            TabIndex        =   70
+            Text            =   "10"
+            Top             =   240
+            Width           =   375
+         End
+         Begin VB.Label Label2 
+            AutoSize        =   -1  'True
+            Caption         =   "Rear Wing (1-20)"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   73
+            Top             =   645
+            Width           =   1215
+         End
+         Begin VB.Label Label1 
+            AutoSize        =   -1  'True
+            Caption         =   "Front Wing (1-20)"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   72
+            Top             =   285
+            Width           =   1230
+         End
+      End
+   End
+   Begin VB.Frame fraRear 
+      BorderStyle     =   0  'None
+      Height          =   2895
+      Left            =   -10000
+      TabIndex        =   35
+      Top             =   480
+      Width           =   5895
+      Begin VB.Frame fraLeftRear 
+         Caption         =   "Left Rear"
+         Height          =   2895
+         Left            =   0
+         TabIndex        =   52
+         Top             =   0
+         Width           =   2895
+         Begin VB.ComboBox cboSpringR 
+            Height          =   315
+            Index           =   0
+            Left            =   1560
+            Style           =   2  'Dropdown List
+            TabIndex        =   59
+            Top             =   2160
+            Width           =   1215
+         End
+         Begin VB.HScrollBar hscHeightR 
+            Height          =   255
+            Index           =   0
+            LargeChange     =   10
+            Left            =   1560
+            Max             =   160
+            Min             =   40
+            TabIndex        =   58
+            Top             =   2520
+            Value           =   116
+            Width           =   1215
+         End
+         Begin VB.TextBox txtSlowReboundR 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   0
+            Left            =   2400
+            MaxLength       =   2
+            TabIndex        =   57
+            Text            =   "15"
+            Top             =   1800
+            Width           =   375
+         End
+         Begin VB.TextBox txtSlowBumpR 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   0
+            Left            =   2400
+            MaxLength       =   2
+            TabIndex        =   56
+            Text            =   "15"
+            Top             =   1440
+            Width           =   375
+         End
+         Begin VB.TextBox txtFastReboundR 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   0
+            Left            =   2400
+            MaxLength       =   1
+            TabIndex        =   55
+            Text            =   "4"
+            Top             =   1080
+            Width           =   375
+         End
+         Begin VB.TextBox txtFastBumpR 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   0
+            Left            =   2400
+            MaxLength       =   1
+            TabIndex        =   54
+            Text            =   "4"
+            Top             =   720
+            Width           =   375
+         End
+         Begin VB.TextBox txtPacR 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   0
+            Left            =   2400
+            MaxLength       =   2
+            TabIndex        =   53
+            Text            =   "0"
+            Top             =   360
+            Width           =   375
+         End
+         Begin VB.Label lblHeightR 
+            Caption         =   "58"
+            Height          =   195
+            Index           =   0
+            Left            =   1200
+            TabIndex        =   67
+            Top             =   2530
+            Width           =   315
+         End
+         Begin VB.Label Label9 
+            AutoSize        =   -1  'True
+            Caption         =   "Packers (0-80)"
+            Height          =   195
+            Index           =   3
+            Left            =   120
+            TabIndex        =   66
+            Top             =   375
+            Width           =   1035
+         End
+         Begin VB.Label Label10 
+            AutoSize        =   -1  'True
+            Caption         =   "Fast Rebound (0-8)"
+            Height          =   195
+            Index           =   3
+            Left            =   120
+            TabIndex        =   65
+            Top             =   1095
+            Width           =   1365
+         End
+         Begin VB.Label Label11 
+            AutoSize        =   -1  'True
+            Caption         =   "Slow Bump (0-24)"
+            Height          =   195
+            Index           =   3
+            Left            =   120
+            TabIndex        =   64
+            Top             =   1455
+            Width           =   1245
+         End
+         Begin VB.Label Label13 
+            AutoSize        =   -1  'True
+            Caption         =   "Ride Height"
+            Height          =   195
+            Index           =   3
+            Left            =   120
+            TabIndex        =   63
+            Top             =   2540
+            Width           =   840
+         End
+         Begin VB.Label Label14 
+            AutoSize        =   -1  'True
+            Caption         =   "Damper Fast Bump (0-8)"
+            Height          =   195
+            Index           =   3
+            Left            =   120
+            TabIndex        =   62
+            Top             =   735
+            Width           =   1710
+         End
+         Begin VB.Label Label15 
+            AutoSize        =   -1  'True
+            Caption         =   "Slow Rebound (0-24)"
+            Height          =   195
+            Index           =   3
+            Left            =   120
+            TabIndex        =   61
+            Top             =   1815
+            Width           =   1500
+         End
+         Begin VB.Label Label16 
+            AutoSize        =   -1  'True
+            Caption         =   "Spring"
+            Height          =   195
+            Index           =   3
+            Left            =   120
+            TabIndex        =   60
+            Top             =   2180
+            Width           =   450
+         End
+      End
+      Begin VB.Frame fraRightRead 
+         Caption         =   "Right Rear"
+         Height          =   2895
+         Left            =   3000
+         TabIndex        =   36
+         Top             =   0
+         Width           =   2895
+         Begin VB.ComboBox cboSpringR 
+            Height          =   315
+            Index           =   1
+            Left            =   1560
+            Style           =   2  'Dropdown List
+            TabIndex        =   43
+            Top             =   2160
+            Width           =   1215
+         End
+         Begin VB.HScrollBar hscHeightR 
+            Height          =   255
+            Index           =   1
+            LargeChange     =   10
+            Left            =   1560
+            Max             =   160
+            Min             =   40
+            TabIndex        =   42
+            Top             =   2520
+            Value           =   116
+            Width           =   1215
+         End
+         Begin VB.TextBox txtSlowReboundR 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   1
+            Left            =   2400
+            MaxLength       =   2
+            TabIndex        =   41
+            Text            =   "15"
+            Top             =   1800
+            Width           =   375
+         End
+         Begin VB.TextBox txtSlowBumpR 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   1
+            Left            =   2400
+            MaxLength       =   2
+            TabIndex        =   40
+            Text            =   "15"
+            Top             =   1440
+            Width           =   375
+         End
+         Begin VB.TextBox txtFastReboundR 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   1
+            Left            =   2400
+            MaxLength       =   1
+            TabIndex        =   39
+            Text            =   "4"
+            Top             =   1080
+            Width           =   375
+         End
+         Begin VB.TextBox txtFastBumpR 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   1
+            Left            =   2400
+            MaxLength       =   1
+            TabIndex        =   38
+            Text            =   "4"
+            Top             =   720
+            Width           =   375
+         End
+         Begin VB.TextBox txtPacR 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   1
+            Left            =   2400
+            MaxLength       =   2
+            TabIndex        =   37
+            Text            =   "0"
+            Top             =   360
+            Width           =   375
+         End
+         Begin VB.Label lblHeightR 
+            Caption         =   "58"
+            Height          =   195
+            Index           =   1
+            Left            =   1200
+            TabIndex        =   51
+            Top             =   2530
+            Width           =   315
+         End
+         Begin VB.Label Label9 
+            AutoSize        =   -1  'True
+            Caption         =   "Packers (0-80)"
+            Height          =   195
+            Index           =   2
+            Left            =   120
+            TabIndex        =   50
+            Top             =   375
+            Width           =   1035
+         End
+         Begin VB.Label Label10 
+            AutoSize        =   -1  'True
+            Caption         =   "Fast Rebound (0-8)"
+            Height          =   195
+            Index           =   2
+            Left            =   120
+            TabIndex        =   49
+            Top             =   1095
+            Width           =   1365
+         End
+         Begin VB.Label Label11 
+            AutoSize        =   -1  'True
+            Caption         =   "Slow Bump (0-24)"
+            Height          =   195
+            Index           =   2
+            Left            =   120
+            TabIndex        =   48
+            Top             =   1455
+            Width           =   1245
+         End
+         Begin VB.Label Label13 
+            AutoSize        =   -1  'True
+            Caption         =   "Ride Height"
+            Height          =   195
+            Index           =   2
+            Left            =   120
+            TabIndex        =   47
+            Top             =   2540
+            Width           =   840
+         End
+         Begin VB.Label Label14 
+            AutoSize        =   -1  'True
+            Caption         =   "Damper Fast Bump (0-8)"
+            Height          =   195
+            Index           =   2
+            Left            =   120
+            TabIndex        =   46
+            Top             =   735
+            Width           =   1710
+         End
+         Begin VB.Label Label15 
+            AutoSize        =   -1  'True
+            Caption         =   "Slow Rebound (0-24)"
+            Height          =   195
+            Index           =   2
+            Left            =   120
+            TabIndex        =   45
+            Top             =   1815
+            Width           =   1500
+         End
+         Begin VB.Label Label16 
+            AutoSize        =   -1  'True
+            Caption         =   "Spring"
+            Height          =   195
+            Index           =   2
+            Left            =   120
+            TabIndex        =   44
+            Top             =   2180
+            Width           =   450
+         End
+      End
+   End
+   Begin VB.Frame fraFrontSettings 
+      BorderStyle     =   0  'None
+      Height          =   2895
+      Left            =   -10000
+      TabIndex        =   2
+      Top             =   480
+      Width           =   5895
+      Begin VB.Frame fraRightFront 
+         Caption         =   "Right Front"
+         Height          =   2895
+         Left            =   3000
+         TabIndex        =   19
+         Top             =   0
+         Width           =   2895
+         Begin VB.ComboBox cboSpringF 
+            Height          =   315
+            Index           =   1
+            Left            =   1560
+            Style           =   2  'Dropdown List
+            TabIndex        =   26
+            Top             =   2160
+            Width           =   1215
+         End
+         Begin VB.HScrollBar hscHeightF 
+            Height          =   255
+            Index           =   1
+            LargeChange     =   10
+            Left            =   1560
+            Max             =   100
+            Min             =   30
+            TabIndex        =   25
+            Top             =   2520
+            Value           =   64
+            Width           =   1215
+         End
+         Begin VB.TextBox txtSlowReboundF 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   1
+            Left            =   2400
+            MaxLength       =   2
+            TabIndex        =   24
+            Text            =   "21"
+            Top             =   1800
+            Width           =   375
+         End
+         Begin VB.TextBox txtSlowBumpF 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   1
+            Left            =   2400
+            MaxLength       =   2
+            TabIndex        =   23
+            Text            =   "21"
+            Top             =   1440
+            Width           =   375
+         End
+         Begin VB.TextBox txtFastReboundF 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   1
+            Left            =   2400
+            MaxLength       =   1
+            TabIndex        =   22
+            Text            =   "4"
+            Top             =   1080
+            Width           =   375
+         End
+         Begin VB.TextBox txtFastBumpF 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   1
+            Left            =   2400
+            MaxLength       =   1
+            TabIndex        =   21
+            Text            =   "4"
+            Top             =   720
+            Width           =   375
+         End
+         Begin VB.TextBox txtPacF 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   1
+            Left            =   2400
+            MaxLength       =   2
+            TabIndex        =   20
+            Text            =   "0"
+            Top             =   360
+            Width           =   375
+         End
+         Begin VB.Label lblHeightF 
+            Caption         =   "32"
+            Height          =   195
+            Index           =   1
+            Left            =   1200
+            TabIndex        =   34
+            Top             =   2535
+            Width           =   315
+         End
+         Begin VB.Label Label9 
+            AutoSize        =   -1  'True
+            Caption         =   "Packers (0-40)"
+            Height          =   195
+            Index           =   1
+            Left            =   120
+            TabIndex        =   33
+            Top             =   375
+            Width           =   1035
+         End
+         Begin VB.Label Label10 
+            AutoSize        =   -1  'True
+            Caption         =   "Fast Rebound (0-8)"
+            Height          =   195
+            Index           =   1
+            Left            =   120
+            TabIndex        =   32
+            Top             =   1095
+            Width           =   1365
+         End
+         Begin VB.Label Label11 
+            AutoSize        =   -1  'True
+            Caption         =   "Slow Bump (0-24)"
+            Height          =   195
+            Index           =   1
+            Left            =   120
+            TabIndex        =   31
+            Top             =   1455
+            Width           =   1245
+         End
+         Begin VB.Label Label13 
+            AutoSize        =   -1  'True
+            Caption         =   "Ride Height"
+            Height          =   195
+            Index           =   1
+            Left            =   120
+            TabIndex        =   30
+            Top             =   2540
+            Width           =   840
+         End
+         Begin VB.Label Label14 
+            AutoSize        =   -1  'True
+            Caption         =   "Damper Fast Bump (0-8)"
+            Height          =   195
+            Index           =   1
+            Left            =   120
+            TabIndex        =   29
+            Top             =   735
+            Width           =   1710
+         End
+         Begin VB.Label Label15 
+            AutoSize        =   -1  'True
+            Caption         =   "Slow Rebound (0-24)"
+            Height          =   195
+            Index           =   1
+            Left            =   120
+            TabIndex        =   28
+            Top             =   1815
+            Width           =   1500
+         End
+         Begin VB.Label Label16 
+            AutoSize        =   -1  'True
+            Caption         =   "Spring"
+            Height          =   195
+            Index           =   1
+            Left            =   120
+            TabIndex        =   27
+            Top             =   2180
+            Width           =   450
+         End
+      End
+      Begin VB.Frame fraLeftFront 
+         Caption         =   "Left Front"
+         Height          =   2895
+         Left            =   0
+         TabIndex        =   3
+         Top             =   0
+         Width           =   2895
+         Begin VB.ComboBox cboSpringF 
+            Height          =   315
+            Index           =   0
+            Left            =   1560
+            Style           =   2  'Dropdown List
+            TabIndex        =   10
+            Top             =   2160
+            Width           =   1215
+         End
+         Begin VB.HScrollBar hscHeightF 
+            Height          =   255
+            Index           =   0
+            LargeChange     =   10
+            Left            =   1560
+            Max             =   100
+            Min             =   30
+            TabIndex        =   9
+            Top             =   2520
+            Value           =   64
+            Width           =   1215
+         End
+         Begin VB.TextBox txtPacF 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   0
+            Left            =   2400
+            MaxLength       =   2
+            TabIndex        =   8
+            Text            =   "0"
+            Top             =   360
+            Width           =   375
+         End
+         Begin VB.TextBox txtFastBumpF 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   0
+            Left            =   2400
+            MaxLength       =   1
+            TabIndex        =   7
+            Text            =   "4"
+            Top             =   720
+            Width           =   375
+         End
+         Begin VB.TextBox txtFastReboundF 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   0
+            Left            =   2400
+            MaxLength       =   1
+            TabIndex        =   6
+            Text            =   "4"
+            Top             =   1080
+            Width           =   375
+         End
+         Begin VB.TextBox txtSlowBumpF 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   0
+            Left            =   2400
+            MaxLength       =   2
+            TabIndex        =   5
+            Text            =   "21"
+            Top             =   1440
+            Width           =   375
+         End
+         Begin VB.TextBox txtSlowReboundF 
+            Alignment       =   1  'Right Justify
+            Height          =   285
+            Index           =   0
+            Left            =   2400
+            MaxLength       =   2
+            TabIndex        =   4
+            Text            =   "21"
+            Top             =   1800
+            Width           =   375
+         End
+         Begin VB.Label lblHeightF 
+            Caption         =   "32"
+            Height          =   195
+            Index           =   0
+            Left            =   1200
+            TabIndex        =   18
+            Top             =   2530
+            Width           =   315
+         End
+         Begin VB.Label Label16 
+            AutoSize        =   -1  'True
+            Caption         =   "Spring"
+            Height          =   195
+            Index           =   0
+            Left            =   120
+            TabIndex        =   17
+            Top             =   2180
+            Width           =   450
+         End
+         Begin VB.Label Label15 
+            AutoSize        =   -1  'True
+            Caption         =   "Slow Rebound (0-24)"
+            Height          =   195
+            Index           =   0
+            Left            =   120
+            TabIndex        =   16
+            Top             =   1815
+            Width           =   1500
+         End
+         Begin VB.Label Label14 
+            AutoSize        =   -1  'True
+            Caption         =   "Damper Fast Bump (0-8)"
+            Height          =   195
+            Index           =   0
+            Left            =   120
+            TabIndex        =   15
+            Top             =   735
+            Width           =   1710
+         End
+         Begin VB.Label Label13 
+            AutoSize        =   -1  'True
+            Caption         =   "Ride Height"
+            Height          =   195
+            Index           =   0
+            Left            =   120
+            TabIndex        =   14
+            Top             =   2540
+            Width           =   840
+         End
+         Begin VB.Label Label11 
+            AutoSize        =   -1  'True
+            Caption         =   "Slow Bump (0-24)"
+            Height          =   195
+            Index           =   0
+            Left            =   120
+            TabIndex        =   13
+            Top             =   1455
+            Width           =   1245
+         End
+         Begin VB.Label Label10 
+            AutoSize        =   -1  'True
+            Caption         =   "Fast Rebound (0-8)"
+            Height          =   195
+            Index           =   0
+            Left            =   120
+            TabIndex        =   12
+            Top             =   1095
+            Width           =   1365
+         End
+         Begin VB.Label Label9 
+            AutoSize        =   -1  'True
+            Caption         =   "Packers (0-40)"
+            Height          =   195
+            Index           =   0
+            Left            =   120
+            TabIndex        =   11
+            Top             =   375
+            Width           =   1035
+         End
+      End
+   End
    Begin VB.Frame Frame4 
       Height          =   30
       Left            =   -100
-      TabIndex        =   92
+      TabIndex        =   0
       Top             =   0
       Width           =   10000
    End
-   Begin VB.Frame Frame3 
-      Caption         =   "Brake Balans"
-      Height          =   1095
-      Left            =   50
-      TabIndex        =   83
-      Top             =   4920
-      Width           =   2055
-      Begin VB.HScrollBar hscBrake 
-         Height          =   255
-         LargeChange     =   10
-         Left            =   120
-         Max             =   200
-         TabIndex        =   93
-         Top             =   720
-         Value           =   102
-         Width           =   1815
-      End
-      Begin VB.Label lblFront 
-         Alignment       =   1  'Right Justify
-         AutoSize        =   -1  'True
-         Caption         =   "37500"
-         Height          =   195
-         Left            =   1485
-         TabIndex        =   87
-         Top             =   480
-         Width           =   450
-      End
-      Begin VB.Label lblRear 
-         AutoSize        =   -1  'True
-         Caption         =   "62500"
-         Height          =   195
-         Left            =   120
-         TabIndex        =   86
-         Top             =   480
-         Width           =   450
-      End
-      Begin VB.Label Label19 
-         AutoSize        =   -1  'True
-         Caption         =   "Front"
-         Height          =   195
-         Left            =   1590
-         TabIndex        =   85
-         Top             =   240
-         Width           =   360
-      End
-      Begin VB.Label Label18 
-         AutoSize        =   -1  'True
-         Caption         =   "Rear"
-         Height          =   195
-         Left            =   120
-         TabIndex        =   84
-         Top             =   240
-         Width           =   345
-      End
-   End
-   Begin VB.Frame Frame2 
-      Caption         =   "Anti Roll Bar"
-      Height          =   1095
-      Left            =   50
-      TabIndex        =   80
-      Top             =   3720
-      Width           =   2055
-      Begin VB.ComboBox cboRollF 
-         Height          =   315
-         Left            =   720
-         Style           =   2  'Dropdown List
-         TabIndex        =   8
-         Top             =   240
-         Width           =   1110
-      End
-      Begin VB.ComboBox cboRollR 
-         Height          =   315
-         Left            =   720
-         Style           =   2  'Dropdown List
-         TabIndex        =   9
-         Top             =   660
-         Width           =   1110
-      End
-      Begin VB.Label Label17 
-         AutoSize        =   -1  'True
-         Caption         =   "Rear"
-         Height          =   195
-         Left            =   120
-         TabIndex        =   82
-         Top             =   720
-         Width           =   345
-      End
-      Begin VB.Label Label12 
-         AutoSize        =   -1  'True
-         Caption         =   "Front"
-         Height          =   195
-         Left            =   120
-         TabIndex        =   81
-         Top             =   300
-         Width           =   360
-      End
-   End
-   Begin VB.Frame Frame1 
-      Caption         =   "Left Rear"
-      Height          =   2895
-      Index           =   3
-      Left            =   2210
-      TabIndex        =   72
-      Top             =   3120
-      Width           =   2895
-      Begin VB.ComboBox cboSpringR 
-         Height          =   315
-         Index           =   0
-         Left            =   1560
-         Style           =   2  'Dropdown List
-         TabIndex        =   29
-         Top             =   2160
-         Width           =   1215
-      End
-      Begin VB.HScrollBar hscHeightR 
-         Height          =   255
-         Index           =   0
-         LargeChange     =   10
-         Left            =   1560
-         Max             =   160
-         Min             =   40
-         TabIndex        =   30
-         Top             =   2520
-         Value           =   116
-         Width           =   1215
-      End
-      Begin VB.TextBox txtSlowReboundR 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   0
-         Left            =   2400
-         MaxLength       =   2
-         TabIndex        =   28
-         Text            =   "15"
-         Top             =   1800
-         Width           =   375
-      End
-      Begin VB.TextBox txtSlowBumpR 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   0
-         Left            =   2400
-         MaxLength       =   2
-         TabIndex        =   27
-         Text            =   "15"
-         Top             =   1440
-         Width           =   375
-      End
-      Begin VB.TextBox txtFastReboundR 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   0
-         Left            =   2400
-         MaxLength       =   1
-         TabIndex        =   26
-         Text            =   "4"
-         Top             =   1080
-         Width           =   375
-      End
-      Begin VB.TextBox txtFastBumpR 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   0
-         Left            =   2400
-         MaxLength       =   1
-         TabIndex        =   25
-         Text            =   "4"
-         Top             =   720
-         Width           =   375
-      End
-      Begin VB.TextBox txtPacR 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   0
-         Left            =   2400
-         MaxLength       =   2
-         TabIndex        =   24
-         Text            =   "0"
-         Top             =   360
-         Width           =   375
-      End
-      Begin VB.Label lblHeightR 
-         Caption         =   "58"
-         Height          =   195
-         Index           =   0
-         Left            =   1200
-         TabIndex        =   89
-         Top             =   2530
-         Width           =   315
-      End
-      Begin VB.Label Label9 
-         AutoSize        =   -1  'True
-         Caption         =   "Packers (0-80)"
-         Height          =   195
-         Index           =   3
-         Left            =   120
-         TabIndex        =   79
-         Top             =   375
-         Width           =   1035
-      End
-      Begin VB.Label Label10 
-         AutoSize        =   -1  'True
-         Caption         =   "Fast Rebound (0-8)"
-         Height          =   195
-         Index           =   3
-         Left            =   120
-         TabIndex        =   78
-         Top             =   1095
-         Width           =   1365
-      End
-      Begin VB.Label Label11 
-         AutoSize        =   -1  'True
-         Caption         =   "Slow Bump (0-24)"
-         Height          =   195
-         Index           =   3
-         Left            =   120
-         TabIndex        =   77
-         Top             =   1455
-         Width           =   1245
-      End
-      Begin VB.Label Label13 
-         AutoSize        =   -1  'True
-         Caption         =   "Ride Height"
-         Height          =   195
-         Index           =   3
-         Left            =   120
-         TabIndex        =   76
-         Top             =   2540
-         Width           =   840
-      End
-      Begin VB.Label Label14 
-         AutoSize        =   -1  'True
-         Caption         =   "Damper Fast Bump (0-8)"
-         Height          =   195
-         Index           =   3
-         Left            =   120
-         TabIndex        =   75
-         Top             =   735
-         Width           =   1710
-      End
-      Begin VB.Label Label15 
-         AutoSize        =   -1  'True
-         Caption         =   "Slow Rebound (0-24)"
-         Height          =   195
-         Index           =   3
-         Left            =   120
-         TabIndex        =   74
-         Top             =   1815
-         Width           =   1500
-      End
-      Begin VB.Label Label16 
-         AutoSize        =   -1  'True
-         Caption         =   "Spring"
-         Height          =   195
-         Index           =   3
-         Left            =   120
-         TabIndex        =   73
-         Top             =   2180
-         Width           =   450
-      End
-   End
-   Begin VB.Frame Frame1 
-      Caption         =   "Right Rear"
-      Height          =   2895
-      Index           =   2
-      Left            =   5210
-      TabIndex        =   64
-      Top             =   3120
-      Width           =   2895
-      Begin VB.ComboBox cboSpringR 
-         Height          =   315
-         Index           =   1
-         Left            =   1560
-         Style           =   2  'Dropdown List
-         TabIndex        =   36
-         Top             =   2160
-         Width           =   1215
-      End
-      Begin VB.HScrollBar hscHeightR 
-         Height          =   255
-         Index           =   1
-         LargeChange     =   10
-         Left            =   1560
-         Max             =   160
-         Min             =   40
-         TabIndex        =   37
-         Top             =   2520
-         Value           =   116
-         Width           =   1215
-      End
-      Begin VB.TextBox txtSlowReboundR 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   1
-         Left            =   2400
-         MaxLength       =   2
-         TabIndex        =   35
-         Text            =   "15"
-         Top             =   1800
-         Width           =   375
-      End
-      Begin VB.TextBox txtSlowBumpR 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   1
-         Left            =   2400
-         MaxLength       =   2
-         TabIndex        =   34
-         Text            =   "15"
-         Top             =   1440
-         Width           =   375
-      End
-      Begin VB.TextBox txtFastReboundR 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   1
-         Left            =   2400
-         MaxLength       =   1
-         TabIndex        =   33
-         Text            =   "4"
-         Top             =   1080
-         Width           =   375
-      End
-      Begin VB.TextBox txtFastBumpR 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   1
-         Left            =   2400
-         MaxLength       =   1
-         TabIndex        =   32
-         Text            =   "4"
-         Top             =   720
-         Width           =   375
-      End
-      Begin VB.TextBox txtPacR 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   1
-         Left            =   2400
-         MaxLength       =   2
-         TabIndex        =   31
-         Text            =   "0"
-         Top             =   360
-         Width           =   375
-      End
-      Begin VB.Label lblHeightR 
-         Caption         =   "58"
-         Height          =   195
-         Index           =   1
-         Left            =   1200
-         TabIndex        =   88
-         Top             =   2530
-         Width           =   315
-      End
-      Begin VB.Label Label9 
-         AutoSize        =   -1  'True
-         Caption         =   "Packers (0-80)"
-         Height          =   195
-         Index           =   2
-         Left            =   120
-         TabIndex        =   71
-         Top             =   375
-         Width           =   1035
-      End
-      Begin VB.Label Label10 
-         AutoSize        =   -1  'True
-         Caption         =   "Fast Rebound (0-8)"
-         Height          =   195
-         Index           =   2
-         Left            =   120
-         TabIndex        =   70
-         Top             =   1095
-         Width           =   1365
-      End
-      Begin VB.Label Label11 
-         AutoSize        =   -1  'True
-         Caption         =   "Slow Bump (0-24)"
-         Height          =   195
-         Index           =   2
-         Left            =   120
-         TabIndex        =   69
-         Top             =   1455
-         Width           =   1245
-      End
-      Begin VB.Label Label13 
-         AutoSize        =   -1  'True
-         Caption         =   "Ride Height"
-         Height          =   195
-         Index           =   2
-         Left            =   120
-         TabIndex        =   68
-         Top             =   2540
-         Width           =   840
-      End
-      Begin VB.Label Label14 
-         AutoSize        =   -1  'True
-         Caption         =   "Damper Fast Bump (0-8)"
-         Height          =   195
-         Index           =   2
-         Left            =   120
-         TabIndex        =   67
-         Top             =   735
-         Width           =   1710
-      End
-      Begin VB.Label Label15 
-         AutoSize        =   -1  'True
-         Caption         =   "Slow Rebound (0-24)"
-         Height          =   195
-         Index           =   2
-         Left            =   120
-         TabIndex        =   66
-         Top             =   1815
-         Width           =   1500
-      End
-      Begin VB.Label Label16 
-         AutoSize        =   -1  'True
-         Caption         =   "Spring"
-         Height          =   195
-         Index           =   2
-         Left            =   120
-         TabIndex        =   65
-         Top             =   2180
-         Width           =   450
-      End
-   End
-   Begin VB.Frame Frame1 
-      Caption         =   "Right Front"
-      Height          =   2895
-      Index           =   1
-      Left            =   5210
-      TabIndex        =   56
+   Begin ComctlLib.TabStrip TabStrip1 
+      Height          =   4095
+      Left            =   60
+      TabIndex        =   1
       Top             =   120
-      Width           =   2895
-      Begin VB.ComboBox cboSpringF 
-         Height          =   315
-         Index           =   1
-         Left            =   1560
-         Style           =   2  'Dropdown List
-         TabIndex        =   22
-         Top             =   2160
-         Width           =   1215
-      End
-      Begin VB.HScrollBar hscHeightF 
-         Height          =   255
-         Index           =   1
-         LargeChange     =   10
-         Left            =   1560
-         Max             =   100
-         Min             =   20
-         TabIndex        =   23
-         Top             =   2520
-         Value           =   64
-         Width           =   1215
-      End
-      Begin VB.TextBox txtSlowReboundF 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   1
-         Left            =   2400
-         MaxLength       =   2
-         TabIndex        =   21
-         Text            =   "21"
-         Top             =   1800
-         Width           =   375
-      End
-      Begin VB.TextBox txtSlowBumpF 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   1
-         Left            =   2400
-         MaxLength       =   2
-         TabIndex        =   20
-         Text            =   "21"
-         Top             =   1440
-         Width           =   375
-      End
-      Begin VB.TextBox txtFastReboundF 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   1
-         Left            =   2400
-         MaxLength       =   1
-         TabIndex        =   19
-         Text            =   "4"
-         Top             =   1080
-         Width           =   375
-      End
-      Begin VB.TextBox txtFastBumpF 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   1
-         Left            =   2400
-         MaxLength       =   1
-         TabIndex        =   18
-         Text            =   "4"
-         Top             =   720
-         Width           =   375
-      End
-      Begin VB.TextBox txtPacF 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   1
-         Left            =   2400
-         MaxLength       =   2
-         TabIndex        =   17
-         Text            =   "0"
-         Top             =   360
-         Width           =   375
-      End
-      Begin VB.Label lblHeightF 
-         Caption         =   "32"
-         Height          =   195
-         Index           =   1
-         Left            =   1200
-         TabIndex        =   91
-         Top             =   2535
-         Width           =   315
-      End
-      Begin VB.Label Label9 
-         AutoSize        =   -1  'True
-         Caption         =   "Packers (0-40)"
-         Height          =   195
-         Index           =   1
-         Left            =   120
-         TabIndex        =   63
-         Top             =   375
-         Width           =   1035
-      End
-      Begin VB.Label Label10 
-         AutoSize        =   -1  'True
-         Caption         =   "Fast Rebound (0-8)"
-         Height          =   195
-         Index           =   1
-         Left            =   120
-         TabIndex        =   62
-         Top             =   1095
-         Width           =   1365
-      End
-      Begin VB.Label Label11 
-         AutoSize        =   -1  'True
-         Caption         =   "Slow Bump (0-24)"
-         Height          =   195
-         Index           =   1
-         Left            =   120
-         TabIndex        =   61
-         Top             =   1455
-         Width           =   1245
-      End
-      Begin VB.Label Label13 
-         AutoSize        =   -1  'True
-         Caption         =   "Ride Height"
-         Height          =   195
-         Index           =   1
-         Left            =   120
-         TabIndex        =   60
-         Top             =   2540
-         Width           =   840
-      End
-      Begin VB.Label Label14 
-         AutoSize        =   -1  'True
-         Caption         =   "Damper Fast Bump (0-8)"
-         Height          =   195
-         Index           =   1
-         Left            =   120
-         TabIndex        =   59
-         Top             =   735
-         Width           =   1710
-      End
-      Begin VB.Label Label15 
-         AutoSize        =   -1  'True
-         Caption         =   "Slow Rebound (0-24)"
-         Height          =   195
-         Index           =   1
-         Left            =   120
-         TabIndex        =   58
-         Top             =   1815
-         Width           =   1500
-      End
-      Begin VB.Label Label16 
-         AutoSize        =   -1  'True
-         Caption         =   "Spring"
-         Height          =   195
-         Index           =   1
-         Left            =   120
-         TabIndex        =   57
-         Top             =   2180
-         Width           =   450
-      End
-   End
-   Begin VB.Frame Frame1 
-      Caption         =   "Left Front"
-      Height          =   2895
-      Index           =   0
-      Left            =   2210
-      TabIndex        =   48
-      Top             =   120
-      Width           =   2895
-      Begin VB.ComboBox cboSpringF 
-         Height          =   315
-         Index           =   0
-         Left            =   1560
-         Style           =   2  'Dropdown List
-         TabIndex        =   15
-         Top             =   2160
-         Width           =   1215
-      End
-      Begin VB.HScrollBar hscHeightF 
-         Height          =   255
-         Index           =   0
-         LargeChange     =   10
-         Left            =   1560
-         Max             =   100
-         Min             =   20
-         TabIndex        =   16
-         Top             =   2520
-         Value           =   64
-         Width           =   1215
-      End
-      Begin VB.TextBox txtPacF 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   0
-         Left            =   2400
-         MaxLength       =   2
-         TabIndex        =   10
-         Text            =   "0"
-         Top             =   360
-         Width           =   375
-      End
-      Begin VB.TextBox txtFastBumpF 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   0
-         Left            =   2400
-         MaxLength       =   1
-         TabIndex        =   11
-         Text            =   "4"
-         Top             =   720
-         Width           =   375
-      End
-      Begin VB.TextBox txtFastReboundF 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   0
-         Left            =   2400
-         MaxLength       =   1
-         TabIndex        =   12
-         Text            =   "4"
-         Top             =   1080
-         Width           =   375
-      End
-      Begin VB.TextBox txtSlowBumpF 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   0
-         Left            =   2400
-         MaxLength       =   2
-         TabIndex        =   13
-         Text            =   "21"
-         Top             =   1440
-         Width           =   375
-      End
-      Begin VB.TextBox txtSlowReboundF 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   0
-         Left            =   2400
-         MaxLength       =   2
-         TabIndex        =   14
-         Text            =   "21"
-         Top             =   1800
-         Width           =   375
-      End
-      Begin VB.Label lblHeightF 
-         Caption         =   "32"
-         Height          =   195
-         Index           =   0
-         Left            =   1200
-         TabIndex        =   90
-         Top             =   2530
-         Width           =   315
-      End
-      Begin VB.Label Label16 
-         AutoSize        =   -1  'True
-         Caption         =   "Spring"
-         Height          =   195
-         Index           =   0
-         Left            =   120
-         TabIndex        =   55
-         Top             =   2180
-         Width           =   450
-      End
-      Begin VB.Label Label15 
-         AutoSize        =   -1  'True
-         Caption         =   "Slow Rebound (0-24)"
-         Height          =   195
-         Index           =   0
-         Left            =   120
-         TabIndex        =   54
-         Top             =   1815
-         Width           =   1500
-      End
-      Begin VB.Label Label14 
-         AutoSize        =   -1  'True
-         Caption         =   "Damper Fast Bump (0-8)"
-         Height          =   195
-         Index           =   0
-         Left            =   120
-         TabIndex        =   53
-         Top             =   735
-         Width           =   1710
-      End
-      Begin VB.Label Label13 
-         AutoSize        =   -1  'True
-         Caption         =   "Ride Height"
-         Height          =   195
-         Index           =   0
-         Left            =   120
-         TabIndex        =   52
-         Top             =   2540
-         Width           =   840
-      End
-      Begin VB.Label Label11 
-         AutoSize        =   -1  'True
-         Caption         =   "Slow Bump (0-24)"
-         Height          =   195
-         Index           =   0
-         Left            =   120
-         TabIndex        =   51
-         Top             =   1455
-         Width           =   1245
-      End
-      Begin VB.Label Label10 
-         AutoSize        =   -1  'True
-         Caption         =   "Fast Rebound (0-8)"
-         Height          =   195
-         Index           =   0
-         Left            =   120
-         TabIndex        =   50
-         Top             =   1095
-         Width           =   1365
-      End
-      Begin VB.Label Label9 
-         AutoSize        =   -1  'True
-         Caption         =   "Packers (0-40)"
-         Height          =   195
-         Index           =   0
-         Left            =   120
-         TabIndex        =   49
-         Top             =   375
-         Width           =   1035
-      End
-   End
-   Begin VB.Frame frmGear 
-      Caption         =   "Gears"
-      ClipControls    =   0   'False
-      Height          =   2415
-      Left            =   50
-      TabIndex        =   39
-      Top             =   1200
-      Width           =   2055
-      Begin VB.TextBox txtGear 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   5
-         Left            =   1440
-         MaxLength       =   2
-         TabIndex        =   7
-         Text            =   "59"
-         Top             =   2040
-         Width           =   375
-      End
-      Begin VB.TextBox txtGear 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   4
-         Left            =   1440
-         MaxLength       =   2
-         TabIndex        =   6
-         Text            =   "54"
-         Top             =   1680
-         Width           =   375
-      End
-      Begin VB.TextBox txtGear 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   3
-         Left            =   1440
-         MaxLength       =   2
-         TabIndex        =   5
-         Text            =   "48"
-         Top             =   1320
-         Width           =   375
-      End
-      Begin VB.TextBox txtGear 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   2
-         Left            =   1440
-         MaxLength       =   2
-         TabIndex        =   4
-         Text            =   "42"
-         Top             =   960
-         Width           =   375
-      End
-      Begin VB.TextBox txtGear 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   1
-         Left            =   1440
-         MaxLength       =   2
-         TabIndex        =   3
-         Text            =   "35"
-         Top             =   600
-         Width           =   375
-      End
-      Begin VB.TextBox txtGear 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Index           =   0
-         Left            =   1440
-         MaxLength       =   2
-         TabIndex        =   2
-         Text            =   "28"
-         Top             =   240
-         Width           =   375
-      End
-      Begin VB.Label Label8 
-         AutoSize        =   -1  'True
-         Caption         =   "6th Gear (21-80)"
-         Height          =   195
-         Left            =   120
-         TabIndex        =   47
-         Top             =   2055
-         Width           =   1155
-      End
-      Begin VB.Label Label7 
-         AutoSize        =   -1  'True
-         Caption         =   "5th Gear (20-79)"
-         Height          =   195
-         Left            =   120
-         TabIndex        =   46
-         Top             =   1695
-         Width           =   1155
-      End
-      Begin VB.Label Label6 
-         AutoSize        =   -1  'True
-         Caption         =   "4th Gear (19-78)"
-         Height          =   195
-         Left            =   120
-         TabIndex        =   45
-         Top             =   1335
-         Width           =   1155
-      End
-      Begin VB.Label Label5 
-         AutoSize        =   -1  'True
-         Caption         =   "1st Gear (16-75)"
-         Height          =   195
-         Left            =   120
-         TabIndex        =   44
-         Top             =   255
-         Width           =   1140
-      End
-      Begin VB.Label Label4 
-         AutoSize        =   -1  'True
-         Caption         =   "2nd Gear (17-76)"
-         Height          =   195
-         Left            =   120
-         TabIndex        =   43
-         Top             =   615
-         Width           =   1200
-      End
-      Begin VB.Label Label3 
-         AutoSize        =   -1  'True
-         Caption         =   "3rd Gear (18-77)"
-         Height          =   195
-         Left            =   120
-         TabIndex        =   42
-         Top             =   975
-         Width           =   1155
-      End
-   End
-   Begin VB.Frame frmWing 
-      Caption         =   "Wings"
-      Height          =   975
-      Left            =   50
-      TabIndex        =   38
-      Top             =   120
-      Width           =   2055
-      Begin VB.TextBox txtRWing 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Left            =   1440
-         MaxLength       =   2
-         TabIndex        =   1
-         Text            =   "12"
-         Top             =   600
-         Width           =   375
-      End
-      Begin VB.TextBox txtFWing 
-         Alignment       =   1  'Right Justify
-         Height          =   285
-         Left            =   1440
-         MaxLength       =   2
-         TabIndex        =   0
-         Text            =   "10"
-         Top             =   240
-         Width           =   375
-      End
-      Begin VB.Label Label2 
-         AutoSize        =   -1  'True
-         Caption         =   "Rear Wing (1-20)"
-         Height          =   195
-         Left            =   120
-         TabIndex        =   41
-         Top             =   645
-         Width           =   1215
-      End
-      Begin VB.Label Label1 
-         AutoSize        =   -1  'True
-         Caption         =   "Front Wing (1-20)"
-         Height          =   195
-         Left            =   120
-         TabIndex        =   40
-         Top             =   285
-         Width           =   1230
-      End
+      Width           =   6165
+      _ExtentX        =   10874
+      _ExtentY        =   7223
+      _Version        =   327682
+      BeginProperty Tabs {0713E432-850A-101B-AFC0-4210102A8DA7} 
+         NumTabs         =   3
+         BeginProperty Tab1 {0713F341-850A-101B-AFC0-4210102A8DA7} 
+            Caption         =   "Misc Settings"
+            Object.Tag             =   ""
+            ImageVarType    =   2
+         EndProperty
+         BeginProperty Tab2 {0713F341-850A-101B-AFC0-4210102A8DA7} 
+            Caption         =   "Front Settings"
+            Object.Tag             =   ""
+            ImageVarType    =   2
+         EndProperty
+         BeginProperty Tab3 {0713F341-850A-101B-AFC0-4210102A8DA7} 
+            Caption         =   "Rear Settings"
+            Object.Tag             =   ""
+            ImageVarType    =   2
+         EndProperty
+      EndProperty
    End
    Begin VB.Menu mnuFile 
       Caption         =   "&File"
@@ -964,6 +1013,9 @@ Begin VB.Form frmSetup
       End
       Begin VB.Menu mnuSaveRQ 
          Caption         =   "Save as Qual And Race"
+      End
+      Begin VB.Menu mnuSep6 
+         Caption         =   "-"
       End
       Begin VB.Menu mnuQual 
          Caption         =   "Save as Qual"
@@ -1020,6 +1072,9 @@ Private Sub cboSpringR_Click(Index As Integer)
 End Sub
 
 Private Sub Form_Load()
+    fraMisc.Left = 200
+    fraFrontSettings.Left = -10000
+    fraRear.Left = -10000
     Sync = False
     Reset
     Sync = True
@@ -1169,24 +1224,23 @@ Private Sub mnuNew_Click()
 End Sub
 
 Private Sub mnuOpen_Click()
-    Var.sString1 = oMisc.ShowOpen("GP2 Setup File (*.cs*)|*.cs*|All Files (*.*)|*.*|", Me.hwnd, GP2Dir, "Open CarSetup")
-    OpenSetup Var.sString1
+    Read = oFile.ShowOpen("Gp2 Setup File (*.cs*)|*.cs*|All Files (*.*)|*.*|", Me.hWnd, , "Open CarSetup")
+    If Read = "" Then Exit Sub
+    OpenSetup Read
 End Sub
 
 Private Sub mnuQual_Click()
     SaveSetupFile ProgramDir & "\file\tmpsetup.Qtm"
     AddSetup frmMain.lstFile.SelectedItem.Key, ProgramDir & "\file\tmpsetup.Qtm", Qual
-    RetVal = ShellExecute(frmMain.hwnd, "open", ProgramDir & "\gp2utils\thcheck.exe", oMisc.GetShortName(frmMain.lstFile.SelectedItem.Key), vbNullString, 1)
-    RetVal = oMisc.CloseDosPrompt("thcheck")
-    frmSetup.Caption = "GP2 Setup File Editor - Qual Setup"
+    WriteCheckSum frmMain.lstFile.SelectedItem.Key
+    frmSetup.Caption = "Gp2 Setup File Editor - Qual Setup"
 End Sub
 
 Private Sub mnuRace_Click()
     SaveSetupFile ProgramDir & "\file\tmpsetup.Rtm"
     AddSetup frmMain.lstFile.SelectedItem.Key, ProgramDir & "\file\tmpsetup.Rtm", Race
-    RetVal = ShellExecute(frmMain.hwnd, "open", ProgramDir & "\gp2utils\thcheck.exe", oMisc.GetShortName(frmMain.lstFile.SelectedItem.Key), vbNullString, 1)
-    RetVal = oMisc.CloseDosPrompt("thcheck")
-    frmSetup.Caption = "GP2 Setup File Editor - Race Setup"
+    WriteCheckSum frmMain.lstFile.SelectedItem.Key
+    frmSetup.Caption = "Gp2 Setup File Editor - Race Setup"
 End Sub
 
 Private Sub mnuReset_Click()
@@ -1198,8 +1252,7 @@ Private Sub mnuSaveRQ_Click()
     AddSetup frmMain.lstFile.SelectedItem.Key, ProgramDir & "\file\tmpsetup.Rtm", Race
     SaveSetupFile ProgramDir & "\file\tmpsetup.Qtm"
     AddSetup frmMain.lstFile.SelectedItem.Key, ProgramDir & "\file\tmpsetup.Qtm", Qual
-    RetVal = ShellExecute(frmMain.hwnd, "open", ProgramDir & "\gp2utils\thcheck.exe", oMisc.GetShortName(frmMain.lstFile.SelectedItem.Key), vbNullString, 1)
-    RetVal = oMisc.CloseDosPrompt("thcheck")
+    WriteCheckSum frmMain.lstFile.SelectedItem.Key
 End Sub
 
 Private Sub mnuSync_Click()
@@ -1209,6 +1262,22 @@ Private Sub mnuSync_Click()
     Else
         mnuSync.Checked = True
         Sync = True
+    End If
+End Sub
+
+Private Sub TabStrip1_Click()
+    If TabStrip1.Tabs(1).Selected = True Then
+        fraMisc.Left = 200
+        fraFrontSettings.Left = -10000
+        fraRear.Left = -10000
+    ElseIf TabStrip1.Tabs(2).Selected = True Then
+        fraFrontSettings.Left = 200
+        fraMisc.Left = -10000
+        fraRear.Left = -10000
+    ElseIf TabStrip1.Tabs(3).Selected = True Then
+        fraRear.Left = 200
+        fraFrontSettings.Left = -10000
+        fraMisc.Left = -10000
     End If
 End Sub
 
@@ -1465,9 +1534,9 @@ Public Sub SetAllToNr()
 Dim oCtl As Control
     For Each oCtl In frmSetup.Controls
         If TypeOf oCtl Is TextBox Then
-            X = GetWindowLong(oCtl.hwnd, GWL_STYLE)
+            X = GetWindowLong(oCtl.hWnd, GWL_STYLE)
             X = X Or ES_NUMBER
-            Call SetWindowLong(oCtl.hwnd, GWL_STYLE, X)
+            Call SetWindowLong(oCtl.hWnd, GWL_STYLE, X)
         End If
     Next
     Set oCtl = Nothing

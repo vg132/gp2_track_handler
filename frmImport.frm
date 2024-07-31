@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmImport 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "Import From GP2"
+   Caption         =   "Import From Gp2"
    ClientHeight    =   4245
    ClientLeft      =   45
    ClientTop       =   330
@@ -337,16 +337,16 @@ End Sub
 Private Sub cmdImport_Click()
     frmImport.MousePointer = 11
 
-    On Error GoTo ErrorTrap
-    Exp.GP2FileNum = FreeFile
-    Open GP2Dir + "\gp2.exe" For Binary As Exp.GP2FileNum
+    'On Error GoTo ErrorTrap
+    Exp.Gp2FileNum = FreeFile
+    Open Gp2Dir + "\gp2.exe" For Binary As Exp.Gp2FileNum
 
-    If (frmImport.chkTime.Value = 1) And (chkTime.Enabled = True) Then
+    If (chkTime.Value = 1) Or (chkSettings.Value = 1) Then
         Exp.F1FileNum = FreeFile
-        Open GP2Dir + "\f1gstate.sav" For Binary As Exp.F1FileNum
+        Open Gp2Dir + "\f1gstate.sav" For Binary As Exp.F1FileNum
     End If
 
-    GetGP2Version
+    GetGp2Version
     If chkTrackName.Value = 1 Then ImportText
     For Exp.TrackNr = 0 To 15
         If chkTrack(Exp.TrackNr).Value = 1 Then
@@ -354,15 +354,15 @@ Private Sub cmdImport_Click()
             If chkTrackLength.Value = 1 Then ImportLength
             If chkWare.Value = 1 Then ImportWare
             If chkTrackName.Value = 1 Then
-                oMisc.WriteINI "Track " & Exp.TrackNr + 1, "Name", TrackName(Exp.TrackNr), TempFile
-                oMisc.WriteINI "Track " & Exp.TrackNr + 1, "Adjective", Adj(Exp.TrackNr), TempFile
-                oMisc.WriteINI "Track " & Exp.TrackNr + 1, "Country", Country(Exp.TrackNr), TempFile
+                WriteINI "Track " & Exp.TrackNr + 1, "Name", TrackName(Exp.TrackNr), TempFile
+                WriteINI "Track " & Exp.TrackNr + 1, "Adjective", Adj(Exp.TrackNr), TempFile
+                WriteINI "Track " & Exp.TrackNr + 1, "Country", Country(Exp.TrackNr), TempFile
                 If Exp.TrackNr + 1 > 9 Then
-                    Read = GP2Dir & "\Circuits\f1ct" & Exp.TrackNr + 1 & ".dat"
+                    Read = Gp2Dir & "\Circuits\f1ct" & Exp.TrackNr + 1 & ".dat"
                 Else
-                    Read = GP2Dir & "\Circuits\f1ct0" & Exp.TrackNr + 1 & ".dat"
+                    Read = Gp2Dir & "\Circuits\f1ct0" & Exp.TrackNr + 1 & ".dat"
                 End If
-                oMisc.WriteINI "Track " & Exp.TrackNr + 1, "TPath", Read, TempFile
+                WriteINI "Track " & Exp.TrackNr + 1, "TPath", Read, TempFile
                 Tracks(X) = True
             End If
             If (chkTime.Value = 1) And (chkTime.Enabled = True) Then
@@ -395,30 +395,31 @@ Private Sub cmdImport_Click()
             ImportQuick
         End If
     End If
-    Close Exp.GP2FileNum
+    Close Exp.Gp2FileNum
     Close Exp.F1FileNum
 
     FileInfo.Name = ""
     FileInfo.Path = ""
     FileInfo.Saved = False
     
-    LoadGP2Aid
+    Read = ReadINI("Misc", "Aids", TempFile)
+    LoadGp2Aid Read
     LoadFile
     frmImport.MousePointer = 0
     frmImport.Hide
 Exit Sub
 ErrorTrap:
     frmImport.MousePointer = 0
-    Close Exp.GP2FileNum
+    Close Exp.Gp2FileNum
     Close Exp.F1FileNum
     MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
         "Error Desctiption: " & Err.Description & vbLf & _
-        "Error Source: " & Err.Source, vbCritical, "Error"
+        "Error Source: cmdImport_Click()", vbCritical, TH & " - Error"
     frmImport.Hide
 End Sub
 
 Private Sub Form_Activate()
-    Read = oMisc.File_Exists(GP2Dir + "\f1gstate.sav")
+    Read = oFile.FileExists(Gp2Dir + "\f1gstate.sav")
     If Read = False Then chkTime.Enabled = False
     If Read = True Then chkTime.Enabled = True
     State = UnCheckAll
@@ -446,7 +447,7 @@ Dim oCtl As Control
         chkAll.Value = 1
         For Each oCtl In frmImport
             If TypeOf oCtl Is CheckBox Then
-                If oCtl.Value = 0 Then
+                If (oCtl.Value = 0) And (oCtl.Enabled = True) Then
                     chkAll.Value = 0
                     Exit For
                 End If

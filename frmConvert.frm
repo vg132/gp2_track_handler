@@ -128,7 +128,7 @@ Private Sub cmdConvert_Click()
     End If
 End Sub
 
-Private Sub cmdOk_Click()
+Private Sub cmdOK_Click()
     Unload Me
 End Sub
 
@@ -174,6 +174,8 @@ Private Sub File1_Click()
             frmConvert.Caption = "File Converter - Track Handler v1.4"
         ElseIf UCase(Read) = "#TH15" Then
             frmConvert.Caption = "File Converter - Track Handler v1.5"
+        ElseIf UCase(Read) = "#TH16" Then
+            frmConvert.Caption = "File Converter - Track Handler v1.6"
         Else
             frmConvert.Caption = "File Converter - Unknown file"
         End If

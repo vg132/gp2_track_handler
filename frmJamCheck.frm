@@ -42,7 +42,7 @@ Private Sub cmdOK_Click()
 End Sub
 
 Private Sub Form_Load()
-    If frmMain.tabMain.Tab = 0 Then
+    If frmMain.tabMain.Tabs(1).Selected = True Then
         frmJamCheck.Caption = "Jam Check - " & frmMain.lstFile.SelectedItem.Text
         CheckJam frmMain.lstFile.SelectedItem.Key
     Else
@@ -52,60 +52,33 @@ Private Sub Form_Load()
 End Sub
 
 Public Sub CheckJam(ByVal Track As String)
-Dim ItemX
 Dim vArray As Variant
+Dim vFound As Variant
 Dim iFound As Integer
 
-    Var.lLong1 = 0
-    FileNum = FreeFile
-    Open Track For Binary As FileNum
-    Read = String(2500, " ")
-    X = FileLen(Track) - 2504
-    Get #FileNum, X, Read
-    Close FileNum
-    Read2 = String(2, Chr(0))
-    For X = 2500 To 1 Step -1
-        If Mid(Read, X, 2) = Read2 Then Exit For
-    Next
-    
-    Read = Mid(Read, X + 2)
-    ReDim vArray(0, Asc(Mid(Read, 1, 1)))
-    Read = Mid(Read, 3)
-    lstJams.AddItem "    "
-    lstJams.AddItem "    "
-    Count1 = 0
+    lstJams.AddItem "Jam Check"
+    lstJams.AddItem ""
+    vArray = oFile.GetJamFiles(Track)
     iFound = 0
-    Do Until Len(Read) < 5
-        Count1 = Count1 + 1
-        Stopp = InStr(1, UCase(Read), UCase(Chr(0)))
-        If Stopp = 0 Then
-            Read2 = Read
-        Else
-            Read2 = Mid(Read, 1, Stopp - 1)
-        End If
-        Read3 = oMisc.File_Exists(GP2Dir & "\" & Read2)
-        If Read3 = False Then
-            lstJams.AddItem "Not Found!    " & Read2
-            Var.lLong1 = Var.lLong1 + 1
-        Else
-            vArray(0, iFound) = "Found.           " & Read2
+    ReDim vFound(0, 0 To UBound(vArray, 2))
+    For X = 0 To UBound(vArray, 2)
+        If vArray(0, X) = Empty Then Exit For
+        Read = oFile.FileExists(GP2Dir & "\" & vArray(0, X))
+        If Read = True Then
+            vFound(0, iFound) = "Found          " & vArray(0, X)
             iFound = iFound + 1
-        End If
-        If Stopp = 0 Then
-            Read = 0
         Else
-            Read = Mid(Read, Stopp + 1)
+            lstJams.AddItem "Not Found!  " & vArray(0, X)
         End If
-    Loop
-
-    If Var.lLong1 = 0 Then
-        lstJams.List(0) = "All " & Count1 & " Jam files used by this track were found."
-    Else
-        lstJams.List(0) = "Failed!! " & Var.lLong1 & " of the " & Count1 & " Jam files was not found!"
-    End If
-
-    For Count1 = 0 To iFound
-        lstJams.AddItem vArray(0, Count1)
     Next
-    lstJams.Selected(0) = True
+    For X = 0 To UBound(vFound, 2)
+        If vFound(0, X) = "" Then Exit For
+        lstJams.AddItem vFound(0, X)
+    Next
+
+    If X = UBound(vArray, 2) + 1 Then
+        lstJams.List(0) = "All " & UBound(vArray, 2) + 1 & " JamFiles was found in " & GP2Dir
+    Else
+        lstJams.List(0) = UBound(vArray, 2) + 1 - X & " of " & UBound(vArray, 2) + 1 & " JamFiles was not found in " & GP2Dir
+    End If
 End Sub

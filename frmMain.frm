@@ -1,28 +1,27 @@
 VERSION 5.00
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
-Object = "{1DD137C0-F513-11D2-AFB9-C0B82D509E49}#1.0#0"; "JAD2JAM.OCX"
 Begin VB.Form frmMain 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "GP2 Track Handler v1.5"
-   ClientHeight    =   6960
+   Caption         =   "Gp2 Track Handler v1.6"
+   ClientHeight    =   6780
    ClientLeft      =   45
-   ClientTop       =   615
-   ClientWidth     =   9120
+   ClientTop       =   750
+   ClientWidth     =   9075
    Icon            =   "frmMain.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
-   ScaleHeight     =   6960
-   ScaleWidth      =   9120
+   ScaleHeight     =   6780
+   ScaleWidth      =   9075
    StartUpPosition =   2  'CenterScreen
    Begin ComctlLib.Toolbar Toolbar1 
       Align           =   1  'Align Top
       Height          =   420
       Left            =   0
-      TabIndex        =   68
+      TabIndex        =   1
       Top             =   0
-      Width           =   9120
-      _ExtentX        =   16087
+      WhatsThisHelpID =   2
+      Width           =   9075
+      _ExtentX        =   16007
       _ExtentY        =   741
       ButtonWidth     =   635
       ButtonHeight    =   582
@@ -31,24 +30,24 @@ Begin VB.Form frmMain
       ImageList       =   "imgMisc"
       _Version        =   327682
       BeginProperty Buttons {0713E452-850A-101B-AFC0-4210102A8DA7} 
-         NumButtons      =   22
+         NumButtons      =   23
          BeginProperty Button1 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   "New"
             Object.ToolTipText     =   "New"
             Object.Tag             =   ""
-            ImageIndex      =   5
+            ImageKey        =   "New"
          EndProperty
          BeginProperty Button2 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   "Open"
             Object.ToolTipText     =   "Open"
             Object.Tag             =   ""
-            ImageIndex      =   6
+            ImageKey        =   "Open"
          EndProperty
          BeginProperty Button3 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   "Save"
             Object.ToolTipText     =   "Save"
             Object.Tag             =   ""
-            ImageIndex      =   7
+            ImageKey        =   "Save"
          EndProperty
          BeginProperty Button4 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   ""
@@ -58,15 +57,15 @@ Begin VB.Form frmMain
          EndProperty
          BeginProperty Button5 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   "Import"
-            Object.ToolTipText     =   "Import data from GP2"
+            Object.ToolTipText     =   "Import data from Gp2"
             Object.Tag             =   ""
-            ImageIndex      =   8
+            ImageKey        =   "Import"
          EndProperty
          BeginProperty Button6 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   "Export"
-            Object.ToolTipText     =   "Export data to GP2"
+            Object.ToolTipText     =   "Export data to Gp2"
             Object.Tag             =   ""
-            ImageIndex      =   9
+            ImageKey        =   "Export"
          EndProperty
          BeginProperty Button7 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   ""
@@ -75,10 +74,10 @@ Begin VB.Form frmMain
             MixedState      =   -1  'True
          EndProperty
          BeginProperty Button8 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   "GP2Edit"
-            Object.ToolTipText     =   "Add GP2Edit file"
+            Key             =   "Gp2Edit"
+            Object.ToolTipText     =   "Add/Edit Gp2Edit file"
             Object.Tag             =   ""
-            ImageIndex      =   10
+            ImageKey        =   "GP2Edit"
          EndProperty
          BeginProperty Button9 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   ""
@@ -90,19 +89,19 @@ Begin VB.Form frmMain
             Key             =   "JamCheck"
             Object.ToolTipText     =   "Jam Check"
             Object.Tag             =   ""
-            ImageIndex      =   11
+            ImageKey        =   "Jam"
          EndProperty
          BeginProperty Button11 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   "Setup"
             Object.ToolTipText     =   "CC Car Settings"
             Object.Tag             =   ""
-            ImageIndex      =   12
+            ImageKey        =   "Setup"
          EndProperty
          BeginProperty Button12 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   "Backup"
             Object.ToolTipText     =   "Backup a Track"
             Object.Tag             =   ""
-            ImageIndex      =   13
+            ImageKey        =   "Backup"
          EndProperty
          BeginProperty Button13 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   ""
@@ -114,19 +113,19 @@ Begin VB.Form frmMain
             Key             =   "Home"
             Object.ToolTipText     =   "Goto default track directory"
             Object.Tag             =   ""
-            ImageIndex      =   14
+            ImageKey        =   "Home"
          EndProperty
          BeginProperty Button15 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   "Down"
             Object.ToolTipText     =   "Move track down one level"
             Object.Tag             =   ""
-            ImageIndex      =   15
+            ImageKey        =   "Down"
          EndProperty
          BeginProperty Button16 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   "Up"
             Object.ToolTipText     =   "Move track up one level"
             Object.Tag             =   ""
-            ImageIndex      =   16
+            ImageKey        =   "Up"
          EndProperty
          BeginProperty Button17 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   ""
@@ -135,10 +134,10 @@ Begin VB.Form frmMain
             MixedState      =   -1  'True
          EndProperty
          BeginProperty Button18 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   "GP2"
-            Object.ToolTipText     =   "Run GP2"
+            Key             =   "Gp2"
+            Object.ToolTipText     =   "Run Gp2"
             Object.Tag             =   ""
-            ImageIndex      =   17
+            ImageKey        =   "GP2"
          EndProperty
          BeginProperty Button19 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   ""
@@ -148,9 +147,9 @@ Begin VB.Form frmMain
          EndProperty
          BeginProperty Button20 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   "Help"
-            Object.ToolTipText     =   "Track Handler Help"
+            Object.ToolTipText     =   "Help"
             Object.Tag             =   ""
-            ImageIndex      =   18
+            ImageKey        =   "Help"
          EndProperty
          BeginProperty Button21 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Key             =   ""
@@ -162,117 +161,955 @@ Begin VB.Form frmMain
             Key             =   "Exit"
             Object.ToolTipText     =   "Exit"
             Object.Tag             =   ""
-            ImageIndex      =   19
+            ImageKey        =   "Exit"
+         EndProperty
+         BeginProperty Button23 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
+            Object.Tag             =   ""
+            Style           =   3
+            MixedState      =   -1  'True
          EndProperty
       EndProperty
    End
-   Begin JAD2JAMLib.Jad2Jam Jam2Jad 
-      Left            =   1800
-      Top             =   7080
-      _Version        =   65536
-      _ExtentX        =   661
-      _ExtentY        =   661
-      _StockProps     =   0
+   Begin VB.ListBox lstTmpFile 
+      Height          =   2205
+      Left            =   7680
+      Sorted          =   -1  'True
+      TabIndex        =   132
+      Top             =   840
+      Width           =   1215
+      Visible         =   0   'False
    End
-   Begin ComctlLib.StatusBar stbMain 
+   Begin ComctlLib.StatusBar StatusBar1 
       Align           =   2  'Align Bottom
       Height          =   255
       Left            =   0
-      TabIndex        =   85
-      Top             =   6705
-      Width           =   9120
-      _ExtentX        =   16087
+      TabIndex        =   131
+      Top             =   6525
+      Width           =   9075
+      _ExtentX        =   16007
       _ExtentY        =   450
       SimpleText      =   ""
       _Version        =   327682
       BeginProperty Panels {0713E89E-850A-101B-AFC0-4210102A8DA7} 
          NumPanels       =   3
          BeginProperty Panel1 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
-            Object.Width           =   5203
-            MinWidth        =   5203
-            Text            =   "GP2 Track Handler © Viktor Gars 98-99"
-            TextSave        =   "GP2 Track Handler © Viktor Gars 98-99"
+            Object.Width           =   5115
+            MinWidth        =   5115
+            Text            =   "Gp2 Track Handler v1.6 © Viktor Gars"
+            TextSave        =   "Gp2 Track Handler v1.6 © Viktor Gars"
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel2 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
-            Object.Width           =   5115
-            MinWidth        =   5115
-            Text            =   "GP2 Version:"
-            TextSave        =   "GP2 Version:"
+            Object.Width           =   5292
+            MinWidth        =   5292
+            Text            =   "Gp2 Version:"
+            TextSave        =   "Gp2 Version:"
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel3 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
-            Object.Width           =   5998
-            MinWidth        =   5998
-            Text            =   "GP2 Directory:"
-            TextSave        =   "GP2 Directory:"
+            Object.Width           =   5556
+            MinWidth        =   5556
+            Text            =   "Gp2 Directory:"
+            TextSave        =   "Gp2 Directory:"
             Key             =   ""
             Object.Tag             =   ""
          EndProperty
       EndProperty
    End
-   Begin TabDlg.SSTab tabMain 
-      Height          =   6255
-      Left            =   3195
-      TabIndex        =   67
-      Top             =   420
-      Width           =   5925
-      _ExtentX        =   10451
-      _ExtentY        =   11033
-      _Version        =   393216
-      Style           =   1
-      Tabs            =   5
-      TabsPerRow      =   5
-      TabHeight       =   520
-      TabCaption(0)   =   "File Manager"
-      TabPicture(0)   =   "frmMain.frx":030A
-      Tab(0).ControlEnabled=   -1  'True
-      Tab(0).Control(0)=   "fraNoSupport"
-      Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "fraMenuPic"
-      Tab(0).Control(1).Enabled=   0   'False
-      Tab(0).Control(2)=   "fraFileInfo"
-      Tab(0).Control(2).Enabled=   0   'False
-      Tab(0).Control(3)=   "frameNorm"
-      Tab(0).Control(3).Enabled=   0   'False
-      Tab(0).ControlCount=   4
-      TabCaption(1)   =   "Track Data"
-      TabPicture(1)   =   "frmMain.frx":0326
-      Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmdJamCheck"
-      Tab(1).Control(1)=   "fraRace"
-      Tab(1).Control(2)=   "fraQual"
-      Tab(1).Control(3)=   "frameInfo"
-      Tab(1).Control(4)=   "frameData"
-      Tab(1).ControlCount=   5
-      TabCaption(2)   =   "Menu Pics"
-      TabPicture(2)   =   "frmMain.frx":0342
-      Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "tabPic"
-      Tab(2).ControlCount=   1
-      TabCaption(3)   =   "Misc Settings"
-      TabPicture(3)   =   "frmMain.frx":035E
-      Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "frameGlobal"
-      Tab(3).Control(1)=   "framePlayer"
-      Tab(3).ControlCount=   2
-      TabCaption(4)   =   "Lap Time Database"
-      TabPicture(4)   =   "frmMain.frx":037A
-      Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "lstTime"
-      Tab(4).Control(1)=   "cmdAdd"
-      Tab(4).Control(2)=   "cmdDelete"
-      Tab(4).Control(3)=   "lblTextLen"
-      Tab(4).Control(4)=   "lblTimeDrag"
-      Tab(4).ControlCount=   5
-      Begin ComctlLib.ListView lstTime 
-         DragIcon        =   "frmMain.frx":0396
+   Begin VB.Frame fraTrackPic 
+      BorderStyle     =   0  'None
+      Height          =   5655
+      Left            =   -10000
+      TabIndex        =   124
+      Top             =   800
+      Width           =   5655
+      Begin VB.Frame fraPicture 
+         BorderStyle     =   0  'None
          Height          =   5175
-         Left            =   -74880
-         TabIndex        =   98
-         Top             =   480
+         Left            =   120
+         TabIndex        =   126
+         Top             =   360
+         Width           =   5415
+         Begin VB.TextBox txtBPic 
+            Height          =   285
+            Left            =   3600
+            TabIndex        =   128
+            Top             =   4440
+            Width           =   1815
+            Visible         =   0   'False
+         End
+         Begin VB.TextBox txtSPic 
+            Height          =   285
+            Left            =   3600
+            TabIndex        =   127
+            Top             =   4800
+            Width           =   1815
+            Visible         =   0   'False
+         End
+         Begin VB.Image picMenuPic 
+            BorderStyle     =   1  'Fixed Single
+            Height          =   3600
+            Left            =   0
+            Stretch         =   -1  'True
+            Top             =   120
+            Width           =   4800
+         End
+      End
+      Begin ComctlLib.TabStrip tabPic 
+         Height          =   5655
+         Left            =   0
+         TabIndex        =   125
+         Top             =   0
+         Width           =   5655
+         _ExtentX        =   9975
+         _ExtentY        =   9975
+         _Version        =   327682
+         BeginProperty Tabs {0713E432-850A-101B-AFC0-4210102A8DA7} 
+            NumTabs         =   2
+            BeginProperty Tab1 {0713F341-850A-101B-AFC0-4210102A8DA7} 
+               Caption         =   "Lage Menu Picture"
+               Key             =   ""
+               Object.Tag             =   ""
+               ImageVarType    =   2
+            EndProperty
+            BeginProperty Tab2 {0713F341-850A-101B-AFC0-4210102A8DA7} 
+               Caption         =   "Small Menu Picture"
+               Key             =   ""
+               Object.Tag             =   ""
+               ImageVarType    =   2
+            EndProperty
+         EndProperty
+      End
+   End
+   Begin VB.Frame fraFileManager 
+      BorderStyle     =   0  'None
+      Height          =   5655
+      Left            =   -10000
+      TabIndex        =   85
+      Top             =   800
+      Width           =   5655
+      Begin VB.Frame fraFileInfo 
+         Caption         =   "Track File Info"
+         Height          =   2000
+         Left            =   0
+         TabIndex        =   92
+         Top             =   3670
+         WhatsThisHelpID =   6
+         Width           =   5655
+         Begin VB.TextBox lblInfoYear 
+            Appearance      =   0  'Flat
+            BackColor       =   &H8000000F&
+            BorderStyle     =   0  'None
+            Height          =   200
+            Left            =   3840
+            MaxLength       =   4
+            TabIndex        =   104
+            ToolTipText     =   "Click to edit"
+            Top             =   480
+            Width           =   495
+         End
+         Begin VB.TextBox lblEvent 
+            Appearance      =   0  'Flat
+            BackColor       =   &H8000000F&
+            BorderStyle     =   0  'None
+            Height          =   200
+            Left            =   3840
+            TabIndex        =   103
+            ToolTipText     =   "Click to edit"
+            Top             =   735
+            Width           =   1695
+         End
+         Begin VB.TextBox lblCountry 
+            Appearance      =   0  'Flat
+            BackColor       =   &H8000000F&
+            BorderStyle     =   0  'None
+            Height          =   200
+            Left            =   1250
+            TabIndex        =   102
+            ToolTipText     =   "Click to edit"
+            Top             =   240
+            Width           =   1700
+         End
+         Begin VB.CommandButton cmdSaveGP2Info 
+            Enabled         =   0   'False
+            Height          =   345
+            Left            =   5160
+            Picture         =   "frmMain.frx":030A
+            Style           =   1  'Graphical
+            TabIndex        =   101
+            ToolTipText     =   "Save GP2Info"
+            Top             =   0
+            WhatsThisHelpID =   5
+            Width           =   375
+         End
+         Begin VB.TextBox lblLaps 
+            Appearance      =   0  'Flat
+            BackColor       =   &H8000000F&
+            BorderStyle     =   0  'None
+            Height          =   200
+            Left            =   1250
+            MaxLength       =   3
+            TabIndex        =   100
+            ToolTipText     =   "Click to edit"
+            Top             =   720
+            Width           =   1700
+         End
+         Begin VB.TextBox lblLen 
+            Appearance      =   0  'Flat
+            BackColor       =   &H8000000F&
+            BorderStyle     =   0  'None
+            Height          =   200
+            Left            =   1250
+            MaxLength       =   4
+            TabIndex        =   99
+            ToolTipText     =   "Click to edit"
+            Top             =   960
+            Width           =   1700
+         End
+         Begin VB.TextBox lblWare 
+            Appearance      =   0  'Flat
+            BackColor       =   &H8000000F&
+            BorderStyle     =   0  'None
+            Height          =   200
+            Left            =   1250
+            MaxLength       =   5
+            TabIndex        =   98
+            ToolTipText     =   "Click to edit"
+            Top             =   1200
+            Width           =   1700
+         End
+         Begin VB.TextBox lblQual 
+            Appearance      =   0  'Flat
+            BackColor       =   &H8000000F&
+            BorderStyle     =   0  'None
+            Height          =   200
+            Left            =   1250
+            MaxLength       =   8
+            TabIndex        =   97
+            ToolTipText     =   "Click to edit"
+            Top             =   1440
+            Width           =   1700
+         End
+         Begin VB.TextBox lblRace 
+            Appearance      =   0  'Flat
+            BackColor       =   &H8000000F&
+            BorderStyle     =   0  'None
+            Height          =   200
+            Left            =   1250
+            MaxLength       =   8
+            TabIndex        =   96
+            ToolTipText     =   "Click to edit"
+            Top             =   1680
+            Width           =   1700
+         End
+         Begin VB.TextBox lblTrackName 
+            Appearance      =   0  'Flat
+            BackColor       =   &H8000000F&
+            BorderStyle     =   0  'None
+            Height          =   200
+            Left            =   1250
+            TabIndex        =   95
+            ToolTipText     =   "Click to edit"
+            Top             =   480
+            Width           =   1700
+         End
+         Begin VB.TextBox lblMisc 
+            Appearance      =   0  'Flat
+            BackColor       =   &H80000004&
+            BorderStyle     =   0  'None
+            Height          =   495
+            Left            =   3000
+            MultiLine       =   -1  'True
+            TabIndex        =   94
+            ToolTipText     =   "Click to Edit"
+            Top             =   1440
+            Width           =   2535
+         End
+         Begin VB.TextBox lblSlot 
+            Appearance      =   0  'Flat
+            BackColor       =   &H8000000F&
+            BorderStyle     =   0  'None
+            Height          =   200
+            Left            =   4920
+            MaxLength       =   2
+            TabIndex        =   93
+            ToolTipText     =   "Click to edit"
+            Top             =   480
+            Width           =   375
+         End
+         Begin VB.Label lblSetup 
+            Height          =   200
+            Left            =   3840
+            TabIndex        =   119
+            Top             =   240
+            Width           =   1215
+         End
+         Begin VB.Label lblAuthor 
+            Height          =   200
+            Left            =   3840
+            TabIndex        =   118
+            Top             =   960
+            Width           =   1695
+            WordWrap        =   -1  'True
+         End
+         Begin VB.Label lblInfoText 
+            AutoSize        =   -1  'True
+            Caption         =   "Misc:"
+            Height          =   200
+            Index           =   11
+            Left            =   3000
+            TabIndex        =   117
+            Top             =   1230
+            Width           =   375
+         End
+         Begin VB.Label lblInfoText 
+            AutoSize        =   -1  'True
+            Caption         =   "Car &Setup:"
+            Height          =   195
+            Index           =   12
+            Left            =   3000
+            TabIndex        =   116
+            Top             =   240
+            Width           =   750
+         End
+         Begin VB.Label lblInfoText 
+            Caption         =   "&Year:"
+            Height          =   200
+            Index           =   7
+            Left            =   3000
+            TabIndex        =   115
+            Top             =   480
+            Width           =   735
+         End
+         Begin VB.Label lblInfoText 
+            Caption         =   "&Track Name:"
+            Height          =   200
+            Index           =   1
+            Left            =   120
+            TabIndex        =   114
+            Top             =   480
+            Width           =   1095
+         End
+         Begin VB.Label lblInfoText 
+            Caption         =   "Best Lap &Race:"
+            Height          =   200
+            Index           =   6
+            Left            =   120
+            TabIndex        =   113
+            Top             =   1680
+            Width           =   1215
+         End
+         Begin VB.Label lblInfoText 
+            Caption         =   "E&vent:"
+            Height          =   200
+            Index           =   8
+            Left            =   3000
+            TabIndex        =   112
+            Top             =   735
+            Width           =   735
+         End
+         Begin VB.Label lblInfoText 
+            Caption         =   "Best Lap &Qual:"
+            Height          =   200
+            Index           =   5
+            Left            =   120
+            TabIndex        =   111
+            Top             =   1440
+            Width           =   1215
+         End
+         Begin VB.Label lblInfoText 
+            Caption         =   "Tyre &Ware:"
+            Height          =   200
+            Index           =   4
+            Left            =   120
+            TabIndex        =   110
+            Top             =   1200
+            Width           =   1215
+         End
+         Begin VB.Label lblInfoText 
+            Caption         =   "L&ength (m):"
+            Height          =   200
+            Index           =   3
+            Left            =   120
+            TabIndex        =   109
+            Top             =   960
+            Width           =   1215
+         End
+         Begin VB.Label lblInfoText 
+            Caption         =   "&Laps:"
+            Height          =   200
+            Index           =   2
+            Left            =   120
+            TabIndex        =   108
+            Top             =   720
+            Width           =   1215
+         End
+         Begin VB.Label lblInfoText 
+            Caption         =   "&Country:"
+            Height          =   200
+            Index           =   0
+            Left            =   120
+            TabIndex        =   107
+            Top             =   240
+            Width           =   1215
+         End
+         Begin VB.Label lblInfoText 
+            Caption         =   "&Author:"
+            Height          =   200
+            Index           =   10
+            Left            =   3000
+            TabIndex        =   106
+            Top             =   960
+            Width           =   735
+         End
+         Begin VB.Label lblInfoText 
+            AutoSize        =   -1  'True
+            Caption         =   "&Slot:"
+            Height          =   200
+            Index           =   9
+            Left            =   4440
+            TabIndex        =   105
+            Top             =   480
+            Width           =   495
+         End
+      End
+      Begin VB.Frame frameNorm 
+         Caption         =   " File Manager"
+         Height          =   3675
+         Left            =   0
+         TabIndex        =   86
+         Top             =   0
+         Width           =   5655
+         Begin ComctlLib.Toolbar Toolbar2 
+            Height          =   390
+            Left            =   3960
+            TabIndex        =   87
+            Top             =   195
+            Width           =   1575
+            _ExtentX        =   2778
+            _ExtentY        =   688
+            ButtonWidth     =   635
+            ButtonHeight    =   582
+            AllowCustomize  =   0   'False
+            ImageList       =   "imgMisc"
+            _Version        =   327682
+            BeginProperty Buttons {0713E452-850A-101B-AFC0-4210102A8DA7} 
+               NumButtons      =   5
+               BeginProperty Button1 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+                  Key             =   "Up"
+                  Object.ToolTipText     =   "Up One Level"
+                  Object.Tag             =   ""
+                  ImageKey        =   "UpOneLevel"
+               EndProperty
+               BeginProperty Button2 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+                  Key             =   ""
+                  Object.Tag             =   ""
+                  Style           =   3
+                  MixedState      =   -1  'True
+               EndProperty
+               BeginProperty Button3 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+                  Key             =   "List"
+                  Object.ToolTipText     =   "List"
+                  Object.Tag             =   ""
+                  ImageKey        =   "Small"
+                  Style           =   2
+                  Value           =   1
+               EndProperty
+               BeginProperty Button4 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+                  Key             =   "Details"
+                  Object.ToolTipText     =   "Details"
+                  Object.Tag             =   ""
+                  ImageKey        =   "List"
+                  Style           =   2
+               EndProperty
+               BeginProperty Button5 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+                  Key             =   "Large"
+                  Object.ToolTipText     =   "Large Icons"
+                  Object.Tag             =   ""
+                  ImageKey        =   "Big"
+                  Style           =   2
+               EndProperty
+            EndProperty
+         End
+         Begin VB.DriveListBox Drive1 
+            Height          =   315
+            Left            =   120
+            TabIndex        =   89
+            Top             =   240
+            Width           =   3735
+         End
+         Begin ComctlLib.ListView lstFile 
+            Height          =   2750
+            Left            =   120
+            TabIndex        =   88
+            Top             =   600
+            WhatsThisHelpID =   4
+            Width           =   5415
+            _ExtentX        =   9551
+            _ExtentY        =   4842
+            View            =   2
+            Arrange         =   2
+            LabelEdit       =   1
+            LabelWrap       =   -1  'True
+            HideSelection   =   0   'False
+            OLEDragMode     =   1
+            _Version        =   327682
+            Icons           =   "imgBig"
+            SmallIcons      =   "imgSmall"
+            ForeColor       =   -2147483640
+            BackColor       =   -2147483643
+            BorderStyle     =   1
+            Appearance      =   1
+            OLEDragMode     =   1
+            NumItems        =   3
+            BeginProperty ColumnHeader(1) {0713E8C7-850A-101B-AFC0-4210102A8DA7} 
+               Key             =   ""
+               Object.Tag             =   ""
+               Text            =   "Name"
+               Object.Width           =   5292
+            EndProperty
+            BeginProperty ColumnHeader(2) {0713E8C7-850A-101B-AFC0-4210102A8DA7} 
+               SubItemIndex    =   1
+               Key             =   ""
+               Object.Tag             =   ""
+               Text            =   "Size"
+               Object.Width           =   882
+            EndProperty
+            BeginProperty ColumnHeader(3) {0713E8C7-850A-101B-AFC0-4210102A8DA7} 
+               SubItemIndex    =   2
+               Key             =   ""
+               Object.Tag             =   ""
+               Text            =   "Modified"
+               Object.Width           =   1235
+            EndProperty
+         End
+         Begin VB.Label Label1 
+            Height          =   135
+            Left            =   2280
+            TabIndex        =   91
+            Top             =   4080
+            Width           =   1335
+         End
+         Begin VB.Label lblMyPath 
+            Height          =   255
+            Left            =   120
+            TabIndex        =   90
+            Top             =   3360
+            Width           =   5415
+         End
+      End
+      Begin VB.Frame fraMenuPic 
+         Caption         =   "Menu Picture"
+         Height          =   2000
+         Left            =   0
+         TabIndex        =   120
+         Top             =   3670
+         Width           =   5655
+         Begin VB.Label lblPicInfo 
+            Height          =   255
+            Left            =   2280
+            TabIndex        =   121
+            Top             =   360
+            Width           =   2655
+         End
+         Begin VB.Image imgPre 
+            Height          =   1560
+            Left            =   120
+            Stretch         =   -1  'True
+            Top             =   360
+            Width           =   2040
+         End
+      End
+      Begin VB.Frame fraNoSupport 
+         Height          =   2000
+         Left            =   0
+         TabIndex        =   122
+         Top             =   3670
+         Width           =   5655
+         Begin VB.Label Label15 
+            AutoSize        =   -1  'True
+            Caption         =   "File Not Supported!"
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   24
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   555
+            Left            =   600
+            TabIndex        =   123
+            Top             =   720
+            Width           =   4455
+         End
+      End
+   End
+   Begin VB.Frame fraData 
+      BorderStyle     =   0  'None
+      Height          =   5655
+      Left            =   -10000
+      TabIndex        =   49
+      Top             =   800
+      Width           =   5535
+      Begin VB.Frame frameData 
+         Caption         =   "Track Data"
+         Height          =   2175
+         Left            =   0
+         TabIndex        =   79
+         Top             =   2880
+         Width           =   3135
+         Begin Gp2_Track_Handler.UpDown updLaps 
+            Height          =   285
+            Left            =   120
+            TabIndex        =   129
+            Top             =   480
+            Width           =   615
+            _ExtentX        =   1085
+            _ExtentY        =   503
+            Max             =   126
+         End
+         Begin VB.TextBox txtLength 
+            Height          =   285
+            Left            =   120
+            MaxLength       =   4
+            TabIndex        =   81
+            Top             =   1080
+            Width           =   495
+         End
+         Begin VB.TextBox txtTire 
+            Height          =   285
+            Left            =   120
+            MaxLength       =   5
+            TabIndex        =   80
+            Top             =   1680
+            Width           =   735
+         End
+         Begin VB.Label lblLabel 
+            AutoSize        =   -1  'True
+            Caption         =   "&Laps (3-126)"
+            Height          =   195
+            Index           =   4
+            Left            =   120
+            TabIndex        =   84
+            Top             =   240
+            Width           =   885
+         End
+         Begin VB.Label lblLabel 
+            AutoSize        =   -1  'True
+            Caption         =   "Tra&ck Length (0-9999 m)"
+            Height          =   195
+            Index           =   5
+            Left            =   120
+            TabIndex        =   83
+            Top             =   840
+            Width           =   1755
+         End
+         Begin VB.Label lblLabel 
+            AutoSize        =   -1  'True
+            Caption         =   "Tyre &Ware (14000-40000)"
+            Height          =   195
+            Index           =   6
+            Left            =   120
+            TabIndex        =   82
+            Top             =   1440
+            Width           =   1830
+         End
+      End
+      Begin VB.Frame frameInfo 
+         Caption         =   "Track Info"
+         Height          =   2775
+         Left            =   0
+         TabIndex        =   71
+         Top             =   0
+         Width           =   3135
+         Begin VB.ComboBox txtAdjectiv 
+            Height          =   315
+            Left            =   120
+            TabIndex        =   130
+            Text            =   "Combo1"
+            Top             =   2280
+            Width           =   2775
+         End
+         Begin VB.TextBox txtPath 
+            Enabled         =   0   'False
+            Height          =   285
+            Left            =   120
+            MaxLength       =   255
+            TabIndex        =   74
+            Top             =   480
+            Width           =   2775
+         End
+         Begin VB.TextBox txtName 
+            Height          =   285
+            Left            =   120
+            TabIndex        =   73
+            Top             =   1080
+            Width           =   2775
+         End
+         Begin VB.TextBox txtCountry 
+            Height          =   285
+            Left            =   120
+            TabIndex        =   72
+            Top             =   1680
+            Width           =   2775
+         End
+         Begin VB.Label lblLabel 
+            AutoSize        =   -1  'True
+            Caption         =   "&Adjective:"
+            Height          =   195
+            Index           =   3
+            Left            =   120
+            TabIndex        =   78
+            Top             =   2040
+            Width           =   705
+         End
+         Begin VB.Label lblLabel 
+            AutoSize        =   -1  'True
+            Caption         =   "&Country:"
+            Height          =   195
+            Index           =   2
+            Left            =   120
+            TabIndex        =   77
+            Top             =   1440
+            Width           =   585
+         End
+         Begin VB.Label lblLabel 
+            AutoSize        =   -1  'True
+            Caption         =   "&Track Name:"
+            Height          =   195
+            Index           =   1
+            Left            =   120
+            TabIndex        =   76
+            Top             =   840
+            Width           =   930
+         End
+         Begin VB.Label lblLabel 
+            AutoSize        =   -1  'True
+            Caption         =   "Track Path"
+            Height          =   195
+            Index           =   0
+            Left            =   120
+            TabIndex        =   75
+            Top             =   240
+            Width           =   795
+         End
+      End
+      Begin VB.Frame fraQual 
+         Caption         =   "Lap Time Data - Qual"
+         Height          =   2775
+         Left            =   3360
+         TabIndex        =   61
+         Top             =   0
+         Width           =   2175
+         Begin VB.TextBox txtQDriver 
+            Height          =   285
+            Left            =   120
+            MaxLength       =   23
+            TabIndex        =   66
+            Top             =   480
+            Width           =   1935
+         End
+         Begin VB.TextBox txtQTeam 
+            Height          =   285
+            Left            =   120
+            MaxLength       =   12
+            TabIndex        =   65
+            Top             =   1080
+            Width           =   1935
+         End
+         Begin VB.TextBox txtQDate 
+            Height          =   285
+            Left            =   120
+            MaxLength       =   10
+            TabIndex        =   64
+            Top             =   2280
+            Width           =   1935
+         End
+         Begin VB.CommandButton cmdSaveQual 
+            Height          =   300
+            Left            =   1800
+            Picture         =   "frmMain.frx":040C
+            Style           =   1  'Graphical
+            TabIndex        =   63
+            Top             =   0
+            Width           =   300
+         End
+         Begin VB.TextBox txtQTime 
+            Height          =   285
+            Left            =   120
+            MaxLength       =   8
+            TabIndex        =   62
+            Top             =   1680
+            Width           =   1935
+         End
+         Begin VB.Label Label4 
+            AutoSize        =   -1  'True
+            Caption         =   "Driver"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   70
+            Top             =   240
+            Width           =   420
+         End
+         Begin VB.Label Label5 
+            AutoSize        =   -1  'True
+            Caption         =   "Team"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   69
+            Top             =   840
+            Width           =   405
+         End
+         Begin VB.Label Label6 
+            AutoSize        =   -1  'True
+            Caption         =   "Date (e.g 1999-06-19)"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   68
+            Top             =   2040
+            Width           =   1560
+         End
+         Begin VB.Label Label2 
+            AutoSize        =   -1  'True
+            Caption         =   "Time (e.g. 1:24.145)"
+            Height          =   195
+            Index           =   0
+            Left            =   120
+            TabIndex        =   67
+            Top             =   1440
+            Width           =   1425
+         End
+      End
+      Begin VB.Frame fraRace 
+         Caption         =   "Lap Time Data - Race"
+         Height          =   2775
+         Left            =   3360
+         TabIndex        =   51
+         Top             =   2880
+         Width           =   2175
+         Begin VB.TextBox txtRDriver 
+            Height          =   285
+            Left            =   120
+            MaxLength       =   23
+            TabIndex        =   56
+            Top             =   480
+            Width           =   1935
+         End
+         Begin VB.TextBox txtRTeam 
+            Height          =   285
+            Left            =   120
+            MaxLength       =   12
+            TabIndex        =   55
+            Top             =   1080
+            Width           =   1935
+         End
+         Begin VB.TextBox txtRDate 
+            Height          =   285
+            Left            =   120
+            MaxLength       =   10
+            TabIndex        =   54
+            Top             =   2280
+            Width           =   1935
+         End
+         Begin VB.CommandButton cmdSaveRace 
+            Height          =   300
+            Left            =   1800
+            Picture         =   "frmMain.frx":050E
+            Style           =   1  'Graphical
+            TabIndex        =   53
+            Top             =   0
+            Width           =   300
+         End
+         Begin VB.TextBox txtRTime 
+            Height          =   285
+            Left            =   120
+            MaxLength       =   8
+            TabIndex        =   52
+            Top             =   1680
+            Width           =   1935
+         End
+         Begin VB.Label Label7 
+            AutoSize        =   -1  'True
+            Caption         =   "Date (e.g. 1999-06-19)"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   60
+            Top             =   2040
+            Width           =   1605
+         End
+         Begin VB.Label Label8 
+            AutoSize        =   -1  'True
+            Caption         =   "Team"
+            Height          =   195
+            Index           =   0
+            Left            =   120
+            TabIndex        =   59
+            Top             =   840
+            Width           =   405
+         End
+         Begin VB.Label Label9 
+            AutoSize        =   -1  'True
+            Caption         =   "Driver"
+            Height          =   195
+            Index           =   0
+            Left            =   120
+            TabIndex        =   58
+            Top             =   240
+            Width           =   420
+         End
+         Begin VB.Label Label3 
+            AutoSize        =   -1  'True
+            Caption         =   "Time (e.g. 1:24.145)"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   57
+            Top             =   1440
+            Width           =   1425
+         End
+      End
+      Begin VB.CommandButton cmdJamCheck 
+         Caption         =   "&Jam Check"
+         Height          =   375
+         Left            =   0
+         TabIndex        =   50
+         Top             =   5160
+         Width           =   1095
+      End
+   End
+   Begin VB.Frame fraLapTime 
+      BorderStyle     =   0  'None
+      Height          =   5655
+      Left            =   -10000
+      TabIndex        =   45
+      Top             =   800
+      Width           =   5655
+      Begin VB.CommandButton cmdDelete 
+         Caption         =   "&Delete"
+         Height          =   315
+         Left            =   0
+         TabIndex        =   48
+         Top             =   5280
+         Width           =   1035
+      End
+      Begin VB.CommandButton cmdAdd 
+         Caption         =   "&Add Time"
+         Height          =   315
+         Left            =   1200
+         TabIndex        =   47
+         Top             =   5280
+         Width           =   1035
+      End
+      Begin ComctlLib.ListView lstTime 
+         DragIcon        =   "frmMain.frx":0610
+         Height          =   5175
+         Left            =   0
+         TabIndex        =   46
+         Top             =   0
          Width           =   5655
          _ExtentX        =   9975
          _ExtentY        =   9128
@@ -320,571 +1157,49 @@ Begin VB.Form frmMain
             Key             =   ""
             Object.Tag             =   ""
             Text            =   "Type"
-            Object.Width           =   847
+            Object.Width           =   706
          EndProperty
       End
-      Begin VB.CommandButton cmdAdd 
-         Caption         =   "&Add Time"
-         Height          =   315
-         Left            =   -73680
-         TabIndex        =   93
-         Top             =   5760
-         Width           =   1035
-      End
-      Begin VB.CommandButton cmdDelete 
-         Caption         =   "&Delete"
-         Height          =   315
-         Left            =   -74880
-         TabIndex        =   92
-         Top             =   5760
-         Width           =   1035
-      End
-      Begin VB.CommandButton cmdJamCheck 
-         Caption         =   "&Jam Check"
-         Height          =   375
-         Left            =   -74880
-         TabIndex        =   65
-         Top             =   5640
-         Width           =   1095
-      End
-      Begin TabDlg.SSTab tabPic 
-         Height          =   5655
-         Left            =   -74880
-         TabIndex        =   34
-         Top             =   480
-         Width           =   5655
-         _ExtentX        =   9975
-         _ExtentY        =   9975
-         _Version        =   393216
-         Style           =   1
-         Tabs            =   2
-         TabHeight       =   520
-         TabCaption(0)   =   "Big Menu Picture"
-         TabPicture(0)   =   "frmMain.frx":06A0
-         Tab(0).ControlEnabled=   -1  'True
-         Tab(0).Control(0)=   "imgBPic"
-         Tab(0).Control(0).Enabled=   0   'False
-         Tab(0).Control(1)=   "txtBPic"
-         Tab(0).Control(1).Enabled=   0   'False
-         Tab(0).ControlCount=   2
-         TabCaption(1)   =   "Small Menu Picture"
-         TabPicture(1)   =   "frmMain.frx":06BC
-         Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "txtSPic"
-         Tab(1).Control(1)=   "imgSPic"
-         Tab(1).ControlCount=   2
-         Begin VB.TextBox txtSPic 
-            Height          =   285
-            Left            =   -74760
-            TabIndex        =   87
-            Top             =   3120
-            Width           =   2055
-            Visible         =   0   'False
-         End
-         Begin VB.TextBox txtBPic 
-            Height          =   285
-            Left            =   240
-            TabIndex        =   86
-            Top             =   4200
-            Width           =   1815
-            Visible         =   0   'False
-         End
-         Begin VB.Image imgSPic 
-            BorderStyle     =   1  'Fixed Single
-            Height          =   2475
-            Left            =   -74760
-            Stretch         =   -1  'True
-            Top             =   480
-            Width           =   3300
-         End
-         Begin VB.Image imgBPic 
-            BorderStyle     =   1  'Fixed Single
-            Height          =   3600
-            Left            =   240
-            Stretch         =   -1  'True
-            Top             =   480
-            Width           =   4800
-         End
-      End
-      Begin VB.Frame frameGlobal 
-         Caption         =   "Global Settings"
-         Height          =   5175
-         Left            =   -72000
-         TabIndex        =   78
-         Top             =   480
-         Width           =   2775
-         Begin VB.HScrollBar Slider1 
-            Height          =   255
-            LargeChange     =   10
-            Left            =   240
-            Max             =   2099
-            Min             =   1900
-            TabIndex        =   121
-            Top             =   1800
-            Value           =   1994
-            Width           =   2415
-         End
-         Begin VB.CheckBox chkSave 
-            Caption         =   "Always save track record"
-            Height          =   255
-            Left            =   240
-            TabIndex        =   61
-            Top             =   3120
-            Width           =   2175
-         End
-         Begin VB.CheckBox chk0as1 
-            Caption         =   "Show car 1 as 0"
-            Height          =   255
-            Left            =   240
-            TabIndex        =   60
-            Top             =   2760
-            Width           =   2055
-         End
-         Begin VB.HScrollBar hscQRace 
-            Height          =   255
-            LargeChange     =   10
-            Left            =   240
-            Max             =   100
-            Min             =   1
-            TabIndex        =   57
-            Top             =   1200
-            Value           =   5
-            Width           =   2415
-         End
-         Begin VB.HScrollBar hscCWeight 
-            Height          =   255
-            LargeChange     =   10
-            Left            =   240
-            Max             =   4000
-            Min             =   401
-            TabIndex        =   54
-            Top             =   600
-            Value           =   1313
-            Width           =   2415
-         End
-         Begin VB.Frame Frame1 
-            Height          =   30
-            Left            =   120
-            TabIndex        =   79
-            Top             =   3600
-            Width           =   2415
-         End
-         Begin VB.Label lblYear 
-            Alignment       =   1  'Right Justify
-            AutoSize        =   -1  'True
-            Caption         =   "1994"
-            Height          =   195
-            Left            =   1695
-            TabIndex        =   59
-            Top             =   1560
-            Width           =   960
-         End
-         Begin VB.Label Label12 
-            AutoSize        =   -1  'True
-            Caption         =   "Year for this Season"
-            Height          =   195
-            Index           =   0
-            Left            =   240
-            TabIndex        =   58
-            Top             =   1560
-            Width           =   1425
-         End
-         Begin VB.Label lblQuick 
-            Alignment       =   1  'Right Justify
-            Caption         =   "5%"
-            Height          =   195
-            Left            =   2175
-            TabIndex        =   56
-            Top             =   960
-            Width           =   480
-         End
-         Begin VB.Label Label13 
-            AutoSize        =   -1  'True
-            Caption         =   "Quick Race Length"
-            Height          =   195
-            Index           =   0
-            Left            =   240
-            TabIndex        =   55
-            Top             =   960
-            Width           =   1395
-         End
-         Begin VB.Label lblCWeight 
-            Alignment       =   1  'Right Justify
-            Caption         =   "1313lb (596kg)"
-            Height          =   195
-            Left            =   1455
-            TabIndex        =   53
-            Top             =   360
-            Width           =   1200
-         End
-         Begin VB.Label Label14 
-            AutoSize        =   -1  'True
-            Caption         =   "Car Weight"
-            Height          =   195
-            Index           =   0
-            Left            =   240
-            TabIndex        =   52
-            Top             =   360
-            Width           =   795
-         End
-         Begin VB.Image S 
-            Height          =   180
-            Index           =   0
-            Left            =   240
-            Top             =   4320
-            Width           =   195
-         End
-         Begin VB.Image S 
-            Height          =   180
-            Index           =   6
-            Left            =   1410
-            Top             =   4320
-            Width           =   195
-         End
-         Begin VB.Image S 
-            Height          =   180
-            Index           =   5
-            Left            =   1215
-            Top             =   4320
-            Width           =   195
-         End
-         Begin VB.Image S 
-            Height          =   180
-            Index           =   4
-            Left            =   1020
-            Top             =   4320
-            Width           =   195
-         End
-         Begin VB.Image S 
-            Height          =   180
-            Index           =   3
-            Left            =   825
-            Top             =   4320
-            Width           =   195
-         End
-         Begin VB.Image S 
-            Height          =   180
-            Index           =   2
-            Left            =   630
-            Top             =   4320
-            Width           =   195
-         End
-         Begin VB.Image S 
-            Height          =   180
-            Index           =   1
-            Left            =   435
-            Top             =   4320
-            Width           =   195
-         End
-         Begin VB.Image P 
-            Height          =   180
-            Index           =   0
-            Left            =   240
-            Top             =   4560
-            Width           =   195
-         End
-         Begin VB.Image AC 
-            Height          =   180
-            Index           =   0
-            Left            =   240
-            Top             =   4800
-            Width           =   195
-         End
-         Begin VB.Image P 
-            Height          =   180
-            Index           =   6
-            Left            =   1410
-            Top             =   4560
-            Width           =   195
-         End
-         Begin VB.Image AC 
-            Height          =   180
-            Index           =   6
-            Left            =   1410
-            Top             =   4800
-            Width           =   195
-         End
-         Begin VB.Image AC 
-            Height          =   180
-            Index           =   5
-            Left            =   1215
-            Top             =   4800
-            Width           =   195
-         End
-         Begin VB.Image P 
-            Height          =   180
-            Index           =   5
-            Left            =   1215
-            Top             =   4560
-            Width           =   195
-         End
-         Begin VB.Image AC 
-            Height          =   180
-            Index           =   4
-            Left            =   1020
-            Top             =   4800
-            Width           =   195
-         End
-         Begin VB.Image P 
-            Height          =   180
-            Index           =   4
-            Left            =   1020
-            Top             =   4560
-            Width           =   195
-         End
-         Begin VB.Image P 
-            Height          =   180
-            Index           =   3
-            Left            =   825
-            Top             =   4560
-            Width           =   195
-         End
-         Begin VB.Image AC 
-            Height          =   180
-            Index           =   3
-            Left            =   825
-            Top             =   4800
-            Width           =   195
-         End
-         Begin VB.Image AC 
-            Height          =   180
-            Index           =   2
-            Left            =   630
-            Top             =   4800
-            Width           =   195
-         End
-         Begin VB.Image P 
-            Height          =   180
-            Index           =   2
-            Left            =   630
-            Top             =   4560
-            Width           =   195
-         End
-         Begin VB.Image AC 
-            Height          =   180
-            Index           =   1
-            Left            =   435
-            Top             =   4800
-            Width           =   195
-         End
-         Begin VB.Image P 
-            Height          =   180
-            Index           =   1
-            Left            =   435
-            Top             =   4560
-            Width           =   195
-         End
-         Begin VB.Image A 
-            Height          =   180
-            Index           =   6
-            Left            =   1410
-            Top             =   4080
-            Width           =   195
-         End
-         Begin VB.Image A 
-            Height          =   180
-            Index           =   5
-            Left            =   1215
-            Top             =   4080
-            Width           =   195
-         End
-         Begin VB.Image A 
-            Height          =   180
-            Index           =   4
-            Left            =   1020
-            Top             =   4080
-            Width           =   195
-         End
-         Begin VB.Image A 
-            Height          =   180
-            Index           =   3
-            Left            =   825
-            Top             =   4080
-            Width           =   195
-         End
-         Begin VB.Image A 
-            Height          =   180
-            Index           =   2
-            Left            =   630
-            Top             =   4080
-            Width           =   195
-         End
-         Begin VB.Image A 
-            Height          =   180
-            Index           =   1
-            Left            =   435
-            Top             =   4080
-            Width           =   195
-         End
-         Begin VB.Image A 
-            Height          =   180
-            Index           =   0
-            Left            =   240
-            Top             =   4080
-            Width           =   195
-         End
-         Begin VB.Image R 
-            Height          =   180
-            Index           =   6
-            Left            =   1410
-            Top             =   3840
-            Width           =   195
-         End
-         Begin VB.Image R 
-            Height          =   180
-            Index           =   5
-            Left            =   1215
-            Top             =   3840
-            Width           =   195
-         End
-         Begin VB.Image R 
-            Height          =   180
-            Index           =   4
-            Left            =   1020
-            Top             =   3840
-            Width           =   195
-         End
-         Begin VB.Image R 
-            Height          =   180
-            Index           =   3
-            Left            =   825
-            Top             =   3840
-            Width           =   195
-         End
-         Begin VB.Image R 
-            Height          =   180
-            Index           =   2
-            Left            =   630
-            Top             =   3840
-            Width           =   195
-         End
-         Begin VB.Image R 
-            Height          =   180
-            Index           =   1
-            Left            =   435
-            Top             =   3840
-            Width           =   195
-         End
-         Begin VB.Image R 
-            Height          =   180
-            Index           =   0
-            Left            =   240
-            Top             =   3840
-            Width           =   195
-         End
-         Begin VB.Label lblAce 
-            AutoSize        =   -1  'True
-            Caption         =   "Ace"
-            Height          =   180
-            Left            =   1800
-            TabIndex        =   84
-            Top             =   4800
-            Width           =   285
-         End
-         Begin VB.Label lblRookie 
-            AutoSize        =   -1  'True
-            Caption         =   "Rookie"
-            Height          =   180
-            Index           =   3
-            Left            =   1800
-            TabIndex        =   83
-            Top             =   3840
-            Width           =   510
-         End
-         Begin VB.Label lblAmateur 
-            AutoSize        =   -1  'True
-            Caption         =   "Amateur"
-            Height          =   180
-            Left            =   1800
-            TabIndex        =   82
-            Top             =   4080
-            Width           =   585
-         End
-         Begin VB.Label lblSemiPro 
-            AutoSize        =   -1  'True
-            Caption         =   "Semi-Pro"
-            Height          =   180
-            Left            =   1800
-            TabIndex        =   81
-            Top             =   4320
-            Width           =   630
-         End
-         Begin VB.Label lblPro 
-            AutoSize        =   -1  'True
-            Caption         =   "Pro"
-            Height          =   180
-            Left            =   1800
-            TabIndex        =   80
-            Top             =   4560
-            Width           =   240
-         End
-      End
+   End
+   Begin VB.Frame fraMisc 
+      BorderStyle     =   0  'None
+      Height          =   5175
+      Left            =   -10000
+      TabIndex        =   3
+      Top             =   800
+      Width           =   5655
       Begin VB.Frame framePlayer 
          Caption         =   "Player Car"
          Height          =   5175
-         Left            =   -74880
-         TabIndex        =   76
-         Top             =   480
+         Left            =   0
+         TabIndex        =   23
+         Top             =   0
          Width           =   2775
-         Begin VB.CommandButton cmdDefaultSettings 
-            Caption         =   "GP2 Default"
-            Height          =   315
-            Left            =   1500
-            TabIndex        =   64
-            Top             =   4320
-            Width           =   1035
-         End
-         Begin VB.CommandButton cmdImportSettings 
-            Caption         =   "&Import"
-            Height          =   315
-            Left            =   120
-            TabIndex        =   63
-            Top             =   4700
-            Width           =   1035
-         End
-         Begin VB.CommandButton cmdExportSettings 
-            Caption         =   "&Export"
-            Height          =   315
-            Left            =   120
-            TabIndex        =   62
-            Top             =   4320
-            Width           =   1035
-         End
-         Begin VB.CheckBox chkUPower 
-            Caption         =   "Use Selected Team Power"
+         Begin VB.HScrollBar hscPRPower 
             Height          =   255
+            LargeChange     =   20
             Left            =   120
-            TabIndex        =   41
-            Top             =   1560
-            Width           =   2500
-         End
-         Begin VB.CheckBox chkNoLimit 
-            Caption         =   "No Speed Limit"
-            Height          =   255
-            Left            =   120
-            TabIndex        =   51
-            Top             =   3840
-            Width           =   2500
-         End
-         Begin VB.HScrollBar hscPitSpeed 
-            Height          =   255
-            LargeChange     =   10
-            Left            =   120
-            Max             =   201
-            Min             =   1
-            TabIndex        =   50
-            Top             =   3480
-            Value           =   50
+            Max             =   1579
+            TabIndex        =   34
+            Top             =   600
+            Value           =   780
             Width           =   2415
          End
-         Begin VB.HScrollBar hscPGrip 
-            Height          =   255
-            LargeChange     =   10
+         Begin VB.Frame Frame2 
+            Height          =   30
             Left            =   120
-            Max             =   1000
-            TabIndex        =   47
-            Top             =   2880
-            Value           =   198
+            TabIndex        =   33
+            Top             =   4200
+            Width           =   2415
+         End
+         Begin VB.HScrollBar hscPQPower 
+            Height          =   255
+            LargeChange     =   20
+            Left            =   120
+            Max             =   1579
+            TabIndex        =   32
+            Top             =   1200
+            Value           =   790
             Width           =   2415
          End
          Begin VB.HScrollBar hscWeight 
@@ -893,118 +1208,71 @@ Begin VB.Form frmMain
             Left            =   120
             Max             =   4000
             Min             =   401
-            TabIndex        =   44
+            TabIndex        =   31
             Top             =   2280
             Value           =   1313
             Width           =   2415
          End
-         Begin VB.HScrollBar hscPQPower 
+         Begin VB.HScrollBar hscPGrip 
             Height          =   255
-            LargeChange     =   20
+            LargeChange     =   10
             Left            =   120
-            Max             =   1579
-            TabIndex        =   40
-            Top             =   1200
-            Value           =   790
+            Max             =   1000
+            TabIndex        =   30
+            Top             =   2880
+            Value           =   198
             Width           =   2415
          End
-         Begin VB.Frame Frame2 
-            Height          =   30
-            Left            =   120
-            TabIndex        =   77
-            Top             =   4200
-            Width           =   2415
-         End
-         Begin VB.HScrollBar hscPRPower 
+         Begin VB.HScrollBar hscPitSpeed 
             Height          =   255
-            LargeChange     =   20
+            LargeChange     =   10
             Left            =   120
-            Max             =   1579
-            TabIndex        =   37
-            Top             =   600
-            Value           =   780
+            Max             =   201
+            Min             =   1
+            TabIndex        =   29
+            Top             =   3480
+            Value           =   50
             Width           =   2415
          End
-         Begin VB.Label lblPit 
-            AutoSize        =   -1  'True
-            Caption         =   "Pit Speed Limit"
-            Height          =   195
+         Begin VB.CheckBox chkNoLimit 
+            Caption         =   "No Speed Limit"
+            Height          =   255
             Left            =   120
-            TabIndex        =   48
-            Top             =   3240
-            Width           =   1050
+            TabIndex        =   28
+            Top             =   3840
+            Width           =   2500
          End
-         Begin VB.Label lblPitSpeed 
-            Alignment       =   1  'Right Justify
-            Caption         =   "50mph (80km/h)"
-            Height          =   195
-            Left            =   1095
-            TabIndex        =   49
-            Top             =   3240
-            Width           =   1440
-         End
-         Begin VB.Label lblGrip 
-            Alignment       =   1  'Right Justify
-            Caption         =   "198"
-            Height          =   195
-            Left            =   2055
-            TabIndex        =   46
-            Top             =   2640
-            Width           =   480
-         End
-         Begin VB.Label lblGrip2 
-            AutoSize        =   -1  'True
-            Caption         =   "Grip"
-            Height          =   195
+         Begin VB.CheckBox chkUPower 
+            Caption         =   "Use Selected Team Power"
+            Height          =   255
             Left            =   120
-            TabIndex        =   45
-            Top             =   2640
-            Width           =   285
+            TabIndex        =   27
+            Top             =   1560
+            Width           =   2500
          End
-         Begin VB.Label lblWeight2 
-            Alignment       =   1  'Right Justify
-            Caption         =   "1313lb (596Kg)"
-            Height          =   195
-            Left            =   1335
-            TabIndex        =   43
-            Top             =   2040
-            Width           =   1200
-         End
-         Begin VB.Label lblWeight 
-            AutoSize        =   -1  'True
-            Caption         =   "Car Weight"
-            Height          =   195
+         Begin VB.CommandButton cmdExportSettings 
+            Caption         =   "&Export"
+            Height          =   315
             Left            =   120
-            TabIndex        =   42
-            Top             =   2040
-            Width           =   795
+            TabIndex        =   26
+            Top             =   4320
+            Width           =   1035
          End
-         Begin VB.Label lblPRPower 
-            Alignment       =   1  'Right Justify
-            Caption         =   "780"
-            Height          =   195
-            Left            =   2055
-            TabIndex        =   36
-            Top             =   360
-            Width           =   480
-         End
-         Begin VB.Label Label10 
-            AutoSize        =   -1  'True
-            Caption         =   "Power in Qual"
-            Height          =   195
+         Begin VB.CommandButton cmdImportSettings 
+            Caption         =   "&Import"
+            Height          =   315
             Left            =   120
-            TabIndex        =   38
-            Top             =   960
-            Width           =   990
+            TabIndex        =   25
+            Top             =   4700
+            Width           =   1035
          End
-         Begin VB.Label lblPQPower 
-            Alignment       =   1  'Right Justify
-            Caption         =   "790"
-            Height          =   195
-            Left            =   2055
-            TabIndex        =   39
-            Top             =   960
-            Width           =   480
+         Begin VB.CommandButton cmdDefaultSettings 
+            Caption         =   "GP2 Default"
+            Height          =   315
+            Left            =   1500
+            TabIndex        =   24
+            Top             =   4320
+            Width           =   1035
          End
          Begin VB.Label Label2 
             AutoSize        =   -1  'True
@@ -1012,821 +1280,523 @@ Begin VB.Form frmMain
             Height          =   195
             Index           =   2
             Left            =   120
-            TabIndex        =   35
+            TabIndex        =   44
             Top             =   360
             Width           =   1050
          End
-      End
-      Begin VB.Frame fraRace 
-         Caption         =   "Lap Time Data - Race"
-         Height          =   2775
-         Left            =   -71520
-         TabIndex        =   74
-         Top             =   3360
-         Width           =   2175
-         Begin VB.TextBox txtRTime 
-            Height          =   285
-            Left            =   120
-            MaxLength       =   8
-            TabIndex        =   124
-            Top             =   1680
-            Width           =   1935
+         Begin VB.Label lblPQPower 
+            Alignment       =   1  'Right Justify
+            Caption         =   "790"
+            Height          =   195
+            Left            =   2055
+            TabIndex        =   43
+            Top             =   960
+            Width           =   480
          End
-         Begin VB.CommandButton cmdSaveRace 
-            Height          =   300
-            Left            =   1800
-            Picture         =   "frmMain.frx":06D8
-            Style           =   1  'Graphical
-            TabIndex        =   95
-            Top             =   0
-            Width           =   300
-         End
-         Begin VB.TextBox txtRDate 
-            Height          =   285
-            Left            =   120
-            MaxLength       =   10
-            TabIndex        =   33
-            Top             =   2280
-            Width           =   1935
-         End
-         Begin VB.TextBox txtRTeam 
-            Height          =   285
-            Left            =   120
-            MaxLength       =   12
-            TabIndex        =   31
-            Top             =   1080
-            Width           =   1935
-         End
-         Begin VB.TextBox txtRDriver 
-            Height          =   285
-            Left            =   120
-            MaxLength       =   23
-            TabIndex        =   29
-            Top             =   480
-            Width           =   1935
-         End
-         Begin VB.Label Label3 
+         Begin VB.Label Label10 
             AutoSize        =   -1  'True
-            Caption         =   "Time (e.g. 1:24.145)"
+            Caption         =   "Power in Qual"
             Height          =   195
             Left            =   120
-            TabIndex        =   125
-            Top             =   1440
-            Width           =   1425
+            TabIndex        =   42
+            Top             =   960
+            Width           =   990
          End
-         Begin VB.Label Label9 
-            AutoSize        =   -1  'True
-            Caption         =   "Driver"
+         Begin VB.Label lblPRPower 
+            Alignment       =   1  'Right Justify
+            Caption         =   "780"
             Height          =   195
-            Index           =   0
-            Left            =   120
-            TabIndex        =   28
-            Top             =   240
-            Width           =   420
+            Left            =   2055
+            TabIndex        =   41
+            Top             =   360
+            Width           =   480
          End
-         Begin VB.Label Label8 
+         Begin VB.Label lblWeight 
             AutoSize        =   -1  'True
-            Caption         =   "Team"
-            Height          =   195
-            Index           =   0
-            Left            =   120
-            TabIndex        =   30
-            Top             =   840
-            Width           =   405
-         End
-         Begin VB.Label Label7 
-            AutoSize        =   -1  'True
-            Caption         =   "Date (e.g. 1999-06-19)"
+            Caption         =   "Car Weight"
             Height          =   195
             Left            =   120
-            TabIndex        =   32
+            TabIndex        =   40
             Top             =   2040
-            Width           =   1605
-         End
-      End
-      Begin VB.Frame fraQual 
-         Caption         =   "Lap Time Data - Qual"
-         Height          =   2775
-         Left            =   -71520
-         TabIndex        =   73
-         Top             =   480
-         Width           =   2175
-         Begin VB.TextBox txtQTime 
-            Height          =   285
-            Left            =   120
-            MaxLength       =   8
-            TabIndex        =   122
-            Top             =   1680
-            Width           =   1935
-         End
-         Begin VB.CommandButton cmdSaveQual 
-            Height          =   300
-            Left            =   1800
-            Picture         =   "frmMain.frx":07DA
-            Style           =   1  'Graphical
-            TabIndex        =   96
-            Top             =   0
-            Width           =   300
-         End
-         Begin VB.TextBox txtQDate 
-            Height          =   285
-            Left            =   120
-            MaxLength       =   10
-            TabIndex        =   27
-            Top             =   2280
-            Width           =   1935
-         End
-         Begin VB.TextBox txtQTeam 
-            Height          =   285
-            Left            =   120
-            MaxLength       =   12
-            TabIndex        =   25
-            Top             =   1080
-            Width           =   1935
-         End
-         Begin VB.TextBox txtQDriver 
-            Height          =   285
-            Left            =   120
-            MaxLength       =   23
-            TabIndex        =   23
-            Top             =   480
-            Width           =   1935
-         End
-         Begin VB.Label Label2 
-            AutoSize        =   -1  'True
-            Caption         =   "Time (e.g. 1:24.145)"
-            Height          =   195
-            Index           =   0
-            Left            =   120
-            TabIndex        =   123
-            Top             =   1440
-            Width           =   1425
-         End
-         Begin VB.Label Label6 
-            AutoSize        =   -1  'True
-            Caption         =   "Date (e.g 1999-06-19)"
-            Height          =   195
-            Left            =   120
-            TabIndex        =   26
-            Top             =   2040
-            Width           =   1560
-         End
-         Begin VB.Label Label5 
-            AutoSize        =   -1  'True
-            Caption         =   "Team"
-            Height          =   195
-            Left            =   120
-            TabIndex        =   24
-            Top             =   840
-            Width           =   405
-         End
-         Begin VB.Label Label4 
-            AutoSize        =   -1  'True
-            Caption         =   "Driver"
-            Height          =   195
-            Left            =   120
-            TabIndex        =   22
-            Top             =   240
-            Width           =   420
-         End
-      End
-      Begin VB.Frame frameInfo 
-         Caption         =   "Track Info"
-         Height          =   2775
-         Left            =   -74880
-         TabIndex        =   71
-         Top             =   480
-         Width           =   3135
-         Begin VB.TextBox txtAdjectiv 
-            Height          =   285
-            Left            =   120
-            TabIndex        =   14
-            Top             =   2280
-            Width           =   2775
-         End
-         Begin VB.TextBox txtCountry 
-            Height          =   285
-            Left            =   120
-            TabIndex        =   12
-            Top             =   1680
-            Width           =   2775
-         End
-         Begin VB.TextBox txtName 
-            Height          =   285
-            Left            =   120
-            TabIndex        =   10
-            Top             =   1080
-            Width           =   2775
-         End
-         Begin VB.TextBox txtPath 
-            Enabled         =   0   'False
-            Height          =   285
-            Left            =   120
-            MaxLength       =   255
-            TabIndex        =   91
-            Top             =   480
-            Width           =   2775
-         End
-         Begin VB.Label lblLabel 
-            AutoSize        =   -1  'True
-            Caption         =   "Track Path"
-            Height          =   195
-            Index           =   0
-            Left            =   120
-            TabIndex        =   72
-            Top             =   240
             Width           =   795
          End
-         Begin VB.Label lblLabel 
-            AutoSize        =   -1  'True
-            Caption         =   "&Track Name:"
+         Begin VB.Label lblWeight2 
+            Alignment       =   1  'Right Justify
+            Caption         =   "1313lb (596Kg)"
             Height          =   195
-            Index           =   1
-            Left            =   120
-            TabIndex        =   9
-            Top             =   840
-            Width           =   930
+            Left            =   1335
+            TabIndex        =   39
+            Top             =   2040
+            Width           =   1200
          End
-         Begin VB.Label lblLabel 
+         Begin VB.Label lblGrip2 
             AutoSize        =   -1  'True
-            Caption         =   "&Country:"
+            Caption         =   "Grip"
             Height          =   195
-            Index           =   2
+            Left            =   120
+            TabIndex        =   38
+            Top             =   2640
+            Width           =   285
+         End
+         Begin VB.Label lblGrip 
+            Alignment       =   1  'Right Justify
+            Caption         =   "198"
+            Height          =   195
+            Left            =   2055
+            TabIndex        =   37
+            Top             =   2640
+            Width           =   480
+         End
+         Begin VB.Label lblPitSpeed 
+            Alignment       =   1  'Right Justify
+            Caption         =   "50mph (80km/h)"
+            Height          =   195
+            Left            =   1095
+            TabIndex        =   36
+            Top             =   3240
+            Width           =   1440
+         End
+         Begin VB.Label lblPit 
+            AutoSize        =   -1  'True
+            Caption         =   "Pit Speed"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   35
+            Top             =   3240
+            Width           =   1050
+         End
+      End
+      Begin VB.Frame frameGlobal 
+         Caption         =   "Global Settings"
+         Height          =   5175
+         Left            =   2880
+         TabIndex        =   4
+         Top             =   0
+         Width           =   2775
+         Begin VB.Frame Frame1 
+            Height          =   30
             Left            =   120
             TabIndex        =   11
-            Top             =   1440
+            Top             =   3600
+            Width           =   2415
+         End
+         Begin VB.HScrollBar hscCWeight 
+            Height          =   255
+            LargeChange     =   10
+            Left            =   240
+            Max             =   4000
+            Min             =   401
+            TabIndex        =   10
+            Top             =   600
+            Value           =   1313
+            Width           =   2415
+         End
+         Begin VB.HScrollBar hscQRace 
+            Height          =   255
+            LargeChange     =   10
+            Left            =   240
+            Max             =   100
+            Min             =   1
+            TabIndex        =   9
+            Top             =   1200
+            Value           =   5
+            Width           =   2415
+         End
+         Begin VB.CheckBox chk0as1 
+            Caption         =   "Show car 1 as 0"
+            Height          =   195
+            Left            =   240
+            TabIndex        =   8
+            Top             =   2640
+            Width           =   2055
+         End
+         Begin VB.CheckBox chkSave 
+            Caption         =   "Always save track record"
+            Height          =   195
+            Left            =   240
+            TabIndex        =   7
+            Top             =   3120
+            Width           =   2175
+         End
+         Begin VB.HScrollBar Slider1 
+            Height          =   255
+            LargeChange     =   10
+            Left            =   240
+            Max             =   2099
+            Min             =   1900
+            TabIndex        =   6
+            Top             =   1800
+            Value           =   1994
+            Width           =   2415
+         End
+         Begin VB.CheckBox chkCCFuel 
+            Caption         =   "Show CC Car fuel load"
+            Height          =   195
+            Left            =   240
+            TabIndex        =   5
+            Top             =   2880
+            Width           =   2055
+         End
+         Begin VB.Label lblPro 
+            AutoSize        =   -1  'True
+            Caption         =   "Pro"
+            Height          =   180
+            Left            =   1800
+            TabIndex        =   22
+            Top             =   4560
+            Width           =   240
+         End
+         Begin VB.Label lblSemiPro 
+            AutoSize        =   -1  'True
+            Caption         =   "Semi-Pro"
+            Height          =   180
+            Left            =   1800
+            TabIndex        =   21
+            Top             =   4320
+            Width           =   630
+         End
+         Begin VB.Label lblAmateur 
+            AutoSize        =   -1  'True
+            Caption         =   "Amateur"
+            Height          =   180
+            Left            =   1800
+            TabIndex        =   20
+            Top             =   4080
             Width           =   585
          End
-         Begin VB.Label lblLabel 
+         Begin VB.Label lblRookie 
             AutoSize        =   -1  'True
-            Caption         =   "&Adjective:"
-            Height          =   195
+            Caption         =   "Rookie"
+            Height          =   180
             Index           =   3
-            Left            =   120
-            TabIndex        =   13
-            Top             =   2040
-            Width           =   705
-         End
-      End
-      Begin VB.Frame frameData 
-         Caption         =   "Track Data"
-         Height          =   2175
-         Left            =   -74880
-         TabIndex        =   70
-         Top             =   3360
-         Width           =   3135
-         Begin VB.VScrollBar vscLaps 
-            Height          =   285
-            Left            =   600
-            Max             =   0
-            Min             =   126
-            TabIndex        =   17
-            Top             =   480
-            Value           =   3
-            Width           =   200
-         End
-         Begin VB.TextBox txtTire 
-            Height          =   285
-            Left            =   120
-            MaxLength       =   5
-            TabIndex        =   21
-            Top             =   1680
-            Width           =   735
-         End
-         Begin VB.TextBox txtLength 
-            Height          =   285
-            Left            =   120
-            MaxLength       =   4
+            Left            =   1800
             TabIndex        =   19
-            Top             =   1080
-            Width           =   495
+            Top             =   3840
+            Width           =   510
          End
-         Begin VB.TextBox txtLaps 
-            Height          =   285
-            Left            =   120
-            MaxLength       =   3
-            TabIndex        =   16
-            Top             =   480
-            Width           =   495
-         End
-         Begin VB.Label lblLabel 
+         Begin VB.Label lblAce 
             AutoSize        =   -1  'True
-            Caption         =   "Tyre &Ware (14000-40000)"
-            Height          =   195
-            Index           =   6
-            Left            =   120
-            TabIndex        =   20
-            Top             =   1440
-            Width           =   1830
-         End
-         Begin VB.Label lblLabel 
-            AutoSize        =   -1  'True
-            Caption         =   "Tra&ck Length (0-9999 m)"
-            Height          =   195
-            Index           =   5
-            Left            =   120
+            Caption         =   "Ace"
+            Height          =   180
+            Left            =   1800
             TabIndex        =   18
-            Top             =   840
-            Width           =   1755
+            Top             =   4800
+            Width           =   285
          End
-         Begin VB.Label lblLabel 
-            AutoSize        =   -1  'True
-            Caption         =   "&Laps (3-126)"
-            Height          =   195
-            Index           =   4
-            Left            =   120
-            TabIndex        =   15
-            Top             =   240
-            Width           =   885
-         End
-      End
-      Begin VB.Frame frameNorm 
-         Caption         =   " Select Track/Menu Picture "
-         Height          =   3675
-         Left            =   120
-         TabIndex        =   69
-         Top             =   480
-         Width           =   5655
-         Begin ComctlLib.Toolbar Toolbar2 
-            Height          =   390
-            Left            =   3960
-            TabIndex        =   101
-            Top             =   195
-            Width           =   1575
-            _ExtentX        =   2778
-            _ExtentY        =   688
-            ButtonWidth     =   635
-            ButtonHeight    =   582
-            AllowCustomize  =   0   'False
-            ImageList       =   "imgMisc"
-            _Version        =   327682
-            BeginProperty Buttons {0713E452-850A-101B-AFC0-4210102A8DA7} 
-               NumButtons      =   5
-               BeginProperty Button1 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-                  Key             =   "Up"
-                  Object.ToolTipText     =   "Up One Level"
-                  Object.Tag             =   ""
-                  ImageIndex      =   24
-               EndProperty
-               BeginProperty Button2 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-                  Key             =   ""
-                  Object.Tag             =   ""
-                  Style           =   3
-                  MixedState      =   -1  'True
-               EndProperty
-               BeginProperty Button3 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-                  Key             =   "List"
-                  Object.ToolTipText     =   "List"
-                  Object.Tag             =   ""
-                  ImageIndex      =   21
-                  Style           =   2
-                  Value           =   1
-               EndProperty
-               BeginProperty Button4 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-                  Key             =   "Details"
-                  Object.ToolTipText     =   "Details"
-                  Object.Tag             =   ""
-                  ImageIndex      =   22
-                  Style           =   2
-               EndProperty
-               BeginProperty Button5 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-                  Key             =   "Large"
-                  Object.ToolTipText     =   "Large Icons"
-                  Object.Tag             =   ""
-                  ImageIndex      =   23
-                  Style           =   2
-               EndProperty
-            EndProperty
-         End
-         Begin ComctlLib.ListView lstFile 
-            Height          =   2750
-            Left            =   120
-            TabIndex        =   100
-            Top             =   600
-            Width           =   5415
-            _ExtentX        =   9551
-            _ExtentY        =   4842
-            View            =   2
-            Arrange         =   2
-            LabelEdit       =   1
-            LabelWrap       =   -1  'True
-            HideSelection   =   0   'False
-            OLEDragMode     =   1
-            _Version        =   327682
-            Icons           =   "imgBig"
-            SmallIcons      =   "imgSmall"
-            ForeColor       =   -2147483640
-            BackColor       =   -2147483643
-            BorderStyle     =   1
-            Appearance      =   1
-            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "MS Sans Serif"
-               Size            =   8.25
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            OLEDragMode     =   1
-            NumItems        =   3
-            BeginProperty ColumnHeader(1) {0713E8C7-850A-101B-AFC0-4210102A8DA7} 
-               Key             =   ""
-               Object.Tag             =   ""
-               Text            =   "Name"
-               Object.Width           =   5292
-            EndProperty
-            BeginProperty ColumnHeader(2) {0713E8C7-850A-101B-AFC0-4210102A8DA7} 
-               SubItemIndex    =   1
-               Key             =   ""
-               Object.Tag             =   ""
-               Text            =   "Size"
-               Object.Width           =   882
-            EndProperty
-            BeginProperty ColumnHeader(3) {0713E8C7-850A-101B-AFC0-4210102A8DA7} 
-               SubItemIndex    =   2
-               Key             =   ""
-               Object.Tag             =   ""
-               Text            =   "Modified"
-               Object.Width           =   1235
-            EndProperty
-         End
-         Begin VB.DriveListBox Drive1 
-            Height          =   315
-            Left            =   120
-            TabIndex        =   99
-            Top             =   240
-            Width           =   3735
-         End
-         Begin VB.Label lblMyPath 
-            Height          =   255
-            Left            =   120
-            TabIndex        =   105
-            Top             =   3360
-            Width           =   5415
-         End
-         Begin VB.Label Label1 
-            Height          =   135
-            Left            =   2280
-            TabIndex        =   75
-            Top             =   4080
-            Width           =   1335
-         End
-      End
-      Begin VB.Frame fraFileInfo 
-         Caption         =   "Track File Info"
-         Height          =   2000
-         Left            =   120
-         TabIndex        =   88
-         Top             =   4150
-         Width           =   5655
-         Begin VB.TextBox lblSlot 
-            Appearance      =   0  'Flat
-            BackColor       =   &H8000000F&
-            BorderStyle     =   0  'None
-            Height          =   200
-            Left            =   4920
-            MaxLength       =   2
-            TabIndex        =   107
-            ToolTipText     =   "Click to edit"
-            Top             =   480
-            Width           =   375
-         End
-         Begin VB.TextBox lblMisc 
-            Appearance      =   0  'Flat
-            BackColor       =   &H80000004&
-            BorderStyle     =   0  'None
-            Height          =   495
-            Left            =   3000
-            MultiLine       =   -1  'True
-            TabIndex        =   106
-            ToolTipText     =   "Click to Edit"
-            Top             =   1440
-            Width           =   2535
-         End
-         Begin VB.TextBox lblTrackName 
-            Appearance      =   0  'Flat
-            BackColor       =   &H8000000F&
-            BorderStyle     =   0  'None
-            Height          =   200
-            Left            =   1250
-            TabIndex        =   102
-            ToolTipText     =   "Click to edit"
-            Top             =   480
-            Width           =   1700
-         End
-         Begin VB.TextBox lblRace 
-            Appearance      =   0  'Flat
-            BackColor       =   &H8000000F&
-            BorderStyle     =   0  'None
-            Height          =   200
-            Left            =   1250
-            MaxLength       =   8
-            TabIndex        =   5
-            ToolTipText     =   "Click to edit"
-            Top             =   1680
-            Width           =   1700
-         End
-         Begin VB.TextBox lblQual 
-            Appearance      =   0  'Flat
-            BackColor       =   &H8000000F&
-            BorderStyle     =   0  'None
-            Height          =   200
-            Left            =   1250
-            MaxLength       =   8
-            TabIndex        =   4
-            ToolTipText     =   "Click to edit"
-            Top             =   1440
-            Width           =   1700
-         End
-         Begin VB.TextBox lblWare 
-            Appearance      =   0  'Flat
-            BackColor       =   &H8000000F&
-            BorderStyle     =   0  'None
-            Height          =   200
-            Left            =   1250
-            MaxLength       =   5
-            TabIndex        =   3
-            ToolTipText     =   "Click to edit"
-            Top             =   1200
-            Width           =   1700
-         End
-         Begin VB.TextBox lblLen 
-            Appearance      =   0  'Flat
-            BackColor       =   &H8000000F&
-            BorderStyle     =   0  'None
-            Height          =   200
-            Left            =   1250
-            MaxLength       =   4
-            TabIndex        =   2
-            ToolTipText     =   "Click to edit"
-            Top             =   960
-            Width           =   1700
-         End
-         Begin VB.TextBox lblLaps 
-            Appearance      =   0  'Flat
-            BackColor       =   &H8000000F&
-            BorderStyle     =   0  'None
-            Height          =   200
-            Left            =   1250
-            MaxLength       =   3
-            TabIndex        =   1
-            ToolTipText     =   "Click to edit"
-            Top             =   720
-            Width           =   1700
-         End
-         Begin VB.CommandButton cmdSaveGP2Info 
-            Enabled         =   0   'False
-            Height          =   345
-            Left            =   5160
-            Picture         =   "frmMain.frx":08DC
-            Style           =   1  'Graphical
-            TabIndex        =   8
-            ToolTipText     =   "Save GP2Info"
-            Top             =   0
-            Width           =   375
-         End
-         Begin VB.TextBox lblCountry 
-            Appearance      =   0  'Flat
-            BackColor       =   &H8000000F&
-            BorderStyle     =   0  'None
-            Height          =   200
-            Left            =   1250
-            TabIndex        =   0
-            ToolTipText     =   "Click to edit"
-            Top             =   240
-            Width           =   1700
-         End
-         Begin VB.TextBox lblEvent 
-            Appearance      =   0  'Flat
-            BackColor       =   &H8000000F&
-            BorderStyle     =   0  'None
-            Height          =   200
-            Left            =   3840
-            TabIndex        =   6
-            ToolTipText     =   "Click to edit"
-            Top             =   735
-            Width           =   1695
-         End
-         Begin VB.TextBox lblInfoYear 
-            Appearance      =   0  'Flat
-            BackColor       =   &H8000000F&
-            BorderStyle     =   0  'None
-            Height          =   200
-            Left            =   3840
-            MaxLength       =   4
-            TabIndex        =   103
-            ToolTipText     =   "Click to edit"
-            Top             =   480
-            Width           =   495
-         End
-         Begin VB.Label lblInfoText 
-            AutoSize        =   -1  'True
-            Caption         =   "&Slot:"
-            Height          =   200
-            Index           =   9
-            Left            =   4440
-            TabIndex        =   120
-            Top             =   480
-            Width           =   495
-         End
-         Begin VB.Label lblInfoText 
-            Caption         =   "&Author:"
-            Height          =   200
-            Index           =   10
-            Left            =   3000
-            TabIndex        =   119
-            Top             =   960
-            Width           =   735
-         End
-         Begin VB.Label lblInfoText 
-            Caption         =   "&Country:"
-            Height          =   200
+         Begin VB.Image R 
+            Height          =   180
             Index           =   0
-            Left            =   120
-            TabIndex        =   118
-            Top             =   240
-            Width           =   1215
+            Left            =   240
+            Top             =   3840
+            Width           =   195
          End
-         Begin VB.Label lblInfoText 
-            Caption         =   "&Laps:"
-            Height          =   200
-            Index           =   2
-            Left            =   120
-            TabIndex        =   117
-            Top             =   720
-            Width           =   1215
-         End
-         Begin VB.Label lblInfoText 
-            Caption         =   "L&ength (m):"
-            Height          =   200
-            Index           =   3
-            Left            =   120
-            TabIndex        =   116
-            Top             =   960
-            Width           =   1215
-         End
-         Begin VB.Label lblInfoText 
-            Caption         =   "Tyre &Ware:"
-            Height          =   200
-            Index           =   4
-            Left            =   120
-            TabIndex        =   115
-            Top             =   1200
-            Width           =   1215
-         End
-         Begin VB.Label lblInfoText 
-            Caption         =   "Best Lap &Qual:"
-            Height          =   200
-            Index           =   5
-            Left            =   120
-            TabIndex        =   114
-            Top             =   1440
-            Width           =   1215
-         End
-         Begin VB.Label lblInfoText 
-            Caption         =   "E&vent:"
-            Height          =   200
-            Index           =   8
-            Left            =   3000
-            TabIndex        =   113
-            Top             =   735
-            Width           =   735
-         End
-         Begin VB.Label lblInfoText 
-            Caption         =   "Best Lap &Race:"
-            Height          =   200
-            Index           =   6
-            Left            =   120
-            TabIndex        =   112
-            Top             =   1680
-            Width           =   1215
-         End
-         Begin VB.Label lblInfoText 
-            Caption         =   "&Track Name:"
-            Height          =   200
+         Begin VB.Image R 
+            Height          =   180
             Index           =   1
-            Left            =   120
-            TabIndex        =   111
-            Top             =   480
-            Width           =   1095
+            Left            =   435
+            Top             =   3840
+            Width           =   195
          End
-         Begin VB.Label lblInfoText 
-            Caption         =   "&Year:"
-            Height          =   200
-            Index           =   7
-            Left            =   3000
-            TabIndex        =   110
-            Top             =   480
-            Width           =   735
+         Begin VB.Image R 
+            Height          =   180
+            Index           =   2
+            Left            =   630
+            Top             =   3840
+            Width           =   195
          End
-         Begin VB.Label lblInfoText 
+         Begin VB.Image R 
+            Height          =   180
+            Index           =   3
+            Left            =   825
+            Top             =   3840
+            Width           =   195
+         End
+         Begin VB.Image R 
+            Height          =   180
+            Index           =   4
+            Left            =   1020
+            Top             =   3840
+            Width           =   195
+         End
+         Begin VB.Image R 
+            Height          =   180
+            Index           =   5
+            Left            =   1215
+            Top             =   3840
+            Width           =   195
+         End
+         Begin VB.Image R 
+            Height          =   180
+            Index           =   6
+            Left            =   1410
+            Top             =   3840
+            Width           =   195
+         End
+         Begin VB.Image A 
+            Height          =   180
+            Index           =   0
+            Left            =   240
+            Top             =   4080
+            Width           =   195
+         End
+         Begin VB.Image A 
+            Height          =   180
+            Index           =   1
+            Left            =   435
+            Top             =   4080
+            Width           =   195
+         End
+         Begin VB.Image A 
+            Height          =   180
+            Index           =   2
+            Left            =   630
+            Top             =   4080
+            Width           =   195
+         End
+         Begin VB.Image A 
+            Height          =   180
+            Index           =   3
+            Left            =   825
+            Top             =   4080
+            Width           =   195
+         End
+         Begin VB.Image A 
+            Height          =   180
+            Index           =   4
+            Left            =   1020
+            Top             =   4080
+            Width           =   195
+         End
+         Begin VB.Image A 
+            Height          =   180
+            Index           =   5
+            Left            =   1215
+            Top             =   4080
+            Width           =   195
+         End
+         Begin VB.Image A 
+            Height          =   180
+            Index           =   6
+            Left            =   1410
+            Top             =   4080
+            Width           =   195
+         End
+         Begin VB.Image P 
+            Height          =   180
+            Index           =   1
+            Left            =   435
+            Top             =   4560
+            Width           =   195
+         End
+         Begin VB.Image AC 
+            Height          =   180
+            Index           =   1
+            Left            =   435
+            Top             =   4800
+            Width           =   195
+         End
+         Begin VB.Image P 
+            Height          =   180
+            Index           =   2
+            Left            =   630
+            Top             =   4560
+            Width           =   195
+         End
+         Begin VB.Image AC 
+            Height          =   180
+            Index           =   2
+            Left            =   630
+            Top             =   4800
+            Width           =   195
+         End
+         Begin VB.Image AC 
+            Height          =   180
+            Index           =   3
+            Left            =   825
+            Top             =   4800
+            Width           =   195
+         End
+         Begin VB.Image P 
+            Height          =   180
+            Index           =   3
+            Left            =   825
+            Top             =   4560
+            Width           =   195
+         End
+         Begin VB.Image P 
+            Height          =   180
+            Index           =   4
+            Left            =   1020
+            Top             =   4560
+            Width           =   195
+         End
+         Begin VB.Image AC 
+            Height          =   180
+            Index           =   4
+            Left            =   1020
+            Top             =   4800
+            Width           =   195
+         End
+         Begin VB.Image P 
+            Height          =   180
+            Index           =   5
+            Left            =   1215
+            Top             =   4560
+            Width           =   195
+         End
+         Begin VB.Image AC 
+            Height          =   180
+            Index           =   5
+            Left            =   1215
+            Top             =   4800
+            Width           =   195
+         End
+         Begin VB.Image AC 
+            Height          =   180
+            Index           =   6
+            Left            =   1410
+            Top             =   4800
+            Width           =   195
+         End
+         Begin VB.Image P 
+            Height          =   180
+            Index           =   6
+            Left            =   1410
+            Top             =   4560
+            Width           =   195
+         End
+         Begin VB.Image AC 
+            Height          =   180
+            Index           =   0
+            Left            =   240
+            Top             =   4800
+            Width           =   195
+         End
+         Begin VB.Image P 
+            Height          =   180
+            Index           =   0
+            Left            =   240
+            Top             =   4560
+            Width           =   195
+         End
+         Begin VB.Image S 
+            Height          =   180
+            Index           =   1
+            Left            =   435
+            Top             =   4320
+            Width           =   195
+         End
+         Begin VB.Image S 
+            Height          =   180
+            Index           =   2
+            Left            =   630
+            Top             =   4320
+            Width           =   195
+         End
+         Begin VB.Image S 
+            Height          =   180
+            Index           =   3
+            Left            =   825
+            Top             =   4320
+            Width           =   195
+         End
+         Begin VB.Image S 
+            Height          =   180
+            Index           =   4
+            Left            =   1020
+            Top             =   4320
+            Width           =   195
+         End
+         Begin VB.Image S 
+            Height          =   180
+            Index           =   5
+            Left            =   1215
+            Top             =   4320
+            Width           =   195
+         End
+         Begin VB.Image S 
+            Height          =   180
+            Index           =   6
+            Left            =   1410
+            Top             =   4320
+            Width           =   195
+         End
+         Begin VB.Image S 
+            Height          =   180
+            Index           =   0
+            Left            =   240
+            Top             =   4320
+            Width           =   195
+         End
+         Begin VB.Label Label14 
             AutoSize        =   -1  'True
-            Caption         =   "Car &Setup:"
+            Caption         =   "Car Weight"
             Height          =   195
-            Index           =   12
-            Left            =   3000
-            TabIndex        =   109
-            Top             =   240
-            Width           =   750
+            Index           =   0
+            Left            =   240
+            TabIndex        =   17
+            Top             =   360
+            Width           =   795
          End
-         Begin VB.Label Label11 
+         Begin VB.Label lblCWeight 
+            Alignment       =   1  'Right Justify
+            Caption         =   "1313lb (596kg)"
+            Height          =   195
+            Left            =   1455
+            TabIndex        =   16
+            Top             =   360
+            Width           =   1200
+         End
+         Begin VB.Label Label13 
             AutoSize        =   -1  'True
-            Caption         =   "Misc:"
-            Height          =   200
-            Left            =   3000
-            TabIndex        =   108
-            Top             =   1230
-            Width           =   375
-         End
-         Begin VB.Label lblAuthor 
-            Height          =   200
-            Left            =   3840
-            TabIndex        =   7
+            Caption         =   "Quick Race Length"
+            Height          =   195
+            Index           =   0
+            Left            =   240
+            TabIndex        =   15
             Top             =   960
-            Width           =   1695
-            WordWrap        =   -1  'True
+            Width           =   1395
          End
-         Begin VB.Label lblSetup 
-            Height          =   200
-            Left            =   3840
-            TabIndex        =   104
-            Top             =   240
-            Width           =   1215
+         Begin VB.Label lblQuick 
+            Alignment       =   1  'Right Justify
+            Caption         =   "5%"
+            Height          =   195
+            Left            =   2175
+            TabIndex        =   14
+            Top             =   960
+            Width           =   480
          End
-      End
-      Begin VB.Frame fraMenuPic 
-         Caption         =   "Menu Picture"
-         Height          =   2000
-         Left            =   120
-         TabIndex        =   89
-         Top             =   4150
-         Width           =   5655
-         Begin VB.Image imgPre 
-            Height          =   1560
-            Left            =   120
-            Stretch         =   -1  'True
-            Top             =   360
-            Width           =   2040
-         End
-         Begin VB.Label lblPicInfo 
-            Height          =   255
-            Left            =   2280
-            TabIndex        =   90
-            Top             =   360
-            Width           =   2655
-         End
-      End
-      Begin VB.Frame fraNoSupport 
-         Height          =   2000
-         Left            =   120
-         TabIndex        =   126
-         Top             =   4150
-         Width           =   5655
-         Begin VB.Label Label15 
+         Begin VB.Label Label12 
             AutoSize        =   -1  'True
-            Caption         =   "File Not Supported!"
-            BeginProperty Font 
-               Name            =   "MS Sans Serif"
-               Size            =   24
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   555
-            Left            =   600
-            TabIndex        =   127
-            Top             =   720
-            Width           =   4455
+            Caption         =   "Year for this Season"
+            Height          =   195
+            Index           =   0
+            Left            =   240
+            TabIndex        =   13
+            Top             =   1560
+            Width           =   1425
          End
-      End
-      Begin VB.Label lblTextLen 
-         AutoSize        =   -1  'True
-         Height          =   195
-         Left            =   -70800
-         TabIndex        =   97
-         Top             =   6000
-         Width           =   45
-         Visible         =   0   'False
-      End
-      Begin VB.Label lblTimeDrag 
-         Height          =   375
-         Left            =   -71040
-         TabIndex        =   94
-         Top             =   5520
-         Width           =   1695
+         Begin VB.Label lblYear 
+            Alignment       =   1  'Right Justify
+            AutoSize        =   -1  'True
+            Caption         =   "1994"
+            Height          =   195
+            Left            =   1695
+            TabIndex        =   12
+            Top             =   1560
+            Width           =   960
+         End
       End
    End
    Begin ComctlLib.TreeView TreeView1 
-      Height          =   6247
+      Height          =   6135
       Left            =   0
-      TabIndex        =   66
+      TabIndex        =   0
       Top             =   420
+      WhatsThisHelpID =   3
       Width           =   3135
       _ExtentX        =   5530
-      _ExtentY        =   11007
+      _ExtentY        =   10821
       _Version        =   327682
       HideSelection   =   0   'False
       Indentation     =   353
@@ -1836,6 +1806,49 @@ Begin VB.Form frmMain
       ImageList       =   "imgMisc"
       Appearance      =   1
       OLEDropMode     =   1
+   End
+   Begin ComctlLib.TabStrip tabMain 
+      Height          =   6100
+      Left            =   3120
+      TabIndex        =   2
+      Top             =   420
+      Width           =   5925
+      _ExtentX        =   10451
+      _ExtentY        =   10769
+      _Version        =   327682
+      BeginProperty Tabs {0713E432-850A-101B-AFC0-4210102A8DA7} 
+         NumTabs         =   5
+         BeginProperty Tab1 {0713F341-850A-101B-AFC0-4210102A8DA7} 
+            Caption         =   "File Manager"
+            Key             =   ""
+            Object.Tag             =   ""
+            ImageVarType    =   2
+         EndProperty
+         BeginProperty Tab2 {0713F341-850A-101B-AFC0-4210102A8DA7} 
+            Caption         =   "Track Data"
+            Key             =   ""
+            Object.Tag             =   ""
+            ImageVarType    =   2
+         EndProperty
+         BeginProperty Tab3 {0713F341-850A-101B-AFC0-4210102A8DA7} 
+            Caption         =   "Menu Pics"
+            Key             =   ""
+            Object.Tag             =   ""
+            ImageVarType    =   2
+         EndProperty
+         BeginProperty Tab4 {0713F341-850A-101B-AFC0-4210102A8DA7} 
+            Caption         =   "Misc Settings"
+            Key             =   ""
+            Object.Tag             =   ""
+            ImageVarType    =   2
+         EndProperty
+         BeginProperty Tab5 {0713F341-850A-101B-AFC0-4210102A8DA7} 
+            Caption         =   "Lap Time Database"
+            Key             =   ""
+            Object.Tag             =   ""
+            ImageVarType    =   2
+         EndProperty
+      EndProperty
    End
    Begin ComctlLib.ImageList imgBig 
       Left            =   600
@@ -1850,35 +1863,35 @@ Begin VB.Form frmMain
       BeginProperty Images {0713E8C2-850A-101B-AFC0-4210102A8DA7} 
          NumListImages   =   8
          BeginProperty ListImage1 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":09DE
+            Picture         =   "frmMain.frx":091A
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":0C70
+            Picture         =   "frmMain.frx":0BAC
             Key             =   ""
          EndProperty
          BeginProperty ListImage3 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":0F8A
+            Picture         =   "frmMain.frx":0EC6
             Key             =   ""
          EndProperty
          BeginProperty ListImage4 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":109C
+            Picture         =   "frmMain.frx":0FD8
             Key             =   ""
          EndProperty
          BeginProperty ListImage5 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":132E
+            Picture         =   "frmMain.frx":126A
             Key             =   ""
          EndProperty
          BeginProperty ListImage6 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":15C0
+            Picture         =   "frmMain.frx":14FC
             Key             =   ""
          EndProperty
          BeginProperty ListImage7 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":1852
+            Picture         =   "frmMain.frx":178E
             Key             =   ""
          EndProperty
          BeginProperty ListImage8 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":1AE4
+            Picture         =   "frmMain.frx":1A20
             Key             =   ""
          EndProperty
       EndProperty
@@ -1896,35 +1909,35 @@ Begin VB.Form frmMain
       BeginProperty Images {0713E8C2-850A-101B-AFC0-4210102A8DA7} 
          NumListImages   =   8
          BeginProperty ListImage1 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":1D76
+            Picture         =   "frmMain.frx":1CB2
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":1E88
+            Picture         =   "frmMain.frx":1DC4
             Key             =   ""
          EndProperty
          BeginProperty ListImage3 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":21A2
+            Picture         =   "frmMain.frx":20DE
             Key             =   ""
          EndProperty
          BeginProperty ListImage4 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":22B4
+            Picture         =   "frmMain.frx":21F0
             Key             =   ""
          EndProperty
          BeginProperty ListImage5 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":23C6
+            Picture         =   "frmMain.frx":2302
             Key             =   ""
          EndProperty
          BeginProperty ListImage6 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":24D8
+            Picture         =   "frmMain.frx":2414
             Key             =   ""
          EndProperty
          BeginProperty ListImage7 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":25EA
+            Picture         =   "frmMain.frx":2526
             Key             =   ""
          EndProperty
          BeginProperty ListImage8 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":26FC
+            Picture         =   "frmMain.frx":2638
             Key             =   ""
          EndProperty
       EndProperty
@@ -1940,102 +1953,98 @@ Begin VB.Form frmMain
       MaskColor       =   12632256
       _Version        =   327682
       BeginProperty Images {0713E8C2-850A-101B-AFC0-4210102A8DA7} 
-         NumListImages   =   24
+         NumListImages   =   23
          BeginProperty ListImage1 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":280E
+            Picture         =   "frmMain.frx":274A
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":2920
+            Picture         =   "frmMain.frx":285C
             Key             =   ""
          EndProperty
          BeginProperty ListImage3 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":2A32
-            Key             =   ""
+            Picture         =   "frmMain.frx":296E
+            Key             =   "Track"
          EndProperty
          BeginProperty ListImage4 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":2B44
-            Key             =   ""
+            Picture         =   "frmMain.frx":2A80
+            Key             =   "TrackPic"
          EndProperty
          BeginProperty ListImage5 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":2C56
-            Key             =   ""
+            Picture         =   "frmMain.frx":2B92
+            Key             =   "New"
          EndProperty
          BeginProperty ListImage6 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":2D68
-            Key             =   ""
+            Picture         =   "frmMain.frx":2CA4
+            Key             =   "Open"
          EndProperty
          BeginProperty ListImage7 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":2E7A
-            Key             =   ""
+            Picture         =   "frmMain.frx":2DB6
+            Key             =   "Save"
          EndProperty
          BeginProperty ListImage8 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":2F8C
-            Key             =   ""
+            Picture         =   "frmMain.frx":2EC8
+            Key             =   "Import"
          EndProperty
          BeginProperty ListImage9 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":309E
-            Key             =   ""
+            Picture         =   "frmMain.frx":2FDA
+            Key             =   "Export"
          EndProperty
          BeginProperty ListImage10 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":31B0
-            Key             =   ""
+            Picture         =   "frmMain.frx":30EC
+            Key             =   "GP2Edit"
          EndProperty
          BeginProperty ListImage11 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":34CA
-            Key             =   ""
+            Picture         =   "frmMain.frx":3406
+            Key             =   "Jam"
          EndProperty
          BeginProperty ListImage12 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":35DC
-            Key             =   ""
+            Picture         =   "frmMain.frx":3518
+            Key             =   "Setup"
          EndProperty
          BeginProperty ListImage13 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":38F6
-            Key             =   ""
+            Picture         =   "frmMain.frx":3832
+            Key             =   "Backup"
          EndProperty
          BeginProperty ListImage14 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":3C10
-            Key             =   ""
+            Picture         =   "frmMain.frx":3B4C
+            Key             =   "Home"
          EndProperty
          BeginProperty ListImage15 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":3D22
-            Key             =   ""
+            Picture         =   "frmMain.frx":3C5E
+            Key             =   "Down"
          EndProperty
          BeginProperty ListImage16 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":3E34
-            Key             =   ""
+            Picture         =   "frmMain.frx":3D70
+            Key             =   "Up"
          EndProperty
          BeginProperty ListImage17 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":3F46
-            Key             =   ""
+            Picture         =   "frmMain.frx":3E82
+            Key             =   "GP2"
          EndProperty
          BeginProperty ListImage18 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":4260
-            Key             =   ""
+            Picture         =   "frmMain.frx":419C
+            Key             =   "Help"
          EndProperty
          BeginProperty ListImage19 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":45B2
-            Key             =   ""
+            Picture         =   "frmMain.frx":44EE
+            Key             =   "Exit"
          EndProperty
          BeginProperty ListImage20 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":48CC
-            Key             =   ""
+            Picture         =   "frmMain.frx":4808
+            Key             =   "Small"
          EndProperty
          BeginProperty ListImage21 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":49DE
-            Key             =   ""
+            Picture         =   "frmMain.frx":491A
+            Key             =   "List"
          EndProperty
          BeginProperty ListImage22 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":4AF0
-            Key             =   ""
+            Picture         =   "frmMain.frx":4A2C
+            Key             =   "Big"
          EndProperty
          BeginProperty ListImage23 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":4C02
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage24 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "frmMain.frx":4D14
-            Key             =   ""
+            Picture         =   "frmMain.frx":4B3E
+            Key             =   "UpOneLevel"
          EndProperty
       EndProperty
    End
@@ -2066,36 +2075,30 @@ Begin VB.Form frmMain
       Begin VB.Menu mnuSaveas 
          Caption         =   "Save &as..."
       End
-      Begin VB.Menu mnuSep4 
-         Caption         =   "-"
-      End
-      Begin VB.Menu mnuConvert 
-         Caption         =   "File &Converter..."
-      End
       Begin VB.Menu mnuSep2 
          Caption         =   "-"
       End
       Begin VB.Menu mnuImp 
          Caption         =   "&Import"
          Begin VB.Menu mnuImport 
-            Caption         =   "Data &from GP2..."
+            Caption         =   "Data &from Gp2..."
             Shortcut        =   ^F
          End
          Begin VB.Menu mnuImpRec 
-            Caption         =   "&Lap Time Data from rec file..."
+            Caption         =   "&Lap time data from .rec file..."
          End
       End
       Begin VB.Menu mnuExp 
          Caption         =   "&Export"
          Begin VB.Menu mnuExport 
-            Caption         =   "&Data to GP2..."
+            Caption         =   "&Data to Gp2..."
             Shortcut        =   ^D
          End
          Begin VB.Menu mnuExpRec 
-            Caption         =   "&Lap Time Date to rec file..."
+            Caption         =   "&Lap time data to .rec file..."
          End
       End
-      Begin VB.Menu mnuSep5 
+      Begin VB.Menu mnuSep3 
          Caption         =   "-"
       End
       Begin VB.Menu mnuShortOpen 
@@ -2103,17 +2106,7 @@ Begin VB.Form frmMain
          Index           =   0
          Visible         =   0   'False
       End
-      Begin VB.Menu mnuShortOpen 
-         Caption         =   ""
-         Index           =   1
-         Visible         =   0   'False
-      End
-      Begin VB.Menu mnuShortOpen 
-         Caption         =   ""
-         Index           =   2
-         Visible         =   0   'False
-      End
-      Begin VB.Menu mnuSep3 
+      Begin VB.Menu mnuSep4 
          Caption         =   "-"
          Visible         =   0   'False
       End
@@ -2122,46 +2115,52 @@ Begin VB.Form frmMain
          Shortcut        =   ^Q
       End
    End
-   Begin VB.Menu mnuEdit 
+   Begin VB.Menu mnuEdit2 
       Caption         =   "&Edit"
-      Begin VB.Menu mnuGP2Path 
-         Caption         =   "&GP2 Path..."
+      Index           =   0
+      Begin VB.Menu mnuEdit 
+         Caption         =   "&Gp2 Path..."
+         Index           =   0
       End
-      Begin VB.Menu mnuTrackPath 
+      Begin VB.Menu mnuEdit 
          Caption         =   "&Default Track Path..."
+         Index           =   1
       End
-      Begin VB.Menu mnuTrackEditPath 
+      Begin VB.Menu mnuEdit 
          Caption         =   "&Track Editor Path..."
+         Index           =   2
       End
-      Begin VB.Menu mnuSep31 
+      Begin VB.Menu mnuEdit 
          Caption         =   "-"
+         Index           =   3
       End
-      Begin VB.Menu mnuRunGP2 
-         Caption         =   "Settings for ""Run GP2"" Button..."
+      Begin VB.Menu mnuEdit 
+         Caption         =   "Settings for ""Run Gp2"" Button..."
+         Index           =   4
       End
    End
-   Begin VB.Menu mnuView 
+   Begin VB.Menu mnuView2 
       Caption         =   "&View"
-      Begin VB.Menu mnuToolbar 
-         Caption         =   "&Toolbar"
-         Checked         =   -1  'True
-      End
-      Begin VB.Menu mnuStatusbar 
-         Caption         =   "&Statusbar"
-         Checked         =   -1  'True
-      End
-      Begin VB.Menu mnuSep20 
-         Caption         =   "-"
-      End
-      Begin VB.Menu mnuList 
+      Begin VB.Menu mnuView 
          Caption         =   "&List"
          Checked         =   -1  'True
+         Index           =   3
       End
-      Begin VB.Menu mnuDetails 
+      Begin VB.Menu mnuView 
          Caption         =   "&Details"
+         Index           =   4
       End
-      Begin VB.Menu mnuLargeIcons 
+      Begin VB.Menu mnuView 
          Caption         =   "Lar&ge Icons"
+         Index           =   5
+      End
+      Begin VB.Menu mnuView 
+         Caption         =   "-"
+         Index           =   6
+      End
+      Begin VB.Menu mnuView 
+         Caption         =   "&Flat Toolbar"
+         Index           =   7
       End
    End
    Begin VB.Menu mnuTools 
@@ -2177,7 +2176,7 @@ Begin VB.Form frmMain
       Begin VB.Menu mnuReset 
          Caption         =   "R&eset all records..."
       End
-      Begin VB.Menu mnuSep21 
+      Begin VB.Menu mnuSep5 
          Caption         =   "-"
       End
       Begin VB.Menu mnuJamCheck2 
@@ -2195,71 +2194,61 @@ Begin VB.Form frmMain
          Begin VB.Menu mnuNewSetup2 
             Caption         =   "Create New Setup..."
          End
-         Begin VB.Menu mnuSep29 
+         Begin VB.Menu mnuSep6 
             Caption         =   "-"
          End
          Begin VB.Menu mnuEditQSetup2 
             Caption         =   "Edit Qual Setup..."
+            Enabled         =   0   'False
          End
          Begin VB.Menu mnuEditRSetup2 
             Caption         =   "Edit Race Setup..."
+            Enabled         =   0   'False
          End
          Begin VB.Menu mnuRemove2 
             Caption         =   "Remove Setup"
+            Enabled         =   0   'False
          End
       End
-      Begin VB.Menu mnuSep26 
+      Begin VB.Menu mnuSep7 
          Caption         =   "-"
       End
       Begin VB.Menu mnuBackup 
          Caption         =   "&Backup Track..."
          Shortcut        =   ^B
       End
-      Begin VB.Menu mnuSep22 
+      Begin VB.Menu mnuToolUninstall 
+         Caption         =   "&Uninstall Track"
+      End
+      Begin VB.Menu mnuSep8 
          Caption         =   "-"
       End
-      Begin VB.Menu mnuGP2Edit 
-         Caption         =   "A&dd GP2Edit File..."
+      Begin VB.Menu mnuGp2Edit 
+         Caption         =   "A&dd/Edit Gp2Edit File..."
       End
    End
    Begin VB.Menu mnuTopHelp 
       Caption         =   "Help"
       Begin VB.Menu mnuHelp 
          Caption         =   "&Help..."
+         Index           =   0
          Shortcut        =   {F1}
       End
-      Begin VB.Menu mnuSep11 
+      Begin VB.Menu mnuHelp 
          Caption         =   "-"
+         Index           =   1
       End
-      Begin VB.Menu mnuWeb 
-         Caption         =   "On the &Web"
-         Begin VB.Menu mnuTHHome 
-            Caption         =   "GP2 Track Handler WebSite"
-         End
-         Begin VB.Menu mnuSep13 
-            Caption         =   "-"
-         End
-         Begin VB.Menu mnuGrandPrix1 
-            Caption         =   "Unofficial GP1 WebSite"
-         End
-         Begin VB.Menu mnuGrandPrix2 
-            Caption         =   "Unofficial GP2 WebSite"
-         End
-         Begin VB.Menu mnuUnGP3 
-            Caption         =   "Unofficial GP3 WebSite"
-         End
-         Begin VB.Menu mnuSep30 
-            Caption         =   "-"
-         End
-         Begin VB.Menu mnuGP3 
-            Caption         =   "Official GP3 WebSite"
-         End
+      Begin VB.Menu mnuHelp 
+         Caption         =   "VG Software Online"
+         Index           =   2
       End
-      Begin VB.Menu mnuSep12 
+      Begin VB.Menu mnuHelp 
          Caption         =   "-"
+         Index           =   3
       End
-      Begin VB.Menu mnuAbout 
+      Begin VB.Menu mnuHelp 
          Caption         =   "A&bout..."
+         Index           =   4
       End
    End
    Begin VB.Menu mnuPopup 
@@ -2279,7 +2268,7 @@ Begin VB.Form frmMain
          Begin VB.Menu mnuNewSetup 
             Caption         =   "Create New Setup..."
          End
-         Begin VB.Menu mnuSep25 
+         Begin VB.Menu mnuSep9 
             Caption         =   "-"
          End
          Begin VB.Menu mnuEditQSetup 
@@ -2292,23 +2281,32 @@ Begin VB.Form frmMain
             Caption         =   "Remove Setup"
          End
       End
-      Begin VB.Menu mnuSep24 
+      Begin VB.Menu mnuSep10 
          Caption         =   "-"
       End
       Begin VB.Menu mnuBackup2 
          Caption         =   "&Backup Track..."
       End
+      Begin VB.Menu mnuPopupUninstall 
+         Caption         =   "&Uninstall Track"
+      End
+      Begin VB.Menu mnuSep11 
+         Caption         =   "-"
+      End
       Begin VB.Menu mnuCheckSum 
          Caption         =   "&Write Checksum"
       End
-      Begin VB.Menu mnuSep27 
+      Begin VB.Menu mnuViewChecksum 
+         Caption         =   "&View Checksum..."
+      End
+      Begin VB.Menu mnuSep12 
          Caption         =   "-"
       End
       Begin VB.Menu mnuOpenFile 
-         Caption         =   "&Edit Track"
+         Caption         =   "&Edit Track..."
          Enabled         =   0   'False
       End
-      Begin VB.Menu mnuSep28 
+      Begin VB.Menu mnuSep13 
          Caption         =   "-"
       End
       Begin VB.Menu mnuRename 
@@ -2337,9 +2335,8 @@ Private ChangeLap As Boolean
 Private Dott As Boolean
 Private RetVal
 Private CheckBatFile As String
-Private Support As Boolean
 Private File As String
-Private RunGP2 As String
+Private RunGp2 As String
 
 'Left or Right mouse button
 Private bButton As Byte
@@ -2381,33 +2378,18 @@ Private Sub AC_Click(Index As Integer)
 End Sub
 
 Private Sub chkNoLimit_Click()
-    If chkNoLimit.Value = 1 Then
-        lblPit.Enabled = False
-        lblPitSpeed.Enabled = False
-        hscPitSpeed.Enabled = False
-    Else
-        lblPit.Enabled = True
-        lblPitSpeed.Enabled = True
-        hscPitSpeed.Enabled = True
-    End If
+    lblPit.Enabled = chkNoLimit.Value - 1
+    lblPitSpeed.Enabled = chkNoLimit.Value - 1
+    hscPitSpeed.Enabled = chkNoLimit.Value - 1
 End Sub
 
 Private Sub chkUPower_Click()
-    If chkUPower.Value = 1 Then
-        hscPQPower.Enabled = False
-        hscPRPower.Enabled = False
-        lblPRPower.Enabled = False
-        lblPQPower.Enabled = False
-        Label2(2).Enabled = False
-        Label10.Enabled = False
-    Else
-        hscPQPower.Enabled = True
-        hscPRPower.Enabled = True
-        lblPRPower.Enabled = True
-        lblPQPower.Enabled = True
-        Label2(2).Enabled = True
-        Label10.Enabled = True
-    End If
+    hscPQPower.Enabled = chkUPower.Value - 1
+    hscPRPower.Enabled = chkUPower.Value - 1
+    lblPRPower.Enabled = chkUPower.Value - 1
+    lblPQPower.Enabled = chkUPower.Value - 1
+    Label2(2).Enabled = chkUPower.Value - 1
+    Label10.Enabled = chkUPower.Value - 1
 End Sub
 
 Private Sub cmdAdd_Click()
@@ -2444,8 +2426,8 @@ Dim TempNr
 End Sub
 
 Private Sub cmdExportSettings_Click()
-    Exp.GP2FileNum = FreeFile
-    Open GP2Dir & "\gp2.exe" For Binary As Exp.GP2FileNum
+    Exp.Gp2FileNum = FreeFile
+    Open Gp2Dir & "\gp2.exe" For Binary As Exp.Gp2FileNum
     SaveMisc
     ExportCarHelp
     ExportCWeight
@@ -2458,23 +2440,22 @@ Private Sub cmdExportSettings_Click()
     ExportPWeight
     ExportUseTeam
     ExportSpeed
-    Close Exp.GP2FileNum
-    Read = oMisc.File_Exists(GP2Dir & "\f1gstate.sav")
+    ExportCCFuel
+    Close Exp.Gp2FileNum
+    Read = oFile.FileExists(Gp2Dir & "\f1gstate.sav")
     If Read = True Then
         Exp.F1FileNum = FreeFile
-        Open GP2Dir & "\f1gstate.sav" For Binary As Exp.F1FileNum
+        Open Gp2Dir & "\f1gstate.sav" For Binary As Exp.F1FileNum
         ExportQuickRace
         Close Exp.F1FileNum
-        Read = oMisc.GetShortName(GP2Dir & "\f1gstate.sav")
-        RetVal = ShellExecute(frmMain.hwnd, "open", ProgramDir & "\gp2utils\thcheck.exe", Read, vbNullString, 0)
-        RetVal = oMisc.CloseDosPrompt("thcheck")
+        WriteCheckSum Gp2Dir & "\f1gstate.sav"
     End If
     GetMisc
 End Sub
 
 Private Sub cmdImportSettings_Click()
-    Exp.GP2FileNum = FreeFile
-    Open GP2Dir & "\gp2.exe" For Binary As Exp.GP2FileNum
+    Exp.Gp2FileNum = FreeFile
+    Open Gp2Dir & "\gp2.exe" For Binary As Exp.Gp2FileNum
     ImportCWeight
     ImportGameSettings
     ImportLevel
@@ -2486,14 +2467,15 @@ Private Sub cmdImportSettings_Click()
     ImportSaveLap
     ImportSpeed
     ImportUseTeam
-    Read = oMisc.File_Exists(GP2Dir & "\f1gstate.sav")
+    ImportCCFuel
+    Read = oFile.FileExists(Gp2Dir & "\f1gstate.sav")
     If Read = True Then
         Exp.F1FileNum = FreeFile
-        Open GP2Dir & "\f1gstate.sav" For Binary As Exp.F1FileNum
+        Open Gp2Dir & "\f1gstate.sav" For Binary As Exp.F1FileNum
         ImportQuick
         Close Exp.F1FileNum
     End If
-    Close Exp.GP2FileNum
+    Close Exp.Gp2FileNum
     GetMisc
 End Sub
 
@@ -2501,11 +2483,10 @@ Private Sub cmdJamCheck_Click()
     JamCheck
 End Sub
 
-Public Sub cmdSaveGP2Info_Click()
+Public Sub cmdSaveGp2Info_Click()
     frmMain.MousePointer = 11
     MakeText
-    Read = oMisc.GetShortName(lstFile.SelectedItem.Key)
-    RetVal = ShellExecute(frmMain.hwnd, "open", ProgramDir & "\gp2utils\thcheck.exe", Read, vbNullString, 1)
+    WriteCheckSum frmMain.lstFile.SelectedItem.Key
     frmMain.MousePointer = 0
 End Sub
 
@@ -2523,9 +2504,13 @@ End Sub
 
 Private Sub cmdSaveRace_Click()
     frmMain.MousePointer = 11
-    Read = txtRTime.Text & ";" & txtRDate.Text & ";Race;" & txtRDriver.Text & ";" & txtRTeam.Text & ";" & txtName
-    oDB.SaveNew dbFile, Read
-    LoadTimeData
+    If txtRTime.Text <> "" Then
+        Read = txtRTime.Text & ";" & txtRDate.Text & ";Race;" & txtRDriver.Text & ";" & txtRTeam.Text & ";" & txtName
+        oDB.SaveNew dbFile, Read
+        LoadTimeData
+    Else
+        MsgBox "You must have a time to save a time.", vbInformation, TH
+    End If
     frmMain.MousePointer = 0
 End Sub
 
@@ -2537,78 +2522,80 @@ Exit Sub
 ErrHandler:
     Select Case Err.Number
     Case 68
-        MsgBox LoadResString(109), vbExclamation, TH
+        MsgBox "Device unavailable.", vbExclamation, TH
         Drive1.Drive = "C:"
     Case Else
         MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
             "Error Desctiption: " & Err.Description & vbLf & _
-            "Error Source: " & Err.Source, vbCritical, "Error"
+            "Error Source: Drive1_Change()", vbCritical, TH & " - Error"
             Resume Next
     End Select
 End Sub
 
 Private Sub Form_Load()
+    ProgStart = True
     frmMain.MousePointer = 11
     On Error Resume Next
+    tabMain.Tabs(1).Selected = True
     NewTree
-    tabMain.TabEnabled(1) = False
-    tabMain.TabEnabled(2) = False
     Toolbar1.Buttons("Up").Enabled = False
     Toolbar1.Buttons("Down").Enabled = False
-    tabMain.Tab = 0
     frmMain.Show
 
     ProgramDir = App.Path
     If Right(ProgramDir, 1) = "\" Then ProgramDir = Mid(ProgramDir, 1, Len(ProgramDir) - 1)
-    'ProgramDir = "G:\Mina Program\Visual Basic\GP2 Track Handler v15\TestCenter"
+    'ProgramDir = "C:\My Documents\Mina Program\Visual Basic\Gp2 Track Handler v16\TestCenter"
 
-    oReg.SaveValue HKEY_CURRENT_USER, REG_SZ, "Software\GP2 Track Handler\Settings", "Path", ProgramDir
+    oReg.SaveValue HKEY_CURRENT_USER, REG_SZ, "Software\VG Software\Gp2 Track Handler\Settings", "Path", ProgramDir
 
-    FlatToolbar Toolbar1
-    FlatToolbar Toolbar2
+    FullRowSelect lstTime
+    FullRowSelect lstFile
 
-    Set oMisc = New Misc
     Set oData = New GP2Info
-    Set oReg = New oReg
-    Set oDB = New clsDB
+
+    Set oDB = New clsLapTime
+
     MkDir ProgramDir & "\File"
     MkDir ProgramDir & "\Bat"
     dbFile = ProgramDir & "\Time.lda"
+    '*****************
     App.HelpFile = ProgramDir & "\Help.hlp"
-
+    '*****************
     GetRegValue
     SetTextProp
+    LoadAdj
 
     fraFileInfo.Enabled = False
     LoadTimeData
-
-    X = InStr(1, Command(), ".ths")
-    If (Command() <> "") And (X > 0) Then
-        OpenCommandFile
+    Dim cmdLine As String
+    cmdLine = Command()
+    If cmdLine <> "" Then
+        If oFile.GetFilePart(cmdLine, GetExt) = ".ths" Then
+            OpenCommandFile
+        Else
+            GoTo Norm
+        End If
     Else
         'Normal start
+Norm:
         NewFile
         LoadRecent
         DriveHelpDefault
     End If
     frmMain.MousePointer = 0
+    ProgStart = False
 Exit Sub
 
 ErrHandler:
     frmMain.MousePointer = 0
     MsgBox "Error Number: " & Err.Number & vbCrLf & _
         "Error Description: " & Err.Description & vbCrLf & _
-        "Error Source: " & Err.Source, vbCritical, "Error"
+        "Error Source: Form_Load()", vbCritical, " - Error"
+    ProgStart = False
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
-    Read = CheckIfSave
-    If Read = "Cancel" Then
-        Cancel = 1
-        Exit Sub
-    End If
     On Error Resume Next
-    Set oMisc = Nothing
     Set oData = Nothing
     Kill (CheckBatFile)
     Kill (ProgramDir & "\File\*.*")
@@ -2700,6 +2687,33 @@ End Sub
 
 Private Sub lblEvent_LostFocus()
     lblEvent.BackColor = "&H8000000F"
+End Sub
+
+Private Sub lblInfoText_Click(Index As Integer)
+    Select Case Index
+    Case 0
+        lblCountry.SetFocus
+    Case 1
+        lblTrackName.SetFocus
+    Case 2
+        lblLaps.SetFocus
+    Case 3
+        lblLen.SetFocus
+    Case 4
+        lblWare.SetFocus
+    Case 5
+        lblQual.SetFocus
+    Case 6
+        lblRace.SetFocus
+    Case 7
+        lblInfoYear.SetFocus
+    Case 8
+        lblEvent.SetFocus
+    Case 9
+        lblSlot.SetFocus
+    Case 11
+        lblMisc.SetFocus
+    End Select
 End Sub
 
 Private Sub lblInfoYear_GotFocus()
@@ -2795,79 +2809,72 @@ Dim TempInt As Integer
     Read = Read & NewString
     If LCase(lstFile.SelectedItem.Key) <> LCase(Read) Then
         FileCopy lstFile.SelectedItem.Key, Read
+        SetAttr lstFile.SelectedItem.Key, vbNormal
         Kill lstFile.SelectedItem.Key
         TempInt = lstFile.SelectedItem.Index
         ListFiles All
         lstFile.ListItems(TempInt).Selected = True
     End If
+    Me.MousePointer = 0
 End Sub
 
 Private Sub lstFile_Click()
-Dim PicY As Long
-Dim PicX As Long
     On Error GoTo ErrHandler
     If LCase(Mid(lstFile.SelectedItem.Key, 1, 3)) = "dir" Or LCase(Mid(lstFile.SelectedItem.Key, 1, 5)) = "drive" Then
+        UnsupportedFile
+        fraNoSupport.Visible = False
+        fraFileInfo.Visible = True
+        FileType = 3
         ClearInfo
         Exit Sub
     End If
-    If lstFile.SelectedItem.Text <> "" Then
-        Read = lstFile.SelectedItem.Key
-        If GetExt(Read) = ".dat" Then
-            lstFile.Tag = ".dat"
-            ClearInfo
-            Support = ReadGP2Info(Read)
-            If Support = True Then
-                FileNum = FreeFile
-                Open lstFile.SelectedItem.Key For Binary As FileNum
-                Get #FileNum, 3997, Var.iInt1
-                If Var.iInt1 = 12345 Then
-                    Get #FileNum, 3999, Var.iInt1
-                    If Var.iInt1 = 1 Then
-                        lblSetup.Caption = "Yes"
-                    Else
-                        lblSetup.Caption = "No"
-                    End If
-                Else
-                    lblSetup.Caption = "No"
-                End If
-                Close FileNum
-                fraFileInfo.Enabled = True
-                cmdSaveGP2Info.Enabled = True
-                fraMenuPic.Visible = False
-                fraFileInfo.Visible = True
-                fraNoSupport.Visible = False
+    If oFile.GetFilePart(lstFile.SelectedItem.Key, GetExt) = ".dat" Then
+        FileType = 0
+        ClearInfo
+        If ReadGp2Info(lstFile.SelectedItem.Key) = True Then
+            ShowInfo
+            RetVal = CheckSetup(lstFile.SelectedItem.Key)
+            If RetVal = True Then
+                lblSetup.Caption = "Yes"
             Else
-                fraMenuPic.Visible = False
-                fraFileInfo.Visible = False
-                fraNoSupport.Visible = True
-                fraFileInfo.Enabled = False
-                cmdSaveGP2Info.Enabled = False
+                lblSetup.Caption = "No"
             End If
-        ElseIf (GetExt(Read) = ".bmp") Or (GetExt(Read) = ".gif") Then
-            fraFileInfo.Enabled = False
-            fraFileInfo.Visible = False
+            mnuEditQSetup.Enabled = RetVal
+            mnuEditRSetup.Enabled = RetVal
+            mnuRemove.Enabled = RetVal
+            mnuEditQSetup2.Enabled = RetVal
+            mnuEditRSetup2.Enabled = RetVal
+            mnuRemove2.Enabled = RetVal
+            SupportedFile
+        Else
+            FileType = 4
+            UnsupportedFile
+        End If
+    ElseIf (oFile.GetFilePart(lstFile.SelectedItem.Key, GetExt) = ".gif") Or (oFile.GetFilePart(lstFile.SelectedItem.Key, GetExt) = ".bmp") Then
+        fraFileInfo.Visible = False
+        fraFileInfo.Enabled = False
+        fraNoSupport.Visible = False
+        cmdSaveGP2Info.Enabled = False
+        imgRealSize.Picture = LoadPicture(lstFile.SelectedItem.Key)
+        If ((imgRealSize.Width / 15 = 640) And (imgRealSize.Height / 15 = 480)) Then
+            lblPicInfo.Caption = "Large Menu Picture"
+            Set imgPre.Picture = LoadPicture(lstFile.SelectedItem.Key)
+            FileType = 2
             fraMenuPic.Visible = True
-            imgRealSize.Picture = LoadPicture(Read)
-            PicY = imgRealSize.Height / 15
-            PicX = imgRealSize.Width / 15
-            If ((PicX = 640) And (PicY = 480)) Then
-                lblPicInfo.Caption = "Large Menu Picture"
-                Set imgPre.Picture = LoadPicture(Read)
-                lstFile.Tag = "big"
-                Support = True
-            ElseIf ((PicX = 440) And (PicY = 330)) Then
-                lblPicInfo.Caption = "Small Menu Picture"
-                Set imgPre.Picture = LoadPicture(Read)
-                lstFile.Tag = "small"
-                Support = True
-            Else
-                Support = False
-                lstFile.OLEDragMode = ccOLEDragAutomatic
-                lstFile.OLEDragMode = ccOLEDragManual
-                fraNoSupport.Visible = True
-                fraMenuPic.Visible = False
-                Exit Sub
-            End If
+            SupportedFile
+        ElseIf ((imgRealSize.Width / 15 = 440) And (imgRealSize.Height / 15 = 330)) Then
+            lblPicInfo.Caption = "Small Menu Picture"
+            Set imgPre.Picture = LoadPicture(lstFile.SelectedItem.Key)
+            FileType = 1
+            fraMenuPic.Visible = True
+            SupportedFile
+        Else
+            lstFile.OLEDragMode = ccOLEDragAutomatic
+            lstFile.OLEDragMode = ccOLEDragManual
+            fraMenuPic.Visible = False
+            fraNoSupport.Visible = True
+            FileType = 4
+            UnsupportedFile
         End If
     End If
 Exit Sub
@@ -2878,7 +2885,7 @@ ErrHandler:
     Case Else
         MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
             "Error Desctiption: " & Err.Description & vbLf & _
-            "Error Source: " & Err.Source, vbCritical, "Error"
+            "Error Source: lstFile_Click()", vbCritical, TH & " - Error"
     End Select
 End Sub
 
@@ -2912,18 +2919,33 @@ End Sub
 
 Private Sub lstFile_DblClick()
     If bButton = 2 Then Exit Sub
+    Me.MousePointer = 11
     On Error GoTo ErrHandler
     If Mid(lstFile.SelectedItem.Key, 1, 3) = "dir" Then
         MyPath = Mid(lstFile.SelectedItem.Key, 4)
         ListFiles All
-    End If
-    If LCase(Mid(lstFile.SelectedItem.Key, 1, 5)) = "drive" Then
+    ElseIf LCase(Mid(lstFile.SelectedItem.Key, 1, 5)) = "drive" Then
         Toolbar2.Buttons(1).Enabled = True
         Drive1.Drive = Mid(lstFile.SelectedItem.Key, 6)
         ListFiles All
-        Exit Sub
+    ElseIf oFile.GetFilePart(lstFile.SelectedItem.Key, GetExt) = ".dat" Then
+        For X = 0 To 15
+            If Tracks(X) = False Then
+                SaveDropData lstFile.SelectedItem.Key, X + 1
+                LoadFile
+                ClearText
+                MousePointer = 0
+                Exit Sub
+            End If
+        Next
     End If
+MousePointer = 0
+Exit Sub
 ErrHandler:
+    MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
+        "Error Desctiption: " & Err.Description & vbLf & _
+        "Error Source: lstFile_DblClick()", vbCritical, TH & " - Error"
+    Me.MousePointer = 0
 End Sub
 
 Private Sub lstFile_ItemClick(ByVal Item As ComctlLib.ListItem)
@@ -2934,62 +2956,64 @@ Private Sub lstFile_ItemClick(ByVal Item As ComctlLib.ListItem)
 End Sub
 
 Private Sub lstFile_KeyUp(KeyCode As Integer, Shift As Integer)
-    If (KeyCode = 40) Or (KeyCode = 38) Then lstFile_Click
-    If KeyCode = 13 Then lstFile_DblClick
-    If KeyCode = 8 Then
-        UpOneLevel
-    End If
-End Sub
-
-Private Sub lstFile_MouseDown(Button As Integer, Shift As Integer, X As Single, y As Single)
-    bButton = Button
-End Sub
-
-Private Sub lstFile_MouseUp(Button As Integer, Shift As Integer, X As Single, y As Single)
-    If Button = 2 Then
-        If LCase(Mid(lstFile.SelectedItem.Key, 1, 3)) <> "dir" And LCase(Right(lstFile.SelectedItem.Key, 3)) = "dat" Then
-            If LCase(lblSetup.Caption) = "no" Then
-                mnuEditQSetup.Enabled = False
-                mnuEditRSetup.Enabled = False
-                mnuRemove.Enabled = False
-            Else
-                mnuEditQSetup.Enabled = True
-                mnuEditRSetup.Enabled = True
-                mnuRemove.Enabled = True
-            End If
-            PopupMenu mnuPopup
+    If tabMain.Tabs(1).Selected = True Then
+        If (KeyCode = 40) Or (KeyCode = 38) Then lstFile_Click
+        If KeyCode = 13 Then lstFile_DblClick
+        If KeyCode = 8 Then
+            UpOneLevel
         End If
     End If
 End Sub
 
-Private Sub lstFile_OLEStartDrag(Data As ComctlLib.DataObject, AllowedEffects As Long)
-    If Support = True Then
-        Data.SetData lstFile.SelectedItem.Text, 1
+Private Sub lstFile_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    bButton = Button
+End Sub
+
+Private Sub lstFile_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    If (Button = 2) And (FileType = 0) Then
+        PopupMenu mnuPopup
     End If
 End Sub
 
 Private Sub mnuBackup_Click()
-    If tabMain.Tab = 0 Then
-        If Mid(lstFile.SelectedItem.Key, Len(lstFile.SelectedItem.Key) - 3, 4) <> ".dat" Then Exit Sub
-        Var.sString1 = Mid(lstFile.SelectedItem.Text, 1, Len(lstFile.SelectedItem.Text) - 3) & "zip"
-        Read = oMisc.ShowSave("Zip Files (*.Zip)|*.zip|", "zip", Me.hwnd, ProgramDir, "Create Zip File", Var.sString1)
-        If Read <> "" Then
-            Me.MousePointer = 11
-            DoEvents
-            BackupTrack lstFile.SelectedItem.Key, Read
-            Me.MousePointer = 0
-        End If
-    ElseIf tabMain.Tab = 1 Then
+Dim sZipName As String
+Dim sFilePath As String
+Dim BackupDef As Boolean
+    If tabMain.Tabs(1).Selected = True Then
+
+        If FileType <> 0 Then Exit Sub
+        sZipName = Mid(lstFile.SelectedItem.Text, 1, Len(lstFile.SelectedItem.Text) - 3) & "zip"
+        sFilePath = lstFile.SelectedItem.Key
+        GoTo ZipFile
+    
+    ElseIf tabMain.Tabs(2).Selected = True Then
+        
         If txtPath.Text = "" Then Exit Sub
-        Var.sString1 = GetFileName(txtPath.Text)
-        Var.sString1 = Mid(Var.sString1, 1, Len(Var.sString1) - 3) & "zip"
-        Read = oMisc.ShowSave("Zip Files (*.Zip)|*.Zip|", "zip", Me.hwnd, ProgramDir, "Create Zip File", Var.sString1)
-        If Read <> "" Then
-            Me.MousePointer = 11
-            DoEvents
-            BackupTrack txtPath.Text, Read
-            Me.MousePointer = 0
-        End If
+        sZipName = oFile.GetFilePart(txtPath.Text, GetFileName)
+        sZipName = Mid(sZipName, 1, Len(sZipName) - 3) & "zip"
+        sFilePath = txtPath.Text
+        GoTo ZipFile
+    
+    End If
+Exit Sub
+ZipFile:
+    sZipName = oFile.ShowSave("Zip Files (*.Zip)|*.zip|", "zip", Me.hWnd, , "Create Zip File", sZipName)
+    If sZipName = "" Then Exit Sub
+    RetVal = MsgBox("Do you want to backup the oridginal Gp2 Jam files?", vbYesNo, TH)
+    If RetVal = vbYes Then
+        BackupDef = True
+    Else
+        BackupDef = False
+    End If
+    If sZipName <> "" Then
+        Me.MousePointer = 11
+        Load frmProgress
+        frmProgress.Show
+        frmProgress.Caption = sZipName
+        DoEvents
+        BackupTrack sFilePath, sZipName, BackupDef
+        Unload frmProgress
+        Me.MousePointer = 0
     End If
 End Sub
 
@@ -2998,27 +3022,51 @@ Private Sub mnuBackup2_Click()
 End Sub
 
 Private Sub mnuCheckSum_Click()
+    Me.MousePointer = 11
     WriteCheckSum lstFile.SelectedItem.Key
+    Me.MousePointer = 0
 End Sub
 
 Private Sub mnuDelete_Click()
 Dim TempInt As Integer
-    Var.iInt1 = MsgBox("Are you sure you want to delete this file?", vbYesNo, "Confirm File Delete")
-    If Var.iInt1 = vbYes Then
+    tVar.iInt = MsgBox("Are you sure you want to delete this file?", vbYesNo, "Confirm File Delete")
+    If tVar.iInt = vbYes Then
         Kill lstFile.SelectedItem.Key
         TempInt = lstFile.SelectedItem.Index - 1
         ListFiles All
-        lstFile.ListItems(TempInt).Selected = True
+        If TempInt > 0 Then lstFile.ListItems(TempInt).Selected = True
     End If
 End Sub
 
-Private Sub mnuDetails_Click()
-    mnuList.Checked = False
-    mnuDetails.Checked = True
-    mnuLargeIcons.Checked = False
-    lstFile.View = lvwReport
-    Toolbar2.Buttons(4).Value = tbrPressed
-    oReg.SaveValue HKEY_CURRENT_USER, REG_DWORD, "Software\GP2 Track Handler\Settings", "ToolBar", , 4
+Private Sub mnuEdit_Click(Index As Integer)
+    Select Case Index
+    Case 0
+        Gp2Dir = SetGp2Folder
+        If Gp2Dir <> "" Then GetGp2Version
+    Case 1
+        Read = oFile.BrowseFolders("Select Track Directory", Me.hWnd)
+        If Read <> "" Then
+            If Right(Read, 1) <> "\" Then Read = Read & "\"
+            oReg.SaveValue HKEY_CURRENT_USER, REG_SZ, "Software\VG Software\Gp2 Track Handler\Settings", "TrackPath", Read
+            Read2 = "LoadTrackPathNow-Flag"
+            Drive1.Drive = Mid(Read, 1, 2)
+            Read2 = ""
+            MyPath = Read
+            ListFiles All
+        End If
+    Case 2
+        Read = oFile.ShowOpen("Gp2 Track Editor (*.exe)|*.exe|", Me.hWnd, , "Select Gp2 Track Editor")
+        If Read = "" Then Exit Sub
+        oReg.SaveValue HKEY_CURRENT_USER, REG_SZ, "Software\VG Software\Gp2 Track Handler\Settings", "TrackEdit", Read
+        mnuOpenFile.Tag = Read
+        mnuOpenFile.Enabled = True
+    Case 4
+        Read = oFile.ShowOpen("All Application Files (*.exe)|*.exe|Gp2 (gp2.exe)|gp2.exe|Gp2Lap (gp2lap.exe)|gp2lap.exe|", Me.hWnd, Gp2Dir, "Select Application")
+        If Read = "" Then Exit Sub
+        RunGp2 = Read
+        Toolbar1.Buttons(18).ToolTipText = RunGp2
+        oReg.SaveValue HKEY_CURRENT_USER, REG_SZ, "Software\VG Software\Gp2 Track Handler\Settings", "RunGp2", RunGp2
+    End Select
 End Sub
 
 Private Sub mnuEditQSetup_Click()
@@ -3069,10 +3117,10 @@ End Sub
 
 Private Sub mnuExpRec_Click()
 Dim sFileName As String
-    sFileName = oMisc.ShowSave("Lap Time Data File (*.rec)|*.rec|All files (*.*)|*.*|", "rec", Me.hwnd, GP2Dir, "Save Record File")
+    sFileName = oFile.ShowSave("Lap Time Data File (*.rec)|*.rec|All files (*.*)|*.*|", "rec", Me.hWnd, , "Save Record File")
     If sFileName = "" Then Exit Sub
     FileNum = FreeFile
-    Open GP2Dir & "\f1gstate.sav" For Binary As FileNum
+    Open Gp2Dir & "\f1gstate.sav" For Binary As FileNum
     Read2 = String(2820, " ")
     Get #FileNum, 650, Read2
     Close FileNum
@@ -3098,12 +3146,23 @@ Dim sFileName As String
     WriteCheckSum sFileName
 End Sub
 
-Private Sub mnuGP2Edit_Click()
+Private Sub mnuGp2Edit_Click()
     AddExe
 End Sub
 
+Private Sub mnuHelp_Click(Index As Integer)
+    Select Case Index
+    Case 0
+        RetVal = WinHelp(frmMain.hWnd, App.HelpFile, HELP_CONTENTS, ByVal 5)
+    Case 2
+        INetLink "http://www.vgsoftware.com/", Me.hWnd
+    Case 4
+        frmAbout.Show vbModal, frmMain
+    End Select
+End Sub
+
 Private Sub mnuImpRec_Click()
-    Read = oMisc.ShowOpen("Lap Time Data File (*.rec)|*.rec|All files (*.*)|*.*|", Me.hwnd, GP2Dir, "Select a Record File")
+    Read = oFile.ShowOpen("Lap Time Data File (*.rec)|*.rec|All files (*.*)|*.*|", Me.hWnd, , "Select a Record File")
     If Read = "" Then Exit Sub
     Exp.F1FileNum = FreeFile
     Open Read For Binary As Exp.F1FileNum
@@ -3128,24 +3187,6 @@ Private Sub mnuJamCheck2_Click()
     JamCheck
 End Sub
 
-Private Sub mnuLargeIcons_Click()
-    mnuList.Checked = False
-    mnuDetails.Checked = False
-    mnuLargeIcons.Checked = True
-    lstFile.View = lvwIcon
-    Toolbar2.Buttons(5).Value = tbrPressed
-    oReg.SaveValue HKEY_CURRENT_USER, REG_DWORD, "Software\GP2 Track Handler\Settings", "ToolBar", , 5
-End Sub
-
-Private Sub mnuList_Click()
-    mnuList.Checked = True
-    mnuDetails.Checked = False
-    mnuLargeIcons.Checked = False
-    lstFile.View = lvwList
-    Toolbar2.Buttons(3).Value = tbrPressed
-    oReg.SaveValue HKEY_CURRENT_USER, REG_DWORD, "Software\GP2 Track Handler\Settings", "ToolBar", , 3
-End Sub
-
 Private Sub mnuNewSetup_Click()
     frmSetup.Show vbModal, frmMain
 End Sub
@@ -3156,21 +3197,25 @@ End Sub
 
 Private Sub mnuOpenFile_Click()
     If mnuOpenFile.Tag = "" Then
-        RetVal = ShellExecute(Me.hwnd, "open", lstFile.SelectedItem.Key, vbNullString, vbNullString, 1)
+        RetVal = ShellExecute(Me.hWnd, "open", lstFile.SelectedItem.Key, vbNullString, vbNullString, 1)
     Else
-        Read = oMisc.GetShortName(lstFile.SelectedItem.Key)
+        Read = oFile.GetShortName(lstFile.SelectedItem.Key)
         Read2 = ""
         For X = Len(mnuOpenFile.Tag) To 1 Step -1
             If Mid(mnuOpenFile.Tag, X, 1) = "\" Then Exit For
         Next
         Read2 = Mid(mnuOpenFile.Tag, 1, X - 1)
-        RetVal = ShellExecute(Me.hwnd, "open", mnuOpenFile.Tag, Read, Read2, 1)
+        RetVal = ShellExecute(Me.hWnd, "open", mnuOpenFile.Tag, Read, Read2, 1)
     End If
+End Sub
+
+Private Sub mnuPopupUninstall_Click()
+    mnuToolUninstall_Click
 End Sub
 
 Private Sub mnuRemove_Click()
     DeteteSetup lstFile.SelectedItem.Key
-    RetVal = ShellExecute(Me.hwnd, "open", ProgramDir & "\gp2utils\thcheck.exe", oMisc.GetShortName(frmMain.lstFile.SelectedItem.Key), vbNullString, 1)
+    WriteCheckSum frmMain.lstFile.SelectedItem.Key
 End Sub
 
 Private Sub mnuRemove2_Click()
@@ -3181,18 +3226,11 @@ Private Sub mnuRename_Click()
     lstFile.StartLabelEdit
 End Sub
 
-Private Sub mnuRunGP2_Click()
-    Read = oMisc.ShowOpen("All Application Files (*.exe)|*.exe|GP2 (gp2.exe)|gp2.exe|GP2Lap (gp2lap.exe)|gp2lap.exe|", Me.hwnd, GP2Dir, "Select Application")
-    If Read = "" Then Exit Sub
-    RunGP2 = Read
-    oReg.SaveValue HKEY_CURRENT_USER, REG_SZ, "Software\GP2 Track Handler\Settings", "RunGP2", RunGP2
-End Sub
-
 Private Sub mnuSetupFile_Click()
-    Var.sString1 = oMisc.ShowOpen("GP2 Setup File (*.cs*)|*.cs*|All Files (*.*)|*.*|", Me.hwnd, GP2Dir, "Open CarSetup")
-    If Var.sString1 = "" Then Exit Sub
+    Read = oFile.ShowOpen("Gp2 Setup File (*.cs*)|*.cs*|All Files (*.*)|*.*|", Me.hWnd, , "Open CarSetup")
+    If Read = "" Then Exit Sub
     Load frmSetup
-    OpenSetup Var.sString1
+    OpenSetup Read
     frmSetup.Show vbModal, frmMain
 End Sub
 
@@ -3201,40 +3239,17 @@ Private Sub mnuSetupFile2_Click()
 End Sub
 
 Private Sub mnuShortOpen_Click(Index As Integer)
-    On Error GoTo ErrHandler
-
-    MakeTempFile mnuShortOpen(Index).Tag
-
-    FileInfo.Name = mnuShortOpen(Index).Caption
-    FileInfo.Path = mnuShortOpen(Index).Tag
-    FileInfo.Saved = True
-    FileInfo.Import = False
-    LoadFile
-    Read = oMisc.RecentFile(OpenRecent, , , Index + 1)
-    LoadRecent
-    frmMain.Caption = "GP2 Track Handler v1.5 [" & Trim(FileInfo.Name) & "]"
-Exit Sub
-ErrHandler:
-    Select Case Err.Number
-    Case 53
-        MsgBox LoadResString(111), vbExclamation, TH
-    Case Else
-        MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
-            "Error Desctiption: " & Err.Description & vbLf & _
-            "Error Source: " & Err.Source, vbCritical, "Error"
-    End Select
-End Sub
-
-Private Sub mnuAbout_Click()
-    frmMain.MousePointer = 11
-    frmAbout.Show vbModal, frmMain
-    frmMain.MousePointer = 0
+    If oFile.FileExists(mnuShortOpen(Index).Tag) = True Then
+        ShowFiles mnuShortOpen(Index).Tag
+    Else
+        MsgBox "The file """ & mnuShortOpen(Index).Tag & """ was not found.", vbCritical, TH
+    End If
 End Sub
 
 Private Sub mnuCCCarSetup_Click()
     On Error Resume Next
-    If tabMain.Tab = 0 Then
-        Read = GetExt(lstFile.SelectedItem.Key)
+    If tabMain.Tabs(1).Selected = True Then
+        Read = oFile.GetFilePart(lstFile.SelectedItem.Key, GetExt)
         If Read <> ".dat" Then Exit Sub
     Else
         If txtPath.Text = "" Then Exit Sub
@@ -3242,85 +3257,36 @@ Private Sub mnuCCCarSetup_Click()
     frmCCSetup.Show vbModal, frmMain
 End Sub
 
-Private Sub mnuConvert_Click()
-    frmConvert.Show vbModal, frmMain
-End Sub
-
 Private Sub mnuExit_Click()
-    Read = CheckIfSave
-    If Read = "Cancel" Then Exit Sub
-    On Error Resume Next
-    Set oMisc = Nothing
-    Set oData = Nothing
-    Kill (ProgramDir & "\Bat\*.*")
-    Kill (ProgramDir & "\File\*.*")
-    Kill (TempFile)
-    End
+    Unload Me
 End Sub
 
 Private Sub mnuExport_Click()
     SaveTrackData TreeNr
     SaveMisc
-    frmExport.Show vbModal, frmMain
-End Sub
-
-Private Sub mnuGP2Path_Click()
-    GP2Dir = SetGP2Folder
-    If GP2Dir <> "" Then GetGP2Version
-End Sub
-
-Private Sub mnuGP3_Click()
-    oMisc.INetLink "http://www.f1-grandprix3.com/", Me.hwnd
-End Sub
-
-Private Sub mnuGrandPrix1_Click()
-    oMisc.INetLink "http://www.grandprix1.com/", Me.hwnd
-End Sub
-
-Private Sub mnuGrandPrix2_Click()
-    oMisc.INetLink "http://www.grandprix2.com/", Me.hwnd
-End Sub
-
-Private Sub mnuHelp_Click()
-    RetVal = WinHelp(frmMain.hwnd, App.HelpFile, HELP_CONTENTS, ByVal 0)
+    frmExport.Show , frmMain
 End Sub
 
 Private Sub mnuImport_Click()
     SaveTrackData TreeNr
     SaveMisc
-    Read = CheckIfSave
-    If Read = "Cancel" Then Exit Sub
     frmImport.Show vbModal, frmMain
 End Sub
 
 Private Sub mnuNew_Click()
-    Read = CheckIfSave
-    If Read = "Cancel" Then Exit Sub
     TreeView1.Nodes.Item(1).Selected = True
     TreeView1_NodeClick TreeView1.Nodes(1)
     NewFile
     LoadFile
-    frmMain.Caption = "GP2 Track Handler v1.5"
+    frmMain.Caption = TH & " v1.6"
     Unload frmExport
     Unload frmImport
 End Sub
 
 Private Sub mnuOpen_Click()
-    Var.sString1 = oMisc.ShowOpen("Track Handler Files (*.ths)|*.ths|All Files (*.*)|*.*|", Me.hwnd, ProgramDir)
-    If Var.sString1 = "" Then Exit Sub
-    MakeTempFile Var.sString1
-    FileInfo.Saved = True
-    FileInfo.Path = Var.sString1
-    For X = Len(Var.sString1) To 0 Step -1
-        If Mid(Var.sString1, X, 1) = "\" Then Exit For
-    Next
-    FileInfo.Name = Mid(Var.sString1, X + 1)
-    LoadFile
-    GetMisc
-
-    Read = oMisc.RecentFile(SaveNew, FileInfo.Path, FileInfo.Name)
-    frmMain.LoadRecent
-    frmMain.Caption = "GP2 Track Handler v1.5 [" & FileInfo.Name & "]"
+    Read = oFile.ShowOpen("Supported Files (*.ths;*.set)|*.ths;*.set|Gp2 Track Handler Files (*.ths)|*.ths|TrackSet Files (*.set)|*.set|All Files (*.*)|*.*|", Me.hWnd)
+    If Read = "" Then Exit Sub
+    ShowFiles Read
 End Sub
 
 Private Sub mnuPoint_Click()
@@ -3334,9 +3300,6 @@ Private Sub mnuRand_Click()
         TreeView1_NodeClick TreeView1.Nodes(1)
         TreeView1.Nodes(1).Selected = True
         RandomTracks lstFile.ListItems.Count
-        FileInfo.Changes = True
-    Else
-        MsgBox "You need to have 16 track's or more in this directory to make a random season.", vbInformation, TH
     End If
     ListFiles All
     frmMain.MousePointer = 0
@@ -3350,6 +3313,7 @@ End Sub
 
 Private Sub mnuSave_Click()
     SaveTrackData TreeNr
+    SaveMisc
     SaveFile
 End Sub
 
@@ -3359,60 +3323,18 @@ Private Sub mnuSaveas_Click()
     SaveFileAs
 End Sub
 
-Private Sub mnuStatusbar_Click()
-    If mnuStatusbar.Checked = True Then
-        stbMain.Visible = False
-        mnuStatusbar.Checked = False
-        frmMain.Height = frmMain.Height - stbMain.Height
-        oReg.SaveValue HKEY_CURRENT_USER, REG_DWORD, "Software\GP2 Track Handler\Settings", "Statusbar", , "1"
-    Else
-        stbMain.Visible = True
-        mnuStatusbar.Checked = True
-        frmMain.Height = frmMain.Height + stbMain.Height
-        oReg.SaveValue HKEY_CURRENT_USER, REG_DWORD, "Software\GP2 Track Handler\Settings", "Statusbar", , "0"
-    End If
-End Sub
-
-Private Sub mnuTHHome_Click()
-    oMisc.INetLink "http://hem1.passagen.se/formula1/", Me.hwnd
-End Sub
-
-Private Sub mnuToolbar_Click()
-    If mnuToolbar.Checked = True Then
-        Toolbar1.Visible = False
-        mnuToolbar.Checked = False
-        TreeView1.Top = TreeView1.Top - Toolbar1.Height
-        tabMain.Top = tabMain.Top - Toolbar1.Height
-        frmMain.Height = frmMain.Height - Toolbar1.Height
-        oReg.SaveValue HKEY_CURRENT_USER, REG_DWORD, "Software\GP2 Track Handler\Settings", "Toolbar", , 1
-    Else
-        Toolbar1.Visible = True
-        mnuToolbar.Checked = True
-        TreeView1.Top = TreeView1.Top + Toolbar1.Height
-        tabMain.Top = tabMain.Top + Toolbar1.Height
-        frmMain.Height = frmMain.Height + Toolbar1.Height
-        oReg.SaveValue HKEY_CURRENT_USER, REG_DWORD, "Software\GP2 Track Handler\Settings", "Toolbar", , 0
-    End If
-End Sub
-
-Private Sub mnuTrackEditPath_Click()
-    Read = oMisc.ShowOpen("GP2 Track Editor (*.exe)|*.exe|", Me.hwnd, "", "Select GP2 Track Editor")
-    If Read = "" Then Exit Sub
-    oReg.SaveValue HKEY_CURRENT_USER, REG_SZ, "Software\GP2 Track Handler\Settings", "TrackEdit", Read
-    mnuOpenFile.Tag = Read
-    mnuOpenFile.Enabled = True
-End Sub
-
-Private Sub mnuTrackPath_Click()
-    Read = oMisc.BrowseFolders("Select Track Directory", Me.hwnd)
-    If Read <> "" Then
-        If Right(Read, 1) <> "\" Then Read = Read & "\"
-        oReg.SaveValue HKEY_CURRENT_USER, REG_SZ, "Software\GP2 Track Handler\Settings", "TrackPath", Read
-        Read2 = "LoadTrackPathNow-Flag"
-        Drive1.Drive = Mid(Read, 1, 2)
-        Read2 = ""
-        MyPath = Read
+Private Sub mnuToolUninstall_Click()
+    RetVal = MsgBox("Are you sure you want to delete all extra jam files and the track file?", vbYesNo + vbExclamation, TH)
+    If RetVal = vbYes Then
+        MousePointer = 11
+        Load frmProgress
+        frmProgress.Show
+        frmProgress.Caption = "Uninstall " & oFile.GetFilePart(lstFile.SelectedItem.Key, GetFileName)
+        DoEvents
+        Uninstall (lstFile.SelectedItem.Key)
         ListFiles All
+        Unload frmProgress
+        MousePointer = 0
     End If
 End Sub
 
@@ -3421,8 +3343,61 @@ Private Sub mnuTrackSettings_Click()
     frmCCSetup.Show vbModal, frmMain
 End Sub
 
-Private Sub mnuUnGP3_Click()
-    oMisc.INetLink "http://www.gp3.org/", Me.hwnd
+Private Sub mnuView_Click(Index As Integer)
+    If Index > 1 And Index < 7 Then
+        mnuView(3).Checked = False
+        mnuView(4).Checked = False
+        mnuView(5).Checked = False
+        mnuView(Index).Checked = True
+        oReg.SaveValue HKEY_CURRENT_USER, REG_DWORD, "Software\VG Software\Gp2 Track Handler\Settings", "ToolBar", , ByVal (Index)
+    End If
+    Select Case Index
+    Case 3
+        lstFile.View = lvwList
+        Toolbar2.Buttons(3).Value = tbrPressed
+    Case 4
+        lstFile.View = lvwReport
+        Toolbar2.Buttons(4).Value = tbrPressed
+    Case 5
+        lstFile.View = lvwIcon
+        Toolbar2.Buttons(5).Value = tbrPressed
+    Case 7
+        If mnuView(7).Checked = True Then
+            mnuView(7).Checked = False
+            FlatToolbar Toolbar1
+            FlatToolbar Toolbar2
+        Else
+            mnuView(7).Checked = True
+            FlatToolbar Toolbar1
+            FlatToolbar Toolbar2
+        End If
+        oReg.SaveValue HKEY_CURRENT_USER, REG_SZ, "Software\VG Software\Gp2 Track Handler\Settings", "FlatToolbar", mnuView(7).Checked
+    End Select
+End Sub
+
+Private Sub mnuViewChecksum_Click()
+Dim iCheck1 As Integer
+Dim iCheck2 As Integer
+Dim sCheck1 As String
+Dim sCheck2 As String
+    FileNum = FreeFile
+    Open lstFile.SelectedItem.Key For Binary As FileNum
+    Get #FileNum, FileLen(lstFile.SelectedItem.Key) - 3, iCheck1
+    Get #FileNum, FileLen(lstFile.SelectedItem.Key) - 1, iCheck2
+    sCheck1 = String(1, " ")
+    Get #FileNum, FileLen(lstFile.SelectedItem.Key) - 3, sCheck1
+    Read = String(1, " ")
+    Get #FileNum, FileLen(lstFile.SelectedItem.Key) - 2, Read
+    sCheck1 = Hex(Asc(sCheck1)) & " " & Hex(Asc(Read))
+    
+    sCheck2 = String(1, " ")
+    Get #FileNum, FileLen(lstFile.SelectedItem.Key) - 1, sCheck2
+    Read = String(1, " ")
+    Get #FileNum, FileLen(lstFile.SelectedItem.Key), Read
+    sCheck2 = Hex(Asc(sCheck2)) & " " & Hex(Asc(Read))
+    
+    Close FileNum
+    MsgBox "Checksum1=" & Hex(iCheck1) & " (" & sCheck1 & ")" & vbLf & "Checksum2=" & Hex(iCheck2) & " (" & sCheck2 & ")", vbInformation, "CheckSum"
 End Sub
 
 Private Sub P_Click(Index As Integer)
@@ -3463,8 +3438,33 @@ Private Sub Slider1_Scroll()
     lblYear.Caption = Slider1.Value
 End Sub
 
-Private Sub tabMain_Click(PreviousTab As Integer)
-    If tabMain.Tab = 0 Then
+Private Sub tabPic_Click()
+    If tabPic.SelectedItem.Index = 2 Then
+        Set picMenuPic.Picture = LoadPicture(txtSPic.Text)
+        picMenuPic.Height = 2475
+        picMenuPic.Width = 3300
+    Else
+        Set picMenuPic.Picture = LoadPicture(txtBPic.Text)
+        picMenuPic.Height = 3600
+        picMenuPic.Width = 4800
+    End If
+End Sub
+
+Private Sub tabPic_GotFocus()
+    If tabMain.Tabs(2).Selected = True Then
+        txtName.SetFocus
+    End If
+End Sub
+
+Private Sub tabMain_Click()
+    If tabMain.Tabs(1).Selected = True Then
+
+        fraData.Left = -10000
+        fraTrackPic.Left = -10000
+        fraFileManager.Left = 3300
+        fraLapTime.Left = -10000
+        fraMisc.Left = -10000
+
         mnuRand.Enabled = True
         Toolbar1.Buttons("Home").Enabled = True
         mnuTrackSettings.Enabled = True
@@ -3473,7 +3473,21 @@ Private Sub tabMain_Click(PreviousTab As Integer)
         Toolbar1.Buttons("Backup").Enabled = True
         Toolbar1.Buttons("Setup").Enabled = True
         Toolbar1.Buttons("JamCheck").Enabled = True
-    ElseIf tabMain.Tab = 1 Then
+        Toolbar1.Buttons("Up").Enabled = False
+        Toolbar1.Buttons("Down").Enabled = False
+        If TreeView1.Nodes.Count > 10 Then
+            TreeView1.Nodes(1).Selected = True
+            TreeNr = 0
+        End If
+        ClearText
+        GoTo Save
+    ElseIf tabMain.Tabs(2).Selected = True Then
+        fraData.Left = 3300
+        fraTrackPic.Left = -10000
+        fraFileManager.Left = -10000
+        fraLapTime.Left = -10000
+        fraMisc.Left = -10000
+        
         Toolbar1.Buttons("Home").Enabled = False
         mnuRand.Enabled = False
         mnuTrackSettings.Enabled = True
@@ -3482,23 +3496,38 @@ Private Sub tabMain_Click(PreviousTab As Integer)
         Toolbar1.Buttons("Backup").Enabled = True
         Toolbar1.Buttons("Setup").Enabled = True
         Toolbar1.Buttons("JamCheck").Enabled = True
-    Else
-        mnuRand.Enabled = False
-        Toolbar1.Buttons("Home").Enabled = False
-        mnuTrackSettings.Enabled = False
-        mnuBackup.Enabled = False
-        mnuJamCheck2.Enabled = False
-        Toolbar1.Buttons("Backup").Enabled = False
-        Toolbar1.Buttons("Setup").Enabled = False
-        Toolbar1.Buttons("JamCheck").Enabled = False
+        GoTo Save
+    ElseIf tabMain.Tabs(3).Selected = True Then
+        fraData.Left = -10000
+        fraTrackPic.Left = 3300
+        fraFileManager.Left = -10000
+        fraLapTime.Left = -10000
+        fraMisc.Left = -10000
+    ElseIf tabMain.Tabs(4).Selected = True Then
+        fraData.Left = -10000
+        fraTrackPic.Left = -10000
+        fraFileManager.Left = -10000
+        fraLapTime.Left = -10000
+        fraMisc.Left = 3300
+    ElseIf tabMain.Tabs(5).Selected = True Then
+        fraData.Left = -10000
+        fraTrackPic.Left = -10000
+        fraFileManager.Left = -10000
+        fraLapTime.Left = 3300
+        fraMisc.Left = -10000
     End If
-    SaveMisc
-    GetMisc
-End Sub
-
-Private Sub tabPic_GotFocus()
-    If tabMain.Tab = 1 Then
-        txtName.SetFocus
+    mnuRand.Enabled = False
+    Toolbar1.Buttons("Home").Enabled = False
+    mnuTrackSettings.Enabled = False
+    mnuBackup.Enabled = False
+    mnuJamCheck2.Enabled = False
+    Toolbar1.Buttons("Backup").Enabled = False
+    Toolbar1.Buttons("Setup").Enabled = False
+    Toolbar1.Buttons("JamCheck").Enabled = False
+Save:
+    If ProgStart = False Then
+        SaveMisc
+        GetMisc
     End If
 End Sub
 
@@ -3516,17 +3545,17 @@ Private Sub Toolbar1_ButtonClick(ByVal Button As ComctlLib.Button)
         mnuImport_Click
     Case "Export"
         mnuExport_Click
-    Case "GP2"
+    Case "Gp2"
         Read = ""
-        For X = Len(RunGP2) To 0 Step -1
-            If Mid(RunGP2, X, 1) = "\" Then Exit For
+        For X = Len(RunGp2) To 0 Step -1
+            If Mid(RunGp2, X, 1) = "\" Then Exit For
         Next
-        Read = Mid(RunGP2, 1, X)
-        RetVal = ShellExecute(frmMain.hwnd, "open", RunGP2, vbNullString, Read, 1)
-    Case "GP2Edit"
+        Read = Mid(RunGp2, 1, X)
+        RetVal = ShellExecute(frmMain.hWnd, "open", RunGp2, vbNullString, Read, 1)
+    Case "Gp2Edit"
         AddExe
     Case "Help"
-        RetVal = WinHelp(frmMain.hwnd, App.HelpFile, HELP_CONTENTS, ByVal 0)
+        RetVal = WinHelp(frmMain.hWnd, App.HelpFile, HELP_CONTENTS, ByVal 0)
     Case "Backup"
         mnuBackup_Click
     Case "JamCheck"
@@ -3535,91 +3564,35 @@ Private Sub Toolbar1_ButtonClick(ByVal Button As ComctlLib.Button)
         mnuCCCarSetup_Click
     Case "Home"
         Read = ""
-        Read = oReg.GetValue(HKEY_CURRENT_USER, "Software\GP2 Track Handler\Settings", "TrackPath")
-        If Read <> "" Then Read2 = oMisc.File_Exists(Read)
+        Read = oReg.GetValue(HKEY_CURRENT_USER, "Software\VG Software\Gp2 Track Handler\Settings", "TrackPath")
+        If Read <> "" Then Read2 = oFile.FileExists(Read)
         If (Read <> "") And (LCase(Read2) = "true") Then
             Drive1.Drive = Mid(Read, 1, 2)
             MyPath = Read
             ListFiles All
+            Toolbar2.Buttons(1).Enabled = True
         End If
     Case "Down"
-        MoveTrackDown
+        MoveTrack False
     Case "Up"
-        MoveTrackUp
+        MoveTrack True
     End Select
 End Sub
 
 Public Sub DriveHelpDefault()
-    For X = 0 To 6
-        R(X).Picture = LoadResPicture(101 + X, 0)
-        R(X).Tag = "On"
-    Next
-    A(0).Picture = LoadResPicture(108, 0)
-    A(0).Tag = "Off"
-    For X = 1 To 6
-        A(X).Picture = LoadResPicture(101 + X, 0)
-        A(X).Tag = "On"
-    Next
-    
-    S(0).Picture = LoadResPicture(108, 0)
-    S(0).Tag = "Off"
-    For X = 1 To 6
-        S(X).Picture = LoadResPicture(101 + X, 0)
-        S(X).Tag = "On"
-    Next
-
-    P(0).Picture = LoadResPicture(108, 0)
-    P(0).Tag = "Off"
-    P(1).Picture = LoadResPicture(102, 0)
-    P(1).Tag = "On"
-    P(2).Picture = LoadResPicture(110, 0)
-    P(2).Tag = "Off"
-    P(3).Picture = LoadResPicture(111, 0)
-    P(3).Tag = "Off"
-    For X = 4 To 6
-        P(X).Picture = LoadResPicture(101 + X, 0)
-        P(X).Tag = "On"
-    Next
-
-    AC(0).Picture = LoadResPicture(108, 0)
-    AC(0).Tag = "Off"
-    AC(1).Picture = LoadResPicture(102, 0)
-    AC(1).Tag = "On"
-    AC(6).Picture = LoadResPicture(107, 0)
-    AC(6).Tag = "On"
-    For X = 2 To 5
-        AC(X).Picture = LoadResPicture(108 + X, 0)
-        AC(X).Tag = "Off"
-    Next
+    LoadGp2Aid "11111110111111011111101001110100001"
 End Sub
 
 Private Sub Toolbar2_ButtonClick(ByVal Button As ComctlLib.Button)
     Select Case Button.Key
     Case "Up"
         UpOneLevel
-    Case "List"
-        lstFile.View = lvwList
-        mnuList.Checked = True
-        mnuDetails.Checked = False
-        mnuLargeIcons.Checked = False
-        oReg.SaveValue HKEY_CURRENT_USER, REG_DWORD, "Software\GP2 Track Handler\Settings", "ToolBar", , 3
-    Case "Details"
-        lstFile.View = lvwReport
-        mnuList.Checked = False
-        mnuDetails.Checked = True
-        mnuLargeIcons.Checked = False
-        oReg.SaveValue HKEY_CURRENT_USER, REG_DWORD, "Software\GP2 Track Handler\Settings", "ToolBar", , 4
-    Case "Large"
-        lstFile.View = lvwIcon
-        mnuList.Checked = False
-        mnuDetails.Checked = False
-        mnuLargeIcons.Checked = True
-        oReg.SaveValue HKEY_CURRENT_USER, REG_DWORD, "Software\GP2 Track Handler\Settings", "ToolBar", , 5
+    Case Else
+        mnuView_Click (Button.Index)
     End Select
 End Sub
 
 Private Sub TreeView1_KeyDown(KeyCode As Integer, Shift As Integer)
-Dim TempIndex As Integer
 Dim KeyName As String
     On Error GoTo ErrHandler
     Read = ""
@@ -3635,28 +3608,24 @@ Dim KeyName As String
             TreeView1.SelectedItem.Text = "Track " & Mid(TreeView1.SelectedItem.Key, 2, 2) - 10
             Tracks(TreeNr - 1) = False
             ClearText
-            oMisc.WriteINI "Track " & TreeNr, "BPic", "", TempFile
-            oMisc.WriteINI "Track " & TreeNr, "SPic", "", TempFile
-            Set imgBPic = Nothing
-            Set imgSPic = Nothing
+            WriteINI "Track " & TreeNr, "BPic", "", TempFile
+            WriteINI "Track " & TreeNr, "SPic", "", TempFile
+            Set picMenuPic.Picture = Nothing
             txtBPic.Text = ""
             txtSPic.Text = ""
             SaveTrackData TreeNr
-            TreeView1.SelectedItem.Root.Selected = True
+            TreeView1.Nodes("t" & TreeNr + 10).Selected = True
             TreeView1_NodeClick TreeView1.SelectedItem
         Else
-            TempIndex = TreeView1.SelectedItem.Index
-            TreeView1.Nodes(TreeView1.SelectedItem.Previous.Index).Selected = True
-            TreeView1_NodeClick TreeView1.SelectedItem
-            TreeView1.Nodes.Remove (TempIndex)
+            TreeView1.Nodes.Remove (TreeView1.SelectedItem.Index)
             If KeyName = "bpic" Then
-                oMisc.WriteINI "Track " & TreeNr, "BPic", "", TempFile
+                WriteINI "Track " & TreeNr, "BPic", "", TempFile
                 txtBPic.Text = ""
-                Set imgBPic = Nothing
+                Set picMenuPic.Picture = Nothing
             ElseIf KeyName = "spic" Then
-                oMisc.WriteINI "Track " & TreeNr, "SPic", "", TempFile
+                WriteINI "Track " & TreeNr, "SPic", "", TempFile
                 txtSPic.Text = ""
-                Set imgSPic = Nothing
+                Set picMenuPic.Picture = Nothing
             End If
         End If
     End If
@@ -3667,69 +3636,36 @@ End Sub
 
 Public Sub TreeView1_NodeClick(ByVal Node As ComctlLib.Node)
     If Node.Key = "r" Then
-        SaveTrackData TreeNr
-        tabMain.TabEnabled(1) = False
-        tabMain.TabEnabled(2) = False
-        tabMain.Tab = 0
+        If TreeNr <> 0 Then SaveTrackData TreeNr
+        fraData.Enabled = False
+        fraTrackPic.Enabled = False
+        tabMain.Tabs(1).Selected = True
         TreeNr = 0
         Toolbar1.Buttons("Down").Enabled = False
         Toolbar1.Buttons("Up").Enabled = False
+        ClearText
     Else
         If TreeNr <> 0 Then SaveTrackData TreeNr
-        tabMain.TabEnabled(1) = True
-        tabMain.TabEnabled(2) = True
+        fraData.Enabled = True
+        fraTrackPic.Enabled = True
 
         TreeNr = Mid(TreeView1.SelectedItem.Key, 2, 2)
         TreeNr = TreeNr - 10
         GetTrackData TreeNr
 
         If InStr(1, TreeView1.SelectedItem.Key, "BPic") Then
-            tabMain.Tab = 2
-            tabPic.Tab = 0
+            tabMain.Tabs(3).Selected = True
+            tabPic.Tabs(1).Selected = True
         ElseIf InStr(1, TreeView1.SelectedItem.Key, "SPic") Then
-            tabMain.Tab = 2
-            tabPic.Tab = 1
+            tabMain.Tabs(3).Selected = True
+            tabPic.Tabs(2).Selected = True
         Else
-            tabMain.Tab = 1
+            tabMain.Tabs(2).Selected = True
         End If
         If (TreeView1.SelectedItem.Children = 0) And (Len(TreeView1.SelectedItem.Key) = 3) Then
-            txtName.Enabled = False
-            txtCountry.Enabled = False
-            txtAdjectiv.Enabled = False
-            txtLaps.Enabled = False
-            txtLength.Enabled = False
-            txtQDate.Enabled = False
-            txtQDriver.Enabled = False
-            txtQTeam.Enabled = False
-            txtQTime.Enabled = False
-            txtRDate.Enabled = False
-            txtRDriver.Enabled = False
-            txtRTeam.Enabled = False
-            txtRTime.Enabled = False
-            txtTire.Enabled = False
-            cmdJamCheck.Enabled = False
-            vscLaps.Enabled = False
-            cmdSaveQual.Enabled = False
-            cmdSaveRace.Enabled = False
+            fraData.Enabled = False
         Else
-            txtName.Enabled = True
-            txtCountry.Enabled = True
-            txtAdjectiv.Enabled = True
-            txtLaps.Enabled = True
-            txtLength.Enabled = True
-            txtQDate.Enabled = True
-            txtQDriver.Enabled = True
-            txtQTeam.Enabled = True
-            txtQTime.Enabled = True
-            txtRDate.Enabled = True
-            txtRDriver.Enabled = True
-            txtRTeam.Enabled = True
-            txtRTime.Enabled = True
-            txtTire.Enabled = True
-            cmdJamCheck.Enabled = True
-            vscLaps.Enabled = True
-            cmdSaveQual.Enabled = True
-            cmdSaveRace.Enabled = True
+            fraData.Enabled = True
         End If
         If TreeNr = 16 Then
             Toolbar1.Buttons("Down").Enabled = False
@@ -3744,47 +3680,20 @@ Public Sub TreeView1_NodeClick(ByVal Node As ComctlLib.Node)
     End If
 End Sub
 
-Private Sub TreeView1_OLEDragDrop(Data As ComctlLib.DataObject, Effect As Long, Button As Integer, Shift As Integer, X As Single, y As Single)
-    If tabMain.Tab = 4 Then
-        DropTime Data, Effect, Button, Shift, X, y
-    ElseIf tabMain.Tab = 0 Then
-        DropTrack Data, Effect, Button, Shift, X, y
+Private Sub TreeView1_OLEDragDrop(Data As ComctlLib.DataObject, Effect As Long, Button As Integer, Shift As Integer, X As Single, Y As Single)
+    If tabMain.Tabs(5).Selected = True Then
+        DropTime Data, Effect, Button, Shift, X, Y
+    ElseIf tabMain.Tabs(1).Selected = True Then
+        DropTrack Data, Effect, Button, Shift, X, Y
     End If
 End Sub
 
-Private Sub TreeView1_OLEDragOver(Data As ComctlLib.DataObject, Effect As Long, Button As Integer, Shift As Integer, X As Single, y As Single, State As Integer)
-    Set TreeView1.DropHighlight = TreeView1.HitTest(X, y)
-End Sub
-
-Private Sub txtAdjectiv_GotFocus()
-    TextSelected
+Private Sub TreeView1_OLEDragOver(Data As ComctlLib.DataObject, Effect As Long, Button As Integer, Shift As Integer, X As Single, Y As Single, State As Integer)
+    Set TreeView1.DropHighlight = TreeView1.HitTest(X, Y)
 End Sub
 
 Private Sub txtCountry_GotFocus()
     TextSelected
-End Sub
-
-Private Sub txtLaps_Change()
-    On Error Resume Next
-    ChangeLap = False
-    If txtLaps = "" Then Exit Sub
-    If txtLaps < 126 Then
-        vscLaps.Value = txtLaps.Text
-    Else
-        vscLaps.Value = 126
-    End If
-    ChangeLap = True
-End Sub
-
-Private Sub txtLaps_GotFocus()
-    TextSelected
-End Sub
-
-Private Sub txtLaps_LostFocus()
-    If tabMain.Tab = 1 Then
-        If txtLaps > 126 Then txtLaps = 126
-        If txtLaps < 3 Then txtLaps = 3
-    End If
 End Sub
 
 Private Sub txtLength_GotFocus()
@@ -3792,9 +3701,9 @@ Private Sub txtLength_GotFocus()
 End Sub
 
 Private Sub txtName_GotFocus()
-    If tabMain.Tab = 0 Then
+    If tabMain.Tabs(1).Selected = True Then
         Drive1.SetFocus
-    ElseIf tabMain.Tab = 1 Then
+    ElseIf tabMain.Tabs(2).Selected = True Then
         TextSelected
     End If
 End Sub
@@ -3821,7 +3730,7 @@ ErrHandler:
         Case Else
         MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
             "Error Desctiption: " & Err.Description & vbLf & _
-            "Error Source: " & Err.Source, vbCritical, "Error"
+            "Error Source: txtName_LostFocus()", vbCritical, TH & " - Error"
     End Select
 End Sub
 
@@ -3836,7 +3745,6 @@ End Sub
 Private Sub txtQTeam_GotFocus()
     TextSelected
 End Sub
-
 
 Private Sub txtQTime_GotFocus()
     TextSelected
@@ -3862,106 +3770,51 @@ Private Sub txtTire_GotFocus()
     TextSelected
 End Sub
 
-Public Sub SaveDropData(ByVal Path As String)
-Dim TreeNr As Integer
-    TreeNr = Mid(TreeView1.SelectedItem.Key, 2, 2)
-    TreeNr = TreeNr - 10
+Public Sub SaveDropData(ByVal Path As String, ByVal Pos As Integer)
+    ClearText
     txtPath.Text = Path
-    txtCountry.Text = lblCountry.Text
-    txtLaps.Text = lblLaps.Text
-    txtName.Text = lblTrackName.Text
-    txtTire.Text = lblWare.Text
-    txtLength.Text = lblLen.Text
-    txtAdjectiv.Text = GetAdjectiv(Trim(txtCountry.Text))
-    txtRTime.Text = lblRace.Text
-    txtQTime.Text = lblQual.Text
+    txtCountry.Text = TrackInfo.Country
+    If IsNumeric(TrackInfo.Laps) = True Then
+        If lblLaps < 3 Then
+            updLaps.Value = 3
+        ElseIf lblLaps > 126 Then
+            updLaps.Value = 126
+        Else
+            updLaps.Value = Int(TrackInfo.Laps)
+        End If
+    Else
+        updLaps.Value = 3
+    End If
+    txtName.Text = TrackInfo.Name
+    txtTire.Text = TrackInfo.Tyre
+    txtLength.Text = TrackInfo.LengthMeters
+    txtAdjectiv.Text = GetAdjectiv(TrackInfo.Country)
+    txtRTime.Text = TrackInfo.LapRecord
+    txtQTime.Text = TrackInfo.LapRecordQualify
 
-    SaveTrackData TreeNr
-    TreeView1.SelectedItem.Text = TreeNr & ". " & lblTrackName.Text
+    SaveTrackData Pos
 End Sub
 
 Public Sub LoadRecent()
-Dim Name1 As String
-Dim Name2 As String
-Dim Name3 As String
-Dim Path1 As String
-Dim Path2 As String
-Dim Path3 As String
+Dim vArray As Variant
+Dim X As Integer
 
-    Name1 = oReg.GetValue(HKEY_CURRENT_USER, "Software\GP2 Track Handler\Files", "Name1")
-    Name2 = oReg.GetValue(HKEY_CURRENT_USER, "Software\GP2 Track Handler\Files", "Name2")
-    Name3 = oReg.GetValue(HKEY_CURRENT_USER, "Software\GP2 Track Handler\Files", "Name3")
-    
-    Path1 = oReg.GetValue(HKEY_CURRENT_USER, "Software\GP2 Track Handler\Files", "Path1")
-    Path2 = oReg.GetValue(HKEY_CURRENT_USER, "Software\GP2 Track Handler\Files", "Path2")
-    Path3 = oReg.GetValue(HKEY_CURRENT_USER, "Software\GP2 Track Handler\Files", "Path3")
-    If Name1 <> "" Then
-        mnuShortOpen(0).Visible = True
-        mnuShortOpen(0).Caption = Name1
-        mnuShortOpen(0).Tag = Path1
-        mnuSep3.Visible = True
-    End If
-    If Name2 <> "" Then
-        mnuShortOpen(1).Visible = True
-        mnuShortOpen(1).Caption = Name2
-        mnuShortOpen(1).Tag = Path2
-    End If
-    If Name3 <> "" Then
-        mnuShortOpen(2).Visible = True
-        mnuShortOpen(2).Caption = Name3
-        mnuShortOpen(2).Tag = Path3
-    End If
-End Sub
-
-Public Function CheckIfSave() As String
-    If Trim(FileInfo.Path) <> "" Then
-        FileNum = FreeFile
-        Open Trim(FileInfo.Path) For Binary As FileNum
-        Read = String(FileLen(Trim(FileInfo.Path)), " ")
-        Get #FileNum, 1, Read
-        Close FileNum
-        FileNum = FreeFile
-        Open TempFile For Binary As FileNum
-        Read2 = String(FileLen(TempFile), " ")
-        Get #FileNum, 1, Read2
-        Close FileNum
-        If Read = Read2 Then
-            CheckIfSave = ""
-            Exit Function
+    vArray = oReg.GetAllValues(HKEY_CURRENT_USER, "Software\VG Software\Gp2 Track Handler\Files")
+    If Not IsArray(vArray) Then Exit Sub
+    mnuSep3.Visible = True
+    For X = 1 To mnuShortOpen.Count - 1
+        Unload mnuShortOpen(X)
+    Next
+    Count1 = 1
+    For X = 0 To 2
+        If vArray(X, 1) <> "" Then
+            Load mnuShortOpen(Count1)
+            mnuShortOpen(Count1).Visible = True
+            mnuShortOpen(Count1).Caption = oFile.GetFilePart(vArray(Count1 - 1, 1), GetFileName)
+            mnuShortOpen(Count1).Tag = vArray(X, 1)
+            Count1 = Count1 + 1
         End If
-        Var.iInt1 = MsgBox(LoadResString(106), vbYesNoCancel, TH)
-        If Var.iInt1 = vbNo Then
-            CheckIfSave = ""
-        ElseIf Var.iInt1 = vbCancel Then
-            CheckIfSave = "Cancel"
-        Else
-            CheckIfSave = ""
-            mnuSave_Click
-        End If
-        Exit Function
-    End If
-    If FileInfo.Changes = True Then
-        Var.iInt1 = MsgBox(LoadResString(106), vbYesNoCancel, TH)
-        If Var.iInt1 = vbNo Then
-            CheckIfSave = ""
-        ElseIf Var.iInt1 = vbCancel Then
-            CheckIfSave = "Cancel"
-        Else
-            CheckIfSave = ""
-            mnuSave_Click
-        End If
-    End If
-End Function
-
-Private Sub vscLaps_Change()
-    If ChangeLap = True Then
-        If vscLaps.Value > 2 Then
-            txtLaps.Text = vscLaps.Value
-        Else
-            vscLaps.Value = vscLaps.Value + 1
-        End If
-        txtLaps.SetFocus
-    End If
+    Next
 End Sub
 
 Private Sub txtQTime_Change()
@@ -4051,15 +3904,7 @@ Dim Created As String
     Read2 = ""
     Read = String(4000, " ")
     Get #FileNum, 1, Read
-    'Get the Created text (Paul Hoad or Iso)
-    X = InStr(1, Read, "|Created|")
-    If X > 0 Then
-        Var.iInt1 = X + 9
-        X = InStr(X + 9, Read, "|")
-        Created = Mid(Read, Var.iInt1, X - Var.iInt1)
-    End If
-
-    Read = "#GP2INFO|Name|" & lblTrackName & "|Country|" & lblCountry & "|Created|" & Created & "|Author|" & lblAuthor & _
+    Read = "#GP2INFO|Name|" & lblTrackName & "|Country|" & lblCountry & "|Created|Created by Track Editor written by Paul Hoad see (License.txt about distributing this track)" & "|Author|" & lblAuthor & _
         "|Year|" & lblInfoYear & "|Event|" & lblEvent & "|Desc|" & lblMisc & _
         "|Laps|" & lblLaps & "|Slot|" & lblSlot & "|Tyre|" & lblWare & "|LengthMeters|" & lblLen
     If lblRace = "" Then
@@ -4072,7 +3917,7 @@ Dim Created As String
     Else
         Read = Read & "|LapRecordQualify|" & lblQual & "|"
     End If
-    Read2 = String(3900 - Len(Read), Chr(0))
+    Read2 = String(3800 - Len(Read), Chr(0))
     Read = Read & Read2
 
     Put #FileNum, 1, Read
@@ -4082,50 +3927,46 @@ End Sub
 Private Sub OpenCommandFile()
 Dim GetOpen As String
     On Error GoTo ErrHandler
-
-    For X = Len(Command()) To 0 Step -1
-        If Mid(Command(), X, 1) = "\" Then Exit For
-    Next
-    Read2 = ""
-    Read2 = Mid(Command(), X + 1)
-    
+   
     FileInfo.Path = Command()
-    FileInfo.Name = Read2
-    FileInfo.Changes = False
+    FileInfo.Name = oFile.GetFilePart(FileInfo.Path, GetFileName)
     FileInfo.Saved = True
     FileInfo.Import = False
     Randomize
     X = Int((500) * Rnd)
-    TempFile = ProgramDir & "\File\th14" & Trim(Str(X)) & ".lda"
+    TempFile = ProgramDir & "\File\th16" & Trim(Str(X)) & ".lda"
     FileCopy FileInfo.Path, TempFile
     LoadFile
-    Read = oMisc.RecentFile(SaveNew, Trim(FileInfo.Path), Trim(FileInfo.Name))
-    frmMain.LoadRecent
-    frmMain.Caption = "GP2 Track Handler v1.5 [" & Trim(FileInfo.Name) & "]"
+    RecentFile FileInfo.Path
+    LoadRecent
+    Me.Caption = TH & " v1.6 [" & Trim(FileInfo.Name) & "]"
 Exit Sub
 
 ErrHandler:
     MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
         "Error Desctiption: " & Err.Description & vbLf & _
-        "Error Source: " & Err.Source, vbCritical, "Error"
+        "Error Source: OpenCommandFile()", vbCritical, TH & "Error"
 End Sub
 
 Public Sub LoadTimeData()
 Dim Data(0 To 5) As String
 Dim ItemX
+Dim iSep As Long
+Dim iLoop As Integer
+
     lstTime.ListItems.Clear
-    Var.iInt1 = oDB.RecCount(dbFile)
-    For X = 0 To Var.iInt1 - 1
+    tVar.iInt = oDB.RecCount(dbFile)
+    For X = 0 To tVar.iInt - 1
         Read = oDB.GetRecord(dbFile, X)
-        Var.lLong2 = 1
-        For Var.iInt2 = 0 To 4
-            Var.lLong1 = InStr(Var.lLong2, Read, ";")
-            Data(Var.iInt2) = Mid(Read, Var.lLong2, Var.lLong1 - Var.lLong2)
-            Var.lLong2 = Var.lLong1 + 1
+        tVar.lLong = 1
+        For iLoop = 0 To 4
+            iSep = InStr(tVar.lLong, Read, ";")
+            Data(iLoop) = Mid(Read, tVar.lLong, iSep - tVar.lLong)
+            tVar.lLong = iSep + 1
         Next
-        Data(5) = Mid(Read, Var.lLong2)
+        Data(5) = Mid(Read, tVar.lLong)
         Set ItemX = lstTime.ListItems.Add(, "k" & X, X + 1)
-        
+
         With ItemX
             .SubItems(1) = Data(5) 'Track
             .SubItems(2) = Data(3) 'Driver
@@ -4144,12 +3985,12 @@ Dim ListNr
 End Sub
 
 Public Sub AddExe()
-    Read = oMisc.ReadINI("Misc", "ExePath", TempFile)
+    Read = ReadINI("Misc", "ExePath", TempFile)
     If Read <> "" Then
         frmGP2Edit.Show vbModal, frmMain
     Else
         Read = ""
-        Read = oMisc.ShowOpen("GP2Edit exe patch file (*.exe)|*.exe|All Files (*.*)|*.*|", Me.hwnd, ProgramDir, "GP2Edit Dos Patch File")
+        Read = oFile.ShowOpen("Gp2Edit exe patch file (*.exe)|*.exe|All Files (*.*)|*.*|", Me.hWnd, , "Gp2Edit Dos Patch File")
         If Read <> "" Then
             FileNum = FreeFile
             Open Read For Binary As FileNum
@@ -4157,10 +3998,10 @@ Public Sub AddExe()
             Get #FileNum, 45445, Read2
             Close FileNum
             If Read2 = "Steven Young" Then
-                oMisc.WriteINI "Misc", "ExePath", Read, TempFile
+                WriteINI "Misc", "ExePath", Read, TempFile
                 frmGP2Edit.Show vbModal, frmMain
             Else
-                MsgBox "This is not a valid GP2Edit Dos Patch file.", vbInformation, TH
+                MsgBox "This is not a valid Gp2Edit Dos Patch file.", vbInformation, TH
             End If
         Else
             Exit Sub
@@ -4168,7 +4009,7 @@ Public Sub AddExe()
     End If
 End Sub
 
-Public Sub DropTime(Data As ComctlLib.DataObject, Effect As Long, Button As Integer, Shift As Integer, X As Single, y As Single)
+Public Sub DropTime(Data As ComctlLib.DataObject, Effect As Long, Button As Integer, Shift As Integer, X As Single, Y As Single)
 Dim OldNr As Integer
 Dim TimeData(0 To 4) As String
 Dim Start As Long
@@ -4178,7 +4019,7 @@ Dim Stopp As Long
         SaveTrackData TreeNr
     End If
     OldNr = TreeNr
-    TreeNr = Mid(TreeView1.HitTest(X, y).Key, 2, 2)
+    TreeNr = Mid(TreeView1.HitTest(X, Y).Key, 2, 2)
     Set TreeView1.DropHighlight = Nothing
     TreeNr = TreeNr - 10
 
@@ -4221,27 +4062,24 @@ ErrHandler:
     Case Else
         MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
             "Error Desctiption: " & Err.Description & vbLf & _
-            "Error Source: " & Err.Source, vbCritical, "Error"
+            "Error Source: DropTime()", vbCritical, TH & " - Error"
     End Select
     Set TreeView1.DropHighlight = Nothing
 End Sub
 
-Public Sub DropTrack(Data As ComctlLib.DataObject, Effect As Long, Button As Integer, Shift As Integer, X As Single, y As Single)
+Public Sub DropTrack(Data As ComctlLib.DataObject, Effect As Long, Button As Integer, Shift As Integer, X As Single, Y As Single)
 Dim Path As String
-Dim FileType As String
-    ClearText
-    On Error GoTo ErrHandler
     On Error Resume Next
     Read = ""
     Read = Data.Files(1)
     If Read <> "" Then
-        FileType = LCase(Mid(Data.Files(1), Len(Data.Files(1)) - 3, 4))
+        FileType = oFile.GetFilePart(Data.Files(1), GetExt)
         If FileType <> ".dat" Then
             MsgBox "You can only add track files this way, if you want to add a menu pic you " & vbLf & "have to use the included file manager.", vbExclamation, TH
             Set TreeView1.DropHighlight = Nothing
             Exit Sub
         End If
-        Read = ReadGP2Info(Data.Files(1))
+        Read = ReadGp2Info(Data.Files(1))
         If Read = False Then
             Set TreeView1.DropHighlight = Nothing
             Exit Sub
@@ -4249,10 +4087,9 @@ Dim FileType As String
         Path = Data.Files(1)
     Else
         Path = lstFile.SelectedItem.Key
-        FileType = lstFile.Tag
+        'FileType = lstFile.Tag
     End If
     On Error GoTo ErrHandler
-    FileInfo.Changes = True
 
     If TreeView1.DropHighlight.Key <> "r" Then
         TreeNr = Mid(TreeView1.DropHighlight.Key, 2, 2)
@@ -4262,231 +4099,126 @@ Dim FileType As String
         Exit Sub
     End If
 
-Drop:
-    If FileType = ".dat" Then
-        TreeView1.Nodes(TreeView1.DropHighlight.Key).Selected = True
+    If FileType = 0 Then
+        RemoveNodes Mid(TreeView1.DropHighlight.Key, 1, 3)
+        TreeView1.Nodes(Mid(TreeView1.DropHighlight.Key, 1, 3)).Selected = True
         TreeView1.Nodes.Add TreeView1.SelectedItem.Key, tvwChild, TreeView1.SelectedItem.Key & "-Track", "Track File: " & Path, 3, 3
-        lstFile.Tag = ""
-        SaveDropData Path
+        SaveDropData Path, TreeNr
         Tracks(TreeNr - 1) = True
-        Set TreeView1.DropHighlight = Nothing
-    ElseIf FileType = "big" Then
-        Read = oMisc.ReadINI("Track " & TreeNr, "TPath", TempFile)
+    ElseIf FileType = 2 Then
+        Read = ReadINI("Track " & TreeNr, "TPath", TempFile)
         If Read <> "" Then
-            TreeView1.Nodes(TreeView1.DropHighlight.Key).Selected = True
+            TreeView1.Nodes(Mid(TreeView1.DropHighlight.Key, 1, 3)).Selected = True
             TreeView1.Nodes.Add TreeView1.SelectedItem.Key, tvwChild, TreeView1.SelectedItem.Key & "-BPic", "Big Pic: " & Path, 4, 4
-            lstFile.Tag = ""
-            GetTrackData TreeNr
-            Set imgBPic.Picture = LoadPicture(Path)
+            WriteINI "Track " & TreeNr, "BPic", Path, TempFile
             txtBPic.Text = Path
-            SaveTrackData TreeNr
         End If
-        Set TreeView1.DropHighlight = Nothing
-    ElseIf FileType = "small" Then
-        Read = oMisc.ReadINI("Track " & TreeNr, "TPath", TempFile)
+    ElseIf FileType = 1 Then
+        Read = ReadINI("Track " & TreeNr, "TPath", TempFile)
         If Read <> "" Then
-            TreeView1.Nodes(TreeView1.DropHighlight.Key).Selected = True
+            TreeView1.Nodes(Mid(TreeView1.DropHighlight.Key, 1, 3)).Selected = True
             TreeView1.Nodes.Add TreeView1.SelectedItem.Key, tvwChild, TreeView1.SelectedItem.Key & "-SPic", "Small Pic: " & Path, 4, 4
-            lstFile.Tag = ""
-            GetTrackData TreeNr
-            Set imgSPic.Picture = LoadPicture(Path)
+            WriteINI "Track " & TreeNr, "SPic", Path, TempFile
             txtSPic.Text = Path
-            SaveTrackData TreeNr
         End If
-        Set TreeView1.DropHighlight = Nothing
     End If
+    TreeNr = 0
     Set TreeView1.DropHighlight = Nothing
+    TreeView1.Nodes(1).Selected = True
+    TreeView1_NodeClick TreeView1.SelectedItem
+    LoadFile
+    ClearText
 Exit Sub
 ErrHandler:
     Select Case Err.Number
-    Case "35602"
-        If FileType = ".dat" Then
-            For X = 1 To TreeView1.Nodes.Count
-                If TreeView1.Nodes(X).Key = TreeView1.SelectedItem.Key & "-Track" Then
-                    TreeView1.Nodes(X).Parent.Text = "Track " & Mid(TreeView1.SelectedItem.Key, 2, 2) - 10
-                    TreeView1.Nodes.Remove (X)
-                    Exit For
-                End If
-            Next
-        ElseIf FileType = "big" Then
-            For X = 1 To TreeView1.Nodes.Count
-                If TreeView1.Nodes(X).Key = TreeView1.SelectedItem.Key & "-BPic" Then
-                    TreeView1.Nodes.Remove (X)
-                    Exit For
-                End If
-            Next
-        ElseIf FileType = "small" Then
-            For X = 1 To TreeView1.Nodes.Count
-                If TreeView1.Nodes(X).Key = TreeView1.SelectedItem.Key & "-SPic" Then
-                    TreeView1.Nodes.Remove (X)
-                    Exit For
-                End If
-            Next
-        End If
-        GoTo Drop
-    Case 91
-        MsgBox LoadResString(104), vbInformation, TH
+    Case 35602
+      If FileType = 1 Then
+        TreeView1.Nodes.Remove (Mid(TreeView1.DropHighlight.Key, 1, 3) & "-SPic")
+        Resume
+      ElseIf FileType = 2 Then
+        TreeView1.Nodes.Remove (Mid(TreeView1.DropHighlight.Key, 1, 3) & "-BPic")
+        Resume
+      Else
         Set TreeView1.DropHighlight = Nothing
-    Case Else
         MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
-            "Error Desctiption: " & Err.Description & vbLf & _
-            "Error Source: " & Err.Source, vbCritical, "Error"
+          "Error Desctiption: " & Err.Description & vbLf & _
+          "Error Source: DropTrack()", vbCritical, TH & " - Error"
+      End If
+    Case Else
+      Set TreeView1.DropHighlight = Nothing
+      MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
+        "Error Desctiption: " & Err.Description & vbLf & _
+        "Error Source: DropTrack()", vbCritical, TH & " - Error"
     End Select
 End Sub
 
-Private Sub ListFiles(ByVal Show As PatFile)
-Dim MyName As String
-Dim vArray As Variant
-    If Right(MyPath, 1) <> "\" Then MyPath = MyPath & "\"
-    'Remove all items from the listbox
-    lstFile.ListItems.Clear
-
-    'List all files
-    MyName = Dir(MyPath, vbDirectory)
-    Do While MyName <> ""
-        If MyName <> "." And MyName <> ".." Then
-            If LCase(MyName) <> "pagefile.sys" Then
-                If (GetAttr(MyPath & MyName) And vbDirectory) <> vbDirectory Then
-                    If LCase(Mid(MyName, Len(MyName) - 3, 4)) = ".dat" And ((Show = All) Or (Show = Dat)) Then
-                        lstFile.ListItems.Add , MyPath & MyName, MyName, 2, 2
-                    ElseIf LCase(Mid(MyName, Len(MyName) - 3, 4)) = ".bmp" And ((Show = All) Or (Show = Bmp)) Then
-                        lstFile.ListItems.Add , MyPath & MyName, MyName, 3, 3
-                    ElseIf LCase(Mid(MyName, Len(MyName) - 3, 4)) = ".gif" And ((Show = All) Or (Show = Gif)) Then
-                        lstFile.ListItems.Add , MyPath & MyName, MyName, 3, 3
-                    End If
-                End If
-            End If
-        End If
-        MyName = Dir
-    Loop
-
-    'Sort files and add them to a array
-    lstFile.Sorted = True
-    lstFile.Sorted = False
-    ReDim vArray(lstFile.ListItems.Count, 1)
-    For X = 0 To lstFile.ListItems.Count - 1
-        vArray(X, 0) = lstFile.ListItems(X + 1).Key
-        vArray(X, 1) = lstFile.ListItems(X + 1).Text
-    Next
-    'Remove all files
-    lstFile.ListItems.Clear
-
-    'Add folders
-    MyName = Dir(MyPath, vbDirectory)
-    lstFile.ListItems.Clear
-    If Show = All Then
-        Do While MyName <> ""
-            If MyName <> "." And MyName <> ".." Then
-                If LCase(MyName) <> "pagefile.sys" Then
-                    If (GetAttr(MyPath & MyName) And vbDirectory) = vbDirectory Then
-                        lstFile.ListItems.Add , "dir" & MyPath & MyName, MyName, 1, 1
-                    End If
-                End If
-            End If
-            MyName = Dir
-        Loop
-    End If
-    'Sort folders
-    lstFile.Sorted = True
-    lstFile.Sorted = False
-    
-    'List the files
-    Dim OFS As OFSTRUCT
-    Dim FT_CREATE As FILETIME
-    Dim FT_ACCESS As FILETIME
-    Dim FT_WRITE As FILETIME
-    Dim ItemX
-
-    For X = 0 To UBound(vArray) - 1
-        Var.sString1 = (vArray(X, 0))
-        Var.lLong1 = OpenFile(Var.sString1, OFS, OF_READ)
-        Call GetFileTime(Var.lLong1, FT_CREATE, FT_ACCESS, FT_WRITE)
-        
-        If LCase(Mid(vArray(X, 1), Len(vArray(X, 1)) - 3, 4)) = ".dat" Then
-            Set ItemX = lstFile.ListItems.Add(, vArray(X, 0), vArray(X, 1), 2, 2)
-        ElseIf LCase(Mid(vArray(X, 1), Len(vArray(X, 1)) - 3, 4)) = ".bmp" Then
-            Set ItemX = lstFile.ListItems.Add(, vArray(X, 0), vArray(X, 1), 3, 3)
-        ElseIf LCase(Mid(vArray(X, 1), Len(vArray(X, 1)) - 3, 4)) = ".gif" Then
-            Set ItemX = lstFile.ListItems.Add(, vArray(X, 0), vArray(X, 1), 3, 3)
-        End If
-        ItemX.SubItems(1) = Round(FileLen(vArray(X, 0)) / 1000, 0) & " kb"
-        ItemX.SubItems(2) = GetFileDateString(FT_WRITE)
-        Call CloseHandle(Var.lLong1)
-    Next
-    If lstFile.ListItems.Count > 0 Then lstFile.ListItems(1).Selected = True
-    lblMyPath = MyPath
-End Sub
-
 Public Sub ClearInfo()
-    lblEvent = ""
-    lblSlot = ""
-    lblQual = ""
-    lblMisc = ""
-    lblRace = ""
-    lblLen = ""
-    lblWare = ""
-    lblLaps = ""
-    lblAuthor = ""
-    lblInfoYear = ""
-    lblTrackName = ""
-    lblCountry = ""
-    lblSetup = ""
+    TrackInfo.Author = ""
+    TrackInfo.Event = ""
+    TrackInfo.Slot = ""
+    TrackInfo.LapRecordQualify = ""
+    TrackInfo.Desc = ""
+    TrackInfo.LapRecord = ""
+    TrackInfo.LengthMeters = ""
+    TrackInfo.Tyre = ""
+    TrackInfo.Laps = ""
+    TrackInfo.Year = ""
+    TrackInfo.Name = ""
+    TrackInfo.Country = ""
+    ShowInfo
 End Sub
 
 Public Sub SetTextProp()
-    X = GetWindowLong(txtLaps.hwnd, GWL_STYLE)
+    X = GetWindowLong(txtLength.hWnd, GWL_STYLE)
     X = X Or ES_NUMBER
-    Call SetWindowLong(txtLaps.hwnd, GWL_STYLE, X)
+    Call SetWindowLong(txtLength.hWnd, GWL_STYLE, X)
 
-    X = GetWindowLong(txtLength.hwnd, GWL_STYLE)
+    X = GetWindowLong(txtTire.hWnd, GWL_STYLE)
     X = X Or ES_NUMBER
-    Call SetWindowLong(txtLength.hwnd, GWL_STYLE, X)
+    Call SetWindowLong(txtTire.hWnd, GWL_STYLE, X)
 
-    X = GetWindowLong(txtTire.hwnd, GWL_STYLE)
+    X = GetWindowLong(lblLen.hWnd, GWL_STYLE)
     X = X Or ES_NUMBER
-    Call SetWindowLong(txtTire.hwnd, GWL_STYLE, X)
+    Call SetWindowLong(lblLen.hWnd, GWL_STYLE, X)
 
-    X = GetWindowLong(lblLen.hwnd, GWL_STYLE)
+    X = GetWindowLong(lblWare.hWnd, GWL_STYLE)
     X = X Or ES_NUMBER
-    Call SetWindowLong(lblLen.hwnd, GWL_STYLE, X)
+    Call SetWindowLong(lblWare.hWnd, GWL_STYLE, X)
 
-    X = GetWindowLong(lblWare.hwnd, GWL_STYLE)
+    X = GetWindowLong(lblLaps.hWnd, GWL_STYLE)
     X = X Or ES_NUMBER
-    Call SetWindowLong(lblWare.hwnd, GWL_STYLE, X)
+    Call SetWindowLong(lblLaps.hWnd, GWL_STYLE, X)
 
-    X = GetWindowLong(lblLaps.hwnd, GWL_STYLE)
+    X = GetWindowLong(txtQTime.hWnd, GWL_STYLE)
     X = X Or ES_NUMBER
-    Call SetWindowLong(lblLaps.hwnd, GWL_STYLE, X)
+    Call SetWindowLong(txtQTime.hWnd, GWL_STYLE, X)
 
-    X = GetWindowLong(txtQTime.hwnd, GWL_STYLE)
+    X = GetWindowLong(txtRTime.hWnd, GWL_STYLE)
     X = X Or ES_NUMBER
-    Call SetWindowLong(txtQTime.hwnd, GWL_STYLE, X)
+    Call SetWindowLong(txtRTime.hWnd, GWL_STYLE, X)
 
-    X = GetWindowLong(txtRTime.hwnd, GWL_STYLE)
+    X = GetWindowLong(txtQDate.hWnd, GWL_STYLE)
     X = X Or ES_NUMBER
-    Call SetWindowLong(txtRTime.hwnd, GWL_STYLE, X)
+    Call SetWindowLong(txtQDate.hWnd, GWL_STYLE, X)
 
-    X = GetWindowLong(txtQDate.hwnd, GWL_STYLE)
+    X = GetWindowLong(txtRDate.hWnd, GWL_STYLE)
     X = X Or ES_NUMBER
-    Call SetWindowLong(txtQDate.hwnd, GWL_STYLE, X)
-
-    X = GetWindowLong(txtRDate.hwnd, GWL_STYLE)
-    X = X Or ES_NUMBER
-    Call SetWindowLong(txtRDate.hwnd, GWL_STYLE, X)
-
+    Call SetWindowLong(txtRDate.hWnd, GWL_STYLE, X)
 End Sub
 
 Public Sub GetRegValue()
 Dim Temp As Button
+Dim bValue As Boolean
+
     On Error GoTo ErrHandler
     'Set nr of times the program has been started
-    X = oReg.GetValue(HKEY_CURRENT_USER, "Software\GP2 Track Handler\Settings", "Nr")
+    X = oReg.GetValue(HKEY_CURRENT_USER, "Software\VG Software\Gp2 Track Handler\Settings", "Nr")
     X = X + 1
-    oReg.SaveValue HKEY_CURRENT_USER, REG_SZ, "Software\GP2 Track Handler\Settings", "Nr", Trim(Str(X))
+    oReg.SaveValue HKEY_CURRENT_USER, REG_SZ, "Software\VG Software\Gp2 Track Handler\Settings", "Nr", Trim(Str(X))
     'Get deff track path (if selected)
     Read = ""
-    Read = oReg.GetValue(HKEY_CURRENT_USER, "Software\GP2 Track Handler\Settings", "TrackPath")
-    If Read <> "" Then Read2 = oMisc.File_Exists(Read)
+    Read = oReg.GetValue(HKEY_CURRENT_USER, "Software\VG Software\Gp2 Track Handler\Settings", "TrackPath")
+    If Read <> "" Then Read2 = oFile.FileExists(Read)
     If (Read <> "") And (LCase(Read2) = "true") Then
         Drive1.Drive = Mid(Read, 1, 2)
         MyPath = Read
@@ -4499,31 +4231,16 @@ Dim Temp As Button
 
     'Check how to show icons
     X = 0
-    X = oReg.GetValue(HKEY_CURRENT_USER, "Software\GP2 Track Handler\Settings", "ToolBar")
+    X = oReg.GetValue(HKEY_CURRENT_USER, "Software\VG Software\Gp2 Track Handler\Settings", "ToolBar")
     If X <> 0 Then
         Toolbar2.Buttons(X).Value = tbrPressed
         DoEvents
-        If X = 3 Then
-            mnuList.Checked = True
-            mnuDetails.Checked = False
-            mnuLargeIcons.Checked = False
-            mnuList_Click
-        ElseIf X = 4 Then
-            mnuList.Checked = False
-            mnuDetails.Checked = True
-            mnuLargeIcons.Checked = False
-            mnuDetails_Click
-        ElseIf X = 5 Then
-            mnuList.Checked = False
-            mnuDetails.Checked = False
-            mnuLargeIcons.Checked = True
-            mnuLargeIcons_Click
-        End If
+        mnuView_Click (X)
     End If
 
-    'Check if GP2 Track Edit is installed on this system
+    'Check if Gp2 Track Edit is installed on this system
     Read = ""
-    Read = oReg.GetValue(HKEY_CURRENT_USER, "Software\GP2 Track Handler\Settings", "TrackEdit")
+    Read = oReg.GetValue(HKEY_CURRENT_USER, "Software\VG Software\Gp2 Track Handler\Settings", "TrackEdit")
     If Read <> "" Then
         mnuOpenFile.Enabled = True
         mnuOpenFile.Tag = Read
@@ -4537,21 +4254,26 @@ Dim Temp As Button
     End If
 
     'Check if Toolbar is on or off, the same with status bar, if off the hide
-    X = oReg.GetValue(HKEY_CURRENT_USER, "Software\GP2 Track Handler\Settings", "Toolbar")
+    X = oReg.GetValue(HKEY_CURRENT_USER, "Software\VG Software\Gp2 Track Handler\Settings", "Toolbar")
     If X = 1 Then
-        mnuToolbar.Checked = True
-        mnuToolbar_Click
-    End If
-    X = oReg.GetValue(HKEY_CURRENT_USER, "Software\GP2 Track Handler\Settings", "Statusbar")
-    If X = 1 Then
-        mnuStatusbar.Checked = True
-        mnuStatusbar_Click
+        mnuView_Click (0)
     End If
 
-    GP2Dir = oReg.GetValue(HKEY_CURRENT_USER, "Software\GP2 Track Handler\Settings", "GP2Path")
-    If GP2Dir <> "" Then Read = oMisc.File_Exists(GP2Dir & "\gp2.exe")
-    If (GP2Dir = "") Or (LCase(Read) = "false") Then GP2Dir = SetGP2Folder
-    If GP2Dir = "" Then
+    X = oReg.GetValue(HKEY_CURRENT_USER, "Software\VG Software\Gp2 Track Handler\Settings", "Statusbar")
+    If X = 1 Then
+        mnuView_Click (1)
+    End If
+
+    'Check if toolbar is flat or not (def=flat)
+    bValue = oReg.GetValue(HKEY_CURRENT_USER, "Software\VG Software\Gp2 Track Handler\Settings", "FlatToolbar")
+    If bValue = True Then
+        mnuView_Click (7)
+    End If
+
+    Gp2Dir = oReg.GetValue(HKEY_CURRENT_USER, "Software\VG Software\Gp2 Track Handler\Settings", "Gp2Path")
+    If Gp2Dir <> "" Then Read = oFile.FileExists(Gp2Dir & "\gp2.exe")
+    If (Gp2Dir = "") Or (LCase(Read) = "false") Then Gp2Dir = SetGp2Folder
+    If Gp2Dir = "" Then
         cmdExportSettings.Enabled = False
         cmdImportSettings.Enabled = False
         Toolbar1.Buttons("Import").Enabled = False
@@ -4562,53 +4284,57 @@ Dim Temp As Button
         mnuJamCheck.Enabled = False
         mnuJamCheck2.Enabled = False
     Else
-        stbMain.Panels(3).Text = "GP2 Directory: " & GP2Dir
-        GetGP2Version
+        StatusBar1.Panels(3).Text = "Gp2 Directory: " & Gp2Dir
+        GetGp2Version
     End If
 
-    RunGP2 = ""
-    RunGP2 = oReg.GetValue(HKEY_CURRENT_USER, "Software\GP2 Track Handler\Settings", "RunGP2")
-    If RunGP2 = "" Then
-        RunGP2 = GP2Dir & "\GP2.exe"
-        oReg.SaveValue HKEY_CURRENT_USER, REG_SZ, "Software\GP2 Track Handler\Settings", "RunGP2", RunGP2
+    RunGp2 = ""
+    RunGp2 = oReg.GetValue(HKEY_CURRENT_USER, "Software\VG Software\Gp2 Track Handler\Settings", "RunGp2")
+    If RunGp2 = "" Then
+        RunGp2 = Gp2Dir & "\Gp2.exe"
+        oReg.SaveValue HKEY_CURRENT_USER, REG_SZ, "Software\VG Software\Gp2 Track Handler\Settings", "RunGp2", RunGp2
     End If
-
+    Toolbar1.Buttons(18).ToolTipText = RunGp2
     RegFileName
 Exit Sub
 ErrHandler:
-    MsgBox Err.Number, Err.Description
+    MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
+        "Error Desctiption: " & Err.Description & vbLf & _
+        "Error Source: GetRegValue()", vbCritical, TH & " - Error"
 End Sub
 
 Public Sub ClearText()
     With frmMain
-        .txtAdjectiv = ""
-        .txtName = ""
-        .txtCountry = ""
-        .txtLaps = ""
-        .txtLength = ""
+        .txtAdjectiv.Text = ""
         .txtPath = ""
-        .txtTire = ""
-        .txtQDate = ""
-        .txtRDate = ""
-        .txtQTime = ""
-        .txtRTime = ""
-        .txtQTeam = ""
-        .txtRTeam = ""
-        .txtQDriver = ""
-        .txtRDriver = ""
+        .txtBPic = ""
+        .txtSPic = ""
+        .txtName.Text = ""
+        .txtCountry.Text = ""
+        .updLaps.Value = 3
+        .txtLength.Text = ""
+        .txtTire.Text = ""
+        .txtQDate.Text = ""
+        .txtQDriver.Text = ""
+        .txtQTeam.Text = ""
+        .txtQTime.Text = ""
+        .txtRDate.Text = ""
+        .txtRDriver.Text = ""
+        .txtRTeam.Text = ""
+        .txtRTime.Text = ""
     End With
 End Sub
 
-Public Function SetGP2Folder() As String
+Private Function SetGp2Folder() As String
 SelectPath:
-    Read = oMisc.BrowseFolders("Select GP2 Location", Me.hwnd)
+    Read = oFile.BrowseFolders("Select Gp2 Location", Me.hWnd)
     If Read <> "" Then
         If Len(Read) = 3 Then Read = Mid(Read, 1, 2)
-        Read2 = oMisc.File_Exists(Read & "\gp2.exe")
+        Read2 = oFile.FileExists(Read & "\gp2.exe")
         If Read2 = True Then
-            oReg.SaveValue HKEY_CURRENT_USER, REG_SZ, "Software\GP2 Track Handler\Settings", "GP2Path", Read
-            stbMain.Panels(3).Text = "GP2 Directory: " & Read
-            SetGP2Folder = Read
+            oReg.SaveValue HKEY_CURRENT_USER, REG_SZ, "Software\VG Software\Gp2 Track Handler\Settings", "Gp2Path", Read
+            StatusBar1.Panels(3).Text = "Gp2 Directory: " & Read
+            SetGp2Folder = Read
 
             cmdExportSettings.Enabled = True
             cmdImportSettings.Enabled = True
@@ -4621,9 +4347,9 @@ SelectPath:
             mnuJamCheck2.Enabled = True
 
         Else
-            Var.iInt1 = MsgBox(LoadResString(105), vbRetryCancel + vbCritical, TH)
-            If Var.iInt1 = vbCancel Then
-                SetGP2Folder = ""
+            tVar.iInt = MsgBox("Gp2.exe not found!", vbRetryCancel + vbCritical, TH)
+            If tVar.iInt = vbCancel Then
+                SetGp2Folder = ""
                 Exit Function
             Else
                 GoTo SelectPath
@@ -4637,7 +4363,7 @@ Public Sub MakeTempFile(ByVal sFile As String)
     Randomize
     X = Int((500) * Rnd)
     Kill (TempFile)
-    TempFile = ProgramDir & "\File\th14" & X & ".lda"
+    TempFile = ProgramDir & "\File\th16" & X & ".lda"
     FileCopy sFile, TempFile
 End Sub
 
@@ -4650,8 +4376,9 @@ Private Sub UpOneLevel()
 'Programmer: Viktor Gars
 'Date: 1999-08-17
 '*************************************
-Dim VolName As String, FSys As String, erg As Long
-Dim VolNumber As Long, MCM As Long, FSF As Long
+Dim VolName As String
+Dim DriveLen As Integer
+
     ClearInfo
     If Len(MyPath) > 3 Then
         For X = Len(MyPath) - 1 To 1 Step -1
@@ -4663,35 +4390,31 @@ Dim VolNumber As Long, MCM As Long, FSF As Long
         Toolbar2.Buttons(1).Enabled = False
         lstFile.ListItems.Clear
         Read = Space(255)
-        Var.iInt1 = GetLogicalDriveStrings(255, Read)
-        For Var.lLong1 = 1 To Var.iInt1 Step 4
-            Var.sString1 = Mid(Read, Var.lLong1, 2)
-            Var.lLong2 = GetDriveType(Var.sString1)
-
-            VolName = Space(127)
-            FSys = Space(127)
-            
-            If Var.lLong2 <> DRIVE_REMOVABLE Then
-                RetVal = GetVolumeInformation(Var.sString1 & "\", VolName, 127, VolNumber, MCM, FSF, FSys, 127)
-                X = InStr(1, VolName, Chr(0))
-                If X > 0 Then
-                    VolName = Mid(VolName, 1, X - 1)
+        DriveLen = GetLogicalDriveStrings(255, Read)
+        For X = 1 To DriveLen Step 4
+            Read2 = Mid(Read, X, 2)
+            tVar.lLong = GetDriveType(Read2)
+            If tVar.lLong <> DRIVE_REMOVABLE Then
+                VolName = Space(20)
+                RetVal = GetVolumeInformation(Read2 & "\", VolName, 20, vbNull, vbNull, vbNull, vbNullString, 0)
+                If InStr(1, VolName, Chr(0)) <> 0 Then
+                    VolName = StrConv(Mid(VolName, 1, InStr(1, VolName, Chr(0)) - 1), vbProperCase)
                 Else
                     VolName = ""
                 End If
             End If
-            If Var.lLong2 = DRIVE_CDROM Then
-                lstFile.ListItems.Add , "drive" & Var.sString1, VolName & " [" & Var.sString1 & "]", 8, 8
-            ElseIf Var.lLong2 = DRIVE_FIXED Or Var.lLong2 = 1 Then
-                lstFile.ListItems.Add , "drive" & Var.sString1, VolName & " [" & Var.sString1 & "]", 5, 5
-            ElseIf Var.lLong2 = DRIVE_RAMDISK Then
-                lstFile.ListItems.Add , "drive" & Var.sString1, VolName & " [" & Var.sString1 & "]", 7, 7
-            ElseIf Var.lLong2 = DRIVE_REMOTE Then
-                lstFile.ListItems.Add , "drive" & Var.sString1, VolName & " [" & Var.sString1 & "]", 6, 6
-            ElseIf Var.lLong2 = DRIVE_REMOVABLE Then
-                lstFile.ListItems.Add , "drive" & Var.sString1, "[" & Var.sString1 & "]", 4, 4
+            If tVar.lLong = DRIVE_CDROM Then
+                lstFile.ListItems.Add , "drive" & Read2, Read2 & " [" & VolName & "]", 8, 8
+            ElseIf tVar.lLong = DRIVE_FIXED Or tVar.lLong = 1 Then
+                lstFile.ListItems.Add , "drive" & Read2, Read2 & " [" & VolName & "]", 5, 5
+            ElseIf tVar.lLong = DRIVE_RAMDISK Then
+                lstFile.ListItems.Add , "drive" & Read2, Read2 & " [" & VolName & "]", 7, 7
+            ElseIf tVar.lLong = DRIVE_REMOTE Then
+                lstFile.ListItems.Add , "drive" & Read2, Read2 & " [" & VolName & "]", 6, 6
+            ElseIf tVar.lLong = DRIVE_REMOVABLE Then
+                lstFile.ListItems.Add , "drive" & Read2, Read2, 4, 4
             End If
-        Next Var.lLong1
+        Next X
     End If
 End Sub
 
@@ -4705,77 +4428,17 @@ Private Sub JamCheck()
 'Date: 1999-08-24
 '*************************************
 On Error GoTo ErrHandler
-    If tabMain.Tab = 1 Then
+    If tabMain.Tabs(2).Selected = True Then
         If txtPath <> "" Then frmJamCheck.Show vbModal, frmMain
-    ElseIf tabMain.Tab = 0 Then
-        If LCase(Mid(lstFile.SelectedItem.Key, Len(lstFile.SelectedItem.Key) - 3, 4)) <> ".dat" Then Exit Sub
+    ElseIf tabMain.Tabs(1).Selected = True Then
+        If oFile.GetFilePart(lstFile.SelectedItem.Key, GetExt) <> ".dat" Then Exit Sub
         frmJamCheck.Show vbModal, frmMain
     End If
 Exit Sub
 ErrHandler:
 End Sub
 
-Private Sub MoveTrackDown()
-'*************************************
-'Function Name: MoveTrackDown
-'Use: Move a track down one level
-'Remarks:
-'History:
-'Programmer: Viktor Gars
-'Date: 1999-09-11
-'*************************************
-Dim TempTrackData(16) As String
-On Error GoTo ErrHandler
-
-    With frmMain
-        TempTrackData(0) = .txtPath
-        TempTrackData(1) = .txtAdjectiv
-        TempTrackData(2) = .txtBPic
-        TempTrackData(3) = .txtCountry
-        TempTrackData(4) = .txtLaps
-        TempTrackData(5) = .txtLength
-        TempTrackData(6) = .txtName
-        TempTrackData(7) = .txtQDate
-        TempTrackData(8) = .txtQDriver
-        TempTrackData(9) = .txtQTeam
-        TempTrackData(10) = .txtQTime
-        TempTrackData(11) = .txtRDate
-        TempTrackData(12) = .txtRDriver
-        TempTrackData(13) = .txtRTeam
-        TempTrackData(14) = .txtRTime
-        TempTrackData(15) = .txtSPic
-        TempTrackData(16) = .txtTire
-    End With
-    GetTrackData TreeNr + 1
-    SaveTrackData TreeNr
-    With frmMain
-        .txtPath = TempTrackData(0)
-        .txtAdjectiv = TempTrackData(1)
-        .txtBPic = TempTrackData(2)
-        .txtCountry = TempTrackData(3)
-        .txtLaps = TempTrackData(4)
-        .txtLength = TempTrackData(5)
-        .txtName = TempTrackData(6)
-        .txtQDate = TempTrackData(7)
-        .txtQDriver = TempTrackData(8)
-        .txtQTeam = TempTrackData(9)
-        .txtQTime = TempTrackData(10)
-        .txtRDate = TempTrackData(11)
-        .txtRDriver = TempTrackData(12)
-        .txtRTeam = TempTrackData(13)
-        .txtRTime = TempTrackData(14)
-        .txtSPic = TempTrackData(15)
-        .txtTire = TempTrackData(16)
-    End With
-    SaveTrackData TreeNr + 1
-    LoadFile
-    TreeView1.Nodes("t" & TreeNr + 11).Selected = True
-    TreeView1_NodeClick TreeView1.SelectedItem
-Exit Sub
-ErrHandler:
-End Sub
-
-Private Sub MoveTrackUp()
+Private Sub MoveTrack(ByVal Up As Boolean)
 '*************************************
 'Function Name: MoveTrackUp
 'Use: move a track up one level
@@ -4789,10 +4452,10 @@ On Error GoTo ErrHandler
 
     With frmMain
         TempTrackData(0) = .txtPath
-        TempTrackData(1) = .txtAdjectiv
+        TempTrackData(1) = .txtAdjectiv.Text
         TempTrackData(2) = .txtBPic
         TempTrackData(3) = .txtCountry
-        TempTrackData(4) = .txtLaps
+        TempTrackData(4) = .updLaps.Value
         TempTrackData(5) = .txtLength
         TempTrackData(6) = .txtName
         TempTrackData(7) = .txtQDate
@@ -4806,14 +4469,18 @@ On Error GoTo ErrHandler
         TempTrackData(15) = .txtSPic
         TempTrackData(16) = .txtTire
     End With
-    GetTrackData TreeNr - 1
+    If Up = True Then
+        GetTrackData TreeNr - 1
+    Else
+        GetTrackData TreeNr + 1
+    End If
     SaveTrackData TreeNr
     With frmMain
         .txtPath = TempTrackData(0)
-        .txtAdjectiv = TempTrackData(1)
+        .txtAdjectiv.Text = TempTrackData(1)
         .txtBPic = TempTrackData(2)
         .txtCountry = TempTrackData(3)
-        .txtLaps = TempTrackData(4)
+        .updLaps.Value = TempTrackData(4)
         .txtLength = TempTrackData(5)
         .txtName = TempTrackData(6)
         .txtQDate = TempTrackData(7)
@@ -4827,10 +4494,222 @@ On Error GoTo ErrHandler
         .txtSPic = TempTrackData(15)
         .txtTire = TempTrackData(16)
     End With
-    SaveTrackData TreeNr - 1
+    If Up = True Then
+        SaveTrackData TreeNr - 1
+    Else
+        SaveTrackData TreeNr + 1
+    End If
     LoadFile
-    TreeView1.Nodes("t" & TreeNr + 9).Selected = True
+    If Up = True Then
+        TreeView1.Nodes("t" & TreeNr + 9).Selected = True
+    Else
+        TreeView1.Nodes("t" & TreeNr + 11).Selected = True
+    End If
     TreeView1_NodeClick TreeView1.SelectedItem
 Exit Sub
 ErrHandler:
+    MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
+        "Error Desctiption: " & Err.Description & vbLf & _
+        "Error Source: MoveTrack()", vbCritical, TH & " - Error"
+End Sub
+
+Private Sub RemoveNodes(sKey As String)
+    On Error Resume Next
+    TreeView1.Nodes.Remove (sKey & "-BPic")
+    TreeView1.Nodes.Remove (sKey & "-SPic")
+    TreeView1.Nodes.Remove (sKey & "-Track")
+End Sub
+
+Public Sub ShowFiles(ByVal sFileName As String)
+    Read2 = String(20, " ")
+    FileNum = FreeFile
+    Open sFileName For Binary As FileNum
+    Get #FileNum, 1, Read2
+    Close FileNum
+    X = InStr(1, Read2, "[Track 1]")
+    If X = 0 Then
+        Read2 = ProgramDir & "\File\" & Minute(Time) & Second(Time) & "tmp.ths"
+        If FileLen(sFileName) = 14336 Then
+            WinTrack2TH sFileName, Read2
+        ElseIf FileLen(sFileName) = 14288 Then
+            Conv1 sFileName, Read2
+        ElseIf FileLen(sFileName) = 9826 Then
+            Conv2 sFileName, Read2
+        Else
+            MsgBox "This file is not supported by Gp2 Track Handler.", vbInformation, TH
+            Exit Sub
+        End If
+        TempFile = Read2
+    Else
+        MakeTempFile sFileName
+        FileInfo.Saved = True
+        FileInfo.Path = sFileName
+        FileInfo.Name = oFile.GetFilePart(sFileName, GetFileName)
+    End If
+    Me.Caption = TH & " v1.6 [" & oFile.GetFilePart(sFileName, GetFileName) & "]"
+    RecentFile sFileName
+    LoadFile
+    GetMisc
+    LoadRecent
+End Sub
+
+Private Sub LoadAdj()
+    txtAdjectiv.Clear
+    FileNum = FreeFile
+    Open ProgramDir & "\Adjectiv.ini" For Input As FileNum
+    Do Until EOF(FileNum)
+        Line Input #FileNum, Read
+        If (Read <> "") And (Read <> "[Adjectiv]") And (Mid(Read, 1, 1) <> ";") Then
+            X = InStr(1, Read, "=")
+            If X <> 0 Then txtAdjectiv.AddItem Mid(Read, X + 1)
+        End If
+    Loop
+    Close FileNum
+End Sub
+
+Private Sub ShowInfo()
+    With frmMain
+        .lblTrackName = TrackInfo.Name
+        .lblCountry = TrackInfo.Country
+        .lblLaps = TrackInfo.Laps
+        .lblLen = TrackInfo.LengthMeters
+        .lblWare = TrackInfo.Tyre
+        .lblQual = TrackInfo.LapRecordQualify
+        .lblRace = TrackInfo.LapRecord
+        .lblInfoYear = TrackInfo.Year
+        .lblSlot = TrackInfo.Slot
+        .lblAuthor = TrackInfo.Author
+        .lblMisc = TrackInfo.Desc
+        .lblEvent = TrackInfo.Event
+        .lblSetup = ""
+    End With
+End Sub
+
+Private Sub UnsupportedFile()
+    fraMenuPic.Visible = False
+    fraFileInfo.Visible = False
+    fraNoSupport.Visible = True
+    fraFileInfo.Enabled = False
+    cmdSaveGP2Info.Enabled = False
+    
+    mnuJamCheck2.Enabled = False
+    mnuPCS.Enabled = False
+    mnuBackup.Enabled = False
+    mnuSetup.Enabled = False
+    mnuToolUninstall.Enabled = False
+    mnuTrackSettings.Enabled = False
+    
+    Toolbar1.Buttons(10).Enabled = False
+    Toolbar1.Buttons(11).Enabled = False
+    Toolbar1.Buttons(12).Enabled = False
+End Sub
+
+Private Sub SupportedFile()
+    If FileType = 0 Then
+        fraMenuPic.Visible = False
+        fraNoSupport.Visible = False
+        fraFileInfo.Enabled = True
+        fraFileInfo.Visible = True
+        cmdSaveGP2Info.Enabled = True
+
+        mnuJamCheck2.Enabled = True
+        mnuPCS.Enabled = True
+        mnuBackup.Enabled = True
+        mnuSetup.Enabled = True
+        mnuTrackSettings.Enabled = True
+        mnuToolUninstall.Enabled = True
+
+        Toolbar1.Buttons(10).Enabled = True
+        Toolbar1.Buttons(11).Enabled = True
+        Toolbar1.Buttons(12).Enabled = True
+    ElseIf (FileType = 1) Or (FileType = 2) Then
+        fraFileInfo.Visible = False
+        fraNoSupport.Visible = False
+        fraFileInfo.Enabled = False
+        cmdSaveGP2Info.Enabled = False
+        fraMenuPic.Visible = True
+        fraMenuPic.Enabled = True
+
+        mnuTrackSettings.Enabled = False
+        mnuJamCheck2.Enabled = False
+        mnuPCS.Enabled = False
+        mnuBackup.Enabled = False
+        mnuSetup.Enabled = False
+        
+        Toolbar1.Buttons(10).Enabled = False
+        Toolbar1.Buttons(11).Enabled = False
+        Toolbar1.Buttons(12).Enabled = False
+        
+        
+    ElseIf FileType = 4 Then
+        fraNoSupport.Visible = True
+        UnsupportedFile
+    End If
+End Sub
+
+Private Sub ListFiles(ByVal Show As PatFile)
+Dim MyName As String
+Dim vArray As Variant
+Dim MyExt As String
+
+    If Right(MyPath, 1) <> "\" Then MyPath = MyPath & "\"
+    'Remove all items from the listbox
+    lstTmpFile.Clear
+    lstFile.ListItems.Clear
+    On Error GoTo ErrHandler
+    Count1 = 0
+    
+    'list files and folders
+    MyName = Dir(MyPath, vbDirectory)
+    Do While MyName <> ""
+        If MyName <> "." And MyName <> ".." Then
+            If LCase(MyName) <> "pagefile.sys" Then
+                MyExt = oFile.GetFilePart(MyName, GetExt)
+                If ((GetAttr(MyPath & MyName) And vbDirectory) = vbDirectory) And (Show = All) Then
+                    lstFile.ListItems.Add , "dir" & MyPath & MyName, MyName, 1, 1
+                ElseIf MyExt = ".dat" And ((Show = All) Or (Show = Dat)) Then
+                    lstTmpFile.AddItem MyName
+                    Count1 = Count1 + 1
+                ElseIf (MyExt = ".bmp") And (Show = All) Then
+                    lstTmpFile.AddItem MyName
+                ElseIf (MyExt = ".gif") And (Show = All) Then
+                    lstTmpFile.AddItem MyName
+                End If
+            End If
+        End If
+        MyName = Dir
+    Loop
+    'Sort folders
+    lstFile.Sorted = True
+    lstFile.Sorted = False
+
+    If Count1 < 16 Then
+        mnuRand.Enabled = False
+    Else
+        mnuRand.Enabled = True
+    End If
+
+    'List the files
+    Dim ItemX
+    If lstTmpFile.ListCount <> 0 Then
+        For X = 0 To lstTmpFile.ListCount - 1
+            lstTmpFile.ListIndex = X
+            Read = MyPath & lstTmpFile.Text
+            If oFile.GetFilePart(Read, GetExt) = ".dat" Then
+                Set ItemX = lstFile.ListItems.Add(, Read, lstTmpFile.Text, 2, 2)
+            ElseIf oFile.GetFilePart(Read, GetExt) = ".bmp" Then
+                Set ItemX = lstFile.ListItems.Add(, Read, lstTmpFile.Text, 3, 3)
+            ElseIf oFile.GetFilePart(Read, GetExt) = ".gif" Then
+                Set ItemX = lstFile.ListItems.Add(, Read, lstTmpFile.Text, 3, 3)
+            End If
+            ItemX.SubItems(1) = Round(FileLen(Read) / 1000, 0) & " kb"
+            ItemX.SubItems(2) = Mid(FileSystem.FileDateTime(Read), 1, 10)
+        Next
+    End If
+    lblMyPath = MyPath
+Exit Sub
+ErrHandler:
+    MsgBox "Error Nr: " & Str(Err.Number) & vbLf & _
+        "Error Desctiption: " & Err.Description & vbLf & _
+        "Error Source: ListFiles()", vbCritical, TH & " - Error"
 End Sub

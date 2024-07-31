@@ -118,6 +118,9 @@ End Sub
 
 Private Sub Form_Load()
     txtDate.Text = Date
+    X = GetWindowLong(txtTime.hWnd, GWL_STYLE)
+    X = X Or ES_NUMBER
+    Call SetWindowLong(txtTime.hWnd, GWL_STYLE, X)
 End Sub
 
 Private Sub txtDate_GotFocus()
