@@ -50,7 +50,6 @@ Begin VB.Form frmMain
             ImageKey        =   "Save"
          EndProperty
          BeginProperty Button4 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -68,7 +67,6 @@ Begin VB.Form frmMain
             ImageKey        =   "Export"
          EndProperty
          BeginProperty Button7 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -80,7 +78,6 @@ Begin VB.Form frmMain
             ImageKey        =   "GP2Edit"
          EndProperty
          BeginProperty Button9 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -104,7 +101,6 @@ Begin VB.Form frmMain
             ImageKey        =   "Backup"
          EndProperty
          BeginProperty Button13 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -128,7 +124,6 @@ Begin VB.Form frmMain
             ImageKey        =   "Up"
          EndProperty
          BeginProperty Button17 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -140,7 +135,6 @@ Begin VB.Form frmMain
             ImageKey        =   "GP2"
          EndProperty
          BeginProperty Button19 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -152,7 +146,6 @@ Begin VB.Form frmMain
             ImageKey        =   "Help"
          EndProperty
          BeginProperty Button21 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -164,7 +157,6 @@ Begin VB.Form frmMain
             ImageKey        =   "Exit"
          EndProperty
          BeginProperty Button23 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-            Key             =   ""
             Object.Tag             =   ""
             Style           =   3
             MixedState      =   -1  'True
@@ -198,7 +190,6 @@ Begin VB.Form frmMain
             MinWidth        =   5115
             Text            =   "Gp2 Track Handler v1.6 © Viktor Gars"
             TextSave        =   "Gp2 Track Handler v1.6 © Viktor Gars"
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel2 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
@@ -206,7 +197,6 @@ Begin VB.Form frmMain
             MinWidth        =   5292
             Text            =   "Gp2 Version:"
             TextSave        =   "Gp2 Version:"
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Panel3 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
@@ -214,7 +204,6 @@ Begin VB.Form frmMain
             MinWidth        =   5556
             Text            =   "Gp2 Directory:"
             TextSave        =   "Gp2 Directory:"
-            Key             =   ""
             Object.Tag             =   ""
          EndProperty
       EndProperty
@@ -271,13 +260,11 @@ Begin VB.Form frmMain
             NumTabs         =   2
             BeginProperty Tab1 {0713F341-850A-101B-AFC0-4210102A8DA7} 
                Caption         =   "Lage Menu Picture"
-               Key             =   ""
                Object.Tag             =   ""
                ImageVarType    =   2
             EndProperty
             BeginProperty Tab2 {0713F341-850A-101B-AFC0-4210102A8DA7} 
                Caption         =   "Small Menu Picture"
-               Key             =   ""
                Object.Tag             =   ""
                ImageVarType    =   2
             EndProperty
@@ -605,7 +592,6 @@ Begin VB.Form frmMain
                   ImageKey        =   "UpOneLevel"
                EndProperty
                BeginProperty Button2 {0713F354-850A-101B-AFC0-4210102A8DA7} 
-                  Key             =   ""
                   Object.Tag             =   ""
                   Style           =   3
                   MixedState      =   -1  'True
@@ -1820,31 +1806,26 @@ Begin VB.Form frmMain
          NumTabs         =   5
          BeginProperty Tab1 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "File Manager"
-            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
          BeginProperty Tab2 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "Track Data"
-            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
          BeginProperty Tab3 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "Menu Pics"
-            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
          BeginProperty Tab4 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "Misc Settings"
-            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
          BeginProperty Tab5 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "Lap Time Database"
-            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
